@@ -1,8 +1,9 @@
 # Events
 
-Since `MoonShine` is based on the standard `Eloquent` methods for adding, editing, and deleting, you can easily utilize the standard `Laravel` [events](https://laravel.com/docs/eloquent#events) of `Laravel`:
+Since **MoonShine** is based on the standard **Eloquent** methods for adding, editing, and deleting, you can easily utilize the standard [events](https://laravel.com/docs/eloquent#events) of **Laravel**.
 
-However, there is also a need to specifically bind to events within the `MoonShine` resources! To do this, you need to implement the required events in your resource.
+However, there is also a need to specifically bind to events within the **MoonShine** resources!
+To do this, you need to implement the required events in your resource.
 
 ```php
 protected function beforeCreating(mixed $item): mixed
