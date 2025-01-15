@@ -15,31 +15,26 @@
 Вы можете легко переопределить `QueryBuilder` в ресурсе.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function modifyQueryBuilder(Builder $builder): Builder
     {
         return $builder->where('active', true);
     }
-
-    //...
 }
 ```
 
 > [!NOTE]
-> Если вам необходимо полностью переопределить `Builder`, то вы можете переопределить метод ресурса `newQuery`
+> Если вам необходимо полностью переопределить `Builder`, то вы можете переопределить метод ресурса `newQuery()`.
 
 <a name="receiving-a-record"></a>
 ## Получение записи
@@ -47,24 +42,21 @@ class PostResource extends ModelResource
 Метод `modifyItemQueryBuilder()` используется, если вам нужно модифицировать запрос для получения записи из базы данных.
 
 ```php
-use App\Models\Post;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+namespace App\MoonShine\Resources;
+
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function modifyItemQueryBuilder(Builder $builder): Builder
     {
         return $builder->withTrashed();
     }
-
-    //...
 }
 ```
 
@@ -72,18 +64,22 @@ class PostResource extends ModelResource
 ## Eager load
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    //...
-
     protected array $with = ['user', 'categories'];
+    
+    // ...
 }
 ```
 
 > [!NOTE]
-> Если вам необходимо полностью переопределить `Builder`, то вы можете переопределить метод ресурса `findItem`
+> Если вам необходимо полностью переопределить `Builder`, то вы можете переопределить метод ресурса `findItem()`.
 
 <a name="search"></a>
 ## Поиск
@@ -91,20 +87,24 @@ class PostResource extends ModelResource
 Метод `searchQuery()` позволяет изменить запрос при поиске записей.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
+    // ...
+    
     protected function searchQuery(string $terms): void
     {
         return parent::searchQuery($terms)->withTrashed();
     }
-
-    //...
 }
 ```
 
-Также вы можете полностью переопределить логику поиска
+Также вы можете полностью переопределить логику поиска.
 
 ```php
 protected function resolveSearch(string $terms, ?iterable $fullTextColumns = null): static
@@ -121,16 +121,15 @@ protected function resolveSearch(string $terms, ?iterable $fullTextColumns = nul
 Переопределив метод `resolveOrder()`, вы можете настроить сортировку записей.
 
 ```php
-use App\Models\Post;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function resolveOrder(string $column, string $direction, ?Closure $callback): static
     {
@@ -142,7 +141,5 @@ class PostResource extends ModelResource
 
         return $this;
     }
-
-    //...
 }
 ```
