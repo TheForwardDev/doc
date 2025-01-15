@@ -11,19 +11,16 @@
 > Некоторые поля не могут участвовать в построении запроса фильтрации, поэтому они будут автоматически исключены из списка фильтров.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function filters(): iterable
     {
@@ -31,8 +28,6 @@ class PostResource extends ModelResource
             Text::make('Title', 'title'),
         ];
     }
-
-    //...
 }
 ```
 
@@ -40,24 +35,22 @@ class PostResource extends ModelResource
 ![filters_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/filters_dark.png)
 
 > [!TIP]
-> Поля являются ключевым элементом в построении форм в админ-панели `Moonshine`.
-[Подробнее о полях](/docs/{{version}}/fields/index)
+> Поля являются ключевым элементом в построении форм **Moonshine**.
+[Подробнее о полях](/docs/{{version}}/fields/index).
 
-Если вам нужно кэшировать состояние фильтров, используйте свойство `saveQueryState` в ресурсе
+Если вам нужно кэшировать состояние фильтров, используйте свойство `$saveQueryState` в ресурсе.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
     protected bool $saveQueryState = true;
-//...
+
+    // ...
 }
 ```

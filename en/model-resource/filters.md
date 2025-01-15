@@ -11,19 +11,16 @@ To specify the fields to filter the data by, simply return an array with the nec
 > Some fields cannot participate in the construction of the filtering query, so they will be automatically excluded from the list of filters.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function filters(): iterable
     {
@@ -31,8 +28,6 @@ class PostResource extends ModelResource
             Text::make('Title', 'title'),
         ];
     }
-
-    //...
 }
 ```
 
@@ -40,24 +35,22 @@ class PostResource extends ModelResource
 ![filters_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/filters_dark.png)
 
 > [!TIP]
-> Fields are a key element in building forms in the `Moonshine` admin panel.
-[Learn more about fields](/docs/{{version}}/fields/index)
+> Fields are a key element in building forms in **Moonshine**.
+[Learn more about fields](/docs/{{version}}/fields/index).
 
-If you need to cache the state of the filters, use the `saveQueryState` property in the resource.
+If you need to cache the state of the filters, use the `$saveQueryState` property in the resource.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
     protected bool $saveQueryState = true;
-//...
+
+    // ...
 }
 ```
