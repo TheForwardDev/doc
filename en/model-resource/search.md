@@ -11,32 +11,27 @@
 <a name="basics"></a>
 ## Basics
 
-To perform a search, you need to specify which fields of the model will participate in the search. For this, you need to list them in the returned array in the `search()` method.
+To perform a search, you need to specify which fields of the model will participate in the search.
+For this, you need to list them in the returned array in the `search()` method.
 
-> [!TIP] 
+> [!NOTE] 
 > If the method returns an empty array, the search string will not be displayed.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
-use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function search(): array
     {
         return ['id', 'title', 'text'];
     }
-
-    //...
 }
 ```
 
@@ -48,33 +43,27 @@ class PostResource extends ModelResource
 If full-text search is required, you need to use the attribute `MoonShine\Support\Attributes\SearchUsingFullText`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Support\Attributes\SearchUsingFullText;
-use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     #[SearchUsingFullText(['title', 'text'])]
     protected function search(): array
     {
         return ['id'];
     }
-
-    //...
 }
 ```
 
 > [!TIP] 
-> Don't forget to add a full-text index
+> Don't forget to add a full-text index.
 
 <a name="json"></a>
 ## JSON Key Search
@@ -82,46 +71,40 @@ class PostResource extends ModelResource
 For `Json` fields that are used as key-value `keyValue()`, you can specify which field key participates in the search.
 
 ```php
-use App\Models\Post;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function search(): array
     {
         return ['data->title'];
     }
-
-    //...
 }
 ```
 
 For multidimensional `Json`, which are formed through `fields()`, the search key should be specified as follows:
 
 ```php
-use App\Models\Post;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function search(): array
     {
         return ['data->[*]->title'];
     }
-
-    //...
 }
 ```
 
@@ -131,31 +114,27 @@ class PostResource extends ModelResource
 You can perform a search on relations; for this, you need to specify which relation field to search by.
 
 ```php
-use App\Models\Post;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function search(): array
     {
         return ['category.title'];
     }
-
-    //...
 }
 ```
 
 <a name="global"></a>
 ## Global Search
 
-In the MoonShine admin panel, you can implement global search based on integration with
-[Laravel Scout](https://laravel.com/docs/scout).
+In **MoonShine**, you can implement global search based on integration with [Laravel Scout](https://laravel.com/docs/scout).
 
 To implement global search, you need to:
 
@@ -181,6 +160,10 @@ php artisan vendor:publish --provider="MoonShine\Scout\Providers\ScoutServicePro
 3. Implement the interface in the models.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:6]
+namespace App\Models;
+
 use MoonShine\Scout\HasGlobalSearch;
 use MoonShine\Scout\SearchableResponse;
 use Laravel\Scout\Searchable;
@@ -208,9 +191,11 @@ class Article extends Model implements HasGlobalSearch
 }
 ```
 
-4. Replace the component in `Layout`
+4. Replace the component in `Layout`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 use MoonShine\Laravel\Components\Layout\Locales;
 use MoonShine\Laravel\Components\Layout\Notifications;
 use MoonShine\UI\Components\Layout\Header;
