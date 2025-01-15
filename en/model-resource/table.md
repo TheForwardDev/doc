@@ -24,32 +24,36 @@
 <a name="basics"></a>
 ## Basics
 
-In `CrudResource` (`ModelResource`) on the `indexPage` as well as on the `DetailPage`, `TableBuilder` is used to display the main data, so we recommend you also study the documentation section [TableBuilder](/docs/{{version}}/components/table-builder).
+In `CrudResource` (`ModelResource`) on the `indexPage` as well as on the `DetailPage`, `TableBuilder` is used to display the main data,
+so we recommend you also study the documentation section [TableBuilder](/docs/{{version}}/components/table-builder).
 
 <a name="order-by"></a>
 ## Sorting
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Support\Enums\SortDirection;
 
 class PostResource extends ModelResource
 {
-    protected string $sortColumn = 'created_at'; // Default sort field
+    // Default sort field
+    protected string $sortColumn = 'created_at';
 
-    protected SortDirection $sortDirection = SortDirection::DESC; // Default sort type
+    // Default sort type
+    protected SortDirection $sortDirection = SortDirection::DESC;
 
-    //...
+    // ...
 }
 ```
 
 <a name="buttons"></a>
 ## Buttons
 
-To add buttons to the table, you can use `ActionButton` and the methods `indexButtons`, as well as `detailButtons` for the detail page.
+To add buttons to the table, you can use `ActionButton` and the methods `indexButtons()`, as well as `detailButtons()` for the detail page.
 
 > [!TIP]
 > [More details ActionButton](/docs/{{version}}/components/action-button)
@@ -57,6 +61,8 @@ To add buttons to the table, you can use `ActionButton` and the methods `indexBu
 After the main buttons:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 
@@ -69,6 +75,8 @@ protected function indexButtons(): ListOf
 Before the main buttons:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 
@@ -81,6 +89,8 @@ protected function indexButtons(): ListOf
 Remove the delete button:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 
@@ -93,6 +103,8 @@ protected function indexButtons(): ListOf
 Clear the button set and add your own:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 
@@ -103,11 +115,13 @@ protected function indexButtons(): ListOf
 ```
 
 > [!NOTE]
-> The same approach is used for the table on the detail page, only through the method `detailButtons`.
+> The same approach is used for the table on the detail page, only through the method `detailButtons()`.
 
-For bulk actions, you need to add the `bulk` method.
+For bulk actions, you need to add the `bulk()` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 
@@ -123,8 +137,6 @@ To do this, change the `$indexButtonsInDropdown` property in the resource:
 ```php
 class PostResource extends ModelResource 
 {
-    // ...
-    
     protected bool $indexButtonsInDropdown = true;
     
     // ...
@@ -134,35 +146,40 @@ class PostResource extends ModelResource
 <a name="attributes"></a>
 ## Attributes
 
-To add attributes for the `td` element of the table, you can use the `customWrapperAttributes` method on the field that represents the cell you need.
+To add attributes for the `td` element of the table, you can use the `customWrapperAttributes()` method on the field that represents the cell you need.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\UI\Fields\Text;
 
 protected function indexFields(): iterable
 {
   return [
-    // ..
-    Text::make('Title')->customWrapperAttributes(['width' => '20%']);
-    // ..
+    Text::make('Title')
+        ->customWrapperAttributes(['width' => '20%']);
+    // ...
   ];
 }
 ```
 
-You can also customize `tr` and `td` for the table with data through the resource. To do this, you need to use the corresponding methods `trAttributes()` and `tdAttributes()`, to which you need to pass a closure that returns an array of attributes for the table component.
+You can also customize `tr` and `td` for the table with data through the resource.
+To do this, you need to use the corresponding methods `trAttributes()` and `tdAttributes()`,
+to which you need to pass a closure that returns an array of attributes for the table component.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:6]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use Closure;
-use MoonShine\UI\Fields\Text;
-use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Fields\Text;
 
 class PostResource extends ModelResource
 {
-    //...
+    // ...
 
     protected function tdAttributes(): Closure
     {
@@ -177,8 +194,6 @@ class PostResource extends ModelResource
             'data-tr' => $row
         ];
     }
-
-    //...
 }
 ```
 
@@ -190,7 +205,10 @@ class PostResource extends ModelResource
 By default, clicking on `tr` does nothing, but you can change the behavior to navigate to editing, selection, or to the detailed view.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Support\Enums\ClickAction;
+
 // ClickAction::SELECT, ClickAction::DETAIL, ClickAction::EDIT
 
 protected ?ClickAction $clickAction = ClickAction::SELECT;
@@ -202,16 +220,14 @@ protected ?ClickAction $clickAction = ClickAction::SELECT;
 The model resource property `stickyTable` allows you to fix the header when scrolling a table with a large number of elements.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
 use MoonShine\Laravle\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
     protected bool $stickyTable = true;
 
     // ...
@@ -221,23 +237,21 @@ class PostResource extends ModelResource
 <a name="column-display"></a>
 ## Column Display
 
-You can allow users to independently determine which columns to display in the table while retaining their selection. To do this, you need to set the parameter `$columnSelection` for the resource.
+You can allow users to independently determine which columns to display in the table while retaining their selection.
+To do this, you need to set the parameter `$columnSelection` for the resource.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
     protected bool $columnSelection = true;
 
-    //...
+    // ...
 }
 ```
 
@@ -248,23 +262,20 @@ public function columnSelection(bool $active = true)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:6]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Text;
 use MoonShine\UI\Fields\Textarea;
-use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
     protected bool $columnSelection = true;
 
-    //...
+    // ...
 
     protected function indexFields(): iterable
     {
@@ -275,35 +286,34 @@ class PostResource extends ModelResource
             Textarea::make('Body'),
         ];
     }
-
-    //...
 }
 ```
 
 <a name="sticky"></a>
 ## Sticky columns
 
-You can freeze cells in large tables, suitable for ID columns and buttons
+You can freeze cells in large tables, suitable for ID columns and buttons.
 
 To fix buttons in the table, switch the resource to `stickyButtons` mode:
 
 ```php
-use App\Models\Post;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
     protected bool $stickyButtons = true;
+
+    // ...
 }
 ```
 
 To fix a column, call the `sticky()` method on the Field:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\UI\Fields\ID;
 
 protected function indexFields(): iterable
@@ -320,17 +330,17 @@ protected function indexFields(): iterable
 To change the number of items per page, use the property `$itemsPerPage`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    // .. 
-
     protected int $itemsPerPage = 25;
 
-    //...
+    // ...
 }
 ```
 
@@ -340,41 +350,42 @@ class PostResource extends ModelResource
 When dealing with a large volume of data, the best solution is to use cursor pagination.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    // .. 
-
     protected bool $cursorPaginate = true;
 
-    //...
+    // ...
 }
 ```
 
 <a name="simple-pagination"></a>
 ### Simple
 
-If you do not plan to display the total number of pages, use `Simple Pagination`. This avoids additional queries for the total number of records in the database.
+If you do not plan to display the total number of pages, use `Simple Pagination`.
+This avoids additional queries for the total number of records in the database.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    // ...
-
     protected bool $simplePaginate = true;
 
     // ...
 }
 ```
 
-![img] (https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_simple_paginate_dark.png)
+![img](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_simple_paginate_dark.png)
 
 <a name="disable-pagination"></a>
 ### Disable Pagination
@@ -382,14 +393,14 @@ class PostResource extends ModelResource
 If you do not plan to use pagination, it can be disabled.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    // ...
-
     protected bool $usePagination = false;
 
     // ...
@@ -399,17 +410,19 @@ class PostResource extends ModelResource
 <a name="async"></a>
 ## Async Mode
 
-In the resource, async mode is used by default. This mode allows for pagination, filtering, and sorting without page reloads. However, if you want to disable async mode, you can use the property `$isAsync`.
+In the resource, async mode is used by default.
+This mode allows for pagination, filtering, and sorting without page reloads.
+However, if you want to disable async mode, you can use the property `$isAsync`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    // ...
-
     protected bool $isAsync = false;
 
     // ...
@@ -437,76 +450,71 @@ AlpineJs::event(JsEvent::TABLE_ROW_UPDATED, 'main-table-{row-id}')
 - `{row-id}` - shortcode for the id of the current model record.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:8]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Switcher;
 use MoonShine\UI\Fields\Text;
-use MoonShine\UI\Fields\Textarea;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Support\AlpineJs;
 use MoonShine\Support\Enums\JsEvent;
 
 class PostResource extends ModelResource
 {
-    //...
+    // ...
 
-    protected function fields(): iterable
+    protected function indexFields(): iterable
     {
         return [
             ID::make(),
             Text::make('Title'),
-            Textarea::make('Body'),
             Switcher::make('Active')
                 ->updateOnPreview(
                     events: [AlpineJs::event(JsEvent::TABLE_ROW_UPDATED, 'index-table-{row-id}')]
                 )
         ];
     }
-
-    //...
 }
 ```
 
-The `withUpdateRow()` method is also available, which helps simplify the assignment of events:
+The `withUpdateRow()` method is also available, which helps simplify the assignment of events.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:6]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Switcher;
 use MoonShine\UI\Fields\Text;
-use MoonShine\UI\Fields\Textarea;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    //...
+    // ...
 
-    protected function fields(): iterable
+    protected function indexFields(): iterable
     {
         return [
             ID::make(),
             Text::make('Title'),
-            Textarea::make('Body'),
             Switcher::make('Active')
                 ->withUpdateRow($this->getListComponentName())
         ];
     }
-
-    //...
 }
 ```
 
 <a name="lazy"></a>
 ## Lazy mode
 
-If you want to display a page without waiting for data to load,
-and then send a query to get the table data, use *Lazy* mode:
+If you want to display a page without waiting for data to load, and then send a query to get the table data, use *Lazy* mode.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -521,9 +529,12 @@ class PostResource extends ModelResource
 <a name="components"></a>
 ### Components
 
-You can completely replace or modify the resource's `TableBuilder` for both the index and detail pages. Use the `modifyListComponent` or `modifyDetailComponent` methods for this.
+You can completely replace or modify the resource's `TableBuilder` for both the index and detail pages.
+Use the `modifyListComponent()` or `modifyDetailComponent()` methods for this.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Contracts\UI\ComponentContract;
 
 public function modifyListComponent(ComponentContract $component): ComponentContract
@@ -535,6 +546,8 @@ public function modifyListComponent(ComponentContract $component): ComponentCont
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Contracts\UI\ComponentContract;
 
 public function modifyDetailComponent(ComponentContract $component): ComponentContract
@@ -548,9 +561,12 @@ public function modifyDetailComponent(ComponentContract $component): ComponentCo
 <a name="thead-tbody-tfoot"></a>
 ### Elements thead, tbody, tfoot
 
-If it is not enough to just automatically output fields in `thead`, `tbody`, and `tfoot`, you can override or extend this logic based on the resource methods `thead()`, `tbody()`, `tfoot()`.
+If it is not enough to just automatically output fields in `thead`, `tbody`, and `tfoot`,
+you can override or extend this logic based on the resource methods `thead()`, `tbody()`, `tfoot()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 use Closure;
 use MoonShine\Contracts\UI\Collection\TableRowsContract;
 use MoonShine\Contracts\UI\TableRowContract;
@@ -585,8 +601,10 @@ protected function tfoot(): null|TableRowsContract|Closure
 }
 ```
 
-#### Example of adding an additional row in tfoot
+#### Example of adding a row in tfoot
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:7]
 use Closure;
 use MoonShine\Contracts\UI\Collection\TableRowsContract;
 use MoonShine\Contracts\UI\TableRowContract;
