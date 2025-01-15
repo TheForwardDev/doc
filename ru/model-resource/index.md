@@ -25,7 +25,8 @@
 <a name="basics"></a>
 ## Основы
 
-`ModelResource` расширяет `CrudResource` и предоставляет функциональность для работы с моделями Eloquent. Он обеспечивает основу для создания ресурсов, связанных с моделями базы данных.
+`ModelResource` расширяет `CrudResource` и предоставляет функциональность для работы с моделями Eloquent.
+Он обеспечивает основу для создания ресурсов, связанных с моделями базы данных.
 `ModelResource` предоставляет методы для выполнения CRUD-операций, управления отношениями, применения фильтров и многое другое.
 
 > [!TIP]
@@ -42,6 +43,8 @@ php artisan make:controller Controller --resource
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use Illuminate\Support\Facades\Route;
 
 Route::resource('resources', Controller::class);
@@ -202,7 +205,7 @@ final class MoonShineLayout extends CompactLayout
 По умолчанию, alias ресурса, который используется в `url`, генерируется на основе наименования класс в `kebab-case`, например:
 `MoonShineUserResource` -> `moon-shine-user-resource`.
 
-Для того чтобы изменить `alias`, можно воспользоваться свойством ресурса `$alias` или методом `getAlias`.
+Для того чтобы изменить `alias`, можно воспользоваться свойством ресурса `$alias` или методом `getAlias()`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -307,7 +310,7 @@ public function getRedirectAfterDelete(): string
 
 Часто бывает, что необходимо создать ресурс, в котором будет исключена возможность удалять, или добавлять, или редактировать.
 И здесь речь не об авторизации, а о глобальном исключении этих разделов.
-Делается это крайне просто за счет метода `activeActions` в ресурсе.
+Делается это крайне просто за счет метода `activeActions()` в ресурсе.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"} 
@@ -456,7 +459,7 @@ public function modifyDetailComponent(ComponentContract $component): ComponentCo
 ## Компоненты
 
 Лучший способ изменить компоненты страниц - это опубликовать страницы и взаимодействовать через них.
-Но, если вы хотите быстро добавить компоненты на страницы, то можете воспользоваться методами ресурса `pageComponents`, `indexPageComponents`, `formPageComponents` и `detailPageComponents`.
+Но, если вы хотите быстро добавить компоненты на страницы, то можете воспользоваться методами ресурса `pageComponents()`, `indexPageComponents()`, `formPageComponents()` и `detailPageComponents()`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -483,8 +486,8 @@ protected function pageComponents(): array
 }
 ```
 
-> [!TIP]
-> Компоненты будут добавлены в `bottomLayer`
+> [!NOTE]
+> Компоненты будут добавлены в `bottomLayer`.
 
 <a name="lifecycle"></a>
 ## Жизненный цикл
@@ -581,7 +584,7 @@ class PostResource extends ModelResource
 }
 ```
 
-Вы также можете подключить `trait` к ресурсу и внутри `trait` добавить метод согласно конвенции наименований - `boot{TraitName}` и через трейт обратиться к `onBoot` ресурса.
+Вы также можете подключить `trait` к ресурсу и внутри `trait` добавить метод согласно конвенции наименований - `boot{TraitName}` и через трейт обратиться к `onBoot()` ресурса.
 
 <a name="assets"></a>
 ## Assets
