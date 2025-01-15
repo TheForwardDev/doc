@@ -16,21 +16,23 @@
 <a name="basics"></a>
 ## Basics
 
-To use import and export in MoonShine resources, you need to install the dependency via `composer`:
+To use import and export in MoonShine resources, you need to install the dependency via `composer`.
 
 ```shell
 composer require moonshine/import-export
 ```
 
-Next, to use it in your resource, add the `ImportExportConcern` trait and implement the `HasImportExportContract` interface.
+Next, add the `ImportExportConcern` trait and implement the `HasImportExportContract` interface.
 
 ```php
-use MoonShine\ImportExport\Traits\ImportExportConcern;
-use MoonShine\ImportExport\Contracts\HasImportExportContract;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
+namespace App\MoonShine\Resources;
 
-/**
- * @extends ModelResource<Category>
- */
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class CategoryResource extends ModelResource implements HasImportExportContract
 {
     use ImportExportConcern;
@@ -50,72 +52,54 @@ All set! Next, just declare the fields.
 To import, you need to declare the fields in the resource that will participate in the import.
 
 ```php
-use MoonShine\ImportExport\Traits\ImportExportConcern;
-use MoonShine\ImportExport\Contracts\HasImportExportContract;
-use MoonShine\Laravel\Resources\ModelResource;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Text;
 
-/**
- * @extends ModelResource<Category>
- */
-class CategoryResource extends ModelResource implements HasImportExportContract
-{
-    use ImportExportConcern;
-    
-    // ...
-    
-    protected function importFields(): iterable
-    {
-        return [
-            ID::make(),
-            Text::make('Name'),
-        ];
-    }
-}
+protected function importFields(): iterable
+  {
+      return [
+          ID::make(),
+          Text::make('Name'),
+      ];
+  }
 ```
 
 > [!WARNING]
 > Be sure to add `ID` to the import; otherwise, records will only be added without updating existing ones.
 
-If you need to modify a value during import, you should use the field method `fromRaw`.
+If you need to modify a value during import, you should use the field method `fromRaw()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use App\Enums\StatusEnum;
-use MoonShine\ImportExport\Traits\ImportExportConcern;
-use MoonShine\ImportExport\Contracts\HasImportExportContract;
-use MoonShine\Laravel\Resources\ModelResource;
-use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Enum;
+use MoonShine\UI\Fields\ID;
 
-/**
- * @extends ModelResource<Category>
- */
-class CategoryResource extends ModelResource implements HasImportExportContract
+protected function importFields(): iterable
 {
-    use ImportExportConcern;
-    
-    // ...
-    
-    protected function importFields(): iterable
-    {
-        return [
-            ID::make(),
-            Enum::make('Status')
-                ->attach(StatusEnum::class)
-                ->fromRaw(static fn(string $raw, Enum $ctx) => StatusEnum::tryFrom($raw)), 
-        ];
-    }
+    return [
+        ID::make(),
+        Enum::make('Status')
+            ->attach(StatusEnum::class)
+            ->fromRaw(static fn(string $raw, Enum $ctx) => StatusEnum::tryFrom($raw)), 
+    ];
 }
 ```
 
 <a name="import-settings"></a>
 ### Settings
 
-For configuring the import, optional methods are available. To use them, you need to add the `import` method that returns `ImportHandler`:
+For configuring the import, optional methods are available.
+To use them, you need to add the `import()` method that returns `ImportHandler`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\ImportExport\ImportHandler;
+use MoonShine\Laravel\Handlers\Handler;
 use MoonShine\UI\Components\ActionButton;
 
 protected function import(): ?Handler
@@ -176,71 +160,51 @@ In the MoonShine admin panel, exporting all data considering the current filteri
 To export, you need to declare the fields in the resource that will participate in the export.
 
 ```php
-use MoonShine\ImportExport\Traits\ImportExportConcern;
-use MoonShine\ImportExport\Contracts\HasImportExportContract;
-use MoonShine\Laravel\Resources\ModelResource;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\UI\Fields\ID;
-use MoonShine\UI\Fields\Position;
 use MoonShine\UI\Fields\Text;
 
-/**
- * @extends ModelResource<Category>
- */
-class CategoryResource extends ModelResource implements HasImportExportContract
+protected function exportFields(): iterable
 {
-    use ImportExportConcern;
-    
-    // ...
-    
-    protected function exportFields(): iterable
-    {
-        return [
-            ID::make(),
-            Position::make(),
-            Text::make('Name'),
-        ];
-    }
+    return [
+        ID::make(),
+        Text::make('Name'),
+    ];
 }
 ```
 
-If you need to modify a value during export, you should use the field method `modifyRawValue`.
+If you need to modify a value during export, you should use the field method `modifyRawValue()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use App\Enums\StatusEnum;
-use MoonShine\ImportExport\Traits\ImportExportConcern;
-use MoonShine\ImportExport\Contracts\HasImportExportContract;
-use MoonShine\Laravel\Resources\ModelResource;
-use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Enum;
+use MoonShine\UI\Fields\ID;
 
-/**
- * @extends ModelResource<Category>
- */
-class CategoryResource extends ModelResource implements HasImportExportContract
+protected function importFields(): iterable
 {
-    use ImportExportConcern;
-    
-    // ...
-    
-    protected function importFields(): iterable
-    {
-        return [
-            ID::make(),
-            Enum::make('Status')
-                ->attach(StatusEnum::class)
-                ->modifyRawValue(static fn(StatusEnum $raw, Enum $ctx) => $raw->value), 
-        ];
-    }
+    return [
+        ID::make(),
+        Enum::make('Status')
+            ->attach(StatusEnum::class)
+            ->modifyRawValue(static fn(StatusEnum $raw, Enum $ctx) => $raw->value), 
+    ];
 }
 ```
 
 <a name="export-settings"></a>
 ### Settings
 
-For configuring the export, optional methods are available. To use them, you need to add the `export` method that returns `ExportHandler`:
+For configuring the export, optional methods are available.
+To use them, you need to add the `export()` method that returns `ExportHandler`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\ImportExport\ExportHandler;
+use MoonShine\Laravel\Handlers\Handler;
 use MoonShine\UI\Components\ActionButton;
 
 protected function export(): ?Handler
@@ -291,7 +255,10 @@ queue()
 #### modifyButton
 
 ```php
- use MoonShine\UI\Components\ActionButton;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\UI\Components\ActionButton;
+ 
 // modify button
 modifyButton(fn(ActionButton $btn) => $btn->class('my-class'))
 ```
@@ -305,7 +272,7 @@ notifyUsers(fn() => [auth()->id()])
 
 #### when
 
-```
+```php
 // methods by condition
 when($value = null, callable $callback = null, callable $default = null)
 ```
@@ -315,8 +282,10 @@ when($value = null, callable $callback = null, callable $default = null)
 `$default` - `callback` function that will be executed if the condition is `FALSE`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\ImportExport\ImportHandler;
-//...
+use MoonShine\Laravel\Handlers\Handler;
 
 protected function import(): ?Handler
 {
@@ -327,8 +296,6 @@ protected function import(): ?Handler
             fn($handler) => $handler->delimiter(';')
         );
 }
-
-//...
 ```
 
 #### unless
@@ -359,4 +326,4 @@ php artisan moonshine:handler
 After running the command, a base class `Handler` will be created in the `app/MoonShine/Handlers` directory.
 
 > [!NOTE]
-> Don’t forget to change the inheritance from `Handler` to `ImportHandler` or `ExportHandler`
+> Don’t forget to change the inheritance from `Handler` to `ImportHandler` or `ExportHandler`.
