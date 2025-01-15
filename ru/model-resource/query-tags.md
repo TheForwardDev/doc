@@ -15,20 +15,17 @@
 Иногда возникает необходимость создать фильтры (выборку результатов) и отобразить их на листинге. Для таких ситуаций были созданы теги.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use Illuminate\Database\Eloquent\Builder;
 use MoonShine\Laravel\QueryTags\QueryTag;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function queryTags(): array
     {
@@ -39,8 +36,6 @@ class PostResource extends ModelResource
             )
         ];
     }
-
-    //...
 }
 
 ```
@@ -54,9 +49,10 @@ class PostResource extends ModelResource
 Вы можете добавить иконку к тегу с помощью метода `icon()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use Illuminate\Database\Eloquent\Builder;
 use MoonShine\Laravel\QueryTags\QueryTag;
-//...
 
 QueryTag::make(
     'Post without an author',
@@ -66,7 +62,7 @@ QueryTag::make(
 ```
 
 > [!NOTE]
-> Для более подробной информации, пожалуйста, обратитесь к разделу [Иконки](/docs/{{version}}/appearance/icons)
+> Для более подробной информации, пожалуйста, обратитесь к разделу [Иконки](/docs/{{version}}/appearance/icons).
 
 <a name="active-item"></a>
 ## Активный элемент
@@ -78,9 +74,10 @@ default(Closure|bool|null $condition = null)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use Illuminate\Database\Eloquent\Builder;
 use MoonShine\Laravel\QueryTags\QueryTag;
-//...
 
 QueryTag::make(
     'All posts',
@@ -92,12 +89,14 @@ QueryTag::make(
 <a name="display-condition"></a>
 ## Условие отображения
 
-Вы можете захотеть отображать теги только при определенных условиях. Для этого можно использовать метод `canSee()`, которому нужно передать функцию обратного вызова, возвращающую `TRUE` или `FALSE`.
+Вы можете захотеть отображать теги только при определенных условиях.
+Для этого можно использовать метод `canSee()`, которому нужно передать функцию обратного вызова, возвращающую `TRUE` или `FALSE`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use Illuminate\Database\Eloquent\Builder;
 use MoonShine\Laravel\QueryTags\QueryTag;
-//...
 
 QueryTag::make(
     'Post with author', // Заголовок тега
@@ -109,14 +108,16 @@ QueryTag::make(
 <a name="alias"></a>
 ## Псевдоним
 
-По умолчанию значение для URL генерируется автоматически из параметра `label`. При этом все символы не латинского алфавита заменяются соответствующей транслитерацией `'Заголовок' => 'zagolovok'`.
+По умолчанию значение для URL генерируется автоматически из параметра `label`.
+При этом все символы не латинского алфавита заменяются соответствующей транслитерацией `'Заголовок' => 'zagolovok'`.
 
 Метод `alias()` позволяет задать собственное значение для URL.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use Illuminate\Database\Eloquent\Builder;
 use MoonShine\Laravel\QueryTags\QueryTag;
-//...
 
 QueryTag::make(
     'Archived Posts',
@@ -129,13 +130,11 @@ QueryTag::make(
 ## Выпадающий список
 
 По умолчанию все кнопки-теги выводятся в строку, но вы можете вывести их через выпадающий список.
-Для этого в ресурсе измените свойство `$queryTagsInDropdown`:
+Для этого в ресурсе измените свойство `$queryTagsInDropdown`.
 
 ```php
 class PostResource extends ModelResource 
 {
-    // ...
-    
     protected bool $queryTagsInDropdown = true;
     
     // ...
