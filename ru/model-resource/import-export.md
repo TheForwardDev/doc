@@ -242,7 +242,7 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 
     // ...
 
-	protected function exportFields(): iterable
+    protected function exportFields(): iterable
     {
         return [
             ID::make(),
