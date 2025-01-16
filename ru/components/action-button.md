@@ -429,7 +429,7 @@ protected function components(): iterable
             'Нажми меня',
             '/endpoint'
         )
-            ->async(callback: 'myFunction')
+            ->async(callback: AsyncCallback::with(responseHandler: 'myFunction'))
     ];
 }
 ```
@@ -445,6 +445,9 @@ document.addEventListener("moonshine:init", () => {
     })
 })
 ```
+
+> [!NOTE]
+> Подробности в разделе [Js](/docs/{{version}}/frontend/js#response-calback)
 
 <a name="method"></a>
 ### Вызов методов

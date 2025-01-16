@@ -18,6 +18,7 @@
     - [Active Resource](#on-load)
     - [Creating an Instance](#on-boot)
 - [Assets](#assets)
+- [Response modifiers](#response-modifiers)
 
 ---
 
@@ -596,5 +597,27 @@ protected function onLoad(): void
     $this->getAssetManager()
         ->add(Css::make('/css/app.css'))
         ->append(Js::make('/js/app.js'));
+}
+```
+
+<a name="response-modifiers"></a>
+## Response modifiers
+
+If the resource is in `async` mode, then you can modify the answer:
+
+```php
+public function modifyDestroyResponse(MoonShineJsonResponse $response): MoonShineJsonResponse
+{
+    return $response;
+}
+
+public function modifyMassDeleteResponse(MoonShineJsonResponse $response): MoonShineJsonResponse
+{
+    return $response;
+}
+
+public function modifySaveResponse(MoonShineJsonResponse $response): MoonShineJsonResponse
+{
+    return $response;
 }
 ```

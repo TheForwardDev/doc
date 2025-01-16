@@ -3,6 +3,7 @@
 - [Basics](#basics)
 - [Helper](#helper)
 - [Current Page](#current-page)
+- [Checking the active page](#is-page)
 
 ---
 
@@ -79,4 +80,19 @@ if($resource->getActivePage() instanceof IndexPage)
 if($resource->getActivePage() instanceof FormPage)
 
 if($resource->getActivePage() instanceof DetailPage)
+```
+
+<a name="is-page"></a>
+## Checking the active page
+
+```php
+public function isIndexPage(): bool;
+
+public function isFormPage(): bool;
+
+public function isDetailPage(): bool;
+
+public function isCreateFormPage(): bool;
+
+public function isUpdateFormPage(): bool;
 ```

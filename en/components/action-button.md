@@ -426,7 +426,7 @@ protected function components(): iterable
             'Click me',
             '/endpoint'
         )
-            ->async(callback: 'myFunction')
+            ->async(callback: AsyncCallback::with(responseHandler: 'afterResponseFunction'))
     ];
 }
 ```
@@ -442,6 +442,9 @@ document.addEventListener("moonshine:init", () => {
     })
 })
 ```
+
+> [!NOTE]
+> Details in the [Js](/docs/{{version}}/frontend/js#response-calback) section
 
 <a name="method"></a>
 ### Method calls

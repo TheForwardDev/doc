@@ -259,6 +259,9 @@ TableBuilder::make()
   - hideOnExport, showOnExport
   - useOnImport (используйте пакет [import-export](https://github.com/moonshine-software/import-export))
 
+> [!TIP]
+> В разделе [Routes](/docs/{{version}}/model-resource/routes) можно найти альтернативные методы
+
 2. Хелперы:
   - form
   - table

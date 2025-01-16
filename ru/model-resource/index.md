@@ -18,6 +18,7 @@
     - [Активный ресурс](#on-load)
     - [Создание экземпляра](#on-boot)
 - [Assets](#assets)
+- [Response модификаторы](#response-modifiers)
 
 ---
 
@@ -596,5 +597,27 @@ protected function onLoad(): void
     $this->getAssetManager()
         ->add(Css::make('/css/app.css'))
         ->append(Js::make('/js/app.js'));
+}
+```
+
+<a name="response-modifiers"></a>
+## Response модификаторы
+
+Если ресурс в режиме `async`, то вы можете модифицировать ответ:
+
+```php
+public function modifyDestroyResponse(MoonShineJsonResponse $response): MoonShineJsonResponse
+{
+    return $response;
+}
+
+public function modifyMassDeleteResponse(MoonShineJsonResponse $response): MoonShineJsonResponse
+{
+    return $response;
+}
+
+public function modifySaveResponse(MoonShineJsonResponse $response): MoonShineJsonResponse
+{
+    return $response;
 }
 ```

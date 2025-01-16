@@ -331,6 +331,30 @@ final class MyLayout extends AppLayout
 > [!NOTE]
 > For more detailed information, refer to the [Assets](/docs/{{version}}/appearance/assets) section.
 
+<a name="compact-with-rounded"></a>
+### Compact theme with rounded radius
+
+```php
+protected function assets(): array
+{
+    return [
+        ...parent::assets(),
+        InlineCss::make(<<<'Style'
+            :root {
+              --radius: 0.15rem;
+              --radius-sm: 0.075rem;
+              --radius-md: 0.275rem;
+              --radius-lg: 0.3rem;
+              --radius-xl: 0.4rem;
+              --radius-2xl: 0.5rem;
+              --radius-3xl: 1rem;
+              --radius-full: 9999px;
+            }
+        Style),
+    ];
+}
+```
+
 <a name="favicons"></a>
 ## Favicons
 
