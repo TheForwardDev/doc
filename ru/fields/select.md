@@ -242,6 +242,26 @@ public function selectOptions(): MoonShineJsonResponse
 }
 ```
 
+Ответ будет:
+
+```php
+[{
+    "value": "1",
+    "label": "Option 1",
+    "selected": true,
+    "properties": {
+        "image": "https:\/\/cutcode.dev\/images\/platforms\/youtube.png"
+    }
+}, {
+    "value": "2",
+    "label": "Option 2",
+    "selected": false,
+    "properties": {
+        "image": "https:\/\/cutcode.dev\/images\/platforms\/youtube.png"
+    }
+}]
+```
+
 ```php
 use MoonShine\UI\Fields\Select;
 
@@ -253,7 +273,7 @@ Select::make('Country', 'country_id')
     ->async('/search')
 ```
 
-Если необходимо сразу же после отображения страницы отправить запрос на значения, тогда необходимо добавить метод `asyncOnInit()`
+Если необходимо сразу же после отображения страницы отправить запрос на значения, тогда необходимо добавить метод `asyncOnInit(whenOpen: false)`
 
 ```php
 use MoonShine\UI\Fields\Select;
@@ -264,8 +284,10 @@ Select::make('Country', 'country_id')
         'value 2' => 'Option Label 2'
     ])
     ->async('/search')
-    ->asyncOnInit()
+    ->asyncOnInit(whenOpen: false)
 ```
+
+При пустом `asyncOnInit()` или `asyncOnInit(whenOpen: true)` запрос будет отправляться после клика на *Select*.
 
 > [!NOTE]
 > Не забудьте обработать `query` при использовании `async`, иначе поиск всегда будет выдавать одинаковые значения
