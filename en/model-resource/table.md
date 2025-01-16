@@ -56,7 +56,7 @@ class PostResource extends ModelResource
 To add buttons to the table, you can use `ActionButton` and the methods `indexButtons()`, as well as `detailButtons()` for the detail page.
 
 > [!TIP]
-> [More details ActionButton](/docs/{{version}}/components/action-button)
+> [More details about ActionButton](/docs/{{version}}/components/action-button)
 
 After the main buttons:
 
@@ -68,7 +68,8 @@ use MoonShine\UI\Components\ActionButton;
 
 protected function indexButtons(): ListOf
 {
-   return parent::indexButtons()->add(ActionButton::make('Link', '/endpoint'));
+    return parent::indexButtons()
+        ->add(ActionButton::make('Link', '/endpoint'));
 }
 ```
 
@@ -82,7 +83,8 @@ use MoonShine\UI\Components\ActionButton;
 
 protected function indexButtons(): ListOf
 {
-   return parent::indexButtons()->prepend(ActionButton::make('Link', '/endpoint'));
+    return parent::indexButtons()
+        ->prepend(ActionButton::make('Link', '/endpoint'));
 }
 ```
 
@@ -96,7 +98,8 @@ use MoonShine\UI\Components\ActionButton;
 
 protected function indexButtons(): ListOf
 {
-   return parent::indexButtons()->except(fn(ActionButton $btn) => $btn->getName() === 'resource-delete-button');
+    return parent::indexButtons()
+        ->except(fn(ActionButton $btn) => $btn->getName() === 'resource-delete-button');
 }
 ```
 
@@ -110,7 +113,9 @@ use MoonShine\UI\Components\ActionButton;
 
 protected function indexButtons(): ListOf
 {
-   parent::indexButtons()->empty()->add(ActionButton::make('Link', '/endpoint'));
+    parent::indexButtons()
+        ->empty()
+        ->add(ActionButton::make('Link', '/endpoint'));
 }
 ```
 
@@ -127,7 +132,8 @@ use MoonShine\UI\Components\ActionButton;
 
 protected function indexButtons(): ListOf
 {
-   return parent::indexButtons()->add(ActionButton::make('Link', '/endpoint')->bulk());
+    return parent::indexButtons()
+        ->add(ActionButton::make('Link', '/endpoint')->bulk());
 }
 ```
 
@@ -155,11 +161,11 @@ use MoonShine\UI\Fields\Text;
 
 protected function indexFields(): iterable
 {
-  return [
-    Text::make('Title')
-        ->customWrapperAttributes(['width' => '20%']);
-    // ...
-  ];
+    return [
+        // ...
+        Text::make('Title')
+            ->customWrapperAttributes(['width' => '20%']);
+    ];
 }
 ```
 
@@ -209,9 +215,9 @@ By default, clicking on `tr` does nothing, but you can change the behavior to na
 // [tl! collapse:1]
 use MoonShine\Support\Enums\ClickAction;
 
-// ClickAction::SELECT, ClickAction::DETAIL, ClickAction::EDIT
-
 protected ?ClickAction $clickAction = ClickAction::SELECT;
+//protected ?ClickAction $clickAction = ClickAction::DETAIL;
+//protected ?ClickAction $clickAction = ClickAction::EDIT;
 ```
 
 <a name="sticky-table"></a>
@@ -294,7 +300,7 @@ class PostResource extends ModelResource
 
 You can freeze cells in large tables, suitable for ID columns and buttons.
 
-To fix buttons in the table, switch the resource to `stickyButtons` mode:
+To fix buttons in the table, switch the resource to `stickyButtons` mode.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -309,7 +315,7 @@ class PostResource extends ModelResource
 }
 ```
 
-To fix a column, call the `sticky()` method on the Field:
+To fix a column, call the `sticky()` method on the Field.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -618,7 +624,7 @@ protected function tfoot(): null|TableRowsContract|Closure
     return static function(?TableRowContract $default, TableBuilder $table) {
         $cells = TableCells::make();
 
-        $cells->pushCell('Balancе:');
+        $cells->pushCell('Balance:');
         $cells->pushCell('1000 р.');
 
         return TableRows::make([TableRow::make($cells), $default]);
