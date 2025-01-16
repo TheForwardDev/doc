@@ -36,7 +36,7 @@ use MoonShine\Laravel\Resources\ModelResource;
 class CategoryResource extends ModelResource implements HasImportExportContract
 {
     use ImportExportConcern;
-    
+
     // ...
 }
 ```
@@ -53,17 +53,29 @@ To import, you need to declare the fields in the resource that will participate 
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:2]
+// [tl! collapse:7]
+namespace App\MoonShine\Resources;
+
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Text;
 
-protected function importFields(): iterable
-  {
-      return [
-          ID::make(),
-          Text::make('Name'),
-      ];
-  }
+class CategoryResource extends ModelResource implements HasImportExportContract
+{
+    use ImportExportConcern;
+
+    // ...
+
+    protected function importFields(): iterable
+    {
+        return [
+            ID::make(),
+            Text::make('Name'),
+        ];
+    }
+}
 ```
 
 > [!WARNING]
@@ -73,19 +85,31 @@ If you need to modify a value during import, you should use the field method `fr
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:3]
+// [tl! collapse:8]
+namespace App\MoonShine\Resources;
+
 use App\Enums\StatusEnum;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Fields\Enum;
 use MoonShine\UI\Fields\ID;
 
-protected function importFields(): iterable
+class CategoryResource extends ModelResource implements HasImportExportContract
 {
-    return [
-        ID::make(),
-        Enum::make('Status')
-            ->attach(StatusEnum::class)
-            ->fromRaw(static fn(string $raw, Enum $ctx) => StatusEnum::tryFrom($raw)), 
-    ];
+    use ImportExportConcern;
+
+    // ...
+
+	protected function importFields(): iterable
+    {
+        return [
+            ID::make(),
+            Enum::make('Status')
+                ->attach(StatusEnum::class)
+                ->fromRaw(static fn(string $raw, Enum $ctx) => StatusEnum::tryFrom($raw)), 
+        ];
+    }
 }
 ```
 
@@ -97,27 +121,39 @@ To use them, you need to add the `import()` method that returns `ImportHandler`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:3]
+// [tl! collapse:8]
+namespace App\MoonShine\Resources;
+
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
 use MoonShine\ImportExport\ImportHandler;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
 use MoonShine\Laravel\Handlers\Handler;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Components\ActionButton;
 
-protected function import(): ?Handler
+class CategoryResource extends ModelResource implements HasImportExportContract
 {
-    return ImportHandler::make(__('moonshine::ui.import'))
-        // Specify the IDs of users who will be notified when the operation is completed
-        ->notifyUsers(fn(ImportHandler $ctx) => [auth()->id()]) 
-        // Select disk
-        ->disk('public') 
-        // Select directory for saving the import file
-        ->dir('/imports') 
-        // Delete the file after import
-        ->deleteAfter() 
-        // CSV delimiter
-        ->delimiter(',')
-        // Modify button
-        ->modifyButton(fn(ActionButton $btn) => $btn->class('my-class'))
-  ; 
+    use ImportExportConcern;
+
+    // ...
+
+	protected function import(): ?Handler
+    {
+        return ImportHandler::make(__('moonshine::ui.import'))
+            // Specify the IDs of users who will be notified when the operation is completed
+            ->notifyUsers(fn(ImportHandler $ctx) => [auth()->id()]) 
+            // Select disk
+            ->disk('public') 
+            // Select directory for saving the import file
+            ->dir('/imports') 
+            // Delete the file after import
+            ->deleteAfter() 
+            // CSV delimiter
+            ->delimiter(',')
+            // Modify button
+            ->modifyButton(fn(ActionButton $btn) => $btn->class('my-class'))
+        ;
+    }
 }
 ```
 
@@ -161,16 +197,28 @@ To export, you need to declare the fields in the resource that will participate 
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:2]
+// [tl! collapse:7]
+namespace App\MoonShine\Resources;
+
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Text;
 
-protected function exportFields(): iterable
+class CategoryResource extends ModelResource implements HasImportExportContract
 {
-    return [
-        ID::make(),
-        Text::make('Name'),
-    ];
+    use ImportExportConcern;
+
+    // ...
+
+	protected function exportFields(): iterable
+    {
+        return [
+            ID::make(),
+            Text::make('Name'),
+        ];
+    }
 }
 ```
 
@@ -178,19 +226,31 @@ If you need to modify a value during export, you should use the field method `mo
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:3]
+// [tl! collapse:8]
+namespace App\MoonShine\Resources;
+
 use App\Enums\StatusEnum;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Fields\Enum;
 use MoonShine\UI\Fields\ID;
 
-protected function importFields(): iterable
+class CategoryResource extends ModelResource implements HasImportExportContract
 {
-    return [
-        ID::make(),
-        Enum::make('Status')
-            ->attach(StatusEnum::class)
-            ->modifyRawValue(static fn(StatusEnum $raw, Enum $ctx) => $raw->value), 
-    ];
+    use ImportExportConcern;
+
+    // ...
+
+	protected function importFields(): iterable
+    {
+        return [
+            ID::make(),
+            Enum::make('Status')
+                ->attach(StatusEnum::class)
+                ->modifyRawValue(static fn(StatusEnum $raw, Enum $ctx) => $raw->value), 
+        ];
+    }
 }
 ```
 
@@ -202,31 +262,43 @@ To use them, you need to add the `export()` method that returns `ExportHandler`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:3]
+// [tl! collapse:8]
+namespace App\MoonShine\Resources;
+
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
 use MoonShine\ImportExport\ExportHandler;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
 use MoonShine\Laravel\Handlers\Handler;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Components\ActionButton;
 
-protected function export(): ?Handler
+class CategoryResource extends ModelResource implements HasImportExportContract
 {
-    return ExportHandler::make(__('moonshine::ui.export'))
-        // Specify the IDs of users who will be notified when the operation is completed
-        ->notifyUsers(fn() => [auth()->id()]) 
-        // Select disk
-        ->disk('public') 
-        // Filename
-        ->filename(sprintf('export_%s', date('Ymd-His'))) 
-        // Select directory for saving the export file
-        ->dir('/exports') 
-        // If you need to export in csv format
-        ->csv() 
-        // CSV delimiter
-        ->delimiter(',') 
-        // Export with confirmation
-        ->withConfirm()
-        // Modify button
-        ->modifyButton(fn(ActionButton $btn) => $btn->class('my-class'))
-  ; 
+    use ImportExportConcern;
+
+    // ...
+
+    protected function export(): ?Handler
+    {
+        return ExportHandler::make(__('moonshine::ui.export'))
+            // Specify the IDs of users who will be notified when the operation is completed
+            ->notifyUsers(fn() => [auth()->id()]) 
+            // Select disk
+            ->disk('public') 
+            // Filename
+            ->filename(sprintf('export_%s', date('Ymd-His'))) 
+            // Select directory for saving the export file
+            ->dir('/exports') 
+            // If you need to export in csv format
+            ->csv() 
+            // CSV delimiter
+            ->delimiter(',') 
+            // Export with confirmation
+            ->withConfirm()
+            // Modify button
+            ->modifyButton(fn(ActionButton $btn) => $btn->class('my-class'))
+        ; 
+    }
 }
 ```
 
@@ -283,18 +355,30 @@ when($value = null, callable $callback = null, callable $default = null)
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:2]
-use MoonShine\ImportExport\ImportHandler;
-use MoonShine\Laravel\Handlers\Handler;
+// [tl! collapse:7]
+namespace App\MoonShine\Resources;
 
-protected function import(): ?Handler
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\ImportExport\ImportHandler;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\Laravel\Handlers\Handler;
+use MoonShine\Laravel\Resources\ModelResource;
+
+class CategoryResource extends ModelResource implements HasImportExportContract
 {
-    return ImportHandler::make('Import')
-        ->when(
-            true,
-            fn($handler) => $handler->delimiter(','),
-            fn($handler) => $handler->delimiter(';')
-        );
+    use ImportExportConcern;
+
+    // ...
+
+	protected function import(): ?Handler
+    {
+        return ImportHandler::make('Import')
+            ->when(
+                true,
+                fn($handler) => $handler->delimiter(','),
+                fn($handler) => $handler->delimiter(';')
+            );
+    }
 }
 ```
 
