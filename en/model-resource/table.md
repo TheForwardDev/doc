@@ -215,9 +215,9 @@ By default, clicking on `tr` does nothing, but you can change the behavior to na
 // [tl! collapse:1]
 use MoonShine\Support\Enums\ClickAction;
 
+// ClickAction::SELECT, ClickAction::DETAIL, ClickAction::EDIT
+
 protected ?ClickAction $clickAction = ClickAction::SELECT;
-//protected ?ClickAction $clickAction = ClickAction::DETAIL;
-//protected ?ClickAction $clickAction = ClickAction::EDIT;
 ```
 
 <a name="sticky-table"></a>
@@ -625,7 +625,7 @@ protected function tfoot(): null|TableRowsContract|Closure
         $cells = TableCells::make();
 
         $cells->pushCell('Balance:');
-        $cells->pushCell('1000 р.');
+        $cells->pushCell('$1000');
 
         return TableRows::make([TableRow::make($cells), $default]);
     };
