@@ -48,31 +48,31 @@ This has the advantage that we, as developers, do not need to worry about how to
 <a name="raw-mode"></a>
 ## Raw Mode
 
-You may not encounter this mode while using the panel, but its essence is that it simply outputs the value of the field that was initially assigned to it, without any additional modifications.
+You may not have to use this mode when using the panel, but the point is that it will simply output the value of the field that was originally assigned to it, without any additional modifications.
 
 This mode is ideal for exporting, to ultimately display the original content for further importing.
 
 In the process of declaring fields, you can change the visual states of each of them, but before we look at the examples, let's briefly review the basic life cycle of a field.
 
 **Cycle through FormBuilder**
-- The field is declared in the resource
-- The field enters the FormBuilder
-- The FormBuilder fills the field
-- The FormBuilder renders the field
-- Upon request, the FormBuilder calls the fields and saves the original object using them
+- the field is declared in the resource,
+- the field enters the FormBuilder,
+- the FormBuilder fills the field,
+- the FormBuilder renders the field,
+- upon request, the FormBuilder calls the fields and saves the original object using them.
 
 **Cycle through TableBuilder**
-- The field is declared in the resource
-- The field enters the TableBuilder
-- The TableBuilder includes the field in preview mode
-- The TableBuilder iterates the original data and transforms it into TableRow, pre-filling each field with data
-- The TableBuilder renders itself and each of its rows along with the fields
+- the field is declared in the resource,
+- the field enters the TableBuilder,
+- the TableBuilder includes the field in preview mode,
+- the TableBuilder iterates the original data and transforms it into TableRow, pre-filling each field with data,
+- the TableBuilder renders itself and each of its rows along with the fields.
 
 **Cycle through export**
-- The field is declared in the resource in the export method
-- The field enters the Handler
-- The Handler includes the field in raw mode
-- The Handler iterates the original data, fills the fields with it, and generates a table for export based on the raw field values
+- the field is declared in the resource in the export method,
+- the field enters the Handler,
+- the Handler includes the field in raw mode,
+- the Handler iterates the original data, fills the fields with it, and generates a table for export based on the raw field values.
 
 Fields in **MoonShine** are not tied to a model (except for the Slug field and relationship fields), so their application spectrum is limited only by your imagination.
 
@@ -81,7 +81,7 @@ In the process of interacting with the fields, you may encounter a number of tas
 <a name="change-preview"></a>
 ## Change Preview
 
-You use a Select field with options that are links to images and want to output not links in preview mode, but to render the images directly; your code would look as follows, and the result will be achieved thanks to the changePreview method:
+You are using the Select field with options of links to images and want to output not links in preview mode, but to render the images directly; your code would look as follows, and the result will be achieved thanks to the changePreview method:
 
 ```php
 use MoonShine\UI\Components\Carousel;
@@ -177,7 +177,7 @@ Select::make('Links')->options([
 <a name="change-mode"></a>
 ## Change Display Mode
 
-As we have already understood, fields have different visual states, and in FormBuilder, by default, this will be a form element, in TableBuilder there will be varied values, and for example, in export, it will simply be the original value.
+As we have already realized, fields have different visual states and in FormBuilder by default it will be a form element, in TableBuilder different values display, and for example in export - just the original value.
 
 But let's imagine a situation where we need to output the field in TableBuilder not in preview mode but in default mode, or conversely, output it in preview mode inside FormBuilder or even in its original:
 
@@ -185,7 +185,7 @@ But let's imagine a situation where we need to output the field in TableBuilder 
 Text::make('Title')->defaultMode()
 ```
 
-Regardless of where we display this field, it will always be in default mode as a form element:
+No matter where we display this field - it will always be in the default mode, as a form element.
 
 ```php
 Text::make('Title')->previewMode()
@@ -207,7 +207,7 @@ use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 BelongsTo::make('User')->modifyRawValue(fn(int $rawUserId, Article $model, BelongsTo $ctx) => $model->user->name)
 ```
 
-Let's also imagine a situation where you need to export in a manager-friendly format but also import this file later, and no matter how smart MoonShine is, it will not understand that the value "Ivan Ivanov" should be found in the users table by the name field and take only the id, but we can solve this task:
+Let's also imagine the situation that you need to do export in a format understandable for managers, but also in the future to import this file, no matter how smart MoonShine is, it will not understand that the value of “Ivan Ivanov” should be found in the table users on the field name and take only id, but we can solve this problem:
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
@@ -222,20 +222,20 @@ We already know that fields work with any data, and this is not necessarily a `M
 
 **Life Cycle of Field Application (using model saving as an example)**
 
-- FormBuilder takes the original object; let this be a User model
-- It iterates through the fields passing the User object to them and calling the apply method of the field
-- Fields within apply take the value from the request based on their column property
-- Fields modify the User model's attribute based on their column property and return it back
-- Afterwards, the FormBuilder will call the save method of the model
-- Additionally, before the apply method of the fields, the beforeApply method will be called if something needs to be done with the object before the main application
-- After the save method of the model, the fields' afterApply method will be called (which in this case is well suited for relationship fields to ensure they have the original object which is already saved in the database)
+- FormBuilder takes the original object; let this be a User model,
+- it iterates through the fields passing the User object to them and calling the apply method of the field,
+- fields within apply take the value from the request based on their column property,
+- fields modify the User model's attribute based on their column property and return it back,
+- afterwards, the FormBuilder will call the save method of the model,
+- additionally, before the apply method of the fields, the beforeApply method will be called if something needs to be done with the object before the main application,
+- after the save method of the model, the fields' afterApply method will be called (which in this case is well suited for relationship fields to ensure they have the original object which is already saved in the database).
 
 **Life Cycle of Field Application (using filtering as an example)**
 
-- FormBuilder takes the original QueryBuilder object
-- It iterates through the fields passing the QueryBuilder object to them and calling the apply method of the field
-- Fields modify the QueryBuilder based on their column property and return it back
-- The QueryBuilder object will then be used for data output
+- FormBuilder takes the original QueryBuilder object,
+- it iterates through the fields passing the QueryBuilder object to them and calling the apply method of the field,
+- fields modify the QueryBuilder based on their column property and return it back,
+- the QueryBuilder object will then be used for data output.
 
 As a result of the knowledge gained and the use of MoonShine in real conditions, you may encounter a situation where you need to change the application logic or add logic before or after the main application of the field.
 
