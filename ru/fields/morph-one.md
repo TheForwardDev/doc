@@ -6,13 +6,13 @@
 
 Поле отношения в *Laravel* типа *HasOne*.
 
-То же самое, что `MoonShine\Laravel\Fields\Relationships\HasOne`, только для отношений *MorphOne* 
+То же самое, что `MoonShine\Laravel\Fields\Relationships\HasOne`, только для отношений *MorphOne*
 `MoonShine\Laravel\Fields\Relationships\MorphOne`.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphOne;
 
-//...
+// ...
 
 protected function fields(): iterable
 {
@@ -21,5 +21,5 @@ protected function fields(): iterable
     ];
 }
 
-//...
+// ...
 ```

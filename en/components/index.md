@@ -13,7 +13,7 @@
 <a name="description"></a>
 ## Description
 
-Almost everything in *MoonShine* consists of components.
+Almost everything in **MoonShine** consists of components.
 The *MoonShineComponent* itself is a *blade* component and contains additional convenient methods for interaction in the admin panel.
 
 <a name="conditional-methods"></a>
@@ -72,7 +72,7 @@ public function onBeforeRender(Closure $onBeforeRender): static
 
 ```php
 Box::make('Title', [])->onBeforeRender(function(Box $ctx) {
-    // 
+    //
 })
 ```
 
@@ -111,7 +111,7 @@ protected function assets(): array
 protected function booted(): void
 {
     parent::booted();
-    
+
     $this->getAssetManager()
         ->add(Css::make('/css/app.css'))
         ->append(Js::make('/js/app.js'));
@@ -143,7 +143,7 @@ Box::mixin(new MyNewMethods())
 <a name="custom"></a>
 ## Custom Component
 
-You can create your custom component with its own view and logic and use it in the MoonShine admin panel. 
+You can create your custom component with its own view and logic and use it in the **MoonShine** admin panel.
 To do this, use the command:
 
 ```shell

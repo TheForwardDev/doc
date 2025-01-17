@@ -56,9 +56,9 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ```php
 class CommentResource extends ModelResource
 {
-    //...
+    // ...
 }
-//...
+// ...
 HasMany::make('Comments', 'comments')
 ```
 
@@ -67,9 +67,9 @@ HasMany::make('Comments', 'comments')
 ```php
 class CommentResource extends ModelResource
 {
-    //...
+    // ...
 }
-//...
+// ...
 HasMany::make('Comments')
 ```
 
@@ -195,7 +195,7 @@ class PostImageResource extends ModelResource
 {
     use ResourceWithParent;
 
-    //...
+    // ...
 }
 ```
 
@@ -377,7 +377,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ```php
 Json::make('Comments', 'comments')
     ->asRelation(CommentResource::class)
-    //...
+    // ...
 ```
 
 ### Отношение через поле Template

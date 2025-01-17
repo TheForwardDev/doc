@@ -7,7 +7,7 @@
 <a name="basics"></a>
 ## Basics
 
-The *MobileBar* component is necessary if you want to customize the mobile dropdown panel according to your needs, 
+The *MobileBar* component is necessary if you want to customize the mobile dropdown panel according to your needs,
 as by default it duplicates the content of the *TopBar* or *Sidebar*.
 
 You can create a *MobileBar* using the static method `make()` of the `MobileBar` class.
@@ -37,7 +37,7 @@ final class MoonShineLayout extends AppLayout
                 Menu::make()
             ]),
 
-            //...
+            // ...
         ]);
     }
 }

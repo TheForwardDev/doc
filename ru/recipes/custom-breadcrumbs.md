@@ -5,18 +5,18 @@
 ```php
 class MoonShineUserResource extends ModelResource
 {
-    //...
-    
+    // ...
+
     protected function onLoad(): void
     {
         parent::onLoad();
-    
+
         $this->getFormPage()->breadcrumbs([
             '/custom' => 'Custom',
             '#' => $this->getTitle(),
         ]);
     }
-    
-    //...
+
+    // ...
 }
 ```

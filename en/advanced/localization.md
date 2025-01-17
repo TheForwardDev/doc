@@ -9,10 +9,10 @@
 <a name="basics"></a>
 ## Basics
 
-After installing `MoonShine`, a directory `lang/vendor/moonshine` will also appear in the translations directory, where you can add support for a new language or modify the current translations.
+After installing **MoonShine**, a directory `lang/vendor/moonshine` will also appear in the translations directory, where you can add support for a new language or modify the current translations.
 
 > [!NOTE]
-> By default, `MoonShine` only includes the English language.
+> By default, **MoonShine** only includes the English language.
 > Look for additional languages in the [Plugins](/plugins) section.
 
 <a name="configuration"></a>

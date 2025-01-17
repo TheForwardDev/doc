@@ -25,7 +25,7 @@ To use the field, you need to specify:
 ```php
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -45,7 +45,7 @@ use MoonShine\UI\Fields\Text;
 use MoonShine\UI\Fields\Switcher;
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -165,4 +165,4 @@ RelationRepeater::make('Characteristics', 'characteristics')
                 'class' => 'btn-secondary'
             ])
     )
-``` 
+```

@@ -26,13 +26,13 @@
 <a name="introduction"></a>
 ## Introduction
 
-`MoonShine` provides flexible options for configuring your application.
+**MoonShine** provides flexible options for configuring your application.
 In this section, we will examine two main ways of configuration and the primary settings.
 
 <a name="configuration-methods"></a>
 ## Configuration Methods
 
-`MoonShine` can be configured in two ways:
+**MoonShine** can be configured in two ways:
 
 1. Through the configuration file `config/moonshine.php`
 2. Through `MoonShineServiceProvider` using the `MoonShineConfigurator` class
@@ -40,7 +40,7 @@ In this section, we will examine two main ways of configuration and the primary 
 <a name="config-file"></a>
 ### Configuration via moonshine.php File
 
-The `config/moonshine.php` file contains all available MoonShine settings. You can modify these settings directly in the file.
+The `config/moonshine.php` file contains all available **MoonShine** settings. You can modify these settings directly in the file.
 
 Example content of the `moonshine.php` file:
 
@@ -69,7 +69,7 @@ return [
 #### Partial Configuration
 
 Alternatively, you can leave only those parameters in the `moonshine.php` file that differ from the default values.
-This makes the configuration cleaner and easier to understand. 
+This makes the configuration cleaner and easier to understand.
 Example of optimized content for the `moonshine.php` file:
 
 ```php
@@ -143,7 +143,7 @@ class MoonShineServiceProvider extends ServiceProvider
 ```
 
 > [!NOTE]
-> Configuration via `MoonShineServiceProvider` takes precedence over settings in the `moonshine.php` file. 
+> Configuration via `MoonShineServiceProvider` takes precedence over settings in the `moonshine.php` file.
 > When using this method, you can completely remove the `moonshine.php` file from your project.
 
 <a name="basic-settings"></a>
@@ -157,7 +157,7 @@ Regardless of the chosen configuration method, you can set up the following basi
 - `use_migrations` - Use default system migrations (`moonshine_users`, `moonshine_user_roles`),
 - `use_notifications` - Use notification system,
 - `use_database_notifications` - Use Laravel notification system based on database driver,
-- `dir` - Directory for `MoonShine` (by default `app/MoonShine`). The directory is used for generating files via `artisan` commands, in general `MoonShine` is not tied to structure,
+- `dir` - Directory for **MoonShine** (by default `app/MoonShine`). The directory is used for generating files via `artisan` commands, in general **MoonShine** is not tied to structure,
 - `namespace` - Namespace for classes created via `artisan` commands (by default `App\MoonShine`).
 
 ~~~tabs
@@ -255,7 +255,7 @@ $config->prefixes('admin', 'page', 'resource');
 ~~~
 
 > [!WARNING]
-> You can leave `resource_prefix` empty and the URL of resources will look like `/admin/{resourceUri}/{pageUri}`, 
+> You can leave `resource_prefix` empty and the URL of resources will look like `/admin/{resourceUri}/{pageUri}`,
 > but you may create a conflict with the routes of packages.
 
 #### Setting Domain
@@ -530,7 +530,7 @@ $config->homeUrl('/admin/page/some-page');
 <a name="pages-forms"></a>
 ## Getting Pages and Forms
 
-MoonShine provides convenient methods for retrieving pages and forms in your application.
+**MoonShine** provides convenient methods for retrieving pages and forms in your application.
 
 ### Getting Pages
 
@@ -673,7 +673,7 @@ class MoonShineServiceProvider extends ServiceProvider
 }
 ```
 
-This complete list of parameters and methods allows you to configure almost every aspect of `MoonShine` operations.
+This complete list of parameters and methods allows you to configure almost every aspect of **MoonShine** operations.
 Choose the options that best meet your project requirements.
 
 <a name="choosing-configuration-method"></a>

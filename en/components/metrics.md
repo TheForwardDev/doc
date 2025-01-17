@@ -43,7 +43,7 @@ value(int|string|float|Closure $value)
 ```php
 use MoonShine\UI\Components\Metrics\Wrapped\ValueMetric;
 
-//...
+// ...
 
 protected function components(): iterable
 {
@@ -52,7 +52,7 @@ protected function components(): iterable
     ];
 }
 
-//...
+// ...
 ```
 
 <a name="progress"></a>

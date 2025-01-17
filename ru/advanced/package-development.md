@@ -10,7 +10,7 @@
 <a name="basics"></a>
 ## Основы
 
-Основой `MoonShine` являются пакеты `Laravel`.
+Основой **MoonShine** являются пакеты `Laravel`.
 Если вы новичок в разработке пакетов `Laravel`, вот несколько ресурсов, которые помогут вам понять основные концепции:
 
 - Глава [Разработка пакетов](https://laravel.com/docs/packages) в документации `Laravel` служит отличным справочным руководством,
@@ -108,7 +108,7 @@ public function boot(CoreContract $core, ColorManagerContract $colors): void
 use MoonShine\Contracts\Core\DependencyInjection\ConfiguratorContract;
 use MoonShine\Laravel\DependencyInjection\MoonShineConfigurator;
 
-//..
+// ...
 
 /**
  * @param  MoonShineConfigurator  $configurator

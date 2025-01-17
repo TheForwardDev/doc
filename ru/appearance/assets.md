@@ -18,13 +18,13 @@
 <a name="basics"></a>
 ## Основы
 
-***AssetManager*** в *MoonShine* предоставляет удобный способ управления *CSS* и *JavaScript* ресурсами вашей административной панели.
+***AssetManager*** в **MoonShine** предоставляет удобный способ управления *CSS* и *JavaScript* ресурсами вашей административной панели.
 Он поддерживает различные типы ресурсов, включая внешние файлы, встроенный код и версионирование.
 
 <a name="asset-types"></a>
 ## Типы ресурсов
 
-В *MoonShine* есть несколько типов ресурсов:
+В **MoonShine** есть несколько типов ресурсов:
 
 - `MoonShine\AssetManager\Js` - js через тег `<script src>`,
 - `MoonShine\AssetManager\Css` - css через тег `<link>`,
@@ -35,8 +35,8 @@
 ### JavaScript файлы
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:1] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\AssetManager\Js;
 
 // Базовое подключение
@@ -54,8 +54,8 @@ Js::make('/js/app.js')->customAttributes([
 ### CSS файлы
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:1] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\AssetManager\Css;
 
 // Базовое подключение
@@ -73,8 +73,8 @@ Css::make('/css/styles.css')->customAttributes([
 ### Встроенный JavaScript
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:1] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\AssetManager\InlineJs;
 
 InlineJs::make(<<<'JS'
@@ -87,8 +87,8 @@ JS);
 ### Встроенный CSS
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:1] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\AssetManager\InlineCss;
 
 InlineCss::make(<<<'CSS'
@@ -101,8 +101,8 @@ CSS);
 ### Raw-контент
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:1] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\AssetManager\Raw;
 
 Raw::make('<link rel="preconnect" href="https://fonts.googleapis.com">');
@@ -111,13 +111,13 @@ Raw::make('<link rel="preconnect" href="https://fonts.googleapis.com">');
 <a name="asset-collections"></a>
 ## Коллекции ресурсов
 
-***AssetManager*** позволяет управлять порядком загрузки ресурсов. 
+***AssetManager*** позволяет управлять порядком загрузки ресурсов.
 Мы рекомендуем использовать DI, чтобы начать взаимодействие с ***AssetManager***, за сервис отвечает интерфейс `MoonShine\Contracts\AssetManager\AssetManagerContract`.
-Также MoonShine предоставляет удобные методы взаимодействия с ***AssetManager*** в разных сущностях, таких как *CrudResource*, *Page*, *Layout*, *Component* и *Field*.
+Также **MoonShine** предоставляет удобные методы взаимодействия с ***AssetManager*** в разных сущностях, таких как *CrudResource*, *Page*, *Layout*, *Component* и *Field*.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:1] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\AssetManager\Js;
 
 // Добавить ресурсы в конец
@@ -161,11 +161,11 @@ $assetManager->modifyAssets(function($assets) {
 ## Версионирование
 
 ***AssetManager*** поддерживает версионирование ресурсов для управления кешированием,
-по умолчанию будет использоваться версия *MoonShine*, но вы можете переопределить у конкретного ресурса:
+по умолчанию будет использоваться версия **MoonShine**, но вы можете переопределить у конкретного ресурса:
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:1] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\AssetManager\Js;
 
 // Добавление версии к отдельному ресурсу
@@ -183,9 +183,9 @@ Js::make('/js/app.js')->version('1.0.0');
 ### Глобально
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
 // MoonShineServiceProvider
-// [tl! collapse:4] 
+// [tl! collapse:4]
 use MoonShine\AssetManager\Js;
 use MoonShine\Contracts\AssetManager\AssetManagerContract;
 use MoonShine\Contracts\Core\DependencyInjection\ConfiguratorContract;
@@ -205,8 +205,8 @@ public function boot(
 ### Шаблон
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:2] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use Illuminate\Support\Facades\Vite;
 use MoonShine\AssetManager\Js;
 
@@ -225,7 +225,7 @@ final class MoonShineLayout extends CompactLayout
 ### CrudResource
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
 // [tl! collapse:2]
 use MoonShine\AssetManager\InlineJs;
 use MoonShine\AssetManager\Js;
@@ -242,15 +242,15 @@ protected function onLoad(): void
 ### Page
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:2] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\AssetManager\Css;
 use MoonShine\AssetManager\Js;
 
 protected function onLoad(): void
 {
     parent::onLoad();
-    
+
     $this->getAssetManager()
         ->add(Css::make('/css/app.css'))
         ->append(Js::make('/js/app.js'));
@@ -263,8 +263,8 @@ protected function onLoad(): void
 #### На лету
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:3] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\AssetManager\Css;
 use MoonShine\AssetManager\Js;
 use MoonShine\UI\Components\Layout\Box;
@@ -278,8 +278,8 @@ Box::make()->addAssets([
 #### При создании компонента
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:3] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\AssetManager\Css;
 use MoonShine\AssetManager\Js;
 use MoonShine\UI\Components\MoonShineComponent;
@@ -302,8 +302,8 @@ final class MyComponent extends MoonShineComponent
 #### При создании компонента через AssetManager
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:3] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\AssetManager\Css;
 use MoonShine\AssetManager\Js;
 use MoonShine\UI\Components\MoonShineComponent;
@@ -313,7 +313,7 @@ final class MyComponent extends MoonShineComponent
     protected function booted(): void
     {
         parent::booted();
-        
+
         $this->getAssetManager()
           ->add(Css::make('/css/app.css'))
           ->append(Js::make('/js/app.js'));

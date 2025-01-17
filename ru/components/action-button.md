@@ -27,7 +27,7 @@
 ## Основы
 
 Когда вам нужно добавить кнопку с определенным действием, на помощь приходят `ActionButton`.
-В `MoonShine` они уже используются - в формах, таблицах, на страницах.
+В **MoonShine** они уже используются - в формах, таблицах, на страницах.
 
 ```php
 ActionButton::make(
@@ -106,7 +106,7 @@ badge(Closure|string|int|float|null $value)
 
 ```php
 ActionButton::make('Кнопка')->badge(fn() => Comment::count())
-//...
+// ...
 ```
 
 <a name="onclick"></a>

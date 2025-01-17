@@ -65,9 +65,9 @@ You can omit `$resource` if the model resource matches the relationship name.
 ```php
 class CountryResource extends ModelResource
 {
-    //...
+    // ...
 }
-//...
+// ...
 BelongsTo::make('Country', 'country')
 ```
 
@@ -76,14 +76,14 @@ If you do not specify `$relationName`, the name of the relationship will be dete
 ```php
 class CountryResource extends ModelResource
 {
-    //...
+    // ...
 }
-//...
+// ...
 BelongsTo::make('Country')
 ```
 
 > [!NOTE]
-> By default, the field used to display the value is the one specified by the `$column` property in the model resource.  
+> By default, the field used to display the value is the one specified by the `$column` property in the model resource.
 > The `$formatted` argument allows overriding the $column property.
 
 ```php
@@ -95,7 +95,7 @@ class CountryResource extends ModelResource
 {
     public string $column = 'title';
 }
-//..
+// ...
 BelongsTo::make(
     'Country',
     'country',
@@ -160,7 +160,7 @@ BelongsTo::make('Country', resource: CategoryResource::class)
 ![select_nullable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable_dark.png)
 
 > [!TIP]
-> MoonShine is a very convenient and functional tool. However, to use it, you need to be confident in the basics of Laravel.
+> **MoonShine** is a very convenient and functional tool. However, to use it, you need to be confident in the basics of Laravel.
 
 Don't forget to specify in the database table that the field can accept a `Null` value.
 
@@ -309,7 +309,7 @@ BelongsTo::make('City', 'city',  resource: CityResource::class)
 ```
 
 > [!NOTE]
-> When building the query in `asyncSearchQuery()`, the initial state of the builder is preserved.  
+> When building the query in `asyncSearchQuery()`, the initial state of the builder is preserved.
 If you need to replace it with your builder, use the `replaceQuery` flag.
 
 ```php

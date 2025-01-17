@@ -69,7 +69,7 @@ You can show or hide the side panel outside of the component using *JavaScript* 
 ```php
 use MoonShine\UI\Components\OffCanvas;
 
-//...
+// ...
 
 protected function components(): iterable
 {
@@ -82,7 +82,7 @@ protected function components(): iterable
     ];
 }
 
-//...
+// ...
 ```
 
 ### Triggering Event via ActionButton

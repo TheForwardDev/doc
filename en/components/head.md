@@ -59,7 +59,7 @@ Head::make([
 tab: Blade
 ```blade
 <x-moonshine::layout.head title='Page Title'>
-    //...
+    // ...
 </x-moonshine::layout.head>
 ```
 ~~~
@@ -84,7 +84,7 @@ Head::make([
 tab: Blade
 ```blade
 <x-moonshine::layout.head bodyColor='#7843e9'>
-    //...
+    // ...
 </x-moonshine::layout.head>
 ```
 ~~~

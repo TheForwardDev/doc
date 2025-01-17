@@ -1,6 +1,6 @@
 # Routes
 
-`MoonShine` under the hood uses standard `Laravel Routing`.
+**MoonShine** under the hood uses standard `Laravel Routing`.
 All displayed pages are rendered through `PageController`, which has a very simple appearance.
 
 ```php
@@ -25,8 +25,8 @@ Example of a standard route:
 
 ```php
 Route::get('/admin/resource/{resourceUri}/{pageUri}', CustomController::class)
-	->middleware(['moonshine', \MoonShine\Laravel\Http\Middleware\Authenticate::class])
-	->name('moonshine.name');
+    ->middleware(['moonshine', \MoonShine\Laravel\Http\Middleware\Authenticate::class])
+    ->name('moonshine.name');
 ```
 
 > [!NOTE]
@@ -49,7 +49,7 @@ Route::moonshine(static function (Router $router) {
 // middleware: moonshine, Authenticate::class
 ```
 
-Example of retrieving a route from the resource context: 
+Example of retrieving a route from the resource context:
 
 ```php
 $this->getRoute('permissions')

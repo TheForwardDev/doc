@@ -121,12 +121,12 @@ php artisan serve
 <a name="pr"></a>
 ## Как сделать pull request?
 
-- Перейдите в репозиторий MoonShine и нажмите на "Fork",
+- Перейдите в репозиторий **MoonShine** и нажмите на "Fork",
 - Сделайте git clone вашего форка,
 - Создайте новую ветку для ваших изменений,
 - Делайте коммиты, опираясь на конвенцию [https://www.conventionalcommits.org](https://www.conventionalcommits.org),
 - Сделайте push ваших изменений в ваш форк,
-- Снова перейдите в репозиторий MoonShine и нажмите "New pull request",
+- Снова перейдите в репозиторий **MoonShine** и нажмите "New pull request",
 - Подробно прокомментируйте внесенные изменения в поле "Description",
 - Ожидайте ревью!
 

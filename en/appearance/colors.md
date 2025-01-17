@@ -16,7 +16,7 @@
 <a name="basics"></a>
 ## Basics
 
-`ColorManager` is a `MoonShine` component for managing the color scheme of the admin panel. 
+`ColorManager` is a **MoonShine** component for managing the color scheme of the admin panel.
 It allows you to configure the colors of various interface elements for both light and dark themes.
 Can be used in `Layout` or globally in `ServiceProvider`.
 

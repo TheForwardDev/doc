@@ -6,7 +6,7 @@
 
 Поле отношения в *Laravel* типа *morphMany*
 
-То же самое, что `MoonShine\Laravel\Fields\Relationships\HasMany`, только для отношений *morphMany v 
+То же самое, что `MoonShine\Laravel\Fields\Relationships\HasMany`, только для отношений *morphMany v
 `MoonShine\Laravel\Fields\Relationships\MorphMany`
 
 > [!WARNING]
@@ -15,7 +15,7 @@
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphMany;
 
-//...
+// ...
 
 protected function fields(): iterable
 {
@@ -24,5 +24,5 @@ protected function fields(): iterable
     ];
 }
 
-//...
+// ...
 ```

@@ -80,7 +80,7 @@ Select::make('Select')->options(
 )
 ```
 
-<a name="nullable"></a>  
+<a name="nullable"></a>
 ## Nullable
 As with all fields, if you need to store NULL, you need to add the `nullable()` method.
 
@@ -170,7 +170,7 @@ Select::make('Country', 'country_id')
     ->multiple()
 }
 
-//...
+// ...
 ```
 > [!TIP]
 > When using `multiple()` for Eloquent models, it is necessary to use the text or json type in the database.
@@ -202,7 +202,7 @@ Select::make('Country', 'country_id')
 ## Asynchronous search
 
 The *Select* field can also be set up for asynchronous searching. To do this, you need to pass a *url* to the `async()` method, which will handle a request with the *query* parameter for the search.
- 
+
 ```php
 async(Closure|string|null $url = null, string|array|null $events = null, ?AsyncCallback $callback = null)
 ```
@@ -310,7 +310,7 @@ Select::make('Country', 'country_id')
     ),
 ```
 
-If the *Select* is in a form, then by default, all form data will be sent with the event when triggered. 
+If the *Select* is in a form, then by default, all form data will be sent with the event when triggered.
 If the form is large, you may need to exclude a set of fields.
 Exclusions can be made through the `exclude` parameter:
 
@@ -368,11 +368,11 @@ Select::make('Country', 'country_id')
     ->options([
         1 => 'Andorra',
         2 => 'United Arab Emirates',
-        //...
+        // ...
     ])->optionProperties(fn() => [
         1 => ['image' => 'https://moonshine-laravel.com/images/ad.png'],
         2 => ['image' => 'https://moonshine-laravel.com/images/ae.png'],
-        //...
+        // ...
     ])
 ```
 
@@ -401,7 +401,7 @@ Select::make('Country', 'country_id')
     ->options([
         1 => 'Andorra',
         2 => 'United Arab Emirates',
-        //...
+        // ...
     ])->customAttributes([
         'data-max-item-count' => 2
     ])

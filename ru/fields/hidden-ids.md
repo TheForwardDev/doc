@@ -39,7 +39,7 @@ use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Fields\HiddenIds;
 use MoonShine\UI\Components\FormBuilder;
 
-//...
+// ...
 
 ActionButton::make('Active', route('moonshine.posts.mass-active', $this->uriKey()))
     ->inModal(fn () => 'Active', fn (): string => (string) FormBuilder::make(

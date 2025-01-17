@@ -26,7 +26,7 @@ Inherits [MoonShineComponent](/docs/{{version}}/components/index).
 ## Basics
 
 When you need to add a button with a specific action, `ActionButton` comes to the rescue.
-In `MoonShine`, they are already used - in forms, tables, and on pages.
+In **MoonShine**, they are already used - in forms, tables, and on pages.
 
 ```php
 ActionButton::make(
@@ -105,7 +105,7 @@ badge(Closure|string|int|float|null $value)
 
 ```php
 ActionButton::make('Button')->badge(fn() => Comment::count())
-//...
+// ...
 ```
 
 <a name="onclick"></a>

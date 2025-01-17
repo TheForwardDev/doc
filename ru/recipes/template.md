@@ -5,7 +5,7 @@
 ```php
 use MoonShine\UI\Fields\Template;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -30,5 +30,5 @@ protected function formFields(): iterable
     ];
 }
 
-//...
+// ...
 ```

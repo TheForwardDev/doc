@@ -64,9 +64,9 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 ```php
 class CategoryResource extends ModelResource
 {
-    //...
+    // ...
 }
-//...
+// ...
 BelongsToMany::make('Categories', 'categories')
 ```
 
@@ -75,9 +75,9 @@ BelongsToMany::make('Categories', 'categories')
 ```php
 class CategoryResource extends ModelResource
 {
-    //...
+    // ...
 }
-//...
+// ...
 BelongsToMany::make('Categories')
 ```
 
@@ -94,7 +94,7 @@ class CategoryResource extends ModelResource
 {
     public string $column = 'title';
 }
-//..
+// ...
 BelongsToMany::make(
     'Categories',
     'Categories',
@@ -373,7 +373,7 @@ asyncSearch(
 
 ```php
 BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
-    ->asyncSearch() 
+    ->asyncSearch()
 ```
 
 > [!TIP]

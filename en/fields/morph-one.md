@@ -6,13 +6,13 @@ Inherits from [HasOne](/docs/{{version}}/fields/has-one).
 
 Relationship field in *Laravel* of type *HasOne*.
 
-The same as `MoonShine\Laravel\Fields\Relationships\HasOne`, but for *MorphOne* relationships 
+The same as `MoonShine\Laravel\Fields\Relationships\HasOne`, but for *MorphOne* relationships
 `MoonShine\Laravel\Fields\Relationships\MorphOne`.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphOne;
 
-//...
+// ...
 
 protected function fields(): iterable
 {
@@ -21,5 +21,5 @@ protected function fields(): iterable
     ];
 }
 
-//...
+// ...
 ```

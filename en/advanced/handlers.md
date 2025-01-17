@@ -10,11 +10,11 @@
 <a name="basics"></a>
 ## Basics
 
-`Handlers` in `MoonShine` are reusable handlers that allow you to easily add custom actions to resources.
+`Handlers` in **MoonShine** are reusable handlers that allow you to easily add custom actions to resources.
 
 The main advantages:
 - Do not require the creation of controllers,
-- Automatic error handling within `MoonShine`,
+- Automatic error handling within **MoonShine**,
 - Many ready-made methods for interaction with the system,
 - Simple integration with `UI` through automatic button generation,
 - Automatically displayed in the interface after connection.
@@ -87,7 +87,7 @@ class MyCustomHandler extends Handler
 To register a `Handler` in a resource, you need to override the `handlers()` method:
 
 ```php
-class PostResource extends ModelResource 
+class PostResource extends ModelResource
 {
     protected function handlers(): ListOf
     {

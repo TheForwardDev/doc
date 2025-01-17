@@ -29,7 +29,7 @@ Text::make('Title', 'title')
 
 Most often, fields are used within the FormBuilder, where they can change the original object based on the request due to the FormBuilder itself.
 
-The complexity of understanding MoonShine fields is due to several visual states.
+The complexity of understanding **MoonShine** fields is due to several visual states.
 
 <a name="default-mode"></a>
 ## Default Mode
@@ -43,7 +43,7 @@ The second mode is for displaying the value of the field. When outputting a fiel
 
 Thus, each field looks different, just like the variety of form elements, but they also appear differently in preview mode as they have different purposes.
 
-This has the advantage that we, as developers, do not need to worry about how to display, for example, a Date field. Under the hood, MoonShine will perform the formatting, escape text fields for security, or simply make the output more aesthetically pleasing.
+This has the advantage that we, as developers, do not need to worry about how to display, for example, a Date field. Under the hood, **MoonShine** will perform the formatting, escape text fields for security, or simply make the output more aesthetically pleasing.
 
 <a name="raw-mode"></a>
 ## Raw Mode
@@ -207,7 +207,7 @@ use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 BelongsTo::make('User')->modifyRawValue(fn(int $rawUserId, Article $model, BelongsTo $ctx) => $model->user->name)
 ```
 
-Let's also imagine the situation that you need to do export in a format understandable for managers, but also in the future to import this file, no matter how smart MoonShine is, it will not understand that the value of “Ivan Ivanov” should be found in the table users on the field name and take only id, but we can solve this problem:
+Let's also imagine the situation that you need to do export in a format understandable for managers, but also in the future to import this file, no matter how smart **MoonShine** is, it will not understand that the value of “Ivan Ivanov” should be found in the table users on the field name and take only id, but we can solve this problem:
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
@@ -237,7 +237,7 @@ We already know that fields work with any data, and this is not necessarily a `M
 - fields modify the QueryBuilder based on their column property and return it back,
 - the QueryBuilder object will then be used for data output.
 
-As a result of the knowledge gained and the use of MoonShine in real conditions, you may encounter a situation where you need to change the application logic or add logic before or after the main application of the field.
+As a result of the knowledge gained and the use of **MoonShine** in real conditions, you may encounter a situation where you need to change the application logic or add logic before or after the main application of the field.
 
 The field builder allows you to easily achieve these goals on the fly:
 
@@ -247,15 +247,15 @@ use Illuminate\Support\Facades\Storage;
 use MoonShine\UI\Fields\Text;
 
 Text::make('Thumbnail by link', 'thumbnail')
-	->onApply(function(Model $item, $value, Text $field) {
-		$path = 'thumbnail.jpg';
+    ->onApply(function(Model $item, $value, Text $field) {
+        $path = 'thumbnail.jpg';
 
-		if ($value) {
-			$item->thumbnail = Storage::put($path, file_get_contents($value));
-		}
+        if ($value) {
+            $item->thumbnail = Storage::put($path, file_get_contents($value));
+        }
 
-		return $item;
-	}
+        return $item;
+    }
 )
 ```
 

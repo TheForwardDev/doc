@@ -31,12 +31,12 @@ final class MoonShineLayout extends AppLayout
     {
         return Layout::make([
             // ..
-            
+
             TopBar::make([
                 Menu::make()->top()
             ]),
 
-            //...
+            // ...
         ]);
     }
 }

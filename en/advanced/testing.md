@@ -28,7 +28,7 @@ public function test_index_page_successful(): void
 
 ## Setting up an authenticated user
 
-Although testing `MoonShine` resources is no different from standard testing of your application, and setting up an authenticated user for a request should not be difficult, we will provide an example anyway:
+Although testing **MoonShine** resources is no different from standard testing of your application, and setting up an authenticated user for a request should not be difficult, we will provide an example anyway:
 
 ```php
 protected function setUp(): void

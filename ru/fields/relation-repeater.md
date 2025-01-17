@@ -25,7 +25,7 @@
 ```php
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -45,7 +45,7 @@ use MoonShine\UI\Fields\Text;
 use MoonShine\UI\Fields\Switcher;
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {

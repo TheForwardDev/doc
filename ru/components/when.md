@@ -22,7 +22,7 @@ final class MoonShineLayout extends AppLayout
     public function build(): Layout
     {
         return Layout::make([
-            //...
+            // ...
             Sidebar::make([
                 Menu::make()->customAttributes(['class' => 'mt-2']),
                 When::make(
@@ -30,7 +30,7 @@ final class MoonShineLayout extends AppLayout
                     static fn() => [Profile::make(withBorder: true)]
                 )
             ]),
-            //...
+            // ...
         ]);
     }
 }

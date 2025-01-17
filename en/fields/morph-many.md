@@ -14,7 +14,7 @@ The same as `MoonShine\Laravel\Fields\Relationships\HasMany`, but for *morphMany
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphMany;
 
-//...
+// ...
 
 protected function fields(): iterable
 {
@@ -23,5 +23,5 @@ protected function fields(): iterable
     ];
 }
 
-//...
+// ...
 ```

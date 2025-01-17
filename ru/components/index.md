@@ -13,7 +13,7 @@
 <a name="description"></a>
 ## Описание
 
-Практически всё в *MoonShine* это компоненты.
+Практически всё в **MoonShine** это компоненты.
 Сами *MoonShineComponent* являются *blade* компонентами и содержат дополнительные удобные методы для взаимодействия в административной панели.
 
 <a name="conditional-methods"></a>
@@ -72,7 +72,7 @@ public function onBeforeRender(Closure $onBeforeRender): static
 
 ```php
 Box::make('Title', [])->onBeforeRender(function(Box $ctx) {
-    // 
+    //
 })
 ```
 
@@ -111,7 +111,7 @@ protected function assets(): array
 protected function booted(): void
 {
     parent::booted();
-    
+
     $this->getAssetManager()
         ->add(Css::make('/css/app.css'))
         ->append(Js::make('/js/app.js'));
@@ -143,7 +143,7 @@ Box::mixin(new MyNewMethods())
 <a name="custom"></a>
 ## Кастомный компонент
 
-Вы можете создать собственный компонент, со своим view и логикой и использовать его в административной панели MoonShine. 
+Вы можете создать собственный компонент, со своим view и логикой и использовать его в административной панели MoonShine.
 Для этого воспользуйтесь командой:
 
 ```shell

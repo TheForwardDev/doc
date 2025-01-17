@@ -400,7 +400,7 @@ To change the name attribute of these fields, the `virtualName` method is used.
 
 ```php
 File::make('image')->virtualColumn('image_1')
-//...
+// ...
 File::make('image')->virtualColumn('image_2')
 ```
 
@@ -483,7 +483,7 @@ public function onBeforeRender(Closure $onBeforeRender): static
 
 ```php
 Text::make('Thumbnail')->onBeforeRender(function(Text $ctx) {
-    // 
+    //
 })
 ```
 
@@ -1002,7 +1002,7 @@ use MoonShine\AssetManager\Js;
 protected function booted(): void
 {
     parent::booted();
-    
+
     $this->getAssetManager()
         ->add(Css::make('/css/app.css'))
         ->append(Js::make('/js/app.js'));
@@ -1148,8 +1148,8 @@ If you do not want the name attribute to be removed, you need to set the $submit
 class ArticleResource extends ModelResource
 {
     protected bool $submitShowWhen = true;
-    
-    //...
+
+    // ...
 }
 ```
 
@@ -1250,7 +1250,7 @@ In this example, the field "Category" will only be displayed if the value of the
 <a name="custom"></a>
 ## Custom Field
 
-You can create a custom field with your view and logic and use it in the MoonShine administration panel.
+You can create a custom field with your view and logic and use it in the **MoonShine** administration panel.
 To do this, use the command:
 
 ```shell

@@ -32,12 +32,12 @@ final class MoonShineLayout extends AppLayout
     {
         return Layout::make([
             // ..
-            
+
             Sidebar::make([
                 Menu::make(),
             ])->collapsed(),
 
-            //...
+            // ...
         ]);
     }
 }

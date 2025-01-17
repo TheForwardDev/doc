@@ -56,9 +56,9 @@ You can omit the `$resource` if the model resource matches the name of the relat
 ```php
 class CommentResource extends ModelResource
 {
-    //...
+    // ...
 }
-//...
+// ...
 HasMany::make('Comments', 'comments')
 ```
 
@@ -67,9 +67,9 @@ If you do not specify `$relationName`, then the name of the relation will be det
 ```php
 class CommentResource extends ModelResource
 {
-    //...
+    // ...
 }
-//...
+// ...
 HasMany::make('Comments')
 ```
 
@@ -195,7 +195,7 @@ class PostImageResource extends ModelResource
 {
     use ResourceWithParent;
 
-    //...
+    // ...
 }
 ```
 
@@ -377,7 +377,7 @@ The *HasMany* field is displayed outside the main resource form by default. If y
 ```php
 Json::make('Comments', 'comments')
     ->asRelation(CommentResource::class)
-    //...
+    // ...
 ```
 
 ### Relation through Template field
