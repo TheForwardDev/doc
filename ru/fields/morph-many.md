@@ -4,7 +4,7 @@
 
 * имеет те же возможности
 
-Поле отношения в *Laravel* типа *morphMany*
+Поле отношения в **Laravel** типа *morphMany*
 
 То же самое, что `MoonShine\Laravel\Fields\Relationships\HasMany`, только для отношений *morphMany v
 `MoonShine\Laravel\Fields\Relationships\MorphMany`

@@ -17,7 +17,7 @@ The *Password* and *PasswordRepeat* fields are intended for working with passwor
 The *Password* field displays as `***` in preview mode, and when the `apply()` method is executed, the field value is encoded using the `make` method of the class bound to the `Illuminate\Contracts\Hashing\Hasher` interface.
 
 > [!NOTE]
-> In Laravel, by default, the Hasher class is the facade `Illuminate\Support\Facades\Hash`.
+> In **Laravel**, by default, the Hasher class is the facade `Illuminate\Support\Facades\Hash`.
 
 ```php
 use MoonShine\UI\Fields\Password;

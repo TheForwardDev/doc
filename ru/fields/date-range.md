@@ -25,7 +25,7 @@ fromTo(string $fromField, string $toField)
 ```
 
 ```php
-use MoonShine\UI\Fields\DateRange; 
+use MoonShine\UI\Fields\DateRange;
 
 DateRange::make('Даты')
     ->fromTo('date_from', 'date_to')

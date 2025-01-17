@@ -21,7 +21,7 @@ In `CrudResource` (`ModelResource`) on the `formPage`, `FormBuilder` is used, so
 <a name="validation"></a>
 ## Validation
 
-Validation is as simple as in `FormRequests` classes from `Laravel`.
+Validation is as simple as in `FormRequests` classes from **Laravel**.
 
 Just add the rules in the `rules()` method of the model resource in the usual way.
 

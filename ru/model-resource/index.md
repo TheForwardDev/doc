@@ -497,7 +497,7 @@ protected function pageComponents(): array
 <a name="on-load"></a>
 ### Активный ресурс
 
-Метод `onLoad` дает возможность интегрироваться в момент когда ресурс загружен и в данный момент является активным.
+Метод `onLoad()` дает возможность интегрироваться в момент когда ресурс загружен и в данный момент является активным.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

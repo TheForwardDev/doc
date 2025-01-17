@@ -11,14 +11,14 @@
 <a name="what-is-moonshine"></a>
 ## What is MoonShine
 
-**MoonShine** is an open-source package for projects on `Laravel` (license `MIT`), designed for accelerated development of web projects. It is perfect for creating:
+**MoonShine** is an open-source package for projects on **Laravel** (license **MIT**), designed for accelerated development of web projects. It is perfect for creating:
 
 - Admin panels,
 - `MVP` (minimum viable products),
 - Backoffice applications,
 - Content management systems (`CMS`).
 
-**MoonShine** provides developers with tools for quickly creating functional and user-friendly administrative interfaces, working as a "framework on framework" and extending the capabilities of `Laravel`.
+**MoonShine** provides developers with tools for quickly creating functional and user-friendly administrative interfaces, working as a "framework on framework" and extending the capabilities of **Laravel**.
 
 <a name="features"></a>
 ## Features
@@ -28,7 +28,7 @@
 - **Flexibility**: No strict binding to models; any data sources can be used,
 - **Interface builder**: Convenient tools for creating forms and tables,
 - **Modern technologies**: Use of `AlpineJs` for lightweight and simple frontend functionality,
-- **Familiar tools**: `TailwindCSS` and `Blade`, familiar to most `Laravel` developers,
+- **Familiar tools**: `TailwindCSS` and `Blade`, familiar to most **Laravel** developers,
 - **Extensibility**: Ability to use `Blade` and `Livewire` components,
 - **Customization**: Convenient template builder, possibility to change colors and overall design.
 
@@ -40,9 +40,9 @@
 - **Beginners**: A low entry threshold allows for easy implementation of basic tasks such as authentication and `CRUD` operations.
 
 > [!NOTE]
-> To effectively use **MoonShine**, a basic understanding of `Laravel` is necessary. If you are a beginner, it is recommended to master the fundamentals of `Laravel` first.
+> To effectively use **MoonShine**, a basic understanding of **Laravel** is necessary. If you are a beginner, it is recommended to master the fundamentals of **Laravel** first.
 
-- **Professionals**: The ability to use all the features of `Laravel` without restrictions while gaining tools for speeding up development.
+- **Professionals**: The ability to use all the features of **Laravel** without restrictions while gaining tools for speeding up development.
 
 <a name="name-history"></a>
 ## Name history

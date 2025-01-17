@@ -514,7 +514,7 @@ modifyTable(Closure $callback)
 Пример:
 
 ```php
-use MoonShine\Components\TableBuilder;
+use MoonShine\UI\Components\Table\TableBuilder;
 use MoonShine\UI\Fields\Json;
 
 // ...

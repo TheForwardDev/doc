@@ -14,7 +14,7 @@
 Использует *UI* компонент [Color](/docs/{{version}}/components/color)
 
 ```php
-use MoonShine\UI\Fields\Color; 
+use MoonShine\UI\Fields\Color;
 
 Color::make('Color')
 ```

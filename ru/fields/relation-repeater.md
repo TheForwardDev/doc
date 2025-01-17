@@ -140,7 +140,7 @@ RelationRepeater::make('Характеристики', 'characteristics')
 Метод `modifyTable()` позволяет модифицировать таблицу (`TableBuilder`):
 
 ```php
-use MoonShine\Components\TableBuilder;
+use MoonShine\UI\Components\Table\TableBuilder;
 
 RelationRepeater::make('Характеристики', 'characteristics')
     ->modifyTable(

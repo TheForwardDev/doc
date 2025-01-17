@@ -69,7 +69,7 @@ FieldsGroup::make($fields)->withoutWrappers();
 <a name="map"></a>
 ## Mass field modification
 
-All the methods described above use the `mapFields` method under the hood, which allows you to iterate through all elements in the set and change their state:
+All the methods described above use the `mapFields()` method under the hood, which allows you to iterate through all elements in the set and change their state:
 
 ```php
 FieldsGroup::make($fields)->mapFields(fn(FieldContract $field, int $index): FieldContract => $field);

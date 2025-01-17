@@ -32,7 +32,8 @@ HasMany::make(
 
 > [!WARNING]
 > Having a model resource that the relationship refers to is mandatory.
-The resource must also be [registered](/docs/{{version}}/resources#define) in the `MoonShineServiceProvider` service provider in the `$core->resources()` method. Otherwise, there will be a 500 error (Resource is required for MoonShine\Laravel\Fields\Relationships\HasOne...).
+> The resource must also be [registered](/docs/{{version}}/resources#define) in the `MoonShineServiceProvider` service provider in the `$core->resources()` method.
+> Otherwise, there will be a 500 error (Resource is required for MoonShine\Laravel\Fields\Relationships\HasOne...).
 
 ```php
 HasOne::make('Profile', 'profile', resource: ProfileResource::class)
@@ -95,12 +96,13 @@ HasOne::make('Contacts', resource: ContactResource::class)
 If the relationship has a resource, and you want to get the parent item's ID, you can use the *ResourceWithParent* trait.
 
 ```php
-use MoonShine\Resources\ModelResource;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Traits\Resource\ResourceWithParent;
 
 class PostImageResource extends ModelResource
 {
     use ResourceWithParent;
+
     // ...
 }
 ```

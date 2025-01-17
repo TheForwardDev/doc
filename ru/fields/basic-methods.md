@@ -71,6 +71,7 @@ Text::make(Closure|string|null $label = null, ?string $column = null, ?Closure $
 > Если не указать `$column`, то поле в базе данных будет определено автоматически на основе `$label` (только для английского языка).
 
 Пример замыкания `$formatted` для форматирования значения.
+
 ```php
 use MoonShine\UI\Fields\Text;
 
@@ -538,7 +539,7 @@ use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
 BelongsTo::make('Item', 'item', resource: ItemResource::class)
     ->canSee(function (Comment $comment, BelongsTo $field) {
-        //ваше условие
+        // ваше условие
     })
 ,
 ```
@@ -897,7 +898,8 @@ Enum::make('Status')
 <a name="update-on-preview"></a>
 ### updateOnPreview
 
-Метод `updateOnPreview()` позволяет редактировать поле в режиме предварительного просмотра. После внесения изменений (по событию onChange), значение поля будет сохранено для конкретного элемента.
+Метод `updateOnPreview()` позволяет редактировать поле в режиме предварительного просмотра.
+После внесения изменений (по событию onChange), значение поля будет сохранено для конкретного элемента.
 
 ```php
 public function updateOnPreview(
@@ -914,7 +916,7 @@ public function updateOnPreview(
  - `$events` - (опционально) вызываемые [AlpineJS события](/docs/{{version}}/frontend/js#events) после успешного запроса.
 
 > [!NOTE]
-> Параметры не являются обязательными, но должны быть заданы, если поле находится вне ресурса или же вы хотите указать полностью свой endpoint (тогда и ресурс не нужен)
+> Параметры не являются обязательными, но должны быть заданы, если поле находится вне ресурса или же вы хотите указать полностью свой endpoint (тогда и ресурс не нужен).
 
 ```php
 Text::make('Name')->updateOnPreview()

@@ -4,7 +4,7 @@
 
 * имеет те же возможности
 
-Поле отношения в *Laravel* типа *HasOne*.
+Поле отношения в **Laravel** типа *HasOne*.
 
 То же самое, что `MoonShine\Laravel\Fields\Relationships\HasOne`, только для отношений *MorphOne*
 `MoonShine\Laravel\Fields\Relationships\MorphOne`.

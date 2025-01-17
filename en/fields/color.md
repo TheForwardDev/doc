@@ -14,7 +14,7 @@ The *Color* field provides a convenient way to input a color.
 Uses the *UI* component [Color](/docs/{{version}}/components/color)
 
 ```php
-use MoonShine\UI\Fields\Color; 
+use MoonShine\UI\Fields\Color;
 
 Color::make('Color')
 ```

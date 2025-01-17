@@ -71,6 +71,7 @@ Text::make(Closure|string|null $label = null, ?string $column = null, ?Closure $
 > If `$column` is not specified, the database field will be automatically determined based on `$label` (only for English).
 
 Example of a closure `$formatted` for formatting a value.
+
 ```php
 use MoonShine\UI\Fields\Text;
 
@@ -897,7 +898,8 @@ For editing fields in preview mode, such as in a table or any other `IterableCom
 <a name="update-on-preview"></a>
 ### updateOnPreview
 
-The `updateOnPreview()` method allows editing a field in preview mode. After making changes (onChange event), the value of the field will be saved for the specific item.
+The `updateOnPreview()` method allows editing a field in preview mode.
+After making changes (onChange event), the value of the field will be saved for the specific item.
 
 ```php
 public function updateOnPreview(
@@ -914,7 +916,7 @@ public function updateOnPreview(
  - `$events` - (optional) triggers [AlpineJS events](/docs/{{version}}/frontend/js#events) after a successful request.
 
 > [!NOTE]
-> Parameters are not mandatory but should be provided if the field is outside a resource or if you want to specify a completely custom endpoint (then the resource is not needed)
+> Parameters are not mandatory but should be provided if the field is outside a resource or if you want to specify a completely custom endpoint (then the resource is not needed).
 
 ```php
 Text::make('Name')->updateOnPreview()
