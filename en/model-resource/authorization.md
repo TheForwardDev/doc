@@ -104,6 +104,31 @@ php artisan moonshine:policy PostPolicy
 
 After executing the command, a class will be created in the `app/Policies` directory.
 
+> [!WARNING]
+> If you use `$withPolicy` mode for system resources,
+> you need to register them with the provider yourself.
+> By default, **Laravel** automatically registers a **Policy** for models in the `app/Models` directory.
+
+Example registration for system models that are not located in the `app/Models` directory:
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+use App\Policies\MoonshineUserPolicy;
+use App\Policies\MoonshineUserRolePolicy;
+use MoonShine\Laravel\Models\MoonshineUserRole;
+use MoonShine\Laravel\Models\MoonshineUser;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Gate::policy(MoonshineUser::class, MoonshineUserPolicy::class);
+        Gate::policy(MoonshineUserRole::class, MoonshineUserRolePolicy::class);
+    }
+}
+```
+
 <a name="is-can"></a>
 ## Custom Logic
 
