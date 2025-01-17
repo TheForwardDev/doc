@@ -25,7 +25,7 @@ Inherits [MoonShineComponent](/docs/{{version}}/components/index).
 <a name="basics"></a>
 ## Basics
 
-When you need to add a button with a specific action, `ActionButton` comes to the rescue. 
+When you need to add a button with a specific action, `ActionButton` comes to the rescue.
 In `MoonShine`, they are already used - in forms, tables, and on pages.
 
 ```php
@@ -84,7 +84,7 @@ ActionButton::make(
 <a name="color"></a>
 ## Color
 
-For *ActionButton*, there is a set of methods to set the button color: 
+For *ActionButton*, there is a set of methods to set the button color:
 `primary()`, `secondary()`, `warning()`, `success()`, and `error()`.
 
 ```php
@@ -520,7 +520,7 @@ public function updateSomething(MoonShineRequest $request)
 > [!WARNING]
 > Methods called via `ActionButton` in the resource must be public!
 
-> [!CAUTION]
+> [!WARNING]
 > For access to data from the request, you must pass them as parameters.
 
 #### Passing the current item

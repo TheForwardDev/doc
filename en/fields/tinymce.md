@@ -16,7 +16,7 @@ Inherits [Textarea](/docs/{{version}}/fields/textarea).
 
 * has the same capabilities
 
-> [!IMPORTANT]
+> [!WARNING]
 > Before using this field, you must register on the [Tiny.Cloud](https://www.tiny.cloud) website, obtain a token, and add it to your `.env`.
 
 ```

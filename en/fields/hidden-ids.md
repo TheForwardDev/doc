@@ -27,7 +27,7 @@ use MoonShine\UI\Fields\HiddenIds;
 HiddenIds::make('index-table')
 ```
 
-> [!IMPORTANT]
+> [!WARNING]
 > The table must contain an ID field.
 
 <a name="use"></a>
@@ -40,7 +40,7 @@ use MoonShine\UI\Fields\HiddenIds;
 use MoonShine\UI\Components\FormBuilder;
 
 //...
- 
+
 ActionButton::make('Active', route('moonshine.posts.mass-active', $this->uriKey()))
     ->inModal(fn () => 'Active', fn (): string => (string) FormBuilder::make(
         route('moonshine.posts.mass-active', $this->uriKey()),

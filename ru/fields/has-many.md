@@ -34,7 +34,7 @@ HasMany::make(
 - `$relationName` - имя отношения,
 - `$resource` - ресурс модели, на который ссылается отношение.
 
-> [!CAUTION]
+> [!WARNING]
 > Параметр `$formatted` не используется в поле `HasMany`!
 
 > [!WARNING]
@@ -62,7 +62,7 @@ class CommentResource extends ModelResource
 HasMany::make('Comments', 'comments')
 ```
 
-Если вы не указываете `$relationName`, тогда имя отношения будет определено автоматически на основе `$label` (по правилам camelCase). 
+Если вы не указываете `$relationName`, тогда имя отношения будет определено автоматически на основе `$label` (по правилам camelCase).
 
 ```php
 class CommentResource extends ModelResource
@@ -387,4 +387,4 @@ Json::make('Comments', 'comments')
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Поле Template](/docs/{{version}}/fields/template).
 
-disableAsync, 
+disableAsync,

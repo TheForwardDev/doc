@@ -39,7 +39,7 @@ tab: Blade
     />
 </x-moonshine::form.wrapper>
 ```
-~~~ 
+~~~
 
 ![File Dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/file_dark.png)
 
@@ -108,7 +108,7 @@ File::make('File')
     ->multiple()
 ```
 
-> [!ERROR]
+> [!WARNING]
 > The field in the database must be of type _text_ or _json_.
 > You also need to add type casting for the eloquent model - *json*, or *array*, or *collection*.
 
@@ -138,7 +138,7 @@ File::make('File')
 > [!NOTE]
 > When deleting a resource, the files are also deleted.
 
-> [!IMPORTANT]
+> [!WARNING]
 > When mass deleting resource items, files are not deleted. You need to implement file deletion for mass resource item deletion yourself.
 
 ### Attributes
@@ -229,7 +229,7 @@ File::make('File', 'file')
 
 The `names()` method allows you to change the displayed name without altering the file name.
 
-```php 
+```php
 names(Closure $closure)
 ```
 

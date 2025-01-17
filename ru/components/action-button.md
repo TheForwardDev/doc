@@ -523,7 +523,7 @@ public function updateSomething(MoonShineRequest $request)
 > [!WARNING]
 > Методы, вызываемые через `ActionButton` в ресурсе, должны быть публичными!
 
-> [!CAUTION]
+> [!WARNING]
 > Для доступа к данным из запроса вы должны передать их в параметрах.
 
 #### Передача текущего элемента

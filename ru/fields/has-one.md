@@ -27,7 +27,7 @@ HasMany::make(
 - `$relationName` - имя отношения,
 - `$resource` - ресурс модели, на который ссылается отношение.
 
-> [!CAUTION]
+> [!WARNING]
 > Параметр `$formatted` не используется в поле `HasMany`!
 
 > [!WARNING]
@@ -35,7 +35,7 @@ HasMany::make(
 Ресурс также необходимо [зарегистрировать](/docs/{{version}}/resources#define) в сервис-провайдере `MoonShineServiceProvider` в методе `$core->resources()`. В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\HasOne...).
 
 ```php
-HasOne::make('Profile', 'profile', resource: ProfileResource::class) 
+HasOne::make('Profile', 'profile', resource: ProfileResource::class)
 ```
 
 ![has_one](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one.png)
@@ -82,7 +82,7 @@ HasOne::make('Contacts', resource: ContactResource::class)
     ->fields([
         Phone::make('Phone'),
         Text::make('Address'),
-    ]) 
+    ])
 ```
 
 ![has_one_preview](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one_preview.png)

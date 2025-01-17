@@ -34,7 +34,7 @@ HasMany::make(
 - `$relationName` - name of the relation,
 - `$resource` - model resource that the relation points to.
 
-> [!CAUTION]
+> [!WARNING]
 > The `$formatted` parameter is not used in the `HasMany` field!
 
 > [!WARNING]
