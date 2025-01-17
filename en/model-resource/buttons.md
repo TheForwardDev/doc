@@ -142,7 +142,7 @@ protected function modifyMassDeleteButton(ActionButtonContract $button): ActionB
 
 #### Modification
 
-The `modifyFiltersButton()` method allows you to overwrite or modify the filters button.
+The `modifyFiltersButton()` method allows you to modify or overwrite the filters button.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

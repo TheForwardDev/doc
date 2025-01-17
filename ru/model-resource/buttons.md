@@ -142,7 +142,7 @@ protected function modifyMassDeleteButton(ActionButtonContract $button): ActionB
 
 #### Модификация
 
-Метод `modifyFiltersButton()` позволяет или переопределить модифицировать кнопку фильтров.
+Метод `modifyFiltersButton()` позволяет модифицировать или переопределить кнопку фильтров.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
