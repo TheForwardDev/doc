@@ -65,17 +65,20 @@ If [Navigation](#navigations) is used, an anchor should be added before the head
 ```
 
 For the name of the first item, it is often necessary to use the name `Basics`, instead of similar `Start`, `Introduction`, etc.
+
 ```html
 <a name="basics"></a>
 ## Basics
 ```
 
-If a component is described that inherits from another class, and there is a `Basics` item in the navigation, then the description of inheritance is written strictly after this item.
+If a component is described that inherits from another class, and there is a `Basics` item in the navigation,
+then the description of inheritance is written strictly after this item.
+
 ```html
 <a name="basics"></a>
 ## Basics
 
-Inherits from [Select](/docs/{version}/fields/select).
+Inherits from [Select](/docs/{{version}}/fields/select).
 
 \* has the same capabilities.
 
@@ -87,7 +90,7 @@ If the basic methods are described in another section of the documentation, then
 <a name="basics"></a>
 ## Basics
 
-Contains all [Basic methods](#/docs/{version}/fields/basic-methods.md).
+Contains all [Basic methods](/docs/{{version}}/fields/basic-methods).
 ```
 
 <a name="content"></a>
@@ -106,7 +109,8 @@ It is desirable to synchronize the texts in the **ru** and **en** versions of th
 - single apostrophe ``` ` ``` is used to format methods, classes, etc.,
 - method names should end with parentheses, for example: `setLabel()`,
 - triple apostrophes ` ``` ` with the programming language specified are used to format code blocks, and the block should start on a new line,
-- for all classes used in examples, you need to specify use in alphabetical order and wrap them in collapse.
+- for all classes used in examples, you need to specify use in alphabetical order and wrap them in collapse,
+- double asterisks `**` are used to format proper name, for example, `**MoonShine**`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -129,7 +133,7 @@ Text::make('Title')
 
 ```html
 - list items end with a comma,
-- a period is placed after the last one.
+- a dot is placed after the last one.
 ```
 
 <a name="tabs"></a>
