@@ -16,7 +16,7 @@
 <a name="basics"></a>
 ## Основы
 
-В `CrudResource`(`ModelResource`) на страницe `formPage` используется `FormBuilder`, поэтому мы рекомендуем вам также изучить раздел документации [FormBuilder](/docs/{{version}}/components/form-builder).
+В `CrudResource`(`ModelResource`) на странице `formPage` используется `FormBuilder`, поэтому мы рекомендуем вам также изучить раздел документации [FormBuilder](/docs/{{version}}/components/form-builder).
 
 <a name="validation"></a>
 ## Валидация
@@ -26,19 +26,15 @@
 Достаточно добавить правила в метод `rules()` ресурса модели обычным способом.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
-use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function rules(mixed $item): array
     {
@@ -46,8 +42,6 @@ class PostResource extends ModelResource
             'title' => ['required', 'string', 'min:5']
         ];
     }
-
-    //...
 }
 ```
 
@@ -60,15 +54,15 @@ class PostResource extends ModelResource
 Используя метод `validationMessages()`, вы можете создать свои собственные сообщения об ошибках валидации.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     public function validationMessages(): array
     {
@@ -76,8 +70,6 @@ class PostResource extends ModelResource
             'email.required' => 'Требуется email'
         ];
     }
-
-    //...
 }
 ```
 
@@ -87,15 +79,15 @@ class PostResource extends ModelResource
 Если вам нужно подготовить или очистить какие-либо данные из запроса перед применением правил валидации, вы можете использовать метод `prepareForValidation()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     public function prepareForValidation(): void
     {
@@ -106,8 +98,6 @@ class PostResource extends ModelResource
                 ->value()
         ]);
     }
-
-    //...
 }
 ```
 
@@ -119,18 +109,20 @@ class PostResource extends ModelResource
 Свойство `$errorsAbove` используется для управления отображением ошибок валидации в верхней части формы.
 
 > [!NOTE]
-> Актуально только если "Асинхронный режим" выключен
+> Актуально только если "Асинхронный режим" выключен.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-  // ..
+    protected bool $errorsAbove = true;
 
-  protected bool $errorsAbove = true;
-
-  // ..
+    // ...
 }
 ```
 
@@ -139,15 +131,17 @@ class PostResource extends ModelResource
 
 Если необходимо предварительно выполнить `precognition` валидацию, необходим метод `precognitive()`.
 
-[Подробности в документации Laravel](https://laravel.com/docs/precognition)
+[Подробности в документации Laravel](https://laravel.com/docs/precognition).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    // ...
-
     protected bool $isPrecognitive = true;
 
     // ...
@@ -157,12 +151,14 @@ class PostResource extends ModelResource
 <a name="buttons"></a>
 ## Кнопки
 
-Для добавления кнопок используйте `ActionButton` и метод `formButtons` в ресурсе.
+Для добавления кнопок используйте `ActionButton` и метод `formButtons()` в ресурсе.
 
 > [!NOTE]
-> Подробнее о [ActionButton](/docs/{{version}}/components/action-button)
+> Подробнее о [ActionButton](/docs/{{version}}/components/action-button).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 
@@ -175,15 +171,17 @@ protected function formButtons(): ListOf
 <a name="async"></a>
 ## Асинхронный режим
 
-По умолчанию в `ModelResource` включен "Асинхронный режим", но если вам требуется его выключить, то установить свойство `$isAsync` = false
+По умолчанию, в `ModelResource` включен "Асинхронный режим", но если вам требуется его выключить, то установить свойство `$isAsync` = false.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    // ...
-
     protected bool $isAsync = false;
 
     // ...
@@ -196,12 +194,17 @@ class PostResource extends ModelResource
 <a name="components"></a>
 ### Компоненты
 
-Вы можете полностью заменить или модифицировать `FormBuilder` ресурса для страницы редактирования. Для этого воспользуйтесь методом `modifyFormComponent`
+Вы можете полностью заменить или модифицировать `FormBuilder` ресурса для страницы редактирования.
+Для этого воспользуйтесь методом `modifyFormComponent()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Contracts\UI\ComponentContract;
 
-public function modifyFormComponent(ComponentContract $component): ComponentContract
+public function modifyFormComponent(
+    ComponentContract $component
+): ComponentContract
 {
     return parent::modifyFormComponent($component)->customAttributes([
         'data-my-attr' => 'value'

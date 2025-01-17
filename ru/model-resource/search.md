@@ -11,32 +11,27 @@
 <a name="basics"></a>
 ## Основы
 
-Для поиска необходимо указать, какие поля модели будут участвовать в поиске. Для этого нужно перечислить их в возвращаемом массиве в методе `search()`.
+Для поиска необходимо указать, какие поля модели будут участвовать в поиске.
+Для этого нужно перечислить их в возвращаемом массиве в методе `search()`.
 
-> [!TIP] 
+> [!NOTE]
 > Если метод возвращает пустой массив, то строка поиска не будет отображаться.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
-use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function search(): array
     {
         return ['id', 'title', 'text'];
     }
-
-    //...
 }
 ```
 
@@ -48,33 +43,27 @@ class PostResource extends ModelResource
 Если требуется полнотекстовый поиск, то необходимо использовать атрибут `MoonShine\Support\Attributes\SearchUsingFullText`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Support\Attributes\SearchUsingFullText;
-use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     #[SearchUsingFullText(['title', 'text'])]
     protected function search(): array
     {
         return ['id'];
     }
-
-    //...
 }
 ```
 
-> [!TIP] 
-> Не забудьте добавить полнотекстовый индекс
+> [!TIP]
+> Не забудьте добавить полнотекстовый индекс.
 
 <a name="json"></a>
 ## Поиск по ключам json
@@ -82,46 +71,40 @@ class PostResource extends ModelResource
 Для `Json` полей, которые используются в качестве ключ-значение `keyValue()`, можно указать, какой ключ поля участвует в поиске.
 
 ```php
-use App\Models\Post;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function search(): array
     {
         return ['data->title'];
     }
-
-    //...
 }
 ```
 
 Для многомерных `Json`, которые формируются через поля `fields()`, ключ поиска нужно указывать следующим образом:
 
 ```php
-use App\Models\Post;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function search(): array
     {
         return ['data->[*]->title'];
     }
-
-    //...
 }
 ```
 
@@ -131,31 +114,27 @@ class PostResource extends ModelResource
 Вы можете осуществлять поиск по связям; для этого нужно указать, по какому полю связи осуществлять поиск.
 
 ```php
-use App\Models\Post;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Resources;
+
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function search(): array
     {
         return ['category.title'];
     }
-
-    //...
 }
 ```
 
 <a name="global"></a>
 ## Глобальный поиск
 
-В админ-панели MoonShine можно реализовать глобальный поиск на основе интеграции
-[Laravel Scout](https://laravel.com/docs/scout).
+В **MoonShine** можно реализовать глобальный поиск на основе интеграции [Laravel Scout](https://laravel.com/docs/scout).
 
 Для реализации глобального поиска необходимо:
 
@@ -181,6 +160,10 @@ php artisan vendor:publish --provider="MoonShine\Scout\Providers\ScoutServicePro
 3. Реализовать интерфейс в моделях.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:6]
+namespace App\Models;
+
 use MoonShine\Scout\HasGlobalSearch;
 use MoonShine\Scout\SearchableResponse;
 use Laravel\Scout\Searchable;
@@ -208,9 +191,11 @@ class Article extends Model implements HasGlobalSearch
 }
 ```
 
-4. Заменить компонент в `Layout`
+4. Заменить компонент в `Layout`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 use MoonShine\Laravel\Components\Layout\Locales;
 use MoonShine\Laravel\Components\Layout\Notifications;
 use MoonShine\UI\Components\Layout\Header;

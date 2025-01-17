@@ -25,7 +25,8 @@
 <a name="basics"></a>
 ## Basics
 
-`ModelResource` extends `CrudResource` and provides functionality for working with Eloquent models. It serves as a foundation for creating resources associated with database models.
+`ModelResource` extends `CrudResource` and provides functionality for working with Eloquent models.
+It serves as a foundation for creating resources associated with database models.
 `ModelResource` offers methods for performing CRUD operations, managing relationships, applying filters, and much more.
 
 > [!TIP]
@@ -42,6 +43,8 @@ php artisan make:controller Controller --resource
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use Illuminate\Support\Facades\Route;
 
 Route::resource('resources', Controller::class);
@@ -202,7 +205,7 @@ final class MoonShineLayout extends CompactLayout
 By default, the alias of the resource used in the `url` is generated based on the class name in `kebab-case`, for example:
 `MoonShineUserResource` -> `moon-shine-user-resource`.
 
-To change the `alias`, you can use the resource property `$alias` or the method `getAlias`.
+To change the `alias`, you can use the resource property `$alias` or the method `getAlias()`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -307,10 +310,10 @@ public function getRedirectAfterDelete(): string
 
 Often, it is necessary to create a resource where the ability to delete, add, or edit is excluded.
 This is not about authorization, but rather a global exclusion of these sections.
-This can be done easily through the `activeActions` method in the resource.
+This can be done easily through the `activeActions()` method in the resource.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
 // [tl! collapse:5]
 namespace App\MoonShine\Resources;
 
@@ -456,7 +459,7 @@ public function modifyDetailComponent(ComponentContract $component): ComponentCo
 ## Components
 
 The best way to change page components is to publish the pages and interact through them.
-But, if you want to quickly add components to pages, you can use the resource methods `pageComponents`, `indexPageComponents`, `formPageComponents` and `detailPageComponents`.
+But, if you want to quickly add components to pages, you can use the resource methods `pageComponents()`, `indexPageComponents()`, `formPageComponents()` and `detailPageComponents()`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -483,7 +486,7 @@ protected function pageComponents(): array
 }
 ```
 
-> [!TIP]
+> [!NOTE]
 > Components will be added to `bottomLayer`.
 
 <a name="lifecycle"></a>
@@ -581,7 +584,7 @@ class PostResource extends ModelResource
 }
 ```
 
-You can also attach a `trait` to the resource and within the `trait`, add a method according to the naming convention - `boot{TraitName}` and use the trait to access the `onBoot` of the resource.
+You can also attach a `trait` to the resource and within the `trait`, add a method according to the naming convention - `boot{TraitName}` and use the trait to access the `onBoot()` of the resource.
 
 <a name="assets"></a>
 ## Assets

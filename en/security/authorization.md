@@ -8,36 +8,30 @@
 <a name="basics"></a>
 ## Basics
 
-The **MoonShine** admin panel does not deviate from Laravel concepts and also uses *Laravel policy* for working with access rights.
-In MoonShine resource controllers, each method will be checked for permissions.
+**MoonShine** does not deviate from _Laravel_ concepts and also uses _Laravel policy_ for working with access rights.
+
+In **MoonShine** resource controllers, each method will be checked for permissions.
 If you encounter difficulties, refer to the official [Laravel](https://laravel.com/docs/authorization#creating-policies) documentation.
 
 By default, permission checks for resources are disabled.
-To enable it, you need to add the `withPolicy` property.
+To enable it, you need to add the `$withPolicy` property.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
-use MoonShine\Resources\ModelResource;
+use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
     protected bool $withPolicy = true;
 
-    //...
+    // ...
 }
 ```
 
-To create a *Policy* linked to the admin panel user, you can use the console command:
-
-```php
-php artisan moonshine:policy PostPolicy
-```
-
-Available Policy methods:
+Available **Policy** methods:
 - `viewAny` - index page;
 - `view` - detail page;
 - `create` - creating a record;
@@ -48,11 +42,13 @@ Available Policy methods:
 - `forceDelete` - permanent deletion of a record from the database.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 namespace App\Policies;
 
 use App\Models\Post;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use MoonShine\Models\MoonshineUser;
+use MoonShine\Laravel\Models\MoonshineUser;
 
 class PostPolicy
 {
@@ -63,7 +59,7 @@ class PostPolicy
         return true;
     }
 
-    public function view(MoonshineUser $user, Post $item)
+    public function view(MoonshineUser $user, Post $model)
     {
         return true;
     }
@@ -73,22 +69,22 @@ class PostPolicy
         return true;
     }
 
-    public function update(MoonshineUser $user, Post $item)
+    public function update(MoonshineUser $user, Post $model)
     {
         return true;
     }
 
-    public function delete(MoonshineUser $user, Post $item)
+    public function delete(MoonshineUser $user, Post $model)
     {
         return true;
     }
 
-    public function restore(MoonshineUser $user, Post $item)
+    public function restore(MoonshineUser $user, Post $model)
     {
         return true;
     }
 
-    public function forceDelete(MoonshineUser $user, Post $item)
+    public function forceDelete(MoonshineUser $user, Post $model)
     {
         return true;
     }
@@ -100,12 +96,21 @@ class PostPolicy
 }
 ```
 
+You can create a **Policy** with a ready-made set of methods for **MoonShine** using the command `moonshine:policy`:
+
+```shell
+php artisan moonshine:policy PostPolicy
+```
+
 <a name="additional_logic"></a>
 ## Additional Logic
 
-If you need to add additional authorization logic to your application or external package, use the `authorizationRules` method in `AuthServiceProvider` or `MoonShineServiceProvider`.
+If you need to add additional authorization logic to your application or external package,
+use the `authorizationRules()` method in `AuthServiceProvider` or `MoonShineServiceProvider`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Model;
@@ -116,7 +121,7 @@ use MoonShine\Contracts\Core\ResourceContract;
 use MoonShine\Laravel\DependencyInjection\ConfiguratorContract;
 use MoonShine\Laravel\DependencyInjection\MoonShine;
 use MoonShine\Laravel\DependencyInjection\MoonShineConfigurator;
-use MoonShine\Laravel\Enums\Ability;
+use MoonShine\Laravel\Enums\Ability; // [tl! collapse:end]
 
 class MoonShineServiceProvider extends ServiceProvider
 {
