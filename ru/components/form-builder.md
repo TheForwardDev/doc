@@ -30,7 +30,7 @@
 
 Поля и компоненты в `FormBuilder` используются внутри форм, которые обрабатываются `FormBuilder`. Благодаря `FormBuilder` поля отображаются и заполняются данными.
 `FormBuilder` используется на странице редактирования, а также для полей отношений, таких как `HasOne`.
-Вы также можете использовать `FormBuilder` на своих собственных страницах, в модальных окнах или даже за пределами `MoonShine`.
+Вы также можете использовать `FormBuilder` на своих собственных страницах, в модальных окнах или даже за пределами **MoonShine**.
 
 ~~~tabs
 tab: Class
@@ -346,7 +346,7 @@ public function updateSomething(MoonShineRequest $request): void
 <a name="reactive"></a>
 ### Реактивность
 
-По умолчанию полям внутри формы доступна реактивность, но если форма находится вне ресурса, 
+По умолчанию полям внутри формы доступна реактивность, но если форма находится вне ресурса,
 тогда реактивность будет недоступна, так как форма не знает куда отправлять запросы. В случае использования формы вне ресурсов вы можете указать реактивный URL самостоятельно:
 
 ```php
@@ -356,7 +356,7 @@ FormBuilder::make()->reactiveUrl(fn(FormBuilder $form) => $form->getCore()->getR
 <a name="fields-values"></a>
 ### Значения полей
 
-Если вы используете собственный controller обработчик, `asyncMethod` или обработчик ответа, 
+Если вы используете собственный controller обработчик, `asyncMethod` или обработчик ответа,
 то с помощью `MoonShineJsonResponse` у вас есть возможность заменить значения полей формы по селектору:
 
 ```php
@@ -364,7 +364,7 @@ public function formAction(): MoonShineJsonResponse
 {
   return MoonShineJsonResponse::make()->fieldsValues([
     '.title' => 'Hello',
-  ]);    
+  ]);
 }
 
 protected function components(): iterable
@@ -390,7 +390,7 @@ public function formAction(): MoonShineJsonResponse
   return MoonShineJsonResponse::make()->html([
     '.some-class1' => time(),
     '.some-class2' => time(),
-  ]);    
+  ]);
 }
 
 protected function components(): iterable

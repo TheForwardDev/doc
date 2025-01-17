@@ -5,11 +5,11 @@
 
 ## Introduction
 
-Server-Driven UI (SDUI) is a powerful approach to user interface development where the structure and content of the UI are defined by the server. MoonShine provides built-in support for SDUI, allowing for the creation of dynamic and flexible interfaces without the need to update the client application.
+Server-Driven UI (SDUI) is a powerful approach to user interface development where the structure and content of the UI are defined by the server. **MoonShine** provides built-in support for SDUI, allowing for the creation of dynamic and flexible interfaces without the need to update the client application.
 
 ## Structure of SDUI Response
 
-In MoonShine, each UI component can be represented as a JSON structure that describes its type, states, and child components. This structure is formed on the server and sent to the client for rendering. An SDUI response in MoonShine typically includes the following key elements:
+In MoonShine, each UI component can be represented as a JSON structure that describes its type, states, and child components. This structure is formed on the server and sent to the client for rendering. An SDUI response in **MoonShine** typically includes the following key elements:
 
 - `type`: The component type
 - `components`: An array of child components (if any)
@@ -134,4 +134,4 @@ You can use additional headers to customize the response:
 
 ## Conclusion
 
-SDUI in MoonShine provides a powerful and flexible way to create dynamic user interfaces. It allows not only to define the structure and content of the UI on the server but also to precisely control the styles and attributes of each component, ensuring a high degree of customization and adaptability of the interface.
+SDUI in **MoonShine** provides a powerful and flexible way to create dynamic user interfaces. It allows not only to define the structure and content of the UI on the server but also to precisely control the styles and attributes of each component, ensuring a high degree of customization and adaptability of the interface.

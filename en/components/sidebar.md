@@ -37,7 +37,7 @@ final class MoonShineLayout extends AppLayout
                 Menu::make(),
             ])->collapsed(),
 
-            //...
+            // ...
         ]);
     }
 }
@@ -59,4 +59,4 @@ By default, the *Sidebar* is always open, but using the `collapsed()` method, yo
 Sidebar::make([
     Menu::make(),
 ])->collapsed(),
-``` 
+```

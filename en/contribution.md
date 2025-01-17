@@ -121,12 +121,12 @@ php artisan serve
 <a name="pr"></a>
 ## How to make a pull request?
 
-- Go to the MoonShine repository and click "Fork",
+- Go to the **MoonShine** repository and click "Fork",
 - Clone your fork using git,
 - Create a new branch for your changes,
 - Commit your changes following the [conventional commits convention](https://www.conventionalcommits.org),
 - Push your changes to your fork,
-- Go back to the MoonShine repository and click "New pull request",
+- Go back to the **MoonShine** repository and click "New pull request",
 - Provide a detailed description of your changes in the "Description" field,
 - Wait for a review!
 

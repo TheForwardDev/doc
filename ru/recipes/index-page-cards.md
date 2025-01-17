@@ -5,8 +5,8 @@
 ```php
 class MoonShineUserResource extends ModelResource
 {
-    //...
-    
+    // ...
+
     public function getListEventName(?string $name = null, array $params = []): string
     {
         $name ??= $this->getListComponentName();
@@ -27,7 +27,7 @@ class MoonShineUserResource extends ModelResource
             ->thumbnail(fn ($user) => asset($user->avatar))
             ->buttons($this->getIndexButtons());
     }
-    
-    //...
+
+    // ...
 }
 ```

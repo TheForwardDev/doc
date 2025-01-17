@@ -1,6 +1,6 @@
 # Routes
 
-`MoonShine` под капотом использует стандартный `Laravel Routing`.
+**MoonShine** под капотом использует стандартный `Laravel Routing`.
 Все отображаемые страницы рендерятся через `PageController`, который имеет очень простой вид.
 
 ```php
@@ -25,8 +25,8 @@ public function __invoke(MoonShineRequest $request): PageContract
 
 ```php
 Route::get('/admin/resource/{resourceUri}/{pageUri}', CustomController::class)
-	->middleware(['moonshine', \MoonShine\Laravel\Http\Middleware\Authenticate::class])
-	->name('moonshine.name');
+    ->middleware(['moonshine', \MoonShine\Laravel\Http\Middleware\Authenticate::class])
+    ->name('moonshine.name');
 ```
 
 > [!NOTE]

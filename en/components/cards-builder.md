@@ -24,8 +24,8 @@
 <a name="basics"></a>
 ## Basics
 
-With `CardsBuilder`, you can display a list of items in the form of cards.  
-You can also use `CardsBuilder` on your own pages or even outside of `MoonShine`.
+With `CardsBuilder`, you can display a list of items in the form of cards.
+You can also use `CardsBuilder` on your own pages or even outside of **MoonShine**.
 
 ~~~tabs
 tab: Class
@@ -207,7 +207,7 @@ CardsBuilder::make(
 <a name="thumbnail"></a>
 ### Thumbnail
 
-To add an image to the card, you can use the `thumbnail()` method.  
+To add an image to the card, you can use the `thumbnail()` method.
 As an argument, the method accepts a value of the column field or a closure that returns the `url` of the image.
 
 ```php
@@ -227,7 +227,7 @@ CardsBuilder::make(
 <a name="overlay"></a>
 ### Overlay Mode
 
-The `overlay` mode allows you to place the title and subtitles on top of the card image.  
+The `overlay` mode allows you to place the title and subtitles on top of the card image.
 This mode is activated using the method `overlay()`.
 
 ```php
@@ -308,12 +308,12 @@ CardsBuilder::make(
 ```
 
 > [!NOTE]
-> The `MoonShine` admin panel uses a 12-column grid.
+> The **MoonShine** admin panel uses a 12-column grid.
 
 <a name="custom-component"></a>
 ### Custom Component
 
-The `CardsBuilder` component allows you to override the component for building the item list.  
+The `CardsBuilder` component allows you to override the component for building the item list.
 To do this, use the `customComponent()` method.
 
 ```php
@@ -373,7 +373,7 @@ CardsBuilder::make()
 <a name="type-cast"></a>
 ## Type Casting
 
-The `cast` method is used to cast values to a specific type.  
+The `cast` method is used to cast values to a specific type.
 Because by default, fields work with primitive types:
 
 ```php

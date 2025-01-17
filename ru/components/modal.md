@@ -70,7 +70,7 @@ tab: Blade
 use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\Modal;
 
-//...
+// ...
 
 protected function components(): iterable
 {
@@ -83,7 +83,7 @@ protected function components(): iterable
     ];
 }
 
-//...
+// ...
 ```
 
 ### Вызов события через ActionButton

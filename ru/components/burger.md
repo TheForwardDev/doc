@@ -14,7 +14,7 @@ final class MoonShineLayout extends AppLayout
     public function build(): Layout
     {
         return Layout::make([
-            //...
+            // ...
             Div::make([
                 ThemeSwitcher::make(),
 
@@ -22,7 +22,7 @@ final class MoonShineLayout extends AppLayout
                     Burger::make(),
                 ])->class('menu-heading-burger'),
             ])->class('menu-heading-actions'),
-            //...
+            // ...
         ]);
     }
 }

@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('resources', Controller::class);
 ```
 
-Но эту работу можно поручить админ-панели `MoonShine`, которая будет их генерировать и объявлять самостоятельно.
+Но эту работу можно поручить админ-панели **MoonShine**, которая будет их генерировать и объявлять самостоятельно.
 
 `ModelResource` является основным компонентом для создания раздела в админ-панели при работе с базой данных.
 
@@ -150,8 +150,8 @@ class MoonShineServiceProvider extends ServiceProvider
 <a name="adding-to-the-menu"></a>
 ## Добавление в меню
 
-Все страницы в `MoonShine` имеют `Layout` и у каждой страницы он может быть свой.
-По умолчанию, при установке `MoonShine` добавляет базовый `MoonShineLayout` в директорию `app/MoonShine/Layouts`.
+Все страницы в **MoonShine** имеют `Layout` и у каждой страницы он может быть свой.
+По умолчанию, при установке **MoonShine** добавляет базовый `MoonShineLayout` в директорию `app/MoonShine/Layouts`.
 В `Layout` кастомизируется всё, что отвечает за внешний вид ваших страниц и это касается также и навигации.
 
 Чтобы добавить раздел в меню, необходимо объявить его через метод `menu()` в `Layout`.
@@ -564,7 +564,7 @@ trait WithPermissions
 <a name="on-boot"></a>
 ### Создание экземпляра
 
-Метод `onBoot` дает возможность интегрироваться в момент когда MoonShine создает экземпляр ресурса в системе.
+Метод `onBoot` дает возможность интегрироваться в момент когда **MoonShine** создает экземпляр ресурса в системе.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

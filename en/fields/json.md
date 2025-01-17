@@ -19,7 +19,7 @@
 
 The `Json` field is designed for convenient work with the `json` data type. In most cases, it is used with arrays of objects via `TableBuilder`, but it also supports a mode for working with a single object.
 
-> [!NOTE] 
+> [!NOTE]
 > In the database, the field must be of type `text` or `json`. It is also necessary to specify Eloquent Cast — `array`, `json`, or `collection`.
 
 <a name="fields"></a>
@@ -38,27 +38,27 @@ fields(FieldsContract|Closure|iterable $fields): static
 Example usage:
 
 ```php
-use MoonShine\UI\Fields\Json; 
-use MoonShine\UI\Fields\Position; 
-use MoonShine\UI\Fields\Switcher; 
-use MoonShine\UI\Fields\Text; 
+use MoonShine\UI\Fields\Json;
+use MoonShine\UI\Fields\Position;
+use MoonShine\UI\Fields\Switcher;
+use MoonShine\UI\Fields\Text;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
     return [
-        Json::make('Product Options', 'options') 
+        Json::make('Product Options', 'options')
             ->fields([
                 Position::make(),
                 Text::make('Title'),
                 Text::make('Value'),
                 Switcher::make('Active')
-            ]) 
+            ])
     ];
 }
 
-//...
+// ...
 ```
 
 ![json_fields](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/json_fields.png)
@@ -67,17 +67,17 @@ protected function formFields(): iterable
 Fields can also be passed through a closure, allowing access to the field's context and its data:
 
 ```php
-use MoonShine\UI\Fields\Json; 
-use MoonShine\UI\Fields\Position; 
-use MoonShine\UI\Fields\Switcher; 
-use MoonShine\UI\Fields\Text; 
+use MoonShine\UI\Fields\Json;
+use MoonShine\UI\Fields\Position;
+use MoonShine\UI\Fields\Switcher;
+use MoonShine\UI\Fields\Text;
 
-//...
+// ...
 
 protected function indexFields(): iterable
 {
     return [
-        Json::make('Product Options', 'options') 
+        Json::make('Product Options', 'options')
             ->fields(static fn(Json $ctx) => $ctx->getData()->getOriginal()->is_active ? [
                 Position::make(),
                 Text::make('Title'),
@@ -85,11 +85,11 @@ protected function indexFields(): iterable
                 Switcher::make('Active')
             ] : [
             Text::make('Title')
-            ]) 
+            ])
     ];
 }
 
-//...
+// ...
 ```
 
 <a name="key-value"></a>
@@ -99,10 +99,10 @@ When your data has a key/value structure, like in the following example `{key: v
 
 ```php
 keyValue(
-    string $key = 'Key',  
-	string $value = 'Value',  
-	?FieldContract $keyField = null,  
-	?FieldContract $valueField = null,
+    string $key = 'Key',
+    string $value = 'Value',
+    ?FieldContract $keyField = null,
+    ?FieldContract $valueField = null,
 )
 ```
 
@@ -114,18 +114,18 @@ keyValue(
 Example usage:
 
 ```php
-use MoonShine\UI\Fields\Json; 
+use MoonShine\UI\Fields\Json;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
     return [
-        Json::make('Data')->keyValue() 
+        Json::make('Data')->keyValue()
     ];
 }
 
-//...
+// ...
 ```
 
 ![json_key_value](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/json_key_value.png)
@@ -134,10 +134,10 @@ protected function formFields(): iterable
 Example with changing field types:
 
 ```php
-use MoonShine\UI\Fields\Json; 
+use MoonShine\UI\Fields\Json;
 use MoonShine\UI\Fields\Select;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -145,11 +145,11 @@ protected function formFields(): iterable
         Json::make('Label', 'data')->keyValue(
             keyField: Select::make('Key')->options(['vk' => 'VK', 'email' => 'E-mail']),
             valueField: Select::make('Value')->options(['1' => '1', '2' => '2']),
-        ), 
+        ),
     ];
 }
 
-//...
+// ...
 ```
 
 <a name="only-value"></a>
@@ -159,8 +159,8 @@ If you need to store only values, like in the example `['value_1', 'value_2']`, 
 
 ```php
 onlyValue(
-	string $value = 'Value',  
-	?FieldContract $valueField = null,
+    string $value = 'Value',
+    ?FieldContract $valueField = null,
 )
 ```
 
@@ -170,18 +170,18 @@ onlyValue(
 Example usage:
 
 ```php
-use MoonShine\UI\Fields\Json; 
+use MoonShine\UI\Fields\Json;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
     return [
-        Json::make('Data')->onlyValue() 
+        Json::make('Data')->onlyValue()
     ];
 }
 
-//...
+// ...
 ```
 
 ![json_only_value](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/json_only_value.png)
@@ -199,22 +199,22 @@ object()
 Example usage:
 
 ```php
-use MoonShine\UI\Fields\Json; 
+use MoonShine\UI\Fields\Json;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
     return [
-        Json::make('Product Options', 'options') 
+        Json::make('Product Options', 'options')
             ->fields([
                 Text::make('Title'),
                 Switcher::make('Active')
-            ])->object() 
+            ])->object()
     ];
 }
 
-//...
+// ...
 ```
 
 <a name="default"></a>
@@ -233,7 +233,7 @@ use MoonShine\UI\Fields\Json;
 use MoonShine\UI\Fields\Switcher;
 use MoonShine\UI\Fields\Text;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -269,7 +269,7 @@ protected function formFields(): iterable
     ];
 }
 
-//...
+// ...
 ```
 
 <a name="creatable-removable"></a>
@@ -281,9 +281,9 @@ Example usage:
 
 ```php
 creatable(
-    Closure|bool|null $condition = null,  
-	?int $limit = null,  
-	?ActionButtonContract $button = null
+    Closure|bool|null $condition = null,
+    ?int $limit = null,
+    ?ActionButtonContract $button = null
 )
 ```
 
@@ -293,8 +293,8 @@ creatable(
 
 ```php
 removable(
-    Closure|bool|null $condition = null,  
-	array $attributes = []
+    Closure|bool|null $condition = null,
+    array $attributes = []
 )
 ```
 
@@ -306,19 +306,19 @@ Example usage:
 ```php
 use MoonShine\UI\Fields\Json;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
     return [
         Json::make('Data')
             ->keyValue()
-            ->creatable(limit: 6) 
-            ->removable() 
+            ->creatable(limit: 6)
+            ->removable()
     ];
 }
 
-//...
+// ...
 ```
 
 ![json_removable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/json_removable.png)
@@ -329,7 +329,7 @@ protected function formFields(): iterable
 ```php
 use MoonShine\UI\Fields\Json;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -338,11 +338,11 @@ protected function formFields(): iterable
             ->keyValue()
             ->creatable(
                 button: ActionButton::make('New', '#')->primary()
-            ) 
+            )
     ];
 }
 
-//...
+// ...
 ```
 
 ### HTML Attributes for the Remove Button
@@ -350,7 +350,7 @@ protected function formFields(): iterable
 ```php
 use MoonShine\UI\Fields\Json;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -360,12 +360,12 @@ protected function formFields(): iterable
             Image::make('Image'),
             Text::make('Value'),
         ])
-            ->removable(attributes: ['@click.prevent' => 'customAsyncRemove']) 
+            ->removable(attributes: ['@click.prevent' => 'customAsyncRemove'])
             ->creatable()
     ];
 }
 
-//...
+// ...
 ```
 
 <a name="vertical"></a>
@@ -382,7 +382,7 @@ Example usage:
 ```php
 use MoonShine\UI\Fields\Json;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -393,7 +393,7 @@ protected function formFields(): iterable
     ];
 }
 
-//...
+// ...
 ```
 ![json_vertical](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/json_vertical.png)
 ![json_vertical_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/json_vertical_dark.png)
@@ -407,7 +407,7 @@ If the field is used in filters, the filtering mode must be enabled using the `f
 use MoonShine\UI\Fields\Json;
 use MoonShine\UI\Fields\Text;
 
-//...
+// ...
 
 public function filters(): array
 {
@@ -421,7 +421,7 @@ public function filters(): array
     ];
 }
 
-//...
+// ...
 ```
 
 <a name="buttons"></a>
@@ -439,7 +439,7 @@ Example:
 use MoonShine\ActionButtons\ActionButton;
 use MoonShine\UI\Fields\Json;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -458,7 +458,7 @@ protected function formFields(): iterable
     ];
 }
 
-//...
+// ...
 ```
 
 <a name="modify"></a>
@@ -483,7 +483,7 @@ Example:
 use MoonShine\ActionButtons\ActionButton;
 use MoonShine\UI\Fields\Json;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -497,7 +497,7 @@ protected function formFields(): iterable
     ];
 }
 
-//...
+// ...
 ```
 
 ### Table Modifier
@@ -517,7 +517,7 @@ Example:
 use MoonShine\Components\TableBuilder;
 use MoonShine\UI\Fields\Json;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -531,5 +531,5 @@ protected function formFields(): iterable
     ];
 }
 
-//...
+// ...
 ```

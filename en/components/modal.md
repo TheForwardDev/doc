@@ -16,7 +16,8 @@
 <a name="basics"></a>
 ## Basics
 
-The `Modal` component allows you to create modal windows. You can create a `Modal` using the static method `make()`.
+The `Modal` component allows you to create modal windows.
+You can create a `Modal` using the static method `make()`.
 
 ```php
 make(
@@ -68,7 +69,7 @@ You can open or close a modal window without using the component through `javasc
 use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\Modal;
 
-//...
+// ...
 
 protected function components(): iterable
 {
@@ -81,7 +82,7 @@ protected function components(): iterable
     ];
 }
 
-//...
+// ...
 ```
 
 ### Triggering an Event via ActionButton

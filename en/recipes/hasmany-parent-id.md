@@ -15,9 +15,9 @@ class PostImageResource extends ModelResource
     use ResourceWithParent;
 
     protected string $model = PostImage::class;
-    
-    //...
-    
+
+    // ...
+
     protected function getParentResourceClassName(): string
     {
         return PostResource::class;
@@ -42,6 +42,6 @@ class PostImageResource extends ModelResource
         ];
     }
 
-    //...
+    // ...
 }
 ```

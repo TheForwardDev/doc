@@ -9,11 +9,11 @@
 <a name="basics"></a>
 ## Basics
 
-`MoonShine` allows you to switch the admin panel to `API` mode; to do this, simply add `Accept: application/json` to the request header, after which `CRUD` operations will return `json` responses.
+**MoonShine** allows you to switch the admin panel to `API` mode; to do this, simply add `Accept: application/json` to the request header, after which `CRUD` operations will return `json` responses.
 We also provide tools that allow you to switch authentication to `JWT` tokens, as well as generate `OpenApi` specifications and documentation based on resources.
 
 > [!NOTE]
-> When fully using MoonShine in API mode, don't forget to disable session middleware in the MoonShine configuration.
+> When fully using **MoonShine** in API mode, don't forget to disable session middleware in the **MoonShine** configuration.
 
 > [!TIP]
 > Also, take a look at the [SDUI](/docs/{{version}}/frontend/sdui) section.
@@ -21,7 +21,7 @@ We also provide tools that allow you to switch authentication to `JWT` tokens, a
 <a name="jwt"></a>
 ## JWT
 
-`MoonShine` also provides a simple way to switch the admin panel to `API` mode and interact via tokens.
+**MoonShine** also provides a simple way to switch the admin panel to `API` mode and interact via tokens.
 
 Installation:
 

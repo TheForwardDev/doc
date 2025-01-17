@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-//...
+// ...
 
 Image::make('Images', 'images')
     ->multiple()
@@ -55,7 +55,7 @@ Image::make('Images', 'images')
         return $data;
     })
 
-//...
+// ...
 ```
 
 > [!WARNING]

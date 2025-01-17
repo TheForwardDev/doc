@@ -6,8 +6,8 @@
 protected function formFields(): iterable
 {
     return [
-        //...
-        
+        // ...
+
         Image::make('Avatar')
             ->removable(attributes: [
                 'data-async-url' => $this->getRouter()->getEndpoints()->method('removeAvatar', params: ['resourceItem' => $this->getItemID()]),
@@ -15,8 +15,8 @@ protected function formFields(): iterable
                     fetch($event.target.closest('button').dataset.asyncUrl).then(() => $event.target.closest('.x-removeable').remove())
                 JS
             ]),
-            
-        //...
+
+        // ...
     ];
 }
 
@@ -38,8 +38,8 @@ public function removeAvatar(MoonShineRequest $request): void
 protected function formFields(): iterable
 {
     return [
-        //...
-        
+        // ...
+
         Json::make('Data')->fields([
             Text::make('Title'),
         ])->removable(attributes: [
@@ -50,8 +50,8 @@ protected function formFields(): iterable
                 fetch(`${$event.target.closest('a').dataset.asyncUrl}&index=${$event.target.closest('tr').rowIndex}`).then(() => remove())
             JS
         ]),
-            
-        //...
+
+        // ...
     ];
 }
 

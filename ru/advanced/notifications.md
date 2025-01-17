@@ -12,9 +12,9 @@
 ## Основы
 
 > [!NOTE]
-> По умолчанию MoonShine использует [Laravel Database Notification](https://laravel.com/docs/notifications#database-notifications), но мы используем абстракции, которые легко заменить.
+> По умолчанию **MoonShine** использует [Laravel Database Notification](https://laravel.com/docs/notifications#database-notifications), но мы используем абстракции, которые легко заменить.
 
-Если есть необходимость добавить уведомления в центр уведомлений `MoonShine`, используйте класс `MoonShine\Laravel\Notifications\MoonShineNotification`.
+Если есть необходимость добавить уведомления в центр уведомлений **MoonShine**, используйте класс `MoonShine\Laravel\Notifications\MoonShineNotification`.
 
 Напрямую через статически метод `send()`:
 
@@ -53,7 +53,7 @@ public function di(MoonShineNotificationContract $notification)
 <a name="settings"></a>
 ## Настройка
 
-Во время установки `MoonShine` у вас есть возможность выбрать, хотите ли вы использовать уведомления и `Database Notification`.
+Во время установки **MoonShine** у вас есть возможность выбрать, хотите ли вы использовать уведомления и `Database Notification`.
 Кроме того, вы можете изменить эти настройки позже через конфигурацию:
 
 ~~~tabs
@@ -79,7 +79,7 @@ $config
 <a name="custom"></a>
 ## Кастомные уведомления
 
-`MoonShine` гибкий и всё в нем можно заменить на собственные реализации, для уведомлений нужно реализовать интерфейсы:
+**MoonShine** гибкий и всё в нем можно заменить на собственные реализации, для уведомлений нужно реализовать интерфейсы:
 
 - `MoonShine\Laravel\Contracts\Notifications\MoonShineNotificationContract`
 - `MoonShine\Laravel\Contracts\Notifications\NotificationItemContract`

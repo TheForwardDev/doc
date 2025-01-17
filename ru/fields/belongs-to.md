@@ -65,9 +65,9 @@ BelongsTo::make('Country', resource: CountryResource::class)
 ```php
 class CountryResource extends ModelResource
 {
-    //...
+    // ...
 }
-//...
+// ...
 BelongsTo::make('Country', 'country')
 ```
 
@@ -76,14 +76,14 @@ BelongsTo::make('Country', 'country')
 ```php
 class CountryResource extends ModelResource
 {
-    //...
+    // ...
 }
-//...
+// ...
 BelongsTo::make('Country')
 ```
 
 > [!NOTE]
-> По умолчанию для отображения значения используется поле в связанной таблице, которое указано свойством `$column` в ресурсе модели.  
+> По умолчанию для отображения значения используется поле в связанной таблице, которое указано свойством `$column` в ресурсе модели.
 > Аргумент `$formatted` позволяет переопределить свойство $column.
 
 ```php
@@ -95,7 +95,7 @@ class CountryResource extends ModelResource
 {
     public string $column = 'title';
 }
-//..
+// ...
 BelongsTo::make(
     'Country',
     'country',
@@ -160,7 +160,7 @@ BelongsTo::make('Country', resource: CategoryResource::class)
 ![select_nullable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable_dark.png)
 
 > [!TIP]
-> MoonShine - очень удобный и функциональный инструмент. Однако для его использования нужно быть уверенным в основах Laravel.
+> **MoonShine** - очень удобный и функциональный инструмент. Однако для его использования нужно быть уверенным в основах Laravel.
 
 Не забудьте указать в таблице базы данных, что поле может принимать значение `Null`.
 
@@ -309,7 +309,7 @@ BelongsTo::make('City', 'city',  resource: CityResource::class)
 ```
 
 > [!NOTE]
-> При построении запроса в `asyncSearchQuery()` сохраняется исходное состояние построителя.  
+> При построении запроса в `asyncSearchQuery()` сохраняется исходное состояние построителя.
 Если вам нужно заменить его своим построителем, то используйте флаг `replaceQuery`.
 
 ```php
@@ -372,7 +372,7 @@ BelongsTo::make('Country', resource: CountryResource::class)
     ->withImage('thumb', 'public', 'countries')
 ```
 
-![belongs_to_image](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image.png) 
+![belongs_to_image](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image.png)
 
 ![belongs_to_image_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image_dark.png)
 

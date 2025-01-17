@@ -22,7 +22,7 @@
 <a name="basics"></a>
 ## Basics
 
-*Page* is the foundation of the `MoonShine` admin panel. The main purpose of `Page` is to display components.
+*Page* is the foundation of the **MoonShine** admin panel. The main purpose of `Page` is to display components.
 
 Pages with similar logic can be combined into a `Resource`.
 
@@ -58,7 +58,7 @@ class CustomPage extends Page
 
     protected string $subtitle = 'Subtitle';
 
-    //...
+    // ...
 }
 ```
 
@@ -81,7 +81,7 @@ class CustomPage extends Page
         return $this->subtitle ?: 'Subtitle';
     }
 
-    //...
+    // ...
 }
 ```
 
@@ -118,7 +118,7 @@ class CustomPage extends Page
         ];
     }
 
-    //...
+    // ...
 }
 ```
 
@@ -144,7 +144,7 @@ class CustomPage extends Page
         ];
     }
 
-    //...
+    // ...
 }
 ```
 
@@ -162,14 +162,14 @@ class CustomPage extends Page
 {
     protected ?string $layout = AppLayout::class;
 
-    //...
+    // ...
 }
 ```
 
 <a name="modify-layout"></a>
 ### Modifying Layout
 
-When developing an admin panel using `MoonShine`, there is often a need for flexible management of templates. Instead of creating numerous separate templates for various situations, `MoonShine` provides an opportunity to dynamically modify existing templates. This is achieved through the `modifyLayout` method.
+When developing an admin panel using **MoonShine**, there is often a need for flexible management of templates. Instead of creating numerous separate templates for various situations, **MoonShine** provides an opportunity to dynamically modify existing templates. This is achieved through the `modifyLayout` method.
 
 The `modifyLayout` method allows you to access the template after creating its instance and make necessary changes. This is especially useful when you need to adapt the template to specific conditions or add dynamic content.
 
@@ -204,7 +204,7 @@ class CustomPage extends Page
 {
     protected ?string $alias = null;
 
-    //...
+    // ...
 }
 ```
 
@@ -220,14 +220,14 @@ class CustomPage extends Page
         return 'custom_page';
     }
 
-    //...
+    // ...
 }
 ```
 
 <a name="render"></a>
 ## Rendering
 
-You can display the page outside of `MoonShine` by simply returning it in a controller:
+You can display the page outside of **MoonShine** by simply returning it in a controller:
 
 ```php
 class ProfileController extends Controller
@@ -319,7 +319,7 @@ class PostPage extends Page
 <a name="on-boot"></a>
 ### Booting Instance
 
-The `booted` method allows integration at the moment when `MoonShine` creates an instance of the page in the system.
+The `booted` method allows integration at the moment when **MoonShine** creates an instance of the page in the system.
 
 ```php
 namespace App\MoonShine\Pages;
@@ -373,7 +373,7 @@ use MoonShine\AssetManager\Js;
 protected function onLoad(): void
 {
     parent::onLoad();
-    
+
     $this->getAssetManager()
         ->add(Css::make('/css/app.css'))
         ->append(Js::make('/js/app.js'));

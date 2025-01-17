@@ -41,7 +41,7 @@
 <a name="basics"></a>
 ## Basics
 
-`TableBuilder` is a tool in MoonShine for creating customizable tables for displaying data. It is used on index and detail CRUD pages, as well as for relationship fields such as `HasMany`, `BelongsToMany`, `RelationRepeater`, and `Json` fields.
+`TableBuilder` is a tool in **MoonShine** for creating customizable tables for displaying data. It is used on index and detail CRUD pages, as well as for relationship fields such as `HasMany`, `BelongsToMany`, `RelationRepeater`, and `Json` fields.
 
 ~~~tabs
 tab: Class
@@ -53,10 +53,10 @@ TableBuilder::make(iterable $fields = [], iterable $items = [])
 tab: Blade
 ```blade
 <x-moonshine::table
-    :columns="[ 
-        '#', 'First', 'Last', 'Email' 
+    :columns="[
+        '#', 'First', 'Last', 'Email'
     ]"
-    :values="[ 
+    :values="[
         [1, fake()->firstName(), fake()->lastName(), fake()->safeEmail()],
         [2, fake()->firstName(), fake()->lastName(), fake()->safeEmail()],
         [3, fake()->firstName(), fake()->lastName(), fake()->safeEmail()]
@@ -72,11 +72,11 @@ Example of using `TableBuilder`:
 
 ```php
 TableBuilder::make()
-    ->items([ 
-      ['id' => 1, 'title' => 'Hello world'] 
+    ->items([
+      ['id' => 1, 'title' => 'Hello world']
     ])
-    ->fields([ 
-        ID::make()->sortable(), 
+    ->fields([
+        ID::make()->sortable(),
         Text::make('Title', 'title'),
     ])
 ```
@@ -548,7 +548,7 @@ Event list for TableBuilder:
 
 All parameters of the `async` method are optional, and by default, `TableBuilder` will automatically set URL based on the current page.
 
-In the process of using *TableBuilder* in `async` mode, there may arise a task where you use it outside the admin panel on pages that are not declared in the MoonShine system.
+In the process of using *TableBuilder* in `async` mode, there may arise a task where you use it outside the admin panel on pages that are not declared in the **MoonShine** system.
 Then you will need to specify your own URL and implement a response with the HTML table. Let's consider an implementation example:
 
 ```php
@@ -682,10 +682,10 @@ Styled tables can be created using the `moonshine::table` component.
 
 ```php
 <x-moonshine::table
-    :columns="[ 
-        '#', 'First', 'Last', 'Email' 
+    :columns="[
+        '#', 'First', 'Last', 'Email'
     ]"
-    :values="[ 
+    :values="[
         [1, fake()->firstName(), fake()->lastName(), fake()->safeEmail()],
         [2, fake()->firstName(), fake()->lastName(), fake()->safeEmail()],
         [3, fake()->firstName(), fake()->lastName(), fake()->safeEmail()]
@@ -701,10 +701,10 @@ The `simple` parameter allows creating a simplified view of the table.
 ```php
 <x-moonshine::table
     :simple="true"
-    :columns="[ 
-        '#', 'First', 'Last', 'Email' 
+    :columns="[
+        '#', 'First', 'Last', 'Email'
     ]"
-    :values="[ 
+    :values="[
         [1, fake()->firstName(), fake()->lastName(), fake()->safeEmail()],
         [2, fake()->firstName(), fake()->lastName(), fake()->safeEmail()],
         [3, fake()->firstName(), fake()->lastName(), fake()->safeEmail()]
@@ -720,10 +720,10 @@ If the table contains a large number of items, you can sticky the head while scr
 ```php
 <x-moonshine::table
     :sticky="true"
-    :columns="[ 
-        '#', 'First', 'Last', 'Email' 
+    :columns="[
+        '#', 'First', 'Last', 'Email'
     ]"
-    :values="[ 
+    :values="[
         [1, fake()->firstName(), fake()->lastName(), fake()->safeEmail()],
         [2, fake()->firstName(), fake()->lastName(), fake()->safeEmail()],
         [3, fake()->firstName(), fake()->lastName(), fake()->safeEmail()]
@@ -738,8 +738,8 @@ The `notfound` parameter allows displaying a message when there are no items in 
 
 ```php
 <x-moonshine::table
-    :columns="[ 
-        '#', 'First', 'Last', 'Email' 
+    :columns="[
+        '#', 'First', 'Last', 'Email'
     ]"
     :notfound="true"
 />
@@ -823,4 +823,4 @@ Available classes:
 </x-moonshine::table>
 ```
 
-`TableBuilder` in `MoonShine` offers a wide range of capabilities for creating flexible and functional tables in the admin panel.
+`TableBuilder` in **MoonShine** offers a wide range of capabilities for creating flexible and functional tables in the admin panel.

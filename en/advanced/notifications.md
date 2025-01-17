@@ -12,9 +12,9 @@
 ## Basics
 
 > [!NOTE]
-> By default, MoonShine uses [Laravel Database Notification](https://laravel.com/docs/notifications#database-notifications), but we use abstractions that can be easily replaced.
+> By default, **MoonShine** uses [Laravel Database Notification](https://laravel.com/docs/notifications#database-notifications), but we use abstractions that can be easily replaced.
 
-If you need to add notifications to the `MoonShine` notification center, use the `MoonShine\Laravel\Notifications\MoonShineNotification` class.
+If you need to add notifications to the **MoonShine** notification center, use the `MoonShine\Laravel\Notifications\MoonShineNotification` class.
 
 Directly via the static method `send()`:
 
@@ -53,7 +53,7 @@ public function di(MoonShineNotificationContract $notification)
 <a name="settings"></a>
 ## Settings
 
-During the installation of `MoonShine`, you have the option to choose whether you want to use notifications and `Database Notification`.
+During the installation of **MoonShine**, you have the option to choose whether you want to use notifications and `Database Notification`.
 Additionally, you can change these settings later through the configuration:
 
 ~~~tabs
@@ -79,7 +79,7 @@ The component `MoonShine\Laravel\Components\Layout\Notifications` is used to dis
 <a name="custom"></a>
 ## Custom Notifications
 
-`MoonShine` is flexible and everything can be replaced with your own implementations; for notifications, you need to implement the interfaces:
+**MoonShine** is flexible and everything can be replaced with your own implementations; for notifications, you need to implement the interfaces:
 
 - `MoonShine\Laravel\Contracts\Notifications\MoonShineNotificationContract`
 - `MoonShine\Laravel\Contracts\Notifications\NotificationItemContract`

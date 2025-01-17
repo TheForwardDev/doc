@@ -21,7 +21,7 @@ make(iterable $components = [])
 use MoonShine\Laravel\Components\Fragment;
 use MoonShine\UI\Fields\Text;
 
-//...
+// ...
 
 protected function components(): iterable
 {
@@ -32,7 +32,7 @@ protected function components(): iterable
     ];
 }
 
-//...
+// ...
 ```
 
 <a name="async"></a>
@@ -94,7 +94,7 @@ Fragment::make([
 ])
     ->name('fg-step-2')
 ,
-//...
+// ...
 ActionButton::make('Start')->dispatchEvent([AlpineJs::event(JsEvent::FRAGMENT_UPDATED, 'fg-step-1')])
 ,
 ```

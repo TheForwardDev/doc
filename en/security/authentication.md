@@ -17,7 +17,7 @@
 <a name="basics"></a>
 ## Basics
 
-`MoonShine` provides a built-in authentication system that by default uses its own user model and `guard`.
+**MoonShine** provides a built-in authentication system that by default uses its own user model and `guard`.
 This allows you to quickly get started with the admin panel without worrying about setting up authentication.
 
 <a name="configuration"></a>
@@ -61,7 +61,7 @@ $config
 <a name="disabling-authentication"></a>
 ## Disabling authentication
 
-If you want to disable the built-in authentication of `MoonShine`, you can do this in `MoonShineServiceProvider`:
+If you want to disable the built-in authentication of **MoonShine**, you can do this in `MoonShineServiceProvider`:
 
 ```php
 $config->authDisable();
@@ -107,7 +107,7 @@ $config->changePage(\MoonShine\Laravel\Pages\ProfilePage::class, \App\MoonShine\
 <a name="role-based-access"></a>
 ## Role-based access
 
-If you need to restrict access to the MoonShine admin panel based on user roles or other conditions, you can easily add your own `middleware`.
+If you need to restrict access to the **MoonShine** admin panel based on user roles or other conditions, you can easily add your own `middleware`.
 
 ### Creating middleware
 
@@ -155,7 +155,7 @@ $config->addMiddleware([
 <a name="authentication-pipelines"></a>
 ## Authentication pipelines
 
-Authentication `pipelines` in MoonShine allow you to add additional checks and actions to the authentication process after a successful login and password check.
+Authentication `pipelines` in **MoonShine** allow you to add additional checks and actions to the authentication process after a successful login and password check.
 
 ### Configuring pipelines
 
@@ -206,10 +206,10 @@ class PhoneVerification
 - Modularity: Each aspect of extended authentication is isolated in a separate class.
 - Extensibility: Easy to add new authentication methods or checks.
 
-Using authentication pipelines allows for complex authentication scenarios while keeping the code clean and modular, and gives full control over the process of users logging into the MoonShine admin panel.
+Using authentication pipelines allows for complex authentication scenarios while keeping the code clean and modular, and gives full control over the process of users logging into the **MoonShine** admin panel.
 
 <a name="socialite"></a>
-# Socialite 
+# Socialite
 
 For convenience, you can link your account with social networks to simplify the authentication process.
 
@@ -217,7 +217,7 @@ This functionality is based on the [Laravel Socialite](https://laravel.com/docs/
 
 Make sure you have it installed and configured.
 
-Next, install the package for integrating `Socialite` into `MoonShine`:
+Next, install the package for integrating `Socialite` into **MoonShine**:
 
 ```shell
 composer require moonshine/socialite
@@ -378,6 +378,6 @@ protected function components(): iterable
 <a name="jwt"></a>
 # JWT
 
-`MoonShine` also provides a simple way to switch the admin panel to `API` mode and interact through tokens.
+**MoonShine** also provides a simple way to switch the admin panel to `API` mode and interact through tokens.
 
 For more details, read the [API](/docs/{{version}}/frontend/api) section.

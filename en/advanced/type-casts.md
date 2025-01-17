@@ -1,9 +1,9 @@
 # TypeCasts
 
-By default, in `MoonShine`, fields work with primitive types and know nothing about models. 
+By default, in **MoonShine**, fields work with primitive types and know nothing about models.
 This was done to ensure that the system is not bound only to models, allowing fields to have access to both raw data and typed data depending on the situation.
 
-`TypeCast` for models is already enabled in `MoonShine`, but if you need to work with a different type of data, you will need an object that implements the `MoonShine\Contracts\Core\TypeCasts\DataCasterContract` interface.
+`TypeCast` for models is already enabled in **MoonShine**, but if you need to work with a different type of data, you will need an object that implements the `MoonShine\Contracts\Core\TypeCasts\DataCasterContract` interface.
 
 ```php
 interface DataCasterContract

@@ -16,7 +16,7 @@
 <a name="basics"></a>
 ## Основы
 
-`Alpine.js` интегрирован в `MoonShine` "из коробки" и предоставляет декларативный подход к созданию динамического поведения прямо в HTML-разметке.
+`Alpine.js` интегрирован в **MoonShine** "из коробки" и предоставляет декларативный подход к созданию динамического поведения прямо в HTML-разметке.
 Это позволяет легко добавлять такие функции как:
 
 - Динамическое скрытие/отображение элементов
@@ -42,7 +42,7 @@
 php artisan moonshine:component MyComponent
 ```
 
-Путь оставим как предлагает `MoonShine` - `/resources/views/admin/components/my-component.blade.php`.
+Путь оставим как предлагает **MoonShine** - `/resources/views/admin/components/my-component.blade.php`.
 Внутри добавим `x-data` с наименованием нашего компонента, тем самым мы укажем, что область внутри является компонентом `Alpine.js`
 
 ```html
@@ -73,13 +73,13 @@ document.addEventListener("alpine:init", () => {
 <a name="events"></a>
 ## События
 
-Благодаря `js` событиям вы можете удобно взаимодействовать с `MoonShine`! Обновлять формы, таблицы, области, вызывать модальные окна, сбрасывать формы и многое другое.
+Благодаря `js` событиям вы можете удобно взаимодействовать с **MoonShine**! Обновлять формы, таблицы, области, вызывать модальные окна, сбрасывать формы и многое другое.
 Вы также можете создавать собственные события в `js`.
 
 <a name="#default-events"></a>
 ### Стандартные события
 
-В админ-панели `MoonShine` определено несколько стандартных событий, названия которых удобно получать через `enum` `JsEvent`, но вы также можете их вызвать из `js`.
+В админ-панели **MoonShine** определено несколько стандартных событий, названия которых удобно получать через `enum` `JsEvent`, но вы также можете их вызвать из `js`.
 
 - `fragment_updated:{componentName}`(`JsEvent::FRAGMENT_UPDATED`) - обновление фрагмента,
 - `table_updated:{componentName}`(`JsEvent::TABLE_UPDATED`) - обновление таблицы,
@@ -147,7 +147,7 @@ use MoonShine\Support\Enums\JsEvent;
 use MoonShine\Laravel\Http\Responses\MoonShineJsonResponse;
 use MoonShine\Support\AlpineJs;
 
-//...
+// ...
 
 return MoonShineJsonResponse::make()
   ->events([
@@ -248,7 +248,7 @@ FormBuilder::make('/crud/update')
 <a name="js-core"></a>
 ## Глобальный класс
 
-Мы предоставляем глобальный класс `MoonShine` для удобного взаимодействия в клиентской части
+Мы предоставляем глобальный класс **MoonShine** для удобного взаимодействия в клиентской части
 
 ## Request
 
@@ -308,7 +308,7 @@ MoonShine.iterable.reindex(
 <a name="response-calback"></a>
 ## Обработка ответа
 
-`MoonShine` позволяет интегрироваться в процесс выполнения асинхронных запросов в `js`, указывая какая функция выполнится перед запросом и после получения ответа.
+**MoonShine** позволяет интегрироваться в процесс выполнения асинхронных запросов в `js`, указывая какая функция выполнится перед запросом и после получения ответа.
 
 `ActionButton`, `FormBuilder`, `TableBuilder`, `Field` и другие компоненты, реализующие интерфейс `HasAsyncContract` в `async` методах, также содержат параметр `callback`.
 
@@ -327,7 +327,7 @@ ActionButton::make()->method('myMethod', callback: AsyncCallback::with(responseH
 
 При клике на кнопку отправим запрос в метод `myMethod` и при ответе вызовем функцию `myResponseHandler`.
 
-Следующий шаг - необходимо объявить эту функцию в `js` через глобальный класс `MoonShine`:
+Следующий шаг - необходимо объявить эту функцию в `js` через глобальный класс **MoonShine**:
 
 ```js
 document.addEventListener("moonshine:init", () => {
@@ -352,7 +352,7 @@ ActionButton::make()->method('myMethod', callback: AsyncCallback::with(beforeReq
 
 При нажатии на кнопку перед отправкой запроса в метод `myMethod` будет выполнена функция `myBeforeRequest`.
 
-Следующий шаг - необходимо объявить эту функцию в `js` через глобальный класс `MoonShine`:
+Следующий шаг - необходимо объявить эту функцию в `js` через глобальный класс **MoonShine**:
 
 ```js
 document.addEventListener("moonshine:init", () => {
@@ -378,7 +378,7 @@ ActionButton::make()->method('myMethod', callback: AsyncCallback::with(afterResp
 
 При клике на кнопку будет отправлен запрос в метод `myMethod` и в случае успеха будет вызвана функция `myAfterResponse`.
 
-Следующий шаг - необходимо объявить эту функцию в `js` через глобальный класс `MoonShine`:
+Следующий шаг - необходимо объявить эту функцию в `js` через глобальный класс **MoonShine**:
 
 ```js
 document.addEventListener("moonshine:init", () => {

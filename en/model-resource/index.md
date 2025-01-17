@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('resources', Controller::class);
 ```
 
-But this work can be entrusted to the admin panel `MoonShine`, which will generate and declare them automatically.
+But this work can be entrusted to the admin panel **MoonShine**, which will generate and declare them automatically.
 
 `ModelResource` is the primary component for creating a section in the admin panel when working with databases.
 
@@ -150,8 +150,8 @@ class MoonShineServiceProvider extends ServiceProvider
 <a name="adding-to-the-menu"></a>
 ## Adding to the Menu
 
-All pages in `MoonShine` have a `Layout`, and each page can have its own.
-By default, when `MoonShine` is installed, a base `MoonShineLayout` is added to the directory `app/MoonShine/Layouts`.
+All pages in **MoonShine** have a `Layout`, and each page can have its own.
+By default, when **MoonShine** is installed, a base `MoonShineLayout` is added to the directory `app/MoonShine/Layouts`.
 In `Layout`, everything related to the appearance of your pages, including navigation, is customized.
 
 To add a section to the menu, you need to declare it via the `menu()` method in `Layout`.
@@ -564,7 +564,7 @@ trait WithPermissions
 <a name="on-boot"></a>
 ### Creating an Instance
 
-The `onBoot` method allows integration at the moment when MoonShine is creating an instance of the resource within the system.
+The `onBoot` method allows integration at the moment when **MoonShine** is creating an instance of the resource within the system.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

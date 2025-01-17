@@ -22,7 +22,7 @@
 <a name="install"></a>
 ## Установка
 
-Команда для установки пакета `MoonShine` в ваш проект `Laravel`:
+Команда для установки пакета **MoonShine** в ваш проект `Laravel`:
 
 ```shell
 php artisan moonshine:install
@@ -302,8 +302,8 @@ php artisan moonshine:publish
 
 Для публикации доступно несколько вариантов:
 
-- **Assets** - ассеты админ-панели `MoonShine`,
-- **Assets template** - создает шаблон для добавления собственных стилей или создания собственной темы для `MoonShine`,
+- **Assets** - ассеты админ-панели **MoonShine**,
+- **Assets template** - создает шаблон для добавления собственных стилей или создания собственной темы для **MoonShine**,
 - **System Resources** - системные `MoonShineUserResource`, `MoonShineUserRoleResource`, которые вы можете изменить,
 - **System Forms** - системные `LoginForm`, `FiltersForm`, которые вы можете изменить,
 - **System Pages** - системные `ProfilePage`, `LoginPage`, `ErrorPage`, которые вы можете изменить.

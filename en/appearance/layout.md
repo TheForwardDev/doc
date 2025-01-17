@@ -15,16 +15,16 @@
 <a name="basics"></a>
 ## Basics
 
-`Layout` in `MoonShine` is a set of components that form the structure of the admin panel page.
-Each element of the page, including `HTML` tags, is a `MoonShine` component.
+`Layout` in **MoonShine** is a set of components that form the structure of the admin panel page.
+Each element of the page, including `HTML` tags, is a **MoonShine** component.
 This provides a high degree of flexibility and customization options.
 
-`MoonShine` offers two ready-made templates:
+**MoonShine** offers two ready-made templates:
 
 - `AppLayout` - basic template,
 - `CompactLayout` - compact template.
 
-When installing `MoonShine`, you choose one of these templates by default.
+When installing **MoonShine**, you choose one of these templates by default.
 The selected template is published in the `app/MoonShine/Layouts` directory and specified in the `moonshine.layout` configuration file.
 
 You can:
@@ -176,7 +176,7 @@ final class MoonShineLayout extends CompactLayout
 }
 ```
 
-As you can see, starting from the `HTML` tag, everything in `MoonShine` consists of components, which provides tremendous freedom to customize your admin panel.
+As you can see, starting from the `HTML` tag, everything in **MoonShine** consists of components, which provides tremendous freedom to customize your admin panel.
 
 Find the complete list of components in the [Components](/docs/{{version}}/components/index) section.
 
@@ -368,7 +368,7 @@ use MoonShine\Laravel\Layouts\AppLayout;
 final class MyLayout extends AppLayout
 {
     // ...
-    
+
     protected function getFaviconComponent(): Favicon
     {
         return parent::getFaviconComponent()->customAssets([
@@ -416,7 +416,7 @@ final class MyLayout extends AppLayout
 <a name="top-menu"></a>
 ### Top Menu
 
-By default, `MoonShine` has a top menu component that can be used instead of `Sidebar` or together with it.
+By default, **MoonShine** has a top menu component that can be used instead of `Sidebar` or together with it.
 Let’s see how to replace `Sidebar` with `TopBar` in `Layout`.
 
 ```php
@@ -539,7 +539,7 @@ final class MyLayout extends AppLayout
 <a name="blade"></a>
 ## Blade
 
-`MoonShine` allows you to create templates directly using `Blade`.
+**MoonShine** allows you to create templates directly using `Blade`.
 
 An example of a basic template:
 

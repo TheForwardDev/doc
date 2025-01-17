@@ -22,7 +22,7 @@
 <a name="install"></a>
 ## Installation
 
-Command to install the `MoonShine` package in your `Laravel` project:
+Command to install the **MoonShine** package in your `Laravel` project:
 
 ```shell
 php artisan moonshine:install
@@ -302,8 +302,8 @@ php artisan moonshine:publish
 
 Several options are available for publishing:
 
-- **Assets** - assets for the `MoonShine` admin panel,
-- **Assets template** - creates a template for adding custom styles or creating a custom theme for `MoonShine`,
+- **Assets** - assets for the **MoonShine** admin panel,
+- **Assets template** - creates a template for adding custom styles or creating a custom theme for **MoonShine**,
 - **System Resources** - system `MoonShineUserResource`, `MoonShineUserRoleResource`, which you can modify,
 - **System Forms** - system `LoginForm`, `FiltersForm`, which you can modify,
 - **System Pages** - system `ProfilePage`, `LoginPage`, `ErrorPage`, which you can modify.

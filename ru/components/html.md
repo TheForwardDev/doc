@@ -7,25 +7,25 @@
 tab: Class
 ```php
 use MoonShine\UI\Components\Layout\Html;
- 
-Html::make(array|iterable $components = []); 
+
+Html::make(array|iterable $components = []);
 ```
 ```php
-Html::make([ 
-    Head::make(), 
-    Body::make([ 
-        //...
+Html::make([
+    Head::make(),
+    Body::make([
+        // ...
     ])
-]); 
+]);
 ```
 tab: Blade
 ```blade
-<x-moonshine::layout.html> 
-    <x-moonshine::layout.head /> 
-    <x-moonshine::layout.body> 
-        //...
-    </x-moonshine::layout.body> 
-</x-moonshine::layout.html> 
+<x-moonshine::layout.html>
+    <x-moonshine::layout.head />
+    <x-moonshine::layout.body>
+        // ...
+    </x-moonshine::layout.body>
+</x-moonshine::layout.html>
 ```
 ~~~
 

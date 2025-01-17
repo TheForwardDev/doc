@@ -28,7 +28,7 @@
 <a name="basics"></a>
 ## Basics
 
-Fields and components in `FormBuilder` are used within forms that are processed by `FormBuilder`. Thanks to `FormBuilder`, fields are displayed and filled with data. `FormBuilder` is used on the edit page, as well as for relationship fields such as `HasOne`. You can also use `FormBuilder` on your own pages, in modal windows, or even outside of `MoonShine`.
+Fields and components in `FormBuilder` are used within forms that are processed by `FormBuilder`. Thanks to `FormBuilder`, fields are displayed and filled with data. `FormBuilder` is used on the edit page, as well as for relationship fields such as `HasOne`. You can also use `FormBuilder` on your own pages, in modal windows, or even outside of **MoonShine**.
 
 ~~~tabs
 tab: Class
@@ -359,7 +359,7 @@ public function formAction(): MoonShineJsonResponse
 {
   return MoonShineJsonResponse::make()->fieldsValues([
     '.title' => 'Hello',
-  ]);    
+  ]);
 }
 
 protected function components(): iterable
@@ -385,7 +385,7 @@ public function formAction(): MoonShineJsonResponse
   return MoonShineJsonResponse::make()->html([
     '.some-class1' => time(),
     '.some-class2' => time(),
-  ]);    
+  ]);
 }
 
 protected function components(): iterable

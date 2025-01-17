@@ -5,7 +5,7 @@ Example of implementing a *HasOne* relationship through the *Template* field.
 ```php
 use MoonShine\UI\Fields\Template;
 
-//...
+// ...
 
 protected function formFields(): iterable
 {
@@ -17,18 +17,18 @@ protected function formFields(): iterable
           ->changeRender(function (?Comment $data, Template $field) {
               $fields = $field->getPreparedFields();
               $fields->fill($data?->toArray() ?? []);
-              
+
               return Components::make($fields);
           })
           ->onAfterApply(function (Article $item, array $value) {
               $item->comment()->updateOrCreate([
                   'id' => $value['id']
               ], $value);
-              
+
               return $item;
           })
     ];
 }
 
-//...
+// ...
 ```

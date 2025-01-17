@@ -16,7 +16,7 @@
 <a name="basics"></a>
 ## Basics
 
-To use import and export in MoonShine resources, you need to install the dependency via `composer`.
+To use import and export in **MoonShine** resources, you need to install the dependency via `composer`.
 
 ```shell
 composer require moonshine/import-export
@@ -185,7 +185,7 @@ public function afterImported(mixed $item): mixed
 <a name="export"></a>
 ## Export
 
-In the MoonShine admin panel, exporting all data considering the current filtering and sorting can be implemented.
+In the **MoonShine** admin panel, exporting all data considering the current filtering and sorting can be implemented.
 
 > [!NOTE]
 > By default, data is exported in `xlsx` format, but there is an option to change the format to `csv` via the `csv()` method of the `ExportHandler` class.

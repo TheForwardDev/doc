@@ -10,7 +10,7 @@
 <a name="basics"></a>
 ## Basics
 
-The foundation of `MoonShine` is the `Laravel` packages.
+The foundation of **MoonShine** is the `Laravel` packages.
 If you are new to `Laravel` package development, here are some resources to help you understand the core concepts:
 
 - The chapter on [Package Development](https://laravel.com/docs/packages) in the `Laravel` documentation serves as an excellent reference guide,
@@ -108,7 +108,7 @@ If you need to add additional authorization logic to the application or an exter
 use MoonShine\Contracts\Core\DependencyInjection\ConfiguratorContract;
 use MoonShine\Laravel\DependencyInjection\MoonShineConfigurator;
 
-//..
+// ...
 
 /**
  * @param  MoonShineConfigurator  $configurator

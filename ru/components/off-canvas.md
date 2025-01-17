@@ -72,7 +72,7 @@ tab: Blade
 ```php
 use MoonShine\UI\Components\OffCanvas;
 
-//...
+// ...
 
 protected function components(): iterable
 {
@@ -85,7 +85,7 @@ protected function components(): iterable
     ];
 }
 
-//...
+// ...
 ```
 
 ### Вызов события через ActionButton

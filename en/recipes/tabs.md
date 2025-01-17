@@ -1,6 +1,6 @@
 # Relationship fields in tabs
 
-In this recipe we will show how to customize a page with a form (we took an example of articles from the main demo repository), where we will place the relationship fields in separate tabs, 
+In this recipe we will show how to customize a page with a form (we took an example of articles from the main demo repository), where we will place the relationship fields in separate tabs,
 and this recipe will also give you an understanding of the enormous possibilities of page customization.
 
 ## Creating a page with a form
@@ -223,8 +223,8 @@ final class ArticleFormPage extends FormPage
 }
 ```
 
-It is worth paying attention to the fact that we have moved the *HasOne* and *HasMany* fields into separate methods, which we also duplicate in the `fields` method. 
-This is necessary so that *MoonShine*, when interacting with fields, can find them in the system.
+It is worth paying attention to the fact that we have moved the *HasOne* and *HasMany* fields into separate methods, which we also duplicate in the `fields` method.
+This is necessary so that **MoonShine**, when interacting with fields, can find them in the system.
 
 ```php
 final class ArticleFormPage extends FormPage
@@ -234,7 +234,7 @@ final class ArticleFormPage extends FormPage
         return [
             ID::make(),
 
-            //...
+            // ...
 
             $this->getCommentsField(),
             $this->getCommentField(),
@@ -290,10 +290,10 @@ final class ArticleFormPage extends FormPage
 > [!NOTE]
 > The `bottomLayer` method has been nulled to avoid duplicating relationship fields under the main form
 
-Additionally, in this recipe we have added *TableBuilder*, where we also display data from the relationship, thereby we want to show that you are not limited only by fields, 
+Additionally, in this recipe we have added *TableBuilder*, where we also display data from the relationship, thereby we want to show that you are not limited only by fields,
 You can also display your own tables and forms
 
 > [!WARNING]
 > For more complex page customization, you must follow the following rules:
-> 1. Do not create forms within forms, this will lead to conflicts or require additional actions (not related to *MoonShine*),
+> 1. Do not create forms within forms, this will lead to conflicts or require additional actions (not related to **MoonShine**),
 > 2. Don’t forget to fill the fields with data and convert them to the required type.

@@ -31,12 +31,12 @@ final class MoonShineLayout extends AppLayout
     public function build(): Layout
     {
         return Layout::make([
-            //...
+            // ...
 
             Footer::make([
-                // .. 
+                // ..
             ]),
-            
+
             // ...
         ]);
     }

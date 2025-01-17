@@ -22,14 +22,14 @@ final class MoonShineLayout extends AppLayout
     public function build(): Layout
     {
         return Layout::make([
-            //...
+            // ...
             Content::make([
                 Title::make($this->getPage()->getTitle())->class('mb-6'),
                 Components::make(
                     $this->getPage()->getComponents()
                 ),
             ])
-            //...
+            // ...
         ]);
     }
 }

@@ -11,7 +11,7 @@
 <a name="intro"></a>
 ## Introduction
 
-This recipe demonstrates the use of `MoonShine` not as an admin panel, but as a personal account under the `User` model with login, registration, password recovery, and profile (basic set).
+This recipe demonstrates the use of **MoonShine** not as an admin panel, but as a personal account under the `User` model with login, registration, password recovery, and profile (basic set).
 A good example of working with different `Layouts` for different pages.
 
 <a name="routes"></a>
@@ -197,7 +197,7 @@ final class FormLayout extends CompactLayout
 <a name="pages"></a>
 ## Pages
 
-Let's create `MoonShine` pages for displaying data:
+Let's create **MoonShine** pages for displaying data:
 
 ### LoginPage
 
@@ -246,8 +246,8 @@ class LoginPage extends Page
      * @return list<ComponentContract>
      */
     protected function components(): iterable
-	{
-		return [
+    {
+        return [
             FormBuilder::make()
                 ->class('authentication-form')
                 ->action(route('authenticate'))
@@ -274,7 +274,7 @@ class LoginPage extends Page
                 Link::make(route('forgot'), __('Forgot password'))
             ])->justifyAlign('start')
         ];
-	}
+    }
 }
 ```
 
@@ -326,8 +326,8 @@ class RegisterPage extends Page
      * @return list<ComponentContract>
      */
     protected function components(): iterable
-	{
-		return [
+    {
+        return [
             FormBuilder::make()
                 ->class('authentication-form')
                 ->action(route('register.store'))
@@ -351,7 +351,7 @@ class RegisterPage extends Page
                     ActionButton::make(__('Log in'), route('login'))
                 ])
         ];
-	}
+    }
 }
 ```
 
@@ -400,8 +400,8 @@ class ForgotPage extends Page
      * @return list<ComponentContract>
      */
     protected function components(): iterable
-	{
-		return [
+    {
+        return [
             FormBuilder::make()
                 ->class('authentication-form')
                 ->action(route('forgot'))
@@ -422,7 +422,7 @@ class ForgotPage extends Page
                 ActionButton::make(__('Log in'), route('login'))->primary(),
             ])->justifyAlign('start')
         ];
-	}
+    }
 }
 ```
 
@@ -471,8 +471,8 @@ class ResetPasswordPage extends Page
      * @return list<ComponentContract>
      */
     protected function components(): iterable
-	{
-		return [
+    {
+        return [
             FormBuilder::make()
                 ->class('authentication-form')
                 ->action(route('password.update'))
@@ -493,7 +493,7 @@ class ResetPasswordPage extends Page
                     'class' => 'btn-primary btn-lg w-full',
             ]),
         ];
-	}
+    }
 }
 ```
 
@@ -940,4 +940,4 @@ class RegisterFormRequest extends FormRequest
 }
 ```
 
-That's it! `MoonShine` does not limit you to just an admin panel, as it is a full-fledged UI kit.
+That's it! **MoonShine** does not limit you to just an admin panel, as it is a full-fledged UI kit.

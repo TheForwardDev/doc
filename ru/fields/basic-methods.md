@@ -400,7 +400,7 @@ File::make('image') // это поле отображается в DOM на др
 
 ```php
 File::make('image')->virtualColumn('image_1')
-//...
+// ...
 File::make('image')->virtualColumn('image_2')
 ```
 
@@ -483,7 +483,7 @@ public function onBeforeRender(Closure $onBeforeRender): static
 
 ```php
 Text::make('Thumbnail')->onBeforeRender(function(Text $ctx) {
-    // 
+    //
 })
 ```
 
@@ -1002,7 +1002,7 @@ use MoonShine\AssetManager\Js;
 protected function booted(): void
 {
     parent::booted();
-    
+
     $this->getAssetManager()
         ->add(Css::make('/css/app.css'))
         ->append(Js::make('/js/app.js'));
@@ -1148,8 +1148,8 @@ Text::make('Name')
 class ArticleResource extends ModelResource
 {
     protected bool $submitShowWhen = true;
-    
-    //...
+
+    // ...
 }
 ```
 

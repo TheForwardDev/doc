@@ -10,9 +10,9 @@
 
 ---
 
-`MoonShine` allows you to work in a familiar way using controllers.
+**MoonShine** allows you to work in a familiar way using controllers.
 
-We provide you with our base controller, which helps to conveniently interact with the `UI` and display your views with the `MoonShine` layout.
+We provide you with our base controller, which helps to conveniently interact with the `UI` and display your views with the **MoonShine** layout.
 
 This is useful for showcasing your complex solutions or writing additional handlers.
 
