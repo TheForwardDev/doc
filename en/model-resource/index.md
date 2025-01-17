@@ -352,7 +352,7 @@ protected function activeActions(): ListOf
 ## Buttons
 
 By default, the index page of the resource model contains only a button for creation.
-The `actions()` method allows you to add additional [buttons](/docs/{{version}}/action-button/index).
+The `actions()` method allows you to add additional [buttons](/docs/{{version}}/model-resource/buttons).
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
