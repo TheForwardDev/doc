@@ -17,7 +17,7 @@
 <a name="basics"></a>
 ## Basics
 
-Buttons are displayed on resource pages: index page, form pages (create / edit), and detail page.  
+Buttons are displayed on resource pages: index page, form pages (create / edit), and detail page.
 They are responsible for basic actions with elements and are components of [ActionButton](/docs/{{version}}/components/action-button).
 
 In **MoonShine**, there are many methods that allow you to override either a single [button](/docs/{{version}}/components/action-button) for the resource or an entire [group](/docs/{{version}}/components/action-group).
@@ -59,7 +59,7 @@ protected function modifyCreateButton(ActionButtonContract $button): ActionButto
 }
 ```
 
-![resource_button_create](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_create.png) 
+![resource_button_create](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_create.png)
 ![resource_button_create_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_create_dark.png)
 
 <a name="detail"></a>
@@ -78,7 +78,7 @@ protected function modifyDetailButton(ActionButtonContract $button): ActionButto
 }
 ```
 
-![resource_button_detail](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_detail.png) 
+![resource_button_detail](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_detail.png)
 ![resource_button_detail_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_detail_dark.png)
 
 <a name="edit"></a>
@@ -97,7 +97,7 @@ protected function modifyEditButton(ActionButtonContract $button): ActionButtonC
 }
 ```
 
-![resource_button_edit](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_edit.png) 
+![resource_button_edit](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_edit.png)
 ![resource_button_edit_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_edit_dark.png)
 
 <a name="delete"></a>
@@ -116,7 +116,7 @@ protected function modifyDeleteButton(ActionButtonContract $button): ActionButto
 }
 ```
 
-![resource_button_delete](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_delete.png) 
+![resource_button_delete](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_delete.png)
 ![resource_button_delete_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_delete_dark.png)
 
 <a name="mass-delete"></a>
@@ -155,13 +155,13 @@ protected function modifyFiltersButton(ActionButtonContract $button): ActionButt
 }
 ```
 
-![resource_button_filters](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_filters.png) 
+![resource_button_filters](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_filters.png)
 ![resource_button_filters_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_button_filters_dark.png)
 
 <a name="top-buttons"></a>
 ## Top buttons on index page
 
-By default, the model resource index page has only a create button.  
+By default, the model resource index page has only a create button.
 The `topButtons()` method allows you to add additional [buttons](/docs/{{version}}/components/action-button).
 
 ```php
@@ -181,7 +181,7 @@ protected function topButtons(): ListOf
 }
 ```
 
-![resource_buttons_actions](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_actions.png) 
+![resource_buttons_actions](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_actions.png)
 ![resource_buttons_actions_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_actions_dark.png)
 
 <a name="index-buttons"></a>
@@ -207,7 +207,7 @@ protected function indexButtons(): ListOf
 }
 ```
 
-![resource_buttons_index](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_index.png) 
+![resource_buttons_index](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_index.png)
 ![resource_buttons_index_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_index_dark.png)
 
 For bulk actions with elements, you need to add the `bulk()` method.
@@ -227,7 +227,7 @@ protected function indexButtons(): ListOf
 }
 ```
 
-![resource_buttons_bulk](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_bulk.png) 
+![resource_buttons_bulk](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_bulk.png)
 ![resource_buttons_bulk_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_bulk_dark.png)
 
 
@@ -248,7 +248,7 @@ protected function formButtons(): ListOf
 }
 ```
 
-![resource_buttons_form](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_form.png) 
+![resource_buttons_form](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_form.png)
 ![resource_buttons_form_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_form_dark.png)
 
 The `formBuilderButtons()` method allows you to add additional [buttons](/docs/{{version}}/components/action-button) in the create or edit form.
@@ -287,5 +287,5 @@ protected function detailButtons(): ListOf
 }
 ```
 
-![resource_buttons_detail](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_detail.png) 
+![resource_buttons_detail](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_detail.png)
 ![resource_buttons_detail_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_detail_dark.png)

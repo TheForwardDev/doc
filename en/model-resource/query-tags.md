@@ -133,10 +133,10 @@ By default, all tag buttons are displayed in a line, but you can display them th
 To do this, change the `$queryTagsInDropdown` property in the resource.
 
 ```php
-class PostResource extends ModelResource 
+class PostResource extends ModelResource
 {
     protected bool $queryTagsInDropdown = true;
-    
+
     // ...
 }
 ```

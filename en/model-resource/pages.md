@@ -62,7 +62,7 @@ PageType::DETAIL; // Detail page
 <a name="fields"></a>
 ## Adding Fields
 
-[Fields](/docs/{{version}}/fields/index) in **MoonShine** are used not only for data input but also for output.  
+[Fields](/docs/{{version}}/fields/index) in **MoonShine** are used not only for data input but also for output.
 The `fields()` method in the `CRUD` page class allows you to specify the necessary fields.
 
 ```php

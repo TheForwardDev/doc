@@ -1,5 +1,5 @@
 # Импорт / Экспорт
- 
+
 - [Основы](#basics)
 - [Импорт](#import)
   - [Поля](#import-fields)
@@ -101,13 +101,13 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 
     // ...
 
-	protected function importFields(): iterable
+    protected function importFields(): iterable
     {
         return [
             ID::make(),
             Enum::make('Status')
                 ->attach(StatusEnum::class)
-                ->fromRaw(static fn(string $raw, Enum $ctx) => StatusEnum::tryFrom($raw)), 
+                ->fromRaw(static fn(string $raw, Enum $ctx) => StatusEnum::tryFrom($raw)),
         ];
     }
 }
@@ -137,17 +137,17 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 
     // ...
 
-	protected function import(): ?Handler
+    protected function import(): ?Handler
     {
         return ImportHandler::make(__('moonshine::ui.import'))
             // Указать id пользователей, которые получат уведомление об окончании операции
-            ->notifyUsers(fn(ImportHandler $ctx) => [auth()->id()]) 
+            ->notifyUsers(fn(ImportHandler $ctx) => [auth()->id()])
             // Выбор диска
-            ->disk('public') 
+            ->disk('public')
             // Выбор директории для сохранения файла импорта
-            ->dir('/imports') 
+            ->dir('/imports')
             // Удалять файл после импорта
-            ->deleteAfter() 
+            ->deleteAfter()
             // Разделитель для csv
             ->delimiter(',')
             // Модификация кнопки
@@ -212,7 +212,7 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 
     // ...
 
-	protected function exportFields(): iterable
+    protected function exportFields(): iterable
     {
         return [
             ID::make(),
@@ -248,7 +248,7 @@ class CategoryResource extends ModelResource implements HasImportExportContract
             ID::make(),
             Enum::make('Status')
                 ->attach(StatusEnum::class)
-                ->modifyRawValue(static fn(StatusEnum $raw, Enum $ctx) => $raw->value), 
+                ->modifyRawValue(static fn(StatusEnum $raw, Enum $ctx) => $raw->value),
         ];
     }
 }
@@ -282,22 +282,22 @@ class CategoryResource extends ModelResource implements HasImportExportContract
     {
         return ExportHandler::make(__('moonshine::ui.export'))
             // Указать id пользователей, которые получат уведомление об окончании операции
-            ->notifyUsers(fn() => [auth()->id()]) 
+            ->notifyUsers(fn() => [auth()->id()])
             // Выбор диска
-            ->disk('public') 
+            ->disk('public')
             // Наименование файла
-            ->filename(sprintf('export_%s', date('Ymd-His'))) 
+            ->filename(sprintf('export_%s', date('Ymd-His')))
             // Выбор директории сохранения файла экспорта
-            ->dir('/exports') 
+            ->dir('/exports')
             // Если необходимо экспортировать в формате csv
-            ->csv() 
+            ->csv()
             // Разделитель для csv
-            ->delimiter(',') 
+            ->delimiter(',')
             // Экспорт с подтверждением
             ->withConfirm()
             // Модификация кнопки
             ->modifyButton(fn(ActionButton $btn) => $btn->class('my-class'))
-        ; 
+        ;
     }
 }
 ```
@@ -339,7 +339,7 @@ modifyButton(fn(ActionButton $btn) => $btn->class('my-class'))
 
 ```php
 // выбор пользователей для уведомления
-notifyUsers(fn() => [auth()->id()]) 
+notifyUsers(fn() => [auth()->id()])
 ```
 
 #### when
@@ -349,8 +349,8 @@ notifyUsers(fn() => [auth()->id()])
 when($value = null, callable $callback = null, callable $default = null)
 ```
 
-`$value` - условие,  
-`$callback` - `callback` функция, которая будет выполнена, если условие имеет значение `TRUE`, 
+`$value` - условие,
+`$callback` - `callback` функция, которая будет выполнена, если условие имеет значение `TRUE`,
 `$default` - `callback` функция, которая будет выполнена, если условие имеет значение `FALSE`.
 
 ```php
@@ -370,7 +370,7 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 
     // ...
 
-	protected function import(): ?Handler
+    protected function import(): ?Handler
     {
         return ImportHandler::make('Import')
             ->when(
@@ -389,7 +389,7 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 unless($value = null, callable $callback = null, callable $default = null)
 ```
 
-`$value` - условие,  
+`$value` - условие,
 `$callback` - `callback` функция, которая будет выполнена, если условие имеет значение `FALSE`,
 `$default` - `callback` функция, которая будет выполнена, если условие имеет значение `TRUE`.
 

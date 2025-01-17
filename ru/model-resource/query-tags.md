@@ -133,10 +133,10 @@ QueryTag::make(
 Для этого в ресурсе измените свойство `$queryTagsInDropdown`.
 
 ```php
-class PostResource extends ModelResource 
+class PostResource extends ModelResource
 {
     protected bool $queryTagsInDropdown = true;
-    
+
     // ...
 }
 ```

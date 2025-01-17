@@ -62,7 +62,7 @@ class PostResource extends ModelResource
 }
 ```
 
-> [!TIP] 
+> [!TIP]
 > Не забудьте добавить полнотекстовый индекс.
 
 <a name="json"></a>

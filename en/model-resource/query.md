@@ -73,7 +73,7 @@ use MoonShine\Laravel\Resources\ModelResource;
 class PostResource extends ModelResource
 {
     protected array $with = ['user', 'categories'];
-    
+
     // ...
 }
 ```
@@ -96,7 +96,7 @@ use MoonShine\Laravel\Resources\ModelResource;
 class PostResource extends ModelResource
 {
     // ...
-    
+
     protected function searchQuery(string $terms): void
     {
         return parent::searchQuery($terms)->withTrashed();

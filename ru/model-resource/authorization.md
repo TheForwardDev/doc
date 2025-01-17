@@ -25,7 +25,7 @@ use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected bool $withPolicy = true; 
+    protected bool $withPolicy = true;
 
     // ...
 }

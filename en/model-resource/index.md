@@ -313,7 +313,7 @@ This is not about authorization, but rather a global exclusion of these sections
 This can be done easily through the `activeActions()` method in the resource.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
 // [tl! collapse:5]
 namespace App\MoonShine\Resources;
 

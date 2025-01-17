@@ -141,10 +141,10 @@ protected function indexButtons(): ListOf
 Для этого в ресурсе измените свойство `$indexButtonsInDropdown`:
 
 ```php
-class PostResource extends ModelResource 
+class PostResource extends ModelResource
 {
     protected bool $indexButtonsInDropdown = true;
-    
+
     // ...
 }
 ```

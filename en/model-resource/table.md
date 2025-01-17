@@ -141,10 +141,10 @@ By default, all buttons in the table are displayed in a line, but you can change
 To do this, change the `$indexButtonsInDropdown` property in the resource:
 
 ```php
-class PostResource extends ModelResource 
+class PostResource extends ModelResource
 {
     protected bool $indexButtonsInDropdown = true;
-    
+
     // ...
 }
 ```

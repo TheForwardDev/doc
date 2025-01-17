@@ -121,7 +121,7 @@ use MoonShine\Laravel\Resources\ModelResource;
 class PostResource extends ModelResource
 {
     protected bool $errorsAbove = true;
-  
+
     // ...
 }
 ```

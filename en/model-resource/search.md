@@ -14,7 +14,7 @@
 To perform a search, you need to specify which fields of the model will participate in the search.
 For this, you need to list them in the returned array in the `search()` method.
 
-> [!NOTE] 
+> [!NOTE]
 > If the method returns an empty array, the search string will not be displayed.
 
 ```php
@@ -62,7 +62,7 @@ class PostResource extends ModelResource
 }
 ```
 
-> [!TIP] 
+> [!TIP]
 > Don't forget to add a full-text index.
 
 <a name="json"></a>

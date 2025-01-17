@@ -313,7 +313,7 @@ public function getRedirectAfterDelete(): string
 Делается это крайне просто за счет метода `activeActions()` в ресурсе.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
 // [tl! collapse:5]
 namespace App\MoonShine\Resources;
 
