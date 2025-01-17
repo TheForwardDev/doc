@@ -159,6 +159,7 @@
     - [Select](/docs/{{version}}/recipes/select)
     - [Tabs](/docs/{{version}}/recipes/tabs)
     - [Dashboard settings](/docs/{{version}}/recipes/dashboard-settings)
+    - [Mass edit](/docs/{{version}}/recipes/mass-edit)
     - [IndexPage with CardsBuilder](/docs/{{version}}/recipes/index-page-cards)
     - [Breadcrumbs](/docs/{{version}}/recipes/custom-breadcrumbs)
     - [Form events](/docs/{{version}}/recipes/form-with-events)
