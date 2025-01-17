@@ -497,7 +497,7 @@ protected function pageComponents(): array
 <a name="on-load"></a>
 ### Active Resource
 
-The `onLoad` method allows integration at the moment when the resource is loaded and currently active.
+The `onLoad()` method allows integration at the moment when the resource is loaded and currently active.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

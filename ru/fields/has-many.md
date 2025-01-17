@@ -188,7 +188,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 Если у отношения есть ресурс, и вы хотите получить ID родительского элемента, то вы можете использовать трейт *ResourceWithParent*.
 
 ```php
-use MoonShine\Resources\ModelResource;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Traits\Resource\ResourceWithParent;
 
 class PostImageResource extends ModelResource

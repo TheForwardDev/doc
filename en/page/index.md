@@ -296,7 +296,7 @@ Using `modifyResponse()` provides a flexible way to manage the page response, al
 <a name="on-load"></a>
 ### Active Page
 
-The `onLoad` method allows integration at the moment when the page is loaded and is currently active.
+The `onLoad()` method allows integration at the moment when the page is loaded and is currently active.
 
 ```php
 namespace App\MoonShine\Pages;

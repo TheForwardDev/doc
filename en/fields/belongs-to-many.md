@@ -88,7 +88,7 @@ BelongsToMany::make('Categories')
 ```php
 namespace App\MoonShine\Resources;
 
-use MoonShine\Resources\ModelResource;
+use MoonShine\Laravel\Resources\ModelResource;
 
 class CategoryResource extends ModelResource
 {

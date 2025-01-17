@@ -61,10 +61,12 @@ File::make('File')
 ```
 
 > [!NOTE]
-> По умолчанию используется _disk_ `public`. Вы можете изменить его в файле [конфигурации](https://moonshine-laravel.com/docs/resource/getting-started/configuration).
+> По умолчанию используется _disk_ `public`.
+> Вы можете изменить его в файле [конфигурации](https://moonshine-laravel.com/docs/resource/getting-started/configuration).
 
 > [!NOTE]
-> При использовании драйвера `local` возвращаемое значение `url` не является URL. По этой причине мы рекомендуем всегда хранить ваши файлы с именами, которые будут создавать действительные URL.
+> При использовании драйвера `local` возвращаемое значение `url` не является URL.
+> По этой причине мы рекомендуем всегда хранить ваши файлы с именами, которые будут создавать действительные URL.
 
 <a name="dir"></a>
 ## Директория
@@ -111,7 +113,7 @@ File::make('File')
 
 > [!WARNING]
 > Поле в базе данных должно быть типа _text_ или _json_.
-> Также необходимо добавить приведение типа для eloquent-модели - *json*, или *array*, или *collection*.
+> Также необходимо добавить приведение типа для Eloquent-модели - *json*, или *array*, или *collection*.
 
 <a name="removable"></a>
 ## Удаление файлов
@@ -217,7 +219,8 @@ File::make('File')
 customName(Closure $name)
 ```
 
-```phpuse Illuminate\Http\UploadedFile;
+```php
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
 File::make('File', 'file')

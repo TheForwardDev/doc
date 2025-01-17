@@ -22,7 +22,7 @@ tab: Class
 ```php
 namespace App\MoonShine\Layouts;
 
-use MoonShine\Components\Layout\Menu;
+use MoonShine\UI\Components\Layout\Menu;
 use MoonShine\UI\Components\Layout\TopBar;
 
 final class MoonShineLayout extends AppLayout

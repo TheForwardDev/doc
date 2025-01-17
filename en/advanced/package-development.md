@@ -10,10 +10,10 @@
 <a name="basics"></a>
 ## Basics
 
-The foundation of **MoonShine** is the `Laravel` packages.
-If you are new to `Laravel` package development, here are some resources to help you understand the core concepts:
+The foundation of **MoonShine** is the **Laravel** packages.
+If you are new to **Laravel** package development, here are some resources to help you understand the core concepts:
 
-- The chapter on [Package Development](https://laravel.com/docs/packages) in the `Laravel` documentation serves as an excellent reference guide,
+- The chapter on [Package Development](https://laravel.com/docs/packages) in the **Laravel** documentation serves as an excellent reference guide,
 - [Package Development Course by CutCode](https://learn.cutcode.dev/moonshine),
 - [Free Guide to Package Development by CutCode](https://youtu.be/a_udqxegrRI?si=F8F_v8uGLGLkEbpQ).
 

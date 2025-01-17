@@ -22,7 +22,7 @@
 <a name="install"></a>
 ## Установка
 
-Команда для установки пакета **MoonShine** в ваш проект `Laravel`:
+Команда для установки пакета **MoonShine** в ваш проект **Laravel**:
 
 ```shell
 php artisan moonshine:install
@@ -81,7 +81,7 @@ moonshine:resource {className?} {--type=} {--m|model=} {--t|title=} {--test} {--
 
 Доступные опции:
 
-- `--m|model=` - eloquent модель для модельного ресурса,
+- `--m|model=` - Eloquent модель для модельного ресурса,
 - `--t|title=` - заголовок раздела,
 - `--type=` - быстрый выбор типа ресурса (1 - по умолчанию, 2 - со страницами, 3 - пустой),
 - `--p|policy` - также создать Policy,
@@ -178,7 +178,8 @@ moonshine:component {className?} {--base-dir=} {--base-namespace=}
 
 - `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
 
-После выполнения команды в директории `app/MoonShine/Components` будет создан класс для компонента, а в директории `resources/views/admin/components` - файл `Blade`.
+После выполнения команды в директории `app/MoonShine/Components` будет создан класс для компонента,
+а в директории `resources/views/admin/components` - файл `Blade`.
 
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Layout](/docs/{{version}}/appearance/layout).

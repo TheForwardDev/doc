@@ -10,7 +10,7 @@
 ---
 
 > [!NOTE]
-> Подробнее о поле можно посмотреть в [репозитории пакета](https://github.com/moonshine-software/ace)
+> Подробнее о поле можно посмотреть в [репозитории пакета](https://github.com/moonshine-software/ace).
 
 <a name="installation"></a>
 ## Установка
@@ -80,13 +80,13 @@ language(string $language)
 
 ```php
 Code::make('Code')
-    ->language('js') 
+    ->language('js')
 ```
 
 <a name="themes"></a>
 ## Темы
 
-Чтобы изменить темы - используйте `themes()` метод.
+Чтобы изменить темы, используйте `themes()` метод.
 
 ```php
 themes(string $light = null, string $dark = null)

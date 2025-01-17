@@ -10,7 +10,7 @@
 ---
 
 > [!NOTE]
-> More information about the field can be found in the [package repository](https://github.com/moonshine-software/ace)
+> More information about the field can be found in the [package repository](https://github.com/moonshine-software/ace).
 
 <a name="installation"></a>
 ## Installation
@@ -80,13 +80,13 @@ Supported languages: *HTML*, *XML*, *CSS*, *PHP*, *JavaScript*, and many others.
 
 ```php
 Code::make('Code')
-    ->language('js') 
+    ->language('js')
 ```
 
 <a name="themes"></a>
 ## Themes
 
-To change themes - use the `themes()` method.
+To change themes, use the `themes()` method.
 
 ```php
 themes(string $light = null, string $dark = null)

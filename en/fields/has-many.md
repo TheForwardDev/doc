@@ -188,7 +188,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 If the relation has a resource, and you want to get the ID of the parent element, you can use the *ResourceWithParent* trait.
 
 ```php
-use MoonShine\Resources\ModelResource;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Traits\Resource\ResourceWithParent;
 
 class PostImageResource extends ModelResource

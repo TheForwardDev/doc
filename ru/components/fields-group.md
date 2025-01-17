@@ -69,7 +69,7 @@ FieldsGroup::make($fields)->withoutWrappers();
 <a name="map"></a>
 ## Массовое изменение полей
 
-Все выше описанные методы под капотом используют метод `mapFields`, который позволяет пройтись по всем элементам набора и изменить их состояние:
+Все выше описанные методы под капотом используют метод `mapFields()`, который позволяет пройтись по всем элементам набора и изменить их состояние:
 
 ```php
 FieldsGroup::make($fields)->mapFields(fn(FieldContract $field, int $index): FieldContract => $field);

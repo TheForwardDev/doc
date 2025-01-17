@@ -11,8 +11,8 @@
 ## Basics
 
 `CrudResource` is a fundamental part of `MoonShine for Laravel`.
-It is important to understand that the core of **MoonShine** does not depend on `Laravel` and even more so on `Eloquent` models.
-However, in the implementation for `Laravel`, we provide a ready-made `ModelResource` for working with models and corresponding `type-casts`.
+It is important to understand that the core of **MoonShine** does not depend on **Laravel** and even more so on `Eloquent` models.
+However, in the implementation for **Laravel**, we provide a ready-made `ModelResource` for working with models and corresponding `type-casts`.
 **MoonShine** is very flexible, and you can create your own resource to work with any data sources.
 
 `CrudResource` provides a basic structure for working with data without being tied to a specific implementation.

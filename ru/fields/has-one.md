@@ -32,7 +32,8 @@ HasMany::make(
 
 > [!WARNING]
 > Наличие ресурса модели, на который ссылается отношение, обязательно.
-Ресурс также необходимо [зарегистрировать](/docs/{{version}}/resources#define) в сервис-провайдере `MoonShineServiceProvider` в методе `$core->resources()`. В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\HasOne...).
+> Ресурс также необходимо [зарегистрировать](/docs/{{version}}/resources#define) в сервис-провайдере `MoonShineServiceProvider` в методе `$core->resources()`.
+> В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\HasOne...).
 
 ```php
 HasOne::make('Profile', 'profile', resource: ProfileResource::class)
@@ -95,12 +96,13 @@ HasOne::make('Contacts', resource: ContactResource::class)
 Если у отношения есть ресурс, и вы хотите получить ID родительского элемента, то вы можете использовать трейт *ResourceWithParent*.
 
 ```php
-use MoonShine\Resources\ModelResource;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Traits\Resource\ResourceWithParent;
 
 class PostImageResource extends ModelResource
 {
     use ResourceWithParent;
+
     // ...
 }
 ```

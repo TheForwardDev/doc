@@ -4,7 +4,7 @@
 
 * имеет те же возможности
 
-Поле отношения *BelongsToMany* в *Laravel*
+Поле отношения *BelongsToMany* в **Laravel**
 
 То же самое, что `MoonShine\Laravel\Fields\Relationships\BelongsToMany`, только для отношений MorphToMany `MoonShine\Laravel\Fields\Relationships\MorphToMany`.
 

@@ -61,15 +61,18 @@ File::make('File')
 ```
 
 > [!NOTE]
-> By default, the _disk_ `public` is used. You can change it in the [configuration file](https://moonshine-laravel.com/docs/resource/getting-started/configuration).
+> By default, the _disk_ `public` is used.
+> You can change it in the [configuration file](https://moonshine-laravel.com/docs/resource/getting-started/configuration).
 
 > [!NOTE]
-> When using the `local` driver, the returned `url` is not a valid URL. For this reason, we recommend always naming your files in a way that will create valid URLs.
+> When using the `local` driver, the returned `url` is not a valid URL.
+> For this reason, we recommend always naming your files in a way that will create valid URLs.
 
 <a name="dir"></a>
 ## Directory
 
-By default, files will be saved in the root directory of the disk. The `dir()` method allows you to specify a directory for saving files relative to the root directory.
+By default, files will be saved in the root directory of the disk.
+The `dir()` method allows you to specify a directory for saving files relative to the root directory.
 
 ```php
 dir(string $dir)
@@ -110,7 +113,7 @@ File::make('File')
 
 > [!WARNING]
 > The field in the database must be of type _text_ or _json_.
-> You also need to add type casting for the eloquent model - *json*, or *array*, or *collection*.
+> You also need to add type casting for the Eloquent model - *json*, or *array*, or *collection*.
 
 <a name="removable"></a>
 ## File Removal

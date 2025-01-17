@@ -11,7 +11,7 @@
 <a name="basics"></a>
 ## Основы
 
-**MoonShine** предоставляет возможность настройки `CRUD` страниц в **MoonShine**.
+**MoonShine** предоставляет возможность настройки `CRUD` страниц.
 Для этого необходимо при создании ресурса через команду выбрать тип ресурса `Model resource with pages`.
 
 Это создаст класс ресурса модели и дополнительные классы для страниц индекса, детального просмотра и формы.
@@ -311,7 +311,8 @@ class ArticleFormPage extends FormPage
 - `MainLayer` - этот слой используется для отображения основной информации с помощью [FormBuilder](/docs/{{version}}/components/form-builder) и [TableBuilder](/docs/{{version}}/components/table-builder),
 - `BottomLayer` - используется для отображения дополнительной информации.
 
-Для настройки слоев используются соответствующие методы: `topLayer()`, `mainLayer()` и `bottomLayer()`. Методы должны возвращать массив [Компонентов](/docs/{{version}}/page/index#components).
+Для настройки слоев используются соответствующие методы: `topLayer()`, `mainLayer()` и `bottomLayer()`.
+Методы должны возвращать массив [Компонентов](/docs/{{version}}/page/index#components).
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -347,8 +348,8 @@ class PostIndexPage extends IndexPage
         ];
     }
 }
-
 ```
+
 > [!TIP]
 > Если вам нужно получить доступ к компонентам определенного слоя через ресурс или страницу, то используйте метод `getLayerComponents`.
 
@@ -367,7 +368,7 @@ $this->getLayerComponents(Layer::BOTTOM);
 ```
 
 > [!TIP]
-> Если вам нужно добавить компонент для указанной страницы в нужный слой через ресурс, то используйте метод `onLoad` ресурса и `pushToLayer` страницы.
+> Если вам нужно добавить компонент для указанной страницы в нужный слой через ресурс, то используйте метод `onLoad()` ресурса и `pushToLayer()` страницы.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

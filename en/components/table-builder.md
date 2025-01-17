@@ -110,7 +110,7 @@ If you need to specify attributes for `td`, use the `customWrapperAttributes` me
 <a name="items"></a>
 ### Items
 
-The `items` method sets the data for the table:
+The `items()` method sets the data for the table:
 
 ```php
 ->items($this->getCollection())
@@ -134,7 +134,7 @@ The `paginator` method sets the paginator for the table. You need to pass an obj
 ```
 
 > [!NOTE]
-> The paginator can also be specified through the `items` method.
+> The paginator can also be specified through the `items()` method.
 
 <a name="simple-paginate"></a>
 ### Simple Paginator
@@ -159,7 +159,7 @@ The `buttons` method adds action buttons:
 ])
 ```
 
-To specify bulk actions on table items, the `bulk` method should be set on `ActionButton`:
+To specify bulk actions on table items, the `bulk()` method should be set on `ActionButton`:
 
 ```php
 ->buttons([
@@ -232,7 +232,7 @@ The `preview()` method disables the display of buttons and sorting for the table
 ### With "Not Found" Notification
 
 By default, if the table has no data, it will be empty, but you can display a message saying "No records found yet."
-To do this, use the `withNotFound` method:
+To do this, use the `withNotFound()` method:
 
 ```php
 TableBuilder::make()

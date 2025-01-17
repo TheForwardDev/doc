@@ -11,7 +11,7 @@
 <a name="basics"></a>
 ## Basics
 
-**MoonShine** provides the ability to configure `CRUD` pages in **MoonShine**.
+**MoonShine** provides the ability to configure `CRUD` pages.
 To do this, you need to choose the resource type `Model resource with pages` when creating a resource via the command.
 
 This will create a model resource class and additional classes for the index, detail view, and form pages.
@@ -311,7 +311,8 @@ For convenience, all *CRUD* pages are divided into three layers, which are respo
 - `MainLayer` - this layer is used for displaying main information using [FormBuilder](/docs/{{version}}/components/form-builder) and [TableBuilder](/docs/{{version}}/components/table-builder),
 - `BottomLayer` - used for displaying additional information.
 
-To configure the layers, the corresponding methods are used: `topLayer()`, `mainLayer()`, and `bottomLayer()`. The methods must return an array of [Components](/docs/{{version}}/page/index#components).
+To configure the layers, the corresponding methods are used: `topLayer()`, `mainLayer()`, and `bottomLayer()`.
+The methods must return an array of [Components](/docs/{{version}}/page/index#components).
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -367,7 +368,7 @@ $this->getLayerComponents(Layer::BOTTOM);
 ```
 
 > [!TIP]
-> If you need to add a component to a specified page in the desired layer from a resource, use the resource's `onLoad` method and the page's `pushToLayer`.
+> If you need to add a component to a specified page in the desired layer from a resource, use the resource's `onLoad()` method and the page's `pushToLayer()`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

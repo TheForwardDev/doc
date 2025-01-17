@@ -17,7 +17,7 @@
 Поле *Password* в режиме предпросмотра отображается как `***`, а при выполнении метода `apply()` значение поля кодируется, с помощью метода `make`, класса забиндженного на интерфейс `Illuminate\Contracts\Hashing\Hasher`.
 
 > [!NOTE]
-> В Laravel по умолчанию Hasher класс - фасад `Illuminate\Support\Facades\Hash`.
+> В **Laravel** по умолчанию Hasher класс - фасад `Illuminate\Support\Facades\Hash`.
 
 ```php
 use MoonShine\UI\Fields\Password;

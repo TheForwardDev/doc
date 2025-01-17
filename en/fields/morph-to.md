@@ -4,7 +4,7 @@ Inherits from [BelongsTo](/docs/{{version}}/fields/belongs-to).
 
 * has the same capabilities
 
-The *MorphTo* relationship field in *Laravel*
+The *MorphTo* relationship field in **Laravel**
 
 The same as `MoonShine\Laravel\Fields\Relationships\BelongsTo`, but for *MorphTo* relationships
 
