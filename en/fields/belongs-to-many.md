@@ -111,7 +111,7 @@ BelongsToMany::make(
 <a name="label-column"></a>
 ## Column Label
 
-By default, the table column header uses the `$title` property of the relationship model resource.
+By default, the table column header uses the `$title` property specified in the `ModelResource` relationship.
 The `columnLabel()` method allows overriding the header.
 
 ```php
@@ -126,7 +126,7 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 <a name="pivot"></a>
 ## Pivot
 
-The `fields()` method is used to implement *pivot* fields in the BelongsToMany relationship.
+The `fields()` method is used to implement *pivot* fields in the `BelongsToMany` relationship.
 
 ```php
 fields(FieldsContract|Closure|iterable $fields)

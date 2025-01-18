@@ -111,7 +111,7 @@ BelongsToMany::make(
 <a name="label-column"></a>
 ## Заголовок столбца
 
-По умолчанию заголовок столбца таблицы использует свойство `$title` ресурса модели отношения.
+По умолчанию, заголовок столбца таблицы использует свойство `$title`, указанное в `ModelResource` отношения.
 Метод `columnLabel()` позволяет переопределить заголовок.
 
 ```php
@@ -126,7 +126,7 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 <a name="pivot"></a>
 ## Pivot
 
-Метод `fields()` используется для реализации полей *pivot* в отношении BelongsToMany.
+Метод `fields()` используется для реализации полей *pivot* в отношении `BelongsToMany`.
 
 ```php
 fields(FieldsContract|Closure|iterable $fields)
