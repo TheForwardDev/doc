@@ -2,7 +2,7 @@
 
 - [Основы](#basics)
 - [Хелпер](#helper)
-- [Текущая страница](#current-page)
+- [Активная страница](#active-page)
 - [Проверка активной страницы](#is-page)
 
 ---
@@ -83,10 +83,11 @@ toPage(page: IndexPage::class, redirect: true);
 toPage(page: IndexPage::class, fragment: true);
 ```
 
-<a name="current-page"></a>
-## Текущая страница
+<a name="active-page"></a>
+## Активная страница
 
-Ресурс модели имеет метод `getActivePage()` позволяющий получить текущую активную страницу, если активной страницы нет, то результат будет `NULL`.
+`ModelResource` имеет метод `getActivePage()`, который позволяет получить текущую активную страницу.
+Если активной страницы нет, то результат будет `NULL`.
 
 ```php
 $resource->getActivePage() // ?PageContract
