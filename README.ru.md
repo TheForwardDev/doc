@@ -1,4 +1,5 @@
 Lang: [en](README.md) | _ru_
+Lang: [![en](https://img.shields.io/badge/lang-en-red.svg)](README.md) | [![ru](https://img.shields.io/badge/lang-ru-red.svg)](README.ru.md)
 
 # Типография
 
