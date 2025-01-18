@@ -6,8 +6,6 @@
 
 Поле отношения в **Laravel** типа `HasOne`.
 
-То же самое, что `MoonShine\Laravel\Fields\Relationships\HasOne`, только для отношений `MorphOne`.
-
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphOne;
 
@@ -16,6 +14,7 @@ use MoonShine\Laravel\Fields\Relationships\MorphOne;
 protected function fields(): iterable
 {
     return [
+        // ...
         MorphOne::make('Profile', 'profile')
     ];
 }

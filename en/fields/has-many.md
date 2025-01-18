@@ -17,7 +17,7 @@
 <a name="basics"></a>
 ## Basics
 
-The `HasMany` field is designed to work with the relationship of the same name in **Laravel** and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
+The `HasMany` field is designed to work with the same-name relationship in **Laravel** and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
 
 ```php
 HasMany::make(
@@ -47,7 +47,6 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ```
 
 ![has_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many.png)
-
 ![has_many_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_dark.png)
 
 You can omit the `$resource` if the `ModelResource` matches the name of the relation.
@@ -56,15 +55,11 @@ You can omit the `$resource` if the `ModelResource` matches the name of the rela
 class CommentResource extends ModelResource
 {
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Comments', 'comments')
-        ];
-    }
 }
+
+// ...
+
+HasMany::make('Comments', 'comments')
 ```
 
 If you do not specify `$relationName`, then the name of the relation will be determined automatically based on `$label` (following camelCase rules).
@@ -73,15 +68,11 @@ If you do not specify `$relationName`, then the name of the relation will be det
 class CommentResource extends ModelResource
 {
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Comments')
-        ];
-    }
 }
+
+// ...
+
+HasMany::make('Comments')
 ```
 
 <a name="fields"></a>
@@ -94,6 +85,8 @@ fields(FieldsContract|Closure|iterable $fields)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 use MoonShine\Laravel\Fields\Relationships\HasMany;
 use MoonShine\UI\Fields\Text;
@@ -106,7 +99,6 @@ HasMany::make('Comments', resource: CommentResource::class)
 ```
 
 ![has_many_fields](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_fields.png)
-
 ![has_many_fields_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_fields_dark.png)
 
 <a name="creatable"></a>
@@ -127,7 +119,6 @@ HasMany::make('Comments', resource: CommentResource::class)
 ```
 
 ![has_many_creatable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_creatable.png)
-
 ![has_many_creatable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_creatable_dark.png)
 
 You can customize the *create* button by passing the button parameter in the method.
@@ -164,6 +155,7 @@ relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
 ```
 
 You can pass optional parameters to the method:
+
 - `linkRelation` - link to the relation,
 - `condition` - closure or boolean value responsible for displaying the relation as a link.
 
@@ -175,7 +167,6 @@ HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink()
 ```
 ![has_many_link](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_link.png)
-
 ![has_many_link_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_link_dark.png)
 
 The `linkRelation` parameter allows you to create a link to the relation with parent resource binding.
@@ -200,6 +191,8 @@ HasMany::make('Comments', resource: CommentResource::class)
 If the relation has a resource, and you want to get the ID of the parent element, you can use the *ResourceWithParent* trait.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Traits\Resource\ResourceWithParent;
 
@@ -252,7 +245,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="without-modals"></a>
 ## Modal window
 
-By default, creating and editing a record in the *HasMany* field occurs in a modal window; the `withoutModals()` method allows you to disable this behavior.
+By default, creating and editing a record in the `HasMany` field occurs in a modal window; the `withoutModals()` method allows you to disable this behavior.
 
 ```php
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
@@ -262,11 +255,12 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="modify"></a>
 ## Modification
 
-The *HasMany* field has methods that can be used to modify buttons, change the *TableBuilder* for preview and form, as well as change the *relatedLink* button.
+The `HasMany` field has methods that can be used to modify buttons, change the *TableBuilder* for preview and form, as well as change the *relatedLink* button.
 
 ### searchable()
 
-By default, a search field is available on the form page for the HasMany field; to disable it, you can use the `searchable` method.
+By default, a search field is available on the form page for the `HasMany` field.
+To disable it, you can use the `searchable()` method.
 
 ```php
 public function searchable(Closure|bool|null $condition = null): static
@@ -360,7 +354,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 
 ### indexButtons()
 
-The `indexButtons` method allows you to add additional ActionButtons for working with HasMany elements.
+The `indexButtons()` method allows you to add additional ActionButtons for working with HasMany elements.
 
 ```php
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
@@ -371,7 +365,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 
 ### formButtons()
 
-The `formButtons` method allows you to add additional ActionButtons inside the form when creating or editing a HasMany element.
+The `formButtons` method allows you to add additional `ActionButtons` inside the form when creating or editing a HasMany element.
 
 ```php
 HasMany::make('Comments', 'comments', resource: CommentResource::class)

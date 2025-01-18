@@ -17,7 +17,7 @@
 <a name="basics"></a>
 ## Основы
 
-Поле `HasMany` предназначено для работы с отношением того же имени в **Laravel** и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
+Поле `HasMany` предназначено для работы с одноименной связью в **Laravel** и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
 ```php
 HasMany::make(
@@ -47,7 +47,6 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ```
 
 ![has_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many.png)
-
 ![has_many_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_dark.png)
 
 Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
@@ -56,15 +55,11 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 class CommentResource extends ModelResource
 {
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Comments', 'comments')
-        ];
-    }
 }
+
+// ...
+
+HasMany::make('Comments', 'comments')
 ```
 
 Если вы не указываете `$relationName`, тогда имя отношения будет определено автоматически на основе `$label` (по правилам camelCase).
@@ -73,15 +68,11 @@ class CommentResource extends ModelResource
 class CommentResource extends ModelResource
 {
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Comments')
-        ];
-    }
 }
+
+// ...
+
+HasMany::make('Comments')
 ```
 
 <a name="fields"></a>
@@ -94,6 +85,8 @@ fields(FieldsContract|Closure|iterable $fields)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 use MoonShine\Laravel\Fields\Relationships\HasMany;
 use MoonShine\UI\Fields\Text;
@@ -106,7 +99,6 @@ HasMany::make('Comments', resource: CommentResource::class)
 ```
 
 ![has_many_fields](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_fields.png)
-
 ![has_many_fields_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_fields_dark.png)
 
 <a name="creatable"></a>
@@ -127,7 +119,6 @@ HasMany::make('Comments', resource: CommentResource::class)
 ```
 
 ![has_many_creatable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_creatable.png)
-
 ![has_many_creatable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_creatable_dark.png)
 
 Вы можете настроить *кнопку* создания, передав параметр button в метод.
@@ -164,18 +155,18 @@ relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
 ```
 
 Вы можете передать в метод необязательные параметры:
+
 - `linkRelation` - ссылка на отношение,
 - `condition` - замыкание или булево значение, отвечающее за отображение отношения в виде ссылки.
 
 > [!NOTE]
-> Не забудьте добавить отношение в свойство *with* ресурса
+> Не забудьте добавить отношение в свойство *with* ресурса.
 
 ```php
 HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink()
 ```
 ![has_many_link](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_link.png)
-
 ![has_many_link_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_link_dark.png)
 
 Параметр `linkRelation` позволяет создать ссылку на отношение с привязкой родительского ресурса.
@@ -197,9 +188,11 @@ HasMany::make('Comments', resource: CommentResource::class)
 <a name="parent-id"></a>
 ## ID родителя
 
-Если у отношения есть ресурс, и вы хотите получить ID родительского элемента, то вы можете использовать трейт *ResourceWithParent*.
+Если у отношения есть ресурс, и вы хотите получить ID родительского элемента, то Вы можете использовать трейт *ResourceWithParent*.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Traits\Resource\ResourceWithParent;
 
@@ -252,7 +245,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="without-modals"></a>
 ## Модальное окно
 
-По умолчанию создание и редактирование записи поля *HasMany* происходит в модальном окне, метод `withoutModals()` позволяет отключить это поведение.
+По умолчанию, создание и редактирование записи поля `HasMany` происходит в модальном окне, метод `withoutModals()` позволяет отключить это поведение.
 
 ```php
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
@@ -262,11 +255,12 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="modify"></a>
 ## Модификация
 
-Поле *HasMany* имеет методы, которые можно использовать для модификации кнопок, изменения *TableBuilder* для предпросмотра и формы, а также изменения кнопки *relatedLink*.
+Поле `HasMany` имеет методы, которые можно использовать для модификации кнопок, изменения *TableBuilder* для предпросмотра и формы, а также изменения кнопки *relatedLink*.
 
 ### searchable()
 
-По умолчанию на странице формы для поля HasMany доступно поле поиска, чтобы его отключить, можно воспользоваться методом `searchable`
+По умолчанию, на странице формы для поля `HasMany` доступно поле поиска.
+Чтобы его отключить, можно воспользоваться методом `searchable()`.
 
 ```php
 public function searchable(Closure|bool|null $condition = null): static
@@ -360,7 +354,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 
 ### indexButtons()
 
-Метод `indexButtons` позволяет добавить дополнительные ActionButtons для работы с элементами HasMany
+Метод `indexButtons()` позволяет добавить дополнительные ActionButtons для работы с элементами HasMany
 
 ```php
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
@@ -371,7 +365,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 
 ### formButtons()
 
-Метод `formButtons` позволяет добавить дополнительные ActionButtons внутри формы при создании или редактировании элемента HasMany
+Метод `formButtons` позволяет добавить дополнительные `ActionButtons` внутри формы при создании или редактировании элемента HasMany.
 
 ```php
 HasMany::make('Comments', 'comments', resource: CommentResource::class)

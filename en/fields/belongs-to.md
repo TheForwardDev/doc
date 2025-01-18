@@ -20,7 +20,7 @@
 <a name="basics"></a>
 ## Basics
 
-The `BelongsTo` field is designed to work with the same-name relationship in **Laravel** and contains all [Basic Methods](/docs/{{version}}/fields/basic-methods).
+The `BelongsTo` field is designed to work with the same-name relationship in **Laravel** and includes all [Basic Methods](/docs/{{version}}/fields/basic-methods).
 
 ```php
 BelongsTo::make(
@@ -48,15 +48,7 @@ BelongsTo::make('Country', 'country', resource: CountryResource::class)
 ```
 
 ![belongs_to](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to.png)
-
 ![belongs_to_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_dark.png)
-
-> [!NOTE]
-> If `$relationName` is not specified, the relation name will be determined automatically based on `$label`.
-
-```php
-BelongsTo::make('Country', resource: CountryResource::class)
-```
 
 You can omit `$resource` if the `ModelResource` matches the relationship name.
 
@@ -64,15 +56,11 @@ You can omit `$resource` if the `ModelResource` matches the relationship name.
 class CountryResource extends ModelResource
 {
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            BelongsTo::make('Country', 'country')
-        ];
-    }
 }
+
+// ...
+
+BelongsTo::make('Country', 'country')
 ```
 
 If you do not specify `$relationName`, the name of the relationship will be determined automatically based on `$label` (by camelCase rules).
@@ -81,15 +69,11 @@ If you do not specify `$relationName`, the name of the relationship will be dete
 class CountryResource extends ModelResource
 {
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            BelongsTo::make('Country')
-        ];
-    }
 }
+
+// ...
+
+BelongsTo::make('Country')
 ```
 
 > [!NOTE]
@@ -97,28 +81,20 @@ class CountryResource extends ModelResource
 > The `$formatted` argument allows overriding the `$column` property.
 
 ```php
-namespace App\MoonShine\Resources;
-
-use MoonShine\Laravel\Resources\ModelResource;
-
 class CountryResource extends ModelResource
 {
     public string $column = 'title';
 
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            BelongsTo::make(
-                'Country',
-                'country',
-                formatted: 'name'
-            )
-        ];
-    }
 }
+
+// ...
+
+BelongsTo::make(
+    'Country',
+    'country',
+    formatted: 'name'
+)
 ```
 
 If you need to specify a more complex value for display, you can pass a callback function to the `$formatted` argument.
@@ -152,9 +128,6 @@ default(mixed $default)
 You must pass a model object as the default value.
 
 ```php
-use App\Models\Country;
-use MoonShine\Laravel\Fields\Relationships\BelongsTo;
-
 BelongsTo::make('Country', resource: CategoryResource::class)
     ->default(Country::find(1))
 ```
@@ -174,12 +147,7 @@ BelongsTo::make('Country', resource: CategoryResource::class)
 ```
 
 ![select_nullable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable.png)
-
 ![select_nullable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable_dark.png)
-
-> [!TIP]
-> **MoonShine** is a very convenient and functional tool.
-> However, to use it, you need to be confident in the basics of **Laravel**.
 
 Don't forget to specify in the database table that the field can accept a `Null` value.
 
@@ -204,9 +172,6 @@ BelongsTo::make('Country', 'country')
 If you need to search among values, you must add the `searchable()` method.
 
 ```php
-use MoonShine\Laravel\Fields\Relationships\BelongsTo;
-use App\MoonShine\Resources\CountryResource;
-
 BelongsTo::make('Country', 'country', resource: CountryResource::class)
     ->searchable()
 ```
@@ -229,7 +194,6 @@ BelongsTo::make('Author', resource: AuthorResource::class)
 ```
 
 ![belongs_to_creatable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_creatable.png)
-
 ![belongs_to_creatable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_creatable_dark.png)
 
 You can customize the create button by passing the _button_ parameter to the method.
@@ -251,8 +215,12 @@ valuesQuery(Closure $callback)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+use App\MoonShine\Resources\CategoryResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use MoonShine\UI\Fields\Field;
 
 BelongsTo::make('Category', 'category', resource: CategoryResource::class)
     ->valuesQuery(fn(Builder $query, Field $field) => $query->where('active', true))
@@ -284,6 +252,7 @@ BelongsTo::make('Country', 'country', resource: CategoryResource::class)
 > By default `column=id`.
 
 You can pass parameters to the `asyncSearch()` method:
+
 *   `$column` - the field by which the search is conducted,
 *   `$searchQuery` - a callback function for filtering values,
 *   `$formatted` - a callback function for customizing output,
@@ -292,7 +261,11 @@ You can pass parameters to the `asyncSearch()` method:
 *   `$url` - the URL for processing the asynchronous request.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use MoonShine\UI\Fields\Field;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
 BelongsTo::make('Country', 'country', resource: CategoryResource::class)
@@ -314,19 +287,28 @@ BelongsTo::make('Country', 'country', resource: CategoryResource::class)
 > To do this, it is necessary to pass `Request` into the callback function.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Select;
 
-Select::make('Country', 'country_id'),
-BelongsTo::make('City', 'city',  resource: CityResource::class)
-    ->asyncSearch(
-        'title',
-        searchQuery: function (Builder $query, Request $request, Field $field): Builder {
-            return $query->where('country_id', $request->get('country_id'));
-        }
-    )
+protected function fields(): iterable
+{
+    return [
+        // ...
+        Select::make('Country', 'country_id'),
+        BelongsTo::make('City', 'city',  resource: CityResource::class)
+            ->asyncSearch(
+                'title',
+                searchQuery: function (Builder $query, Request $request, Field $field): Builder {
+                    return $query->where('country_id', $request->get('country_id'));
+                }
+            )
+    ];
+}
 ```
 
 > [!NOTE]
@@ -334,20 +316,29 @@ BelongsTo::make('City', 'city',  resource: CityResource::class)
 > If you need to replace it with your builder, use the `replaceQuery` flag.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Select;
 
-Select::make('Country', 'country_id'),
-BelongsTo::make('City', 'city',  resource: CityResource::class)
-    ->asyncSearch(
-        'title',
-        asyncSearchQuery: function (Builder $query, Request $request, Field $field): Builder {
-            return $query->where('country_id', $request->get('country_id'));
-        },
-        replaceQuery: true
-    )
+protected function fields(): iterable
+{
+    return [
+        // ...
+        Select::make('Country', 'country_id'),
+        BelongsTo::make('City', 'city',  resource: CityResource::class)
+            ->asyncSearch(
+                'title',
+                asyncSearchQuery: function (Builder $query, Request $request, Field $field): Builder {
+                    return $query->where('country_id', $request->get('country_id'));
+                },
+                replaceQuery: true
+            )
+    ];
+}
 ```
 
 <a name="associated"></a>
@@ -394,7 +385,6 @@ BelongsTo::make('Country', resource: CountryResource::class)
 ```
 
 ![belongs_to_image](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image.png)
-
 ![belongs_to_image_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image_dark.png)
 
 <a name="options"></a>
@@ -430,8 +420,8 @@ This field supports [reactivity](/docs/{{version}}/fields/basic-methods#reactive
 <a name="link"></a>
 ## Link
 
-By default, `BelongsTo` links to the edit page, using the `link()` method under the hood.
-If needed, you can override the `link`:
+By default, `BelongsTo` links to the edit page.
+You can override this behavior using the `link()` method.
 
 ```php
 BelongsTo::make(

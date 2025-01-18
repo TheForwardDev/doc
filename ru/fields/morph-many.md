@@ -6,8 +6,6 @@
 
 Поле отношения в **Laravel** типа `MorphMany`.
 
-То же самое, что `MoonShine\Laravel\Fields\Relationships\HasMany`, только для отношений `MorphMany`.
-
 > [!WARNING]
 > Параметр `formatted` не используется в поле `MorphMany`!
 
@@ -19,6 +17,7 @@ use MoonShine\Laravel\Fields\Relationships\MorphMany;
 protected function fields(): iterable
 {
     return [
+        // ...
         MorphMany::make('Comments', 'comments')
     ];
 }

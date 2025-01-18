@@ -6,8 +6,6 @@ Inherits from [HasOne](/docs/{{version}}/fields/has-one).
 
 Relationship field in **Laravel** of type `HasOne`.
 
-The same as `MoonShine\Laravel\Fields\Relationships\HasOne`, but for `MorphOne` relationships.
-
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphOne;
 
@@ -16,6 +14,7 @@ use MoonShine\Laravel\Fields\Relationships\MorphOne;
 protected function fields(): iterable
 {
     return [
+        // ...
         MorphOne::make('Profile', 'profile')
     ];
 }

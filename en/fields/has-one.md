@@ -10,7 +10,7 @@
 <a name="basics"></a>
 ## Basics
 
-The `HasOne` field is designed to work with the same named relationship in **Laravel** and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
+The `HasOne` field is designed to work with the same-name relationship in **Laravel** and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
 
 ```php
 HasMany::make(
@@ -40,7 +40,6 @@ HasOne::make('Profile', 'profile', resource: ProfileResource::class)
 ```
 
 ![has_one](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one.png)
-
 ![has_one_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one_dark.png)
 
 If you do not specify `$relationName`, the relationship name will be automatically determined based on `$label` (following camelCase rules).
@@ -49,15 +48,11 @@ If you do not specify `$relationName`, the relationship name will be automatical
 class ProfileResource extends ModelResource
 {
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Profile', 'profile')
-        ];
-    }
 }
+
+// ...
+
+HasMany::make('Profile', 'profile')
 ```
 
 You can omit `$resource` if the `ModelResource` matches the name of the relationship.
@@ -66,15 +61,11 @@ You can omit `$resource` if the `ModelResource` matches the name of the relation
 class ProfileResource extends ModelResource
 {
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Profile')
-        ];
-    }
 }
+
+// ...
+
+HasMany::make('Profile')
 ```
 
 <a name="fields"></a>
@@ -87,6 +78,8 @@ fields(FieldsContract|Closure|iterable $fields)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\UI\Fields\Relationships\HasOne;
 use MoonShine\UI\Fields\Phone;
 use MoonShine\UI\Fields\Text;
@@ -99,15 +92,16 @@ HasOne::make('Contacts', resource: ContactResource::class)
 ```
 
 ![has_one_preview](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one_preview.png)
-
 ![has_one_preview_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one_preview_dark.png)
 
 <a name="parent-id"></a>
 ## Parent ID
 
-If the relationship has a resource, and you want to get the parent item's ID, you can use the *ResourceWithParent* trait.
+If the relationship has a resource, and you want to get the parent item's ID, you can use the `ResourceWithParent` trait.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Traits\Resource\ResourceWithParent;
 

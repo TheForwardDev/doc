@@ -10,7 +10,7 @@
 <a name="basics"></a>
 ## Основы
 
-Поле `HasOne` предназначено для работы с отношением того же имени в **Laravel** и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
+Поле `HasOne` предназначено для работы с одноименной связью в **Laravel** и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
 ```php
 HasMany::make(
@@ -40,7 +40,6 @@ HasOne::make('Profile', 'profile', resource: ProfileResource::class)
 ```
 
 ![has_one](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one.png)
-
 ![has_one_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one_dark.png)
 
 Если вы не указываете `$relationName`, тогда имя отношения будет определено автоматически на основе `$label` (по правилам camelCase).
@@ -49,15 +48,11 @@ HasOne::make('Profile', 'profile', resource: ProfileResource::class)
 class ProfileResource extends ModelResource
 {
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Profile', 'profile')
-        ];
-    }
 }
+
+// ...
+
+HasMany::make('Profile', 'profile')
 ```
 
 Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
@@ -66,15 +61,11 @@ class ProfileResource extends ModelResource
 class ProfileResource extends ModelResource
 {
     // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Profile')
-        ];
-    }
 }
+
+// ...
+
+HasMany::make('Profile')
 ```
 
 <a name="fields"></a>
@@ -87,6 +78,8 @@ fields(FieldsContract|Closure|iterable $fields)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\UI\Fields\Relationships\HasOne;
 use MoonShine\UI\Fields\Phone;
 use MoonShine\UI\Fields\Text;
@@ -99,15 +92,16 @@ HasOne::make('Contacts', resource: ContactResource::class)
 ```
 
 ![has_one_preview](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one_preview.png)
-
 ![has_one_preview_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one_preview_dark.png)
 
 <a name="parent-id"></a>
 ## ID родителя
 
-Если у отношения есть ресурс, и вы хотите получить ID родительского элемента, то вы можете использовать трейт *ResourceWithParent*.
+Если у отношения есть ресурс, и вы хотите получить ID родительского элемента, то вы можете использовать трейт `ResourceWithParent`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Traits\Resource\ResourceWithParent;
 

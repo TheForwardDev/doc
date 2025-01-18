@@ -6,8 +6,6 @@ Inherits from [HasMany](/docs/{{version}}/fields/has-many).
 
 A relationship field in **Laravel** of type `MorphMany`.
 
-The same as `MoonShine\Laravel\Fields\Relationships\HasMany`, but for `MorphMany` relationships.
-
 > [!WARNING]
 > The `formatted` parameter is not used in the `MorphMany` field!
 
@@ -19,6 +17,7 @@ use MoonShine\Laravel\Fields\Relationships\MorphMany;
 protected function fields(): iterable
 {
     return [
+        // ...
         MorphMany::make('Comments', 'comments')
     ];
 }
