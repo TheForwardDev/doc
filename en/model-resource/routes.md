@@ -2,7 +2,7 @@
 
 - [Basics](#basics)
 - [Helper](#helper)
-- [Current Page](#active-page)
+- [Active Page](#active-page)
 - [Checking the active page](#is-page)
 
 ---
