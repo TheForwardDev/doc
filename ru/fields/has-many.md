@@ -17,9 +17,7 @@
 <a name="basics"></a>
 ## Основы
 
-Поле *HasMany* предназначено для работы с отношением того же имени в Laravel и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
-
-Для создания этого поля используйте статический метод `make()`.
+Поле `HasMany` предназначено для работы с отношением того же имени в **Laravel** и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
 ```php
 HasMany::make(
@@ -58,9 +56,15 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 class CommentResource extends ModelResource
 {
     // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            HasMany::make('Comments', 'comments')
+        ];
+    }
 }
-// ...
-HasMany::make('Comments', 'comments')
 ```
 
 Если вы не указываете `$relationName`, тогда имя отношения будет определено автоматически на основе `$label` (по правилам camelCase).
@@ -69,9 +73,15 @@ HasMany::make('Comments', 'comments')
 class CommentResource extends ModelResource
 {
     // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            HasMany::make('Comments')
+        ];
+    }
 }
-// ...
-HasMany::make('Comments')
 ```
 
 <a name="fields"></a>
@@ -146,7 +156,8 @@ HasMany::make('Comments', resource: CommentResource::class)
 <a name="only-link"></a>
 ## Только ссылка
 
-Метод `relatedLink()` позволит отобразить отношение в виде ссылки с количеством элементов. Ссылка будет вести на IndexPage дочернего ресурса из отношения HasMany, в котором буду показаны только данные элементы.
+Метод `relatedLink()` позволит отобразить отношение в виде ссылки с количеством элементов.
+Ссылка будет вести на IndexPage дочернего ресурса из отношения HasMany, в котором буду показаны только данные элементы.
 
 ```php
 relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
@@ -373,7 +384,8 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ## Продвинутое использование
 
 ### Отношение через JSON поле
-Поле *HasMany* по умолчанию отображается вне основной формы ресурса. Если вам нужно отобразить поля отношения внутри основной формы, то вы можете использовать поле *JSON* в режиме `asRelation()`.
+Поле *HasMany* по умолчанию отображается вне основной формы ресурса.
+Если вам нужно отобразить поля отношения внутри основной формы, то вы можете использовать поле *JSON* в режиме `asRelation()`.
 
 ```php
 Json::make('Comments', 'comments')
@@ -383,9 +395,7 @@ Json::make('Comments', 'comments')
 
 ### Отношение через поле Template
 
-Используя *поле Template*, вы можете построить поле для отношений *HasMany*, используя fluent интерфейс в процессе декларации.
+Используя поле `Template`, вы можете построить поле для отношений `HasMany`, используя fluent интерфейс в процессе декларации.
 
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Поле Template](/docs/{{version}}/fields/template).
-
-disableAsync,

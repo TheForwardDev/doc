@@ -2,11 +2,11 @@
 
 Наследует [BelongsTo](/docs/{{version}}/fields/belongs-to).
 
-* имеет те же возможности
+\* имеет те же возможности.
 
-Поле отношения *MorphTo* в **Laravel**
+Поле отношения `MorphTo` в **Laravel**.
 
-То же самое, что `MoonShine\Laravel\Fields\Relationships\BelongsTo`, только для отношений *MorphTo*
+То же самое, что `MoonShine\Laravel\Fields\Relationships\BelongsTo`, только для отношений `MorphTo`.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphTo;
@@ -52,7 +52,6 @@ public function fields(): array
         ]),
     ];
 }
-// ...
 ```
 
 ![morph_to_array](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to_array.png)

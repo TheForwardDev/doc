@@ -2,12 +2,11 @@
 
 Наследует [HasMany](/docs/{{version}}/fields/has-many).
 
-* имеет те же возможности
+\* имеет те же возможности.
 
-Поле отношения в **Laravel** типа *morphMany*
+Поле отношения в **Laravel** типа `MorphMany`.
 
-То же самое, что `MoonShine\Laravel\Fields\Relationships\HasMany`, только для отношений *morphMany v
-`MoonShine\Laravel\Fields\Relationships\MorphMany`
+То же самое, что `MoonShine\Laravel\Fields\Relationships\HasMany`, только для отношений `MorphMany`.
 
 > [!WARNING]
 > Параметр `formatted` не используется в поле `MorphMany`!
@@ -23,6 +22,4 @@ protected function fields(): iterable
         MorphMany::make('Comments', 'comments')
     ];
 }
-
-// ...
 ```

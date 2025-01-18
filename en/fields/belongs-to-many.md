@@ -21,9 +21,7 @@
 <a name="basics"></a>
 ## Basics
 
-The *BelongsToMany* field is designed to work with the relationship of the same name in Laravel and includes all [Basic Methods](/docs/{{version}}/fields/basic-methods).
-
-To create this field, use the static method `make()`.
+The `BelongsToMany` field is designed to work with the relationship of the same name in **Laravel** and includes all [Basic Methods](/docs/{{version}}/fields/basic-methods).
 
 ```php
 BelongsToMany::make(
@@ -41,7 +39,8 @@ BelongsToMany::make(
 
 > [!WARNING]
 > The model resource that the relationship references is required!
-> The resource must also be registered in the service provider _MoonShineServiceProvider_ in the `$core->resources()` method. Otherwise, a 500 error will occur (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsToMany...).
+> The resource must also be registered in the service provider _MoonShineServiceProvider_ in the `$core->resources()` method.
+> Otherwise, a 500 error will occur (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsToMany...).
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
@@ -187,7 +186,8 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 <a name="select"></a>
 ## Select
 
-The *BelongsToMany* field can be displayed as a dropdown list. To do this, you need to use the `selectMode()` method.
+The `BelongsToMany` field can be displayed as a dropdown list.
+To do this, you need to use the `selectMode()` method.
 
 ```php
 BelongsToMany::make('Categories', resource: CategoryResource::class)
@@ -235,7 +235,8 @@ BelongsToMany::make('Countries', 'countries')
 <a name="tree"></a>
 ## Tree
 
-The `tree()` method allows values to be displayed in a tree format with checkboxes, for example, for categories that have nesting. The method requires you to pass the column in the database by which the tree will be built.
+The `tree()` method allows values to be displayed in a tree format with checkboxes, for example, for categories that have nesting.
+The method requires you to pass the column in the database by which the tree will be built.
 
 ```php
 tree(string $parentColumn)
@@ -288,7 +289,8 @@ You can pass optional parameters to the method:
 - `badge` - closure or boolean value responsible for displaying items as badges,
 - `$link` - closure that should return url links or components.
 
-When passing a boolean value true to the `badge` parameter, the Primary color will be used. To change the color of the displayed `badge`, use a closure and return the `Badge::make()` component.
+When passing a boolean value true to the `badge` parameter, the Primary color will be used.
+To change the color of the displayed `badge`, use a closure and return the `Badge::make()` component.
 
 ```php
 use MoonShine\UI\Components\Link;
@@ -312,7 +314,8 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 <a name="only-link"></a>
 ## Only Link
 
-The `relatedLink()` method will display the relationship as a link with a count of elements. The link will lead to the IndexPage of the child resource from the HasMany relationship, which will show only those data elements.
+The `relatedLink()` method will display the relationship as a link with a count of elements.
+The link will lead to the IndexPage of the child resource from the HasMany relationship, which will show only those data elements.
 
 ```php
 relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
@@ -385,7 +388,7 @@ You can pass parameters to the `asyncSearch()` method:
 - `$formatted` - callback function for customizing the output,
 - `$associatedWith` - field to establish a relationship,
 - `$limit` - number of elements in the search results,
-- `$url` - url for processing the asynchronous request,
+- `$url` - url for processing the asynchronous request.
 
 ```php
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -476,7 +479,7 @@ BelongsToMany::make('Countries', resource: ContactResource::class)
 <a name="buttons"></a>
 ## Buttons
 
-The `buttons()` method allows you to add additional buttons to the *BelongsToMany* field.
+The `buttons()` method allows you to add additional buttons to the `BelongsToMany` field.
 
 ```php
 buttons(array $buttons)
@@ -498,7 +501,7 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 
 ### withCheckAll
 
-The `withCheckAll()` method allows you to add a checkAll button to the *BelongsToMany* field, similar to the previous example.
+The `withCheckAll()` method allows you to add a checkAll button to the `BelongsToMany` field, similar to the previous example.
 
 ```php
 BelongsToMany::make('Categories', resource: CategoryResource::class)

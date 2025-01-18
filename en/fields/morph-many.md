@@ -2,11 +2,11 @@
 
 Inherits from [HasMany](/docs/{{version}}/fields/has-many).
 
-* has the same capabilities
+\* has the same capabilities.
 
-A relationship field in **Laravel** of type *morphMany*
+A relationship field in **Laravel** of type `MorphMany`.
 
-The same as `MoonShine\Laravel\Fields\Relationships\HasMany`, but for *morphMany* relationships in `MoonShine\Laravel\Fields\Relationships\MorphMany`
+The same as `MoonShine\Laravel\Fields\Relationships\HasMany`, but for `MorphMany` relationships.
 
 > [!WARNING]
 > The `formatted` parameter is not used in the `MorphMany` field!
@@ -22,6 +22,4 @@ protected function fields(): iterable
         MorphMany::make('Comments', 'comments')
     ];
 }
-
-// ...
 ```

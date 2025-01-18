@@ -10,9 +10,7 @@
 <a name="basics"></a>
 ## Basics
 
-The *HasOne* field is designed to work with the same named relationship in Laravel and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
-
-To create this field, use the static method `make()`.
+The `HasOne` field is designed to work with the same named relationship in **Laravel** and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
 
 ```php
 HasMany::make(
@@ -51,9 +49,15 @@ If you do not specify `$relationName`, the relationship name will be automatical
 class ProfileResource extends ModelResource
 {
     // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            HasMany::make('Profile', 'profile')
+        ];
+    }
 }
-// ...
-HasMany::make('Profile', 'profile')
 ```
 
 You can omit `$resource` if the `ModelResource` matches the name of the relationship.
@@ -62,9 +66,15 @@ You can omit `$resource` if the `ModelResource` matches the name of the relation
 class ProfileResource extends ModelResource
 {
     // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            HasMany::make('Profile')
+        ];
+    }
 }
-// ...
-HasMany::make('Profile')
 ```
 
 <a name="fields"></a>
