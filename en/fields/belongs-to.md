@@ -36,7 +36,7 @@ BelongsTo::make(
 - `$label` - the label, the title of the field,
 - `$relationName` - the name of the relation,
 - `$formatted` - a closure or field in the related table for displaying values,
-- `$resource` - the model resource that the relationship refers to.
+- `$resource` - the `ModelResource` that the relationship refers to.
 
 > [!WARNING]
 > The model resource that the relationship refers to is mandatory!
@@ -60,7 +60,7 @@ BelongsTo::make('Country', 'country', resource: CountryResource::class)
 BelongsTo::make('Country', resource: CountryResource::class)
 ```
 
-You can omit `$resource` if the model resource matches the relationship name.
+You can omit `$resource` if the `ModelResource` matches the relationship name.
 
 ```php
 class CountryResource extends ModelResource
@@ -83,7 +83,7 @@ BelongsTo::make('Country')
 ```
 
 > [!NOTE]
-> By default, the field used to display the value is the one specified by the `$column` property in the model resource.
+> By default, the field used to display the value is the one specified by the `$column` property in the `ModelResource`.
 > The `$formatted` argument allows overriding the $column property.
 
 ```php

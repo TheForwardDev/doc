@@ -81,7 +81,7 @@ moonshine:resource {className?} {--type=} {--m|model=} {--t|title=} {--test} {--
 
 Доступные опции:
 
-- `--m|model=` - Eloquent модель для модельного ресурса,
+- `--m|model=` - Eloquent модель для `ModelResource`,
 - `--t|title=` - заголовок раздела,
 - `--type=` - быстрый выбор типа ресурса (1 - по умолчанию, 2 - со страницами, 3 - пустой),
 - `--p|policy` - также создать Policy,
@@ -90,12 +90,12 @@ moonshine:resource {className?} {--type=} {--m|model=} {--t|title=} {--test} {--
 
 При создании ресурса доступно несколько вариантов:
 
-- [Default model resource](/docs/{{version}}/model-resource/fields) - модельный ресурс по умолчанию с объявлением полей в методах `indexFields()`, `formFields()` и `detailFields()`,
-- [Model resource with pages](/docs/{{version}}/model-resource/pages) - модельный ресурс c публикацией страниц `IndexPage`, `FormPage` и `DetailPage`,
+- [Default model resource](/docs/{{version}}/model-resource/fields) - `ModelResource` по умолчанию с объявлением полей в методах `indexFields()`, `formFields()` и `detailFields()`,
+- [Model resource with pages](/docs/{{version}}/model-resource/pages) - `ModelResource` c публикацией страниц `IndexPage`, `FormPage` и `DetailPage`,
 - **Empty resource** - пустой ресурс для кастомных реализаций.
 
 После выполнения команды в директории `app/MoonShine/Resources` будет создан файл ресурса.
-Если создается модельный ресурс со страницами, то в директории `app/MoonShine/Pages` будут созданы дополнительные страницы.
+Если создается `ModelResource` со страницами, то в директории `app/MoonShine/Pages` будут созданы дополнительные страницы.
 
 Примеры:
 ```shell
@@ -105,7 +105,7 @@ php artisan moonshine:resource Post --model="App\Models\CustomPost"
 ```
 
 > [!NOTE]
-> Для более подробной информации обратитесь к разделу [Модельные ресурсы](/docs/{{version}}/model-resource/index).
+> Для более подробной информации обратитесь к разделу [ModelResource](/docs/{{version}}/model-resource/index).
 
 <a name="page"></a>
 ## Страница

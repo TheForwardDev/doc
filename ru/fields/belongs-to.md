@@ -36,7 +36,7 @@ BelongsTo::make(
 - `$label` - метка, заголовок поля,
 - `$relationName` - название связи,
 - `$formatted` - замыкание или поле в связанной таблице для отображения значений,
-- `$resource` - ресурс модели, на которую ссылается связь.
+- `$resource` - `ModelResource`, на которую ссылается связь.
 
 > [!WARNING]
 > Наличие ресурса модели, на которую ссылается связь, обязательно!
@@ -60,7 +60,7 @@ BelongsTo::make('Country', 'country', resource: CountryResource::class)
 BelongsTo::make('Country', resource: CountryResource::class)
 ```
 
-Вы можете опустить `$resource`, если ресурс модели совпадает с названием связи.
+Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
 
 ```php
 class CountryResource extends ModelResource
@@ -83,7 +83,7 @@ BelongsTo::make('Country')
 ```
 
 > [!NOTE]
-> По умолчанию для отображения значения используется поле в связанной таблице, которое указано свойством `$column` в ресурсе модели.
+> По умолчанию для отображения значения используется поле в связанной таблице, которое указано свойством `$column` в `ModelResource`.
 > Аргумент `$formatted` позволяет переопределить свойство $column.
 
 ```php

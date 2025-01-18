@@ -25,17 +25,19 @@ HasMany::make(
 
 - `$label` - the label, title of the field,
 - `$relationName` - the name of the relationship,
-- `$resource` - the model resource that the relationship refers to.
+- `$resource` - `ModelResource` that the relationship refers to.
 
 > [!WARNING]
 > The `$formatted` parameter is not used in the `HasMany` field!
 
 > [!WARNING]
-> Having a model resource that the relationship refers to is mandatory.
-> The resource must also be [registered](/docs/{{version}}/resources#define) in the `MoonShineServiceProvider` service provider in the `$core->resources()` method.
+> Having a `ModelResource` that the relationship refers to is mandatory.
+> The resource must also be [registered](/docs/{{version}}/model-resource/index#declaring-in-the-system) in the `MoonShineServiceProvider` service provider in the `$core->resources()` method.
 > Otherwise, there will be a 500 error (Resource is required for MoonShine\Laravel\Fields\Relationships\HasOne...).
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\HasOne;
+
 HasOne::make('Profile', 'profile', resource: ProfileResource::class)
 ```
 
@@ -54,7 +56,7 @@ class ProfileResource extends ModelResource
 HasMany::make('Profile', 'profile')
 ```
 
-You can omit `$resource` if the model resource matches the name of the relationship.
+You can omit `$resource` if the `ModelResource` matches the name of the relationship.
 
 ```php
 class ProfileResource extends ModelResource

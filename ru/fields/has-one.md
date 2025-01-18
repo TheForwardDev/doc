@@ -25,17 +25,19 @@ HasMany::make(
 
 - `$label` - метка, заголовок поля,
 - `$relationName` - имя отношения,
-- `$resource` - ресурс модели, на который ссылается отношение.
+- `$resource` - `ModelResource`, на который ссылается отношение.
 
 > [!WARNING]
 > Параметр `$formatted` не используется в поле `HasMany`!
 
 > [!WARNING]
-> Наличие ресурса модели, на который ссылается отношение, обязательно.
-> Ресурс также необходимо [зарегистрировать](/docs/{{version}}/resources#define) в сервис-провайдере `MoonShineServiceProvider` в методе `$core->resources()`.
+> Наличие `ModelResource`, на который ссылается отношение, обязательно.
+> Ресурс также необходимо [зарегистрировать](/docs/{{version}}/model-resource/index#declaring-in-the-system) в сервис-провайдере `MoonShineServiceProvider` в методе `$core->resources()`.
 > В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\HasOne...).
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\HasOne;
+
 HasOne::make('Profile', 'profile', resource: ProfileResource::class)
 ```
 
@@ -54,7 +56,7 @@ class ProfileResource extends ModelResource
 HasMany::make('Profile', 'profile')
 ```
 
-Вы можете опустить `$resource`, если ресурс модели совпадает с названием связи.
+Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
 
 ```php
 class ProfileResource extends ModelResource

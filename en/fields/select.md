@@ -339,7 +339,7 @@ updateOnPreview(?Closure $url = null, ?ResourceContract $resource = null, mixed 
 ```
 
 - `$url` - url for handling asynchronous request.
-- `$resource` - the model resource that the relationship points to.
+- `$resource` - the `ModelResource` that the relationship points to.
 - `$condition` - condition for executing the method.
 - `$events` - list of events _when executed?_ _(need a link to the events section)_.
 

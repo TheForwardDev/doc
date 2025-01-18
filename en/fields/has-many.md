@@ -32,14 +32,15 @@ HasMany::make(
 
 - `$label` - label, header of the field,
 - `$relationName` - name of the relation,
-- `$resource` - model resource that the relation points to.
+- `$resource` - `ModelResource` that the relation points to.
 
 > [!WARNING]
 > The `$formatted` parameter is not used in the `HasMany` field!
 
 > [!WARNING]
-> The existence of the model resource that the relationship points to is mandatory.
-The resource also needs to be [registered](/docs/{{version}}/resources#define) in the `MoonShineServiceProvider` service provider in the `$core->resources()` method. Otherwise, a 500 error will occur (Resource is required for MoonShine\Laravel\Fields\Relationships\HasMany...).
+> Having a `ModelResource` that the relationship refers to is mandatory.
+> The resource must also be [registered](/docs/{{version}}/model-resource/index#declaring-in-the-system) in the `MoonShineServiceProvider` service provider in the `$core->resources()` method.
+> Otherwise, there will be a 500 error (Resource is required for MoonShine\Laravel\Fields\Relationships\HasMany...).
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\HasMany;
@@ -51,7 +52,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 
 ![has_many_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_dark.png)
 
-You can omit the `$resource` if the model resource matches the name of the relation.
+You can omit the `$resource` if the `ModelResource` matches the name of the relation.
 
 ```php
 class CommentResource extends ModelResource
