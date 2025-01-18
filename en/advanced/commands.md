@@ -81,7 +81,7 @@ moonshine:resource {className?} {--type=} {--m|model=} {--t|title=} {--test} {--
 
 Available options:
 
-- `--m|model=` - Eloquent model for the resource model,
+- `--m|model=` - Eloquent model for `ModelResource`,
 - `--t|title=` - section title,
 - `--type=` - quick selection of resource type (1 - default, 2 - with pages, 3 - empty),
 - `--p|policy` - also create Policy,
@@ -90,12 +90,12 @@ Available options:
 
 When creating a resource, several options are available:
 
-- [Default model resource](/docs/{{version}}/model-resource/fields) - default model resource with the declaration of fields in the methods `indexFields()`, `formFields()` and `detailFields()`,
-- [Model resource with pages](/docs/{{version}}/model-resource/pages) - model resource with the publication of the pages `IndexPage`, `FormPage` and `DetailPage`,
+- [Default model resource](/docs/{{version}}/model-resource/fields) - default `ModelResource` with the declaration of fields in the methods `indexFields()`, `formFields()` and `detailFields()`,
+- [Model resource with pages](/docs/{{version}}/model-resource/pages) - `ModelResource` with the publication of the pages `IndexPage`, `FormPage` and `DetailPage`,
 - **Empty resource** - empty resource for custom implementations.
 
 After executing the command, a resource file will be created in the `app/MoonShine/Resources` directory.
-If a model resource with pages is created, additional pages will be created in the `app/MoonShine/Pages` directory.
+If `ModelResource` with pages is created, additional pages will be created in the `app/MoonShine/Pages` directory.
 
 Examples:
 ```shell
@@ -105,7 +105,7 @@ php artisan moonshine:resource Post --model="App\Models\CustomPost"
 ```
 
 > [!NOTE]
-> For more details, refer to the [Model Resources](/docs/{{version}}/model-resource/index) section.
+> For more details, refer to the [ModelResource](/docs/{{version}}/model-resource/index) section.
 
 <a name="page"></a>
 ## Page

@@ -339,7 +339,7 @@ updateOnPreview(?Closure $url = null, ?ResourceContract $resource = null, mixed 
 ```
 
 - `$url` - url для обработки асинхронного запроса.
-- `$resource` - ресурс модели на которую ссылается отношение.
+- `$resource` - `ModelResource`, на которую ссылается отношение.
 - `$condition` - условие выполнения метода.
 - `$events` - список событий _когда выполняются?_ _(нужна ссылка на раздел с событиями)_.
 

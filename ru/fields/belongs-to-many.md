@@ -37,7 +37,7 @@ BelongsToMany::make(
 - `$label` - метка, заголовок поля,
 - `$relationName` - название связи,
 - `$formatted` - замыкание или поле в связанной таблице для отображения значений,
-- `$resource` - ресурс модели, на которую ссылается связь.
+- `$resource` - `ModelResource`, на которую ссылается связь.
 
 > [!WARNING]
 > Наличие ресурса модели, на которую ссылается связь, обязательно!
@@ -59,7 +59,7 @@ BelongsToMany::make('Categories', 'categories', resource: CategoryResource::clas
 BelongsToMany::make('Categories', resource: CategoryResource::class)
 ```
 
-Вы можете опустить `$resource`, если ресурс модели совпадает с названием связи.
+Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
 
 ```php
 class CategoryResource extends ModelResource

@@ -37,7 +37,7 @@ BelongsToMany::make(
 - `$label` - label, field title,
 - `$relationName` - name of the relationship,
 - `$formatted` - closure or field in the related table to display values,
-- `$resource` - model resource that the relationship references.
+- `$resource` - `ModelResource` that the relationship references.
 
 > [!WARNING]
 > The model resource that the relationship references is required!
@@ -59,7 +59,7 @@ BelongsToMany::make('Categories', 'categories', resource: CategoryResource::clas
 BelongsToMany::make('Categories', resource: CategoryResource::class)
 ```
 
-You can omit `$resource` if the model resource matches the relationship name.
+You can omit `$resource` if the `ModelResource` matches the relationship name.
 
 ```php
 class CategoryResource extends ModelResource

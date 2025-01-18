@@ -70,7 +70,7 @@ tab: Blade
 ```
 ~~~
 
-For more detailed information, refer to the [Icons](/docs/{{version}}/resource/appearance/icons) section.
+For more detailed information, refer to the [Icons](/docs/{{version}}/appearance/icons) section.
 
 <a name="removable"></a>
 ## Removing notifications
