@@ -2,11 +2,11 @@
 
 Наследует [BelongsToMany](/docs/{{version}}/fields/belongs-to-many).
 
-* имеет те же возможности
+\* имеет те же возможности.
 
-Поле отношения *BelongsToMany* в **Laravel**
+Поле отношения `BelongsToMany` в **Laravel**.
 
-То же самое, что `MoonShine\Laravel\Fields\Relationships\BelongsToMany`, только для отношений MorphToMany `MoonShine\Laravel\Fields\Relationships\MorphToMany`.
+То же самое, что `MoonShine\Laravel\Fields\Relationships\BelongsToMany`, только для отношений `MorphToMany`.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphToMany;
@@ -19,6 +19,4 @@ protected function fields(): iterable
         MorphToMany::make('Categories', 'categories')
     ];
 }
-
-// ...
 ```

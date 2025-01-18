@@ -21,9 +21,7 @@
 <a name="basics"></a>
 ## Основы
 
-Поле *BelongsToMany* предназначено для работы с отношением того же имени в Laravel и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
-
-Для создания этого поля используйте статический метод `make()`.
+Поле `BelongsToMany` предназначено для работы с отношением того же имени в **Laravel** и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
 ```php
 BelongsToMany::make(
@@ -41,7 +39,8 @@ BelongsToMany::make(
 
 > [!WARNING]
 > Наличие ресурса модели, на которую ссылается связь, обязательно!
-> Ресурс также необходимо зарегистрировать в сервис-провайдере _MoonShineServiceProvider_ в методе `$core->resources()`. В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsToMany...).
+> Ресурс также необходимо зарегистрировать в сервис-провайдере _MoonShineServiceProvider_ в методе `$core->resources()`.
+> В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsToMany...).
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
@@ -70,7 +69,7 @@ class CategoryResource extends ModelResource
 BelongsToMany::make('Categories', 'categories')
 ```
 
-Если не указать $relationName, то имя связи будет определено автоматически на основе $label (по правилам camelCase).
+Если не указать `$relationName`, то имя связи будет определено автоматически на основе `$label` (по правилам camelCase).
 
 ```php
 class CategoryResource extends ModelResource
@@ -187,7 +186,8 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 <a name="select"></a>
 ## Выбор
 
-Поле *BelongsToMany* может быть отображено в виде выпадающего списка. Для этого необходимо использовать метод `selectMode()`.
+Поле `BelongsToMany` может быть отображено в виде выпадающего списка.
+Для этого необходимо использовать метод `selectMode()`.
 
 ```php
 BelongsToMany::make('Categories', resource: CategoryResource::class)
@@ -235,7 +235,8 @@ BelongsToMany::make('Countries', 'countries')
 <a name="tree"></a>
 ## Дерево
 
-Метод `tree()` позволяет отображать значения в виде дерева с чекбоксами, например, для категорий, которые имеют вложенность. В метод необходимо передать столбец в базе данных, по которому будет строиться дерево.
+Метод `tree()` позволяет отображать значения в виде дерева с чекбоксами, например, для категорий, которые имеют вложенность.
+В метод необходимо передать столбец в базе данных, по которому будет строиться дерево.
 
 ```php
 tree(string $parentColumn)
@@ -288,7 +289,8 @@ inLine(string $separator = '', Closure|bool $badge = false, ?Closure $link = nul
 - `badge` - замыкание или булево значение, отвечающее за отображение элементов в виде бейджа,
 - `$link` - замыкание, которое должно возвращать ссылки url или компоненты.
 
-При передаче булевого значения true в параметр `badge` будет использоваться цвет Primary. Для изменения цвета отображаемого `badge` используйте замыкание и возвращайте компонент `Badge::make()`.
+При передаче булевого значения true в параметр `badge` будет использоваться цвет Primary.
+Для изменения цвета отображаемого `badge` используйте замыкание и возвращайте компонент `Badge::make()`.
 
 ```php
 use MoonShine\UI\Components\Link;
@@ -312,7 +314,8 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 <a name="only-link"></a>
 ## Только ссылка
 
-Метод `relatedLink()` позволит отобразить отношение в виде ссылки с количеством элементов. Ссылка будет вести на IndexPage дочернего ресурса из отношения HasMany, в котором буду показаны только данные элементы.
+Метод `relatedLink()` позволит отобразить отношение в виде ссылки с количеством элементов.
+Ссылка будет вести на IndexPage дочернего ресурса из отношения HasMany, в котором буду показаны только данные элементы.
 
 ```php
 relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
@@ -385,7 +388,7 @@ BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
 - `$formatted` - функция обратного вызова для настройки вывода,
 - `$associatedWith` - поле, с которым установить связь,
 - `$limit` - количество элементов в результатах поиска,
-- `$url` - url для обработки асинхронного запроса,
+- `$url` - url для обработки асинхронного запроса.
 
 ```php
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -465,7 +468,7 @@ withImage(
 - `$dir` - директория относительно корня диска.
 
 ```php
-BelongsToMany::make(Countries, resource: ContactResource::class)
+BelongsToMany::make('Countries', resource: ContactResource::class)
     ->withImage('thumb', 'public', 'countries')->selectMode()
 ```
 
@@ -476,7 +479,7 @@ BelongsToMany::make(Countries, resource: ContactResource::class)
 <a name="buttons"></a>
 ## Кнопки
 
-Метод `buttons()` позволяет добавить дополнительные кнопки к полю *BelongsToMany*.
+Метод `buttons()` позволяет добавить дополнительные кнопки к полю `BelongsToMany`.
 
 ```php
 buttons(array $buttons)
@@ -498,7 +501,7 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 
 ### withCheckAll
 
-Метод `withCheckAll()` позволяет добавить кнопку checkAll к полю *BelongsToMany*, аналогично предыдущему примеру.
+Метод `withCheckAll()` позволяет добавить кнопку checkAll к полю `BelongsToMany`, аналогично предыдущему примеру.
 
 ```php
 BelongsToMany::make('Categories', resource: CategoryResource::class)

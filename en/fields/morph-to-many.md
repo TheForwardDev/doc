@@ -2,11 +2,11 @@
 
 Inherits [BelongsToMany](/docs/{{version}}/fields/belongs-to-many).
 
-* has the same capabilities
+\* has the same capabilities.
 
-The *BelongsToMany* relationship field in **Laravel**
+The `BelongsToMany` relationship field in **Laravel**.
 
-The same as `MoonShine\Laravel\Fields\Relationships\BelongsToMany`, but for MorphToMany relationships `MoonShine\Laravel\Fields\Relationships\MorphToMany`.
+The same as `MoonShine\Laravel\Fields\Relationships\BelongsToMany`, but for `MorphToMany` relationships.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphToMany;
@@ -19,6 +19,4 @@ protected function fields(): iterable
         MorphToMany::make('Categories', 'categories')
     ];
 }
-
-// ...
 ```

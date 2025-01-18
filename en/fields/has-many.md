@@ -17,9 +17,7 @@
 <a name="basics"></a>
 ## Basics
 
-The *HasMany* field is designed to work with the relationship of the same name in Laravel and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
-
-To create this field, use the static method `make()`.
+The `HasMany` field is designed to work with the relationship of the same name in **Laravel** and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
 
 ```php
 HasMany::make(
@@ -58,9 +56,15 @@ You can omit the `$resource` if the `ModelResource` matches the name of the rela
 class CommentResource extends ModelResource
 {
     // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            HasMany::make('Comments', 'comments')
+        ];
+    }
 }
-// ...
-HasMany::make('Comments', 'comments')
 ```
 
 If you do not specify `$relationName`, then the name of the relation will be determined automatically based on `$label` (following camelCase rules).
@@ -69,9 +73,15 @@ If you do not specify `$relationName`, then the name of the relation will be det
 class CommentResource extends ModelResource
 {
     // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            HasMany::make('Comments')
+        ];
+    }
 }
-// ...
-HasMany::make('Comments')
 ```
 
 <a name="fields"></a>
@@ -146,7 +156,8 @@ HasMany::make('Comments', resource: CommentResource::class)
 <a name="only-link"></a>
 ## Only link
 
-The `relatedLink()` method allows you to display the relationship as a link with the count of elements. The link will lead to the IndexPage of the child resource from the HasMany relationship, only showing those data elements.
+The `relatedLink()` method allows you to display the relationship as a link with the count of elements.
+The link will lead to the IndexPage of the child resource from the HasMany relationship, only showing those data elements.
 
 ```php
 relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
@@ -373,7 +384,8 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ## Advanced usage
 
 ### Relation through JSON field
-The *HasMany* field is displayed outside the main resource form by default. If you need to display the relation fields inside the main form, you can use the *JSON* field in `asRelation()` mode.
+The *HasMany* field is displayed outside the main resource form by default.
+If you need to display the relation fields inside the main form, you can use the *JSON* field in `asRelation()` mode.
 
 ```php
 Json::make('Comments', 'comments')
@@ -383,7 +395,7 @@ Json::make('Comments', 'comments')
 
 ### Relation through Template field
 
-Using the *Template* field, you can build a field for *HasMany* relationships using a fluent interface during declaration.
+Using the `Template` field, you can build a field for `HasMany` relationships using a fluent interface during declaration.
 
 > [!NOTE]
 > For more detailed information, refer to the [Template field](/docs/{{version}}/fields/template).

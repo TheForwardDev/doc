@@ -20,9 +20,7 @@
 <a name="basics"></a>
 ## Basics
 
-The _BelongsTo_ field is designed to work with the same-name relationship in Laravel and contains all [Basic Methods](/docs/{{version}}/fields/basic-methods).
-
-To create this field, use the static method `make()`.
+The `BelongsTo` field is designed to work with the same-name relationship in **Laravel** and contains all [Basic Methods](/docs/{{version}}/fields/basic-methods).
 
 ```php
 BelongsTo::make(
@@ -39,9 +37,9 @@ BelongsTo::make(
 - `$resource` - the `ModelResource` that the relationship refers to.
 
 > [!WARNING]
-> The model resource that the relationship refers to is mandatory!
-> The resource must also be registered in the _MoonShineServiceProvider_ service provider in the `$core->resources()` method. Otherwise, there will be a 500 error (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsTo...).
-
+> Having a `ModelResource` that the relationship refers to is mandatory.
+> The resource must also be [registered](/docs/{{version}}/model-resource/index#declaring-in-the-system) in the `MoonShineServiceProvider` service provider in the `$core->resources()` method.
+> Otherwise, there will be a 500 error (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsTo...).
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
@@ -66,9 +64,15 @@ You can omit `$resource` if the `ModelResource` matches the relationship name.
 class CountryResource extends ModelResource
 {
     // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            BelongsTo::make('Country', 'country')
+        ];
+    }
 }
-// ...
-BelongsTo::make('Country', 'country')
 ```
 
 If you do not specify `$relationName`, the name of the relationship will be determined automatically based on `$label` (by camelCase rules).
@@ -77,14 +81,20 @@ If you do not specify `$relationName`, the name of the relationship will be dete
 class CountryResource extends ModelResource
 {
     // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            BelongsTo::make('Country')
+        ];
+    }
 }
-// ...
-BelongsTo::make('Country')
 ```
 
 > [!NOTE]
 > By default, the field used to display the value is the one specified by the `$column` property in the `ModelResource`.
-> The `$formatted` argument allows overriding the $column property.
+> The `$formatted` argument allows overriding the `$column` property.
 
 ```php
 namespace App\MoonShine\Resources;
@@ -94,13 +104,21 @@ use MoonShine\Laravel\Resources\ModelResource;
 class CountryResource extends ModelResource
 {
     public string $column = 'title';
+
+    // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            BelongsTo::make(
+                'Country',
+                'country',
+                formatted: 'name'
+            )
+        ];
+    }
 }
-// ...
-BelongsTo::make(
-    'Country',
-    'country',
-    formatted: 'name'
-)
 ```
 
 If you need to specify a more complex value for display, you can pass a callback function to the `$formatted` argument.
@@ -113,7 +131,7 @@ BelongsTo::make(
 )
 ```
 
-If you need to change the column when working with models, use the `onAfterFill` method.
+If you need to change the column when working with models, use the `onAfterFill()` method.
 
 ```php
 BelongsTo::make(
@@ -160,7 +178,8 @@ BelongsTo::make('Country', resource: CategoryResource::class)
 ![select_nullable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable_dark.png)
 
 > [!TIP]
-> **MoonShine** is a very convenient and functional tool. However, to use it, you need to be confident in the basics of Laravel.
+> **MoonShine** is a very convenient and functional tool.
+> However, to use it, you need to be confident in the basics of **Laravel**.
 
 Don't forget to specify in the database table that the field can accept a `Null` value.
 
@@ -261,7 +280,8 @@ BelongsTo::make('Country', 'country', resource: CategoryResource::class)
 ```
 
 > [!TIP]
-> The search will be carried out by the field specified for the resource `column`. By default `column=id`.
+> The search will be carried out by the field specified for the resource `column`.
+> By default `column=id`.
 
 You can pass parameters to the `asyncSearch()` method:
 *   `$column` - the field by which the search is conducted,
@@ -269,7 +289,7 @@ You can pass parameters to the `asyncSearch()` method:
 *   `$formatted` - a callback function for customizing output,
 *   `$associatedWith` - the field with which the association is established,
 *   `$limit` - the number of items in the search results,
-*   `$url` - the URL for processing the asynchronous request,
+*   `$url` - the URL for processing the asynchronous request.
 
 ```php
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -290,7 +310,8 @@ BelongsTo::make('Country', 'country', resource: CategoryResource::class)
 ```
 
 > [!NOTE]
-> When building the query in `asyncSearchQuery()`, you can use the current values of the form. To do this, it is necessary to pass `Request` into the callback function.
+> When building the query in `asyncSearchQuery()`, you can use the current values of the form.
+> To do this, it is necessary to pass `Request` into the callback function.
 
 ```php
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -310,7 +331,7 @@ BelongsTo::make('City', 'city',  resource: CityResource::class)
 
 > [!NOTE]
 > When building the query in `asyncSearchQuery()`, the initial state of the builder is preserved.
-If you need to replace it with your builder, use the `replaceQuery` flag.
+> If you need to replace it with your builder, use the `replaceQuery` flag.
 
 ```php
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -409,7 +430,8 @@ This field supports [reactivity](/docs/{{version}}/fields/basic-methods#reactive
 <a name="link"></a>
 ## Link
 
-By default, *BelongsTo* links to the edit page, using the `link` method under the hood. If needed, you can override the `link`:
+By default, `BelongsTo` links to the edit page, using the `link()` method under the hood.
+If needed, you can override the `link`:
 
 ```php
 BelongsTo::make(

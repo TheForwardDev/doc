@@ -20,9 +20,7 @@
 <a name="basics"></a>
 ## Основы
 
-Поле _BelongsTo_ предназначено для работы с одноименной связью в Laravel и содержит все [Базовые методы](/docs/{{version}}/fields/basic-methods).
-
-Для создания этого поля используйте статический метод `make()`.
+Поле `BelongsTo` предназначено для работы с одноименной связью в **Laravel** и содержит все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
 ```php
 BelongsTo::make(
@@ -39,9 +37,9 @@ BelongsTo::make(
 - `$resource` - `ModelResource`, на которую ссылается связь.
 
 > [!WARNING]
-> Наличие ресурса модели, на которую ссылается связь, обязательно!
-> Ресурс также необходимо зарегистрировать в сервис-провайдере _MoonShineServiceProvider_ в методе `$core->resources()`. В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsTo...).
-
+> Наличие `ModelResource`, на который ссылается отношение, обязательно.
+> Ресурс также необходимо [зарегистрировать](/docs/{{version}}/model-resource/index#declaring-in-the-system) в сервис-провайдере `MoonShineServiceProvider` в методе `$core->resources()`.
+> В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsTo...).
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
@@ -66,25 +64,37 @@ BelongsTo::make('Country', resource: CountryResource::class)
 class CountryResource extends ModelResource
 {
     // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            BelongsTo::make('Country', 'country')
+        ];
+    }
 }
-// ...
-BelongsTo::make('Country', 'country')
 ```
 
-Если не указать $relationName, то имя связи будет определено автоматически на основе $label (по правилам camelCase).
+Если не указать `$relationName`, то имя связи будет определено автоматически на основе `$label` (по правилам camelCase).
 
 ```php
 class CountryResource extends ModelResource
 {
     // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            BelongsTo::make('Country')
+        ];
+    }
 }
-// ...
-BelongsTo::make('Country')
 ```
 
 > [!NOTE]
-> По умолчанию для отображения значения используется поле в связанной таблице, которое указано свойством `$column` в `ModelResource`.
-> Аргумент `$formatted` позволяет переопределить свойство $column.
+> По умолчанию, для отображения значения используется поле в связанной таблице, которое указано свойством `$column` в `ModelResource`.
+> Аргумент `$formatted` позволяет переопределить свойство `$column`.
 
 ```php
 namespace App\MoonShine\Resources;
@@ -94,13 +104,21 @@ use MoonShine\Laravel\Resources\ModelResource;
 class CountryResource extends ModelResource
 {
     public string $column = 'title';
+
+    // ...
+
+    protected function formFields(): iterable
+    {
+        return [
+            // ...
+            BelongsTo::make(
+                'Country',
+                'country',
+                formatted: 'name'
+            )
+        ];
+    }
 }
-// ...
-BelongsTo::make(
-    'Country',
-    'country',
-    formatted: 'name'
-)
 ```
 
 Если необходимо указать более сложное значение для отображения, то в аргумент `$formatted` можно передать функцию обратного вызова.
@@ -113,7 +131,7 @@ BelongsTo::make(
 )
 ```
 
-Если необходимо изменить колонку при работе с моделями, используйте метод `onAfterFill`
+Если необходимо изменить колонку при работе с моделями, используйте метод `onAfterFill()`.
 
 ```php
 BelongsTo::make(
@@ -160,7 +178,8 @@ BelongsTo::make('Country', resource: CategoryResource::class)
 ![select_nullable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable_dark.png)
 
 > [!TIP]
-> **MoonShine** - очень удобный и функциональный инструмент. Однако для его использования нужно быть уверенным в основах Laravel.
+> **MoonShine** - очень удобный и функциональный инструмент.
+> Однако для его использования нужно быть уверенным в основах **Laravel**.
 
 Не забудьте указать в таблице базы данных, что поле может принимать значение `Null`.
 
@@ -261,7 +280,8 @@ BelongsTo::make('Country', 'country', resource: CategoryResource::class)
 ```
 
 > [!TIP]
-> Поиск будет осуществляться по полю связи ресурса `column`. По умолчанию `column=id`.
+> Поиск будет осуществляться по полю связи ресурса `column`.
+> По умолчанию `column=id`.
 
 Вы можете передать параметры в метод `asyncSearch()`:
 *   `$column` - поле, по которому осуществляется поиск,
@@ -269,7 +289,7 @@ BelongsTo::make('Country', 'country', resource: CategoryResource::class)
 *   `$formatted` - функция обратного вызова для настройки вывода,
 *   `$associatedWith` - поле, с которым установить связь,
 *   `$limit` - количество элементов в результатах поиска,
-*   `$url` - url для обработки асинхронного запроса,
+*   `$url` - url для обработки асинхронного запроса.
 
 ```php
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -290,7 +310,8 @@ BelongsTo::make('Country', 'country', resource: CategoryResource::class)
 ```
 
 > [!NOTE]
-> При построении запроса в `asyncSearchQuery()` можно использовать текущие значения формы. Для этого необходимо передать `Request` в функцию обратного вызова.
+> При построении запроса в `asyncSearchQuery()` можно использовать текущие значения формы.
+> Для этого необходимо передать `Request` в функцию обратного вызова.
 
 ```php
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -310,7 +331,7 @@ BelongsTo::make('City', 'city',  resource: CityResource::class)
 
 > [!NOTE]
 > При построении запроса в `asyncSearchQuery()` сохраняется исходное состояние построителя.
-Если вам нужно заменить его своим построителем, то используйте флаг `replaceQuery`.
+> Если вам нужно заменить его своим построителем, то используйте флаг `replaceQuery`.
 
 ```php
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -395,7 +416,7 @@ BelongsTo::make('Country', resource: CountryResource::class)
 <a name="native"></a>
 ## Нативный режим
 
-Метод `native()` отключает библиотеку Choices.js и отображает выбор в нативном режиме
+Метод `native()` отключает библиотеку Choices.js и отображает выбор в нативном режиме.
 
 ```php
 BelongsTo::make('Type')->native()
@@ -404,12 +425,12 @@ BelongsTo::make('Type')->native()
 <a name="reactive"></a>
 ## Реактивность
 
-Данному полю доступна [реактивность](/docs/{{version}}/fields/basic-methods#reactive)
+Данному полю доступна [реактивность](/docs/{{version}}/fields/basic-methods#reactive).
 
 <a name="link"></a>
 ## Ссылка
 
-По умолчанию *BelongsTo* ссылается на страницу редактирования, под капотом используется метод `link`.
+По умолчанию, `BelongsTo` ссылается на страницу редактирования, под капотом используется метод `link()`.
 При необходимости вы можете переопределить `link`:
 
 ```php

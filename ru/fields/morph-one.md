@@ -2,12 +2,11 @@
 
 Наследует [HasOne](/docs/{{version}}/fields/has-one).
 
-* имеет те же возможности
+\* имеет те же возможности.
 
-Поле отношения в **Laravel** типа *HasOne*.
+Поле отношения в **Laravel** типа `HasOne`.
 
-То же самое, что `MoonShine\Laravel\Fields\Relationships\HasOne`, только для отношений *MorphOne*
-`MoonShine\Laravel\Fields\Relationships\MorphOne`.
+То же самое, что `MoonShine\Laravel\Fields\Relationships\HasOne`, только для отношений `MorphOne`.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphOne;
@@ -20,6 +19,4 @@ protected function fields(): iterable
         MorphOne::make('Profile', 'profile')
     ];
 }
-
-// ...
 ```

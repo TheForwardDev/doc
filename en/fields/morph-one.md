@@ -2,12 +2,11 @@
 
 Inherits from [HasOne](/docs/{{version}}/fields/has-one).
 
-* has the same capabilities
+\* has the same capabilities.
 
-Relationship field in **Laravel** of type *HasOne*.
+Relationship field in **Laravel** of type `HasOne`.
 
-The same as `MoonShine\Laravel\Fields\Relationships\HasOne`, but for *MorphOne* relationships
-`MoonShine\Laravel\Fields\Relationships\MorphOne`.
+The same as `MoonShine\Laravel\Fields\Relationships\HasOne`, but for `MorphOne` relationships.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphOne;
@@ -20,6 +19,4 @@ protected function fields(): iterable
         MorphOne::make('Profile', 'profile')
     ];
 }
-
-// ...
 ```
