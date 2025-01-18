@@ -2,7 +2,7 @@
 
 - [Basics](#basics)
 - [Helper](#helper)
-- [Current Page](#current-page)
+- [Current Page](#active-page)
 - [Checking the active page](#is-page)
 
 ---
@@ -83,10 +83,11 @@ toPage(page: IndexPage::class, redirect: true);
 toPage(page: IndexPage::class, fragment: true);
 ```
 
-<a name="current-page"></a>
-## Current Page
+<a name="active-page"></a>
+## Active Page
 
-The model resource has a method `getActivePage()` that allows you to get the current active page; if there is no active page, the result will be `NULL`.
+`ModelResource` has a method `getActivePage()` that allows you to get the current active page.
+If there is no active page, the result will be `NULL`.
 
 ```php
 $resource->getActivePage() // ?PageContract
