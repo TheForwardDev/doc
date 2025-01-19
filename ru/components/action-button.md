@@ -22,7 +22,6 @@
 
 \* имеет те же возможности.
 
-
 <a name="basics"></a>
 ## Основы
 
@@ -58,7 +57,7 @@ protected function components(): iterable
 <a name="blank"></a>
 ## Открытие в новом окне
 
-Метод `blank()` позволяет открыть URL в новом окне. Добавится атрибут `target="_blank"`
+Метод `blank()` позволяет открыть URL в новом окне. Добавится атрибут `target="_blank"`.
 
 ```php
 ActionButton::make(
@@ -121,7 +120,7 @@ ActionButton::make(
 )->onClick(fn() => "alert('Пример')", 'prevent')
 ```
 
-Если вам необходимо получить данные в методе `onClick`, то воспользуйтесь методом `onAfterSet`:
+Если вам необходимо получить данные в методе `onClick()`, то воспользуйтесь методом `onAfterSet()`:
 
 ```php
 ActionButton::make('Alert')
@@ -158,11 +157,10 @@ ActionButton::make(
 - `title` - заголовок модального окна,
 - `content` - содержимое модального окна,
 - `name` - уникальное наименование модального окна для вызова событий,
-- `builder` - замыкание с доступом к компоненту `Modal`
+- `builder` - замыкание с доступом к компоненту `Modal`.
 
 > [!WARNING]
-> Если вы используете несколько однотипных модальных окон, например в таблицах для каждого элемента,
-> то вам необходимо указывать уникальный `name` для каждой:
+> Если вы используете несколько однотипных модальных окон, например в таблицах для каждого элемента, то вам необходимо указывать уникальный `name` для каждой.
 
 ```php
 ->inModal(
@@ -170,7 +168,7 @@ ActionButton::make(
 )
 ```
 
-Вы также можете открыть модальное окно с помощью метода `toggleModal`, а если `ActionButton` находится внутри модального окна, то просто `openModal`
+Вы также можете открыть модальное окно с помощью метода `toggleModal()`, а если `ActionButton` находится внутри модального окна, то просто `openModal()`.
 
 ```php
 use MoonShine\UI\Components\ActionButton;
@@ -212,7 +210,7 @@ protected function components(): iterable
 ```
 
 > [!NOTE]
-> О [Fragment](/docs/{{version}}/components/fragment) можно узнать в разделе "Компоненты"
+> О [Fragment](/docs/{{version}}/components/fragment) можно узнать в разделе "Компоненты".
 
 <a name="confirm"></a>
 ## Подтверждение
@@ -240,8 +238,7 @@ ActionButton::make(
 ```
 
 > [!WARNING]
-> Если вы используете несколько однотипных модальных окон, например в таблицах для каждого элемента,
-> то вам необходимо указывать уникальный `name` для каждой:
+> Если вы используете несколько однотипных модальных окон, например в таблицах для каждого элемента, то вам необходимо указывать уникальный `name` для каждой.
 
 ```php
 ->inModal(
@@ -434,7 +431,7 @@ protected function components(): iterable
 }
 ```
 
-```php
+```javascript
 document.addEventListener("moonshine:init", () => {
     MoonShine.onCallback('myFunction', function(response, element, events, component) {
         if(response.confirmed === true) {
@@ -447,7 +444,7 @@ document.addEventListener("moonshine:init", () => {
 ```
 
 > [!NOTE]
-> Подробности в разделе [Js](/docs/{{version}}/frontend/js#response-calback)
+> Подробности в разделе [Js](/docs/{{version}}/frontend/js#response-calback).
 
 <a name="method"></a>
 ### Вызов методов
@@ -530,7 +527,7 @@ public function updateSomething(MoonShineRequest $request)
 
 Если в запросе присутствует `resourceItem`, вы можете получить доступ к текущему элементу в ресурсе через метод `getItem()`.
 
-- Когда в данных есть модель, и кнопка создается в методе `indexButtons()` или `detailButtons` или `formButtons` [TableBuilder](/docs/{{version}}/components/table-builder#buttons), [CardsBuilder](/docs/{{version}}/components/cards-builder#buttons) или [FormBuilder](/docs/{{version}}/components/form-builder#buttons), она автоматически заполняется данными, и параметры будут содержать `resourceItem`.
+- Когда в данных есть модель, и кнопка создается в методе `indexButtons()` или `detailButtons()` или `formButtons()` [TableBuilder](/docs/{{version}}/components/table-builder#buttons), [CardsBuilder](/docs/{{version}}/components/cards-builder#buttons) или [FormBuilder](/docs/{{version}}/components/form-builder#buttons), она автоматически заполняется данными, и параметры будут содержать `resourceItem`.
 - Когда кнопка находится на странице формы `ModelResource`, вы можете передать id текущего элемента.
 
 ```php
@@ -541,7 +538,7 @@ ActionButton::make('Нажми меня')
     )
 ```
 
-- Когда кнопка находится в индексной таблице `ModelResource`, нужно использовать замыкание
+- Когда кнопка находится в индексной таблице `ModelResource`, нужно использовать замыкание.
 
 ```php
 ActionButton::make('Нажми меня')
@@ -640,16 +637,18 @@ ActionButton::make('Обновить')
 <a name="fill"></a>
 ## Наполнение данными
 
-При работе с `ModelResource`, кнопки действий `ActionButton` обычно автоматически наполняются необходимыми данными. Этот процесс происходит "под капотом" с использованием метода `setData`. Давайте рассмотрим этот механизм подробнее.
+При работе с `ModelResource`, кнопки действий `ActionButton` обычно автоматически наполняются необходимыми данными.
+Этот процесс происходит "под капотом" с использованием метода `setData()`.
+Давайте рассмотрим этот механизм подробнее.
 
 ```php
 ActionButton::make('Button')->setData(?DataWrapperContract $data = null)
 ```
 
 > [!NOTE]
-> Подробнее о DataWrapperContract читайте в разделе [TypeCasts](/docs/{{version}}/advanced/type-casts)
+> Подробнее о `DataWrapperContract` читайте в разделе [TypeCasts](/docs/{{version}}/advanced/type-casts).
 
-Также доступны методы с колбеками до и после наполнения кнопки
+Также доступны методы с колбеками до и после наполнения кнопки.
 
 ```php
 ActionButton::make('Button')->onBeforeSet(fn(?DataWrapperContract $data, ActionButton $ctx) => $data)
