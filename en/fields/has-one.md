@@ -52,7 +52,18 @@ class ProfileResource extends ModelResource
 
 // ...
 
-HasMany::make('Profile', 'profile')
+class UserResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            HasOne::make('Profile', 'profile')
+        ];
+    }
+}
 ```
 
 You can omit `$resource` if the `ModelResource` matches the name of the relationship.
@@ -65,7 +76,18 @@ class ProfileResource extends ModelResource
 
 // ...
 
-HasMany::make('Profile')
+class UserResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            HasOne::make('Profile')
+        ];
+    }
+}
 ```
 
 <a name="fields"></a>
@@ -84,7 +106,7 @@ use MoonShine\UI\Fields\Relationships\HasOne;
 use MoonShine\UI\Fields\Phone;
 use MoonShine\UI\Fields\Text;
 
-HasOne::make('Contacts', resource: ContactResource::class)
+HasOne::make('Profile', resource: ProfileResource::class)
     ->fields([
         Phone::make('Phone'),
         Text::make('Address'),
@@ -138,7 +160,7 @@ $this->getParentId();
 
 ### Preview
 
-The `modifyTable()` method allows you to change the *TableBuilder* for the preview.
+The `modifyTable()` method allows you to change the `TableBuilder` for the preview.
 
 ```php
 HasOne::make('Comment', resource: CommentResource::class)

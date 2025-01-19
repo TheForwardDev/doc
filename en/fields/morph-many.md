@@ -18,7 +18,11 @@ protected function fields(): iterable
 {
     return [
         // ...
-        MorphMany::make('Comments', 'comments')
+        MorphMany::make(
+            'Comments',
+            'comments',
+            resource: CommentResource::class
+        )
     ];
 }
 ```

@@ -59,7 +59,18 @@ class CommentResource extends ModelResource
 
 // ...
 
-HasMany::make('Comments', 'comments')
+class PostResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            HasMany::make('Comments', 'comments')
+        ];
+    }
+}
 ```
 
 If you do not specify `$relationName`, then the name of the relation will be determined automatically based on `$label` (following camelCase rules).
@@ -72,7 +83,18 @@ class CommentResource extends ModelResource
 
 // ...
 
-HasMany::make('Comments')
+class PostResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            HasMany::make('Comments')
+        ];
+    }
+}
 ```
 
 <a name="fields"></a>
@@ -148,7 +170,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 ## Only link
 
 The `relatedLink()` method allows you to display the relationship as a link with the count of elements.
-The link will lead to the IndexPage of the child resource from the HasMany relationship, only showing those data elements.
+The link will lead to the IndexPage of the child resource from the `HasMany` relationship, only showing those data elements.
 
 ```php
 relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
@@ -160,7 +182,7 @@ You can pass optional parameters to the method:
 - `condition` - closure or boolean value responsible for displaying the relation as a link.
 
 > [!NOTE]
-> Don’t forget to add the relation to the *with* property of the resource.
+> Don’t forget to add the relation to the `$with` property of the resource.
 
 ```php
 HasMany::make('Comments', resource: CommentResource::class)
@@ -188,7 +210,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 <a name="parent-id"></a>
 ## Parent ID
 
-If the relation has a resource, and you want to get the ID of the parent element, you can use the *ResourceWithParent* trait.
+If the relation has a resource, and you want to get the ID of the parent element, you can use the `ResourceWithParent` trait.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -225,7 +247,7 @@ $this->getParentId();
 ```
 
 > [!TIP]
-> Recipe: [saving files](/docs/{{version}}/recipes/hasmany-parent-id) of *HasMany* relations in the directory with the parent ID.
+> Recipe: [saving files](/docs/{{version}}/recipes/hasmany-parent-id) of `HasMany` relations in the directory with the parent ID.
 
 <a name="change-edit-button"></a>
 ## Edit button
@@ -255,7 +277,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="modify"></a>
 ## Modification
 
-The `HasMany` field has methods that can be used to modify buttons, change the *TableBuilder* for preview and form, as well as change the *relatedLink* button.
+The `HasMany` field has methods that can be used to modify buttons, change the `TableBuilder` for preview and form, as well as change the *relatedLink* button.
 
 ### searchable()
 
@@ -320,7 +342,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 
 ### modifyTable()
 
-The `modifyTable()` method allows you to change the *TableBuilder* for preview and form.
+The `modifyTable()` method allows you to change the `TableBuilder` for preview and form.
 
 ```php
 HasMany::make('Comments', resource: CommentResource::class)
@@ -365,7 +387,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 
 ### formButtons()
 
-The `formButtons` method allows you to add additional `ActionButtons` inside the form when creating or editing a HasMany element.
+The `formButtons()` method allows you to add additional `ActionButtons` inside the form when creating or editing a `HasMany` element.
 
 ```php
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
@@ -378,7 +400,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ## Advanced usage
 
 ### Relation through JSON field
-The *HasMany* field is displayed outside the main resource form by default.
+The `HasMany` field is displayed outside the main resource form by default.
 If you need to display the relation fields inside the main form, you can use the *JSON* field in `asRelation()` mode.
 
 ```php

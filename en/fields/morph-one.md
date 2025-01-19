@@ -15,7 +15,11 @@ protected function fields(): iterable
 {
     return [
         // ...
-        MorphOne::make('Profile', 'profile')
+        MorphOne::make(
+            'Profile',
+            'profile',
+            resource: ProfileResource::class
+        )
     ];
 }
 ```

@@ -52,7 +52,18 @@ class ProfileResource extends ModelResource
 
 // ...
 
-HasMany::make('Profile', 'profile')
+class UserResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            HasOne::make('Profile', 'profile')
+        ];
+    }
+}
 ```
 
 Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
@@ -65,7 +76,18 @@ class ProfileResource extends ModelResource
 
 // ...
 
-HasMany::make('Profile')
+class UserResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            HasOne::make('Profile')
+        ];
+    }
+}
 ```
 
 <a name="fields"></a>
@@ -84,7 +106,7 @@ use MoonShine\UI\Fields\Relationships\HasOne;
 use MoonShine\UI\Fields\Phone;
 use MoonShine\UI\Fields\Text;
 
-HasOne::make('Contacts', resource: ContactResource::class)
+HasOne::make('Profile', resource: ProfileResource::class)
     ->fields([
         Phone::make('Phone'),
         Text::make('Address'),
@@ -138,7 +160,7 @@ $this->getParentId();
 
 ### Preview
 
-Метод `modifyTable()` позволяет изменить *TableBuilder* для предпросмотра.
+Метод `modifyTable()` позволяет изменить `TableBuilder` для предпросмотра.
 
 ```php
 HasOne::make('Comment', resource: CommentResource::class)

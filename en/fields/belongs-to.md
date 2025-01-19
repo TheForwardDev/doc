@@ -53,27 +53,49 @@ BelongsTo::make('Country', 'country', resource: CountryResource::class)
 You can omit `$resource` if the `ModelResource` matches the relationship name.
 
 ```php
-class CountryResource extends ModelResource
+class UserResource extends ModelResource
 {
     // ...
 }
 
 // ...
 
-BelongsTo::make('Country', 'country')
+class PostResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            BelongsTo::make('User', 'user')
+        ];
+    }
+}
 ```
 
 If you do not specify `$relationName`, the name of the relationship will be determined automatically based on `$label` (by camelCase rules).
 
 ```php
-class CountryResource extends ModelResource
+class UserResource extends ModelResource
 {
     // ...
 }
 
 // ...
 
-BelongsTo::make('Country')
+class PostResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            BelongsTo::make('User')
+        ];
+    }
+}
 ```
 
 > [!NOTE]
@@ -81,20 +103,31 @@ BelongsTo::make('Country')
 > The `$formatted` argument allows overriding the `$column` property.
 
 ```php
-class CountryResource extends ModelResource
+class UserResource extends ModelResource
 {
-    public string $column = 'title';
+    public string $column = 'name';
 
     // ...
 }
 
 // ...
 
-BelongsTo::make(
-    'Country',
-    'country',
-    formatted: 'name'
-)
+class PostResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            BelongsTo::make(
+                'User',
+                'user',
+                formatted: 'first_name'
+            )
+        ];
+    }
+}
 ```
 
 If you need to specify a more complex value for display, you can pass a callback function to the `$formatted` argument.
@@ -113,7 +146,10 @@ If you need to change the column when working with models, use the `onAfterFill(
 BelongsTo::make(
     'Category',
     resource: CategoryResource::class
-)->afterFill(fn($field) => $field->setColumn('changed_category_id'))
+)
+->afterFill(
+    fn($field) => $field->setColumn('changed_category_id')
+)
 ```
 
 <a name="default"></a>
@@ -243,7 +279,7 @@ asyncSearch(
 ```
 
 ```php
-BelongsTo::make('Country', 'country', resource: CategoryResource::class)
+BelongsTo::make('Category', 'category', resource: CategoryResource::class)
     ->asyncSearch()
 ```
 
@@ -268,7 +304,7 @@ use Illuminate\Http\Request;
 use MoonShine\UI\Fields\Field;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-BelongsTo::make('Country', 'country', resource: CategoryResource::class)
+BelongsTo::make('Category', 'category', resource: CategoryResource::class)
     ->asyncSearch(
         'title',
         searchQuery: function (Builder $query, Request $request, Field $field) {
@@ -425,9 +461,9 @@ You can override this behavior using the `link()` method.
 
 ```php
 BelongsTo::make(
-    __('moonshine::ui.resource.role'),
-    'moonshineUserRole',
-    resource: MoonShineUserRoleResource::class,
+    'Role',
+    'role',
+    resource: RoleResource::class,
 )
 ->link(
     link: fn(string $value, BelongsTo $ctx) => $ctx->getResource()->getDetailPageUrl($ctx->getData()->getKey()),

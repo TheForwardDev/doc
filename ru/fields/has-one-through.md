@@ -10,5 +10,9 @@
 ```php
 use MoonShine\Laravel\Fields\Relationships\HasOneThrough;
 
-HasOneThrough::make('Car owner', 'carOwner', resource: new OwnerResource::class)
+HasOneThrough::make(
+    'Car owner',
+    'carOwner',
+    resource: OwnerResource::class
+)
 ```

@@ -61,7 +61,18 @@ class CategoryResource extends ModelResource
 
 // ...
 
-BelongsToMany::make('Categories', 'categories')
+class PostResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            BelongsToMany::make('Categories', 'categories')
+        ];
+    }
+}
 ```
 
 Если не указать `$relationName`, то имя связи будет определено автоматически на основе `$label` (по правилам camelCase).
@@ -74,7 +85,18 @@ class CategoryResource extends ModelResource
 
 // ...
 
-BelongsToMany::make('Categories')
+class PostResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            BelongsToMany::make('Categories')
+        ];
+    }
+}
 ```
 
 > [!NOTE]
@@ -91,11 +113,22 @@ class CategoryResource extends ModelResource
 
 // ...
 
-BelongsToMany::make(
-    'Categories',
-    'Categories',
-    formatted: 'name'
-)
+class PostResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            BelongsToMany::make(
+                'Categories',
+                'categories',
+                formatted: 'name'
+            )
+        ];
+    }
+}
 ```
 
 Если вам нужно указать более сложное значение для отображения, тогда в аргумент `$formatted` можно передать функцию обратного вызова.
@@ -372,8 +405,9 @@ BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
     ->asyncSearch()
 ```
 
-> [!TIP]
-> Поиск будет осуществляться по полю отношения ресурса `column`. По умолчанию `column=id`
+> [!NOTE]
+> Поиск будет осуществляться по полю отношения ресурса `column`.
+> По умолчанию, `column=id`.
 
 Вы можете передать параметры в метод `asyncSearch()`:
 
@@ -412,10 +446,11 @@ BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:4]
+// [tl! collapse:5]
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Select;
 
 protected function fields(): iterable

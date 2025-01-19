@@ -15,7 +15,11 @@ protected function fields(): iterable
 {
     return [
         // ...
-        MorphToMany::make('Categories', 'categories')
+        MorphToMany::make(
+            'Categories',
+            'categories',
+            resource: CategoryResource::class
+        )
     ];
 }
 ```

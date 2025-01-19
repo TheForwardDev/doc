@@ -10,5 +10,9 @@ It inherits from the `HasOne` field and including all its methods.
 ```php
 use MoonShine\Laravel\Fields\Relationships\HasOneThrough;
 
-HasOneThrough::make('Car owner', 'carOwner', resource: new OwnerResource::class)
+HasOneThrough::make(
+    'Car owner',
+    'carOwner',
+    resource: OwnerResource::class
+)
 ```

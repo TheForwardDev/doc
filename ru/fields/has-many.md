@@ -59,7 +59,18 @@ class CommentResource extends ModelResource
 
 // ...
 
-HasMany::make('Comments', 'comments')
+class PostResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            HasMany::make('Comments', 'comments')
+        ];
+    }
+}
 ```
 
 Если вы не указываете `$relationName`, тогда имя отношения будет определено автоматически на основе `$label` (по правилам camelCase).
@@ -72,7 +83,18 @@ class CommentResource extends ModelResource
 
 // ...
 
-HasMany::make('Comments')
+class PostResource extends ModelResource
+{
+    // ...
+
+    protected function fields(): iterable
+    {
+        return [
+            // ...
+            HasMany::make('Comments')
+        ];
+    }
+}
 ```
 
 <a name="fields"></a>
@@ -148,7 +170,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 ## Только ссылка
 
 Метод `relatedLink()` позволит отобразить отношение в виде ссылки с количеством элементов.
-Ссылка будет вести на IndexPage дочернего ресурса из отношения HasMany, в котором буду показаны только данные элементы.
+Ссылка будет вести на IndexPage дочернего ресурса из отношения `HasMany`, в котором буду показаны только данные элементы.
 
 ```php
 relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
@@ -160,7 +182,7 @@ relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
 - `condition` - замыкание или булево значение, отвечающее за отображение отношения в виде ссылки.
 
 > [!NOTE]
-> Не забудьте добавить отношение в свойство *with* ресурса.
+> Не забудьте добавить отношение в свойство `$with` ресурса.
 
 ```php
 HasMany::make('Comments', resource: CommentResource::class)
@@ -188,7 +210,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 <a name="parent-id"></a>
 ## ID родителя
 
-Если у отношения есть ресурс, и вы хотите получить ID родительского элемента, то Вы можете использовать трейт *ResourceWithParent*.
+Если у отношения есть ресурс, и вы хотите получить ID родительского элемента, то Вы можете использовать трейт `ResourceWithParent`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -225,7 +247,7 @@ $this->getParentId();
 ```
 
 > [!TIP]
-> Рецепт: [сохранение файлов](/docs/{{version}}/recipes/hasmany-parent-id) связей *HasMany* в директории с ID родителя.
+> Рецепт: [сохранение файлов](/docs/{{version}}/recipes/hasmany-parent-id) связей `HasMany` в директории с ID родителя.
 
 <a name="change-edit-button"></a>
 ## Кнопка редактирования
@@ -255,7 +277,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="modify"></a>
 ## Модификация
 
-Поле `HasMany` имеет методы, которые можно использовать для модификации кнопок, изменения *TableBuilder* для предпросмотра и формы, а также изменения кнопки *relatedLink*.
+Поле `HasMany` имеет методы, которые можно использовать для модификации кнопок, изменения `TableBuilder` для предпросмотра и формы, а также изменения кнопки *relatedLink*.
 
 ### searchable()
 
@@ -320,7 +342,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 
 ### modifyTable()
 
-Метод `modifyTable()` позволяет изменить *TableBuilder* для предпросмотра и формы.
+Метод `modifyTable()` позволяет изменить `TableBuilder` для предпросмотра и формы.
 
 ```php
 HasMany::make('Comments', resource: CommentResource::class)
@@ -354,7 +376,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 
 ### indexButtons()
 
-Метод `indexButtons()` позволяет добавить дополнительные ActionButtons для работы с элементами HasMany
+Метод `indexButtons()` позволяет добавить дополнительные ActionButtons для работы с элементами HasMany.
 
 ```php
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
@@ -365,7 +387,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 
 ### formButtons()
 
-Метод `formButtons` позволяет добавить дополнительные `ActionButtons` внутри формы при создании или редактировании элемента HasMany.
+Метод `formButtons()` позволяет добавить дополнительные `ActionButtons` внутри формы при создании или редактировании элемента `HasMany`.
 
 ```php
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
@@ -378,7 +400,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ## Продвинутое использование
 
 ### Отношение через JSON поле
-Поле *HasMany* по умолчанию отображается вне основной формы ресурса.
+Поле `HasMany` по умолчанию отображается вне основной формы ресурса.
 Если вам нужно отобразить поля отношения внутри основной формы, то вы можете использовать поле *JSON* в режиме `asRelation()`.
 
 ```php
