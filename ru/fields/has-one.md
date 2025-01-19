@@ -31,7 +31,7 @@ HasOne::make(
 > [!WARNING]
 > Наличие `ModelResource`, на который ссылается отношение, обязательно.
 > Ресурс также необходимо [зарегистрировать](/docs/{{version}}/model-resource/index#declaring-in-the-system) в сервис-провайдере `MoonShineServiceProvider` в методе `$core->resources()`.
-> В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\HasOne...).
+> В противном случае будет ошибка 500.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\HasOne;

@@ -38,7 +38,7 @@ HasMany::make(
 > [!WARNING]
 > Having a `ModelResource` that the relationship refers to is mandatory.
 > The resource must also be [registered](/docs/{{version}}/model-resource/index#declaring-in-the-system) in the `MoonShineServiceProvider` service provider in the `$core->resources()` method.
-> Otherwise, there will be a 500 error (Resource is required for MoonShine\Laravel\Fields\Relationships\HasMany...).
+> Otherwise, there will be a 500 error.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
