@@ -43,9 +43,17 @@ BelongsToMany::make(
 > Otherwise, there will be a 500 error (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsToMany...).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 
-BelongsToMany::make('Categories', 'categories', resource: CategoryResource::class)
+protected function fields(): iterable
+{
+    return [
+        // ...
+        BelongsToMany::make('Categories', 'categories', resource: CategoryResource::class)
+    ];
+}
 ```
 
 ![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many.png)
@@ -54,48 +62,32 @@ BelongsToMany::make('Categories', 'categories', resource: CategoryResource::clas
 You can omit `$resource` if the `ModelResource` matches the relationship name.
 
 ```php
-class CategoryResource extends ModelResource
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
+protected function fields(): iterable
 {
-    // ...
-}
-
-// ...
-
-class PostResource extends ModelResource
-{
-    // ...
-
-    protected function fields(): iterable
-    {
-        return [
-            // ...
-            BelongsToMany::make('Categories', 'categories')
-        ];
-    }
+    return [
+        // ...
+        BelongsToMany::make('Categories', 'categories')
+    ];
 }
 ```
 
 If `$relationName` is not specified, then the relationship name will be determined automatically based on `$label` (following camelCase rules).
 
 ```php
-class CategoryResource extends ModelResource
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
+protected function fields(): iterable
 {
-    // ...
-}
-
-// ...
-
-class PostResource extends ModelResource
-{
-    // ...
-
-    protected function fields(): iterable
-    {
-        return [
-            // ...
-            BelongsToMany::make('Categories')
-        ];
-    }
+    return [
+        // ...
+        BelongsToMany::make('Categories')
+    ];
 }
 ```
 
@@ -104,30 +96,20 @@ class PostResource extends ModelResource
 > The `$formatted` argument allows overriding this.
 
 ```php
-class CategoryResource extends ModelResource
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
+protected function fields(): iterable
 {
-    public string $column = 'title';
-
-    // ...
-}
-
-// ...
-
-class PostResource extends ModelResource
-{
-    // ...
-
-    protected function fields(): iterable
-    {
-        return [
-            // ...
-            BelongsToMany::make(
-                'Categories',
-                'categories',
-                formatted: 'name'
-            )
-        ];
-    }
+    return [
+        // ...
+        BelongsToMany::make(
+            'Categories',
+            'categories',
+            formatted: 'name'
+        )
+    ];
 }
 ```
 
@@ -171,14 +153,16 @@ fields(FieldsContract|Closure|iterable $fields)
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 use MoonShine\UI\Fields\Text;
 
-BelongsToMany::make('Contacts', resource: ContactResource::class)
-    ->fields([
-        Text::make('Contact', 'text'),
-    ])
+BelongsToMany::make(
+    'Contacts',
+    resource: ContactResource::class
+)
+->fields([
+    Text::make('Contact', 'text'),
+])
 ```
 
 ![belongs_to_many_pivot](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_pivot.png)
-
 ![belongs_to_many_pivot_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_pivot_dark.png)
 
 > [!WARNING]

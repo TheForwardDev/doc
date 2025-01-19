@@ -45,48 +45,24 @@ HasOne::make('Profile', 'profile', resource: ProfileResource::class)
 If you do not specify `$relationName`, the relationship name will be automatically determined based on `$label` (following camelCase rules).
 
 ```php
-class ProfileResource extends ModelResource
+protected function fields(): iterable
 {
-    // ...
-}
-
-// ...
-
-class UserResource extends ModelResource
-{
-    // ...
-
-    protected function fields(): iterable
-    {
-        return [
-            // ...
-            HasOne::make('Profile', 'profile')
-        ];
-    }
+    return [
+        // ...
+        HasOne::make('Profile', 'profile')
+    ];
 }
 ```
 
 You can omit `$resource` if the `ModelResource` matches the name of the relationship.
 
 ```php
-class ProfileResource extends ModelResource
+protected function fields(): iterable
 {
-    // ...
-}
-
-// ...
-
-class UserResource extends ModelResource
-{
-    // ...
-
-    protected function fields(): iterable
-    {
-        return [
-            // ...
-            HasOne::make('Profile')
-        ];
-    }
+    return [
+        // ...
+        HasOne::make('Profile')
+    ];
 }
 ```
 

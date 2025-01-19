@@ -42,9 +42,21 @@ BelongsTo::make(
 > В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsTo...).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-BelongsTo::make('Country', 'country', resource: CountryResource::class)
+protected function fields(): iterable
+{
+    return [
+        // ...
+        BelongsTo::make(
+            'User',
+            'user',
+            resource: UserResource::class
+        )
+    ];
+}
 ```
 
 ![belongs_to](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to.png)
@@ -53,48 +65,32 @@ BelongsTo::make('Country', 'country', resource: CountryResource::class)
 Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
 
 ```php
-class UserResource extends ModelResource
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
+protected function fields(): iterable
 {
-    // ...
-}
-
-// ...
-
-class PostResource extends ModelResource
-{
-    // ...
-
-    protected function fields(): iterable
-    {
-        return [
-            // ...
-            BelongsTo::make('User', 'user')
-        ];
-    }
+    return [
+        // ...
+        BelongsTo::make('User', 'user')
+    ];
 }
 ```
 
 Если не указать `$relationName`, то имя связи будет определено автоматически на основе `$label` (по правилам camelCase).
 
 ```php
-class UserResource extends ModelResource
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
+protected function fields(): iterable
 {
-    // ...
-}
-
-// ...
-
-class PostResource extends ModelResource
-{
-    // ...
-
-    protected function fields(): iterable
-    {
-        return [
-            // ...
-            BelongsTo::make('User')
-        ];
-    }
+    return [
+        // ...
+        BelongsTo::make('User')
+    ];
 }
 ```
 
@@ -103,30 +99,20 @@ class PostResource extends ModelResource
 > Аргумент `$formatted` позволяет переопределить свойство `$column`.
 
 ```php
-class UserResource extends ModelResource
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
+protected function fields(): iterable
 {
-    public string $column = 'name';
-
-    // ...
-}
-
-// ...
-
-class PostResource extends ModelResource
-{
-    // ...
-
-    protected function fields(): iterable
-    {
-        return [
-            // ...
-            BelongsTo::make(
-                'User',
-                'user',
-                formatted: 'first_name'
-            )
-        ];
-    }
+    return [
+        // ...
+        BelongsTo::make(
+            'User',
+            'user',
+            formatted: 'first_name'
+        )
+    ];
 }
 ```
 

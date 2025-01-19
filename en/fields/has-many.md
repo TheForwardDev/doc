@@ -41,9 +41,17 @@ HasMany::make(
 > Otherwise, there will be a 500 error (Resource is required for MoonShine\Laravel\Fields\Relationships\HasMany...).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\HasMany;
 
-HasMany::make('Comments', 'comments', resource: CommentResource::class)
+protected function fields(): iterable
+{
+    return [
+        // ...
+        HasMany::make('Comments', 'comments', resource: CommentResource::class)
+    ];
+}
 ```
 
 ![has_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many.png)
@@ -52,48 +60,32 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 You can omit the `$resource` if the `ModelResource` matches the name of the relation.
 
 ```php
-class CommentResource extends ModelResource
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
+protected function fields(): iterable
 {
-    // ...
-}
-
-// ...
-
-class PostResource extends ModelResource
-{
-    // ...
-
-    protected function fields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Comments', 'comments')
-        ];
-    }
+    return [
+        // ...
+        HasMany::make('Comments', 'comments')
+    ];
 }
 ```
 
 If you do not specify `$relationName`, then the name of the relation will be determined automatically based on `$label` (following camelCase rules).
 
 ```php
-class CommentResource extends ModelResource
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
+protected function fields(): iterable
 {
-    // ...
-}
-
-// ...
-
-class PostResource extends ModelResource
-{
-    // ...
-
-    protected function fields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Comments')
-        ];
-    }
+    return [
+        // ...
+        HasMany::make('Comments')
+    ];
 }
 ```
 
