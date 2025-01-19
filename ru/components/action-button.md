@@ -527,8 +527,10 @@ public function updateSomething(MoonShineRequest $request)
 
 Если в запросе присутствует `resourceItem`, вы можете получить доступ к текущему элементу в ресурсе через метод `getItem()`.
 
-- Когда в данных есть модель, и кнопка создается в методе `indexButtons()` или `detailButtons()` или `formButtons()` [TableBuilder](/docs/{{version}}/components/table-builder#buttons), [CardsBuilder](/docs/{{version}}/components/cards-builder#buttons) или [FormBuilder](/docs/{{version}}/components/form-builder#buttons), она автоматически заполняется данными, и параметры будут содержать `resourceItem`,
-- Когда кнопка находится на странице формы `ModelResource`, вы можете передать id текущего элемента,
+Когда в данных есть модель, и кнопка создается в методе `indexButtons()` или `detailButtons()` или `formButtons()` [TableBuilder](/docs/{{version}}/components/table-builder#buttons), [CardsBuilder](/docs/{{version}}/components/cards-builder#buttons) или [FormBuilder](/docs/{{version}}/components/form-builder#buttons),
+она автоматически заполняется данными, и параметры будут содержать `resourceItem`.
+
+Когда кнопка находится на странице формы `ModelResource`, вы можете передать id текущего элемента.
 
 ```php
 ActionButton::make('Нажми меня')
@@ -538,7 +540,7 @@ ActionButton::make('Нажми меня')
     )
 ```
 
-- Когда кнопка находится в индексной таблице `ModelResource`, нужно использовать замыкание.
+Когда кнопка находится в индексной таблице `ModelResource`, нужно использовать замыкание.
 
 ```php
 ActionButton::make('Нажми меня')
