@@ -13,7 +13,7 @@
 The `HasOne` field is designed to work with the same-name relationship in **Laravel** and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
 
 ```php
-HasMany::make(
+HasOne::make(
     Closure|string $label,
     ?string $relationName = null,
     Closure|string|null $formatted = null,
@@ -26,7 +26,7 @@ HasMany::make(
 - `$resource` - `ModelResource` that the relationship refers to.
 
 > [!WARNING]
-> The `$formatted` parameter is not used in the `HasMany` field!
+> The `$formatted` parameter is not used in the `HasOne` field!
 
 > [!WARNING]
 > Having a `ModelResource` that the relationship refers to is mandatory.

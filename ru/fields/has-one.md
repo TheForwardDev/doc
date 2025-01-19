@@ -13,7 +13,7 @@
 Поле `HasOne` предназначено для работы с одноименной связью в **Laravel** и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
 ```php
-HasMany::make(
+HasOne::make(
     Closure|string $label,
     ?string $relationName = null,
     Closure|string|null $formatted = null,
@@ -26,7 +26,7 @@ HasMany::make(
 - `$resource` - `ModelResource`, на который ссылается отношение.
 
 > [!WARNING]
-> Параметр `$formatted` не используется в поле `HasMany`!
+> Параметр `$formatted` не используется в поле `HasOne`!
 
 > [!WARNING]
 > Наличие `ModelResource`, на который ссылается отношение, обязательно.
