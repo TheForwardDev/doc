@@ -72,7 +72,7 @@ public function onBeforeRender(Closure $onBeforeRender): static
 
 ```php
 Box::make('Title', [])->onBeforeRender(function(Box $ctx) {
-    //
+    // ...
 })
 ```
 

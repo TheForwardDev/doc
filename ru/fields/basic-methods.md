@@ -484,7 +484,7 @@ public function onBeforeRender(Closure $onBeforeRender): static
 
 ```php
 Text::make('Thumbnail')->onBeforeRender(function(Text $ctx) {
-    //
+    // ...
 })
 ```
 
