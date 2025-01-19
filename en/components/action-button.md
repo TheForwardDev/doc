@@ -528,7 +528,7 @@ public function updateSomething(MoonShineRequest $request)
 If the request contains `resourceItem`, you can access the current item in the resource through the `getItem()` method.
 
 - When the data contains a model and the button is created in the `indexButtons()` method or `detailButtons()` or `formButtons()` of [TableBuilder](/docs/{{version}}/components/table-builder#buttons), [CardsBuilder](/docs/{{version}}/components/cards-builder#buttons) or [FormBuilder](/docs/{{version}}/components/form-builder#buttons), it automatically gets the data, and the parameters will contain `resourceItem`,
-- When the button is on the form page of `ModelResource`, you can pass the id of the current item.
+- When the button is on the form page of `ModelResource`, you can pass the id of the current item,
 
 ```php
 ActionButton::make('Click me')
