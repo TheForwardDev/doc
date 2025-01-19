@@ -120,7 +120,7 @@ ActionButton::make(
 )->onClick(fn() => "alert('Example')", 'prevent')
 ```
 
-If you need to get data in the `onClick` method, use the `onAfterSet` method:
+If you need to get data in the `onClick()` method, use the `onAfterSet()` method:
 
 ```php
 ActionButton::make('Alert')
@@ -160,7 +160,7 @@ ActionButton::make(
 - `builder` - closure with access to the `Modal` component.
 
 > [!WARNING]
-> If you are using multiple similar modal windows, such as in tables for each item, you need to specify a unique `name` for each:
+> If you are using multiple similar modal windows, such as in tables for each item, you need to specify a unique `name` for each.
 
 ```php
 ->inModal(
@@ -168,7 +168,7 @@ ActionButton::make(
 )
 ```
 
-You can also open a modal window using the `toggleModal` method, and if the `ActionButton` is inside a modal window, simply `openModal`.
+You can also open a modal window using the `toggleModal()` method, and if the `ActionButton` is inside a modal window, simply `openModal()`.
 
 ```php
 use MoonShine\UI\Components\ActionButton;
@@ -238,7 +238,7 @@ ActionButton::make(
 ```
 
 > [!WARNING]
-> If you are using multiple similar modal windows, such as in tables for each item, you need to specify a unique `name` for each:
+> If you are using multiple similar modal windows, such as in tables for each item, you need to specify a unique `name` for each.
 
 ```php
 ->inModal(
@@ -444,7 +444,7 @@ document.addEventListener("moonshine:init", () => {
 ```
 
 > [!NOTE]
-> Details in the [Js](/docs/{{version}}/frontend/js#response-calback) section
+> Details in the [Js](/docs/{{version}}/frontend/js#response-calback) section.
 
 <a name="method"></a>
 ### Method calls
@@ -527,8 +527,10 @@ public function updateSomething(MoonShineRequest $request)
 
 If the request contains `resourceItem`, you can access the current item in the resource through the `getItem()` method.
 
-- When the data contains a model and the button is created in the `indexButtons()` method or `detailButtons` or `formButtons` of [TableBuilder](/docs/{{version}}/components/table-builder#buttons), [CardsBuilder](/docs/{{version}}/components/cards-builder#buttons) or [FormBuilder](/docs/{{version}}/components/form-builder#buttons), it automatically gets the data, and the parameters will contain `resourceItem`.
-- When the button is on the form page of `ModelResource`, you can pass the id of the current item.
+When the data contains a model and the button is created in the `indexButtons()` method or `detailButtons()` or `formButtons()` of [TableBuilder](/docs/{{version}}/components/table-builder#buttons), [CardsBuilder](/docs/{{version}}/components/cards-builder#buttons) or [FormBuilder](/docs/{{version}}/components/form-builder#buttons),
+it automatically gets the data, and the parameters will contain `resourceItem`.
+
+When the button is on the form page of `ModelResource`, you can pass the id of the current item.
 
 ```php
 ActionButton::make('Click me')
@@ -538,7 +540,7 @@ ActionButton::make('Click me')
     )
 ```
 
-- When the button is in the index table of `ModelResource`, you need to use a closure.
+When the button is in the index table of `ModelResource`, you need to use a closure.
 
 ```php
 ActionButton::make('Click me')
@@ -637,14 +639,16 @@ You can include the current request URL parameters (e.g., `?param=value`) in the
 <a name="fill"></a>
 ## Data filling
 
-When working with `ModelResource`, the action buttons `ActionButton` are usually automatically filled with the necessary data. This process happens "under the hood" using the `setData` method. Let’s examine this mechanism in more detail.
+When working with `ModelResource`, the action buttons `ActionButton` are usually automatically filled with the necessary data.
+This process happens "under the hood" using the `setData()` method.
+Let’s examine this mechanism in more detail.
 
 ```php
 ActionButton::make('Button')->setData(?DataWrapperContract $data = null)
 ```
 
 > [!NOTE]
-> For more information about DataWrapperContract, read the [TypeCasts](/docs/{{version}}/advanced/type-casts) section.
+> For more information about `DataWrapperContract`, read the [TypeCasts](/docs/{{version}}/advanced/type-casts) section.
 
 Methods with callbacks before and after filling the button are also available.
 
