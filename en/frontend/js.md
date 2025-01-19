@@ -291,7 +291,7 @@ MoonShine.iterable.sortable(
         handle: '.handle'
     },
     function(evt) {
-        //
+        // ...
     }
 )
 ```

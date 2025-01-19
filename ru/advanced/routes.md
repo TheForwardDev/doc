@@ -63,7 +63,7 @@ route('moonshine.permissions', ['resourceUri' => 'user-resource', 'pageUri' => '
 
 ```php
 Route::moonshine(static function (Router $router) {
-    //
+    // ...
 },
 // add prefix {resourceUri}
 withResource: false,

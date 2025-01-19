@@ -22,7 +22,7 @@
 <a name="basics"></a>
 ## Основы
 
-*Page* является основой админ-панели **MoonShine**. Основное назначение `Page` - отображение компонентов.
+`Page` является основой админ-панели **MoonShine**. Основное назначение `Page` - отображение компонентов.
 
 Страницы с одинаковой логикой могут быть объединены в `Resource`.
 
@@ -42,14 +42,19 @@ php artisan moonshine:page
 > О всех поддерживаемых опциях можно узнать в разделе [Команды](/docs/{{version}}/advanced/commands#page).
 
 > [!NOTE]
-> Страницы при выполнении команды автоматически регистрируются в системе, но если вы создаете страницу вручную, то её необходимо самостоятельно зарегистрировать в `MoonShineServiceProvider` в методе `$core->pages()`
+> Страницы при выполнении команды автоматически регистрируются в системе, но если вы создаете страницу вручную,
+> то её необходимо самостоятельно [зарегистрировать](/docs/{{version}}/model-resource/index#declaring-in-the-system) в `MoonShineServiceProvider` в методе `$core->pages()`.
 
 <a name="title"></a>
 ## Заголовок
 
-Заголовок страницы можно задать через свойство `title`, а подзаголовок — через `subtitle`:
+Заголовок страницы можно задать через свойство `$title`, а подзаголовок — через `$subtitle`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Pages;
+
 use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
@@ -62,9 +67,13 @@ class CustomPage extends Page
 }
 ```
 
-Если для заголовка и подзаголовка требуется какая-то логика, то методы `title()` и `subtitle()` позволяют её реализовать:
+Если для заголовка и подзаголовка требуется какая-то логика, то методы `title()` и `subtitle()` позволяют её реализовать.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Pages;
+
 use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
@@ -80,8 +89,6 @@ class CustomPage extends Page
     {
         return $this->subtitle ?: 'Подзаголовок';
     }
-
-    // ...
 }
 ```
 
@@ -91,6 +98,10 @@ class CustomPage extends Page
 Для регистрации компонентов страницы используется метод `components()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:6]
+namespace App\MoonShine\Pages;
+
 use MoonShine\Laravel\Pages\Page;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Components\Layout\Column;
@@ -106,19 +117,17 @@ class CustomPage extends Page
             Grid::make([
                 Column::make([
                     Box::make([
-                        //
+                        // ...
                     ])
                 ])->columnSpan(6),
                 Column::make([
                     Box::make([
-                        //
+                        // ...
                     ])
                 ])->columnSpan(6),
             ])
         ];
     }
-
-    // ...
 }
 ```
 
@@ -131,6 +140,10 @@ class CustomPage extends Page
 За генерацию хлебных крошек отвечает метод `getBreadcrumbs()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Pages;
+
 use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
@@ -143,18 +156,20 @@ class CustomPage extends Page
             '#' => $this->getTitle()
         ];
     }
-
-    // ...
 }
 ```
 
 <a name="layout"></a>
 ## Шаблон
 
-По умолчанию страницы используют шаблон отображения `AppLayout` или `CompactLayout`.
-Подробнее про шаблоны читайте в разделе [Layout](/docs/{{version}}/appearance/layout)
+По умолчанию, страницы используют шаблон отображения `AppLayout` или `CompactLayout`.
+Подробнее про шаблоны читайте в разделе [Layout](/docs/{{version}}/appearance/layout).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+namespace App\MoonShine\Pages;
+
 use MoonShine\Laravel\Layouts\AppLayout;
 use MoonShine\Laravel\Pages\Page;
 
@@ -169,14 +184,20 @@ class CustomPage extends Page
 <a name="modify-layout"></a>
 ### Модификация шаблона
 
-При разработке административной панели с использованием **MoonShine** часто возникает потребность в гибком управлении шаблонами. Вместо создания множества отдельных шаблонов для различных ситуаций, **MoonShine** предоставляет возможность динамически модифицировать существующий шаблон. Это достигается с помощью метода `modifyLayout`.
+При разработке административной панели с использованием **MoonShine** часто возникает потребность в гибком управлении шаблонами.
+Вместо создания множества отдельных шаблонов для различных ситуаций, **MoonShine** предоставляет возможность динамически модифицировать существующий шаблон.
+Это достигается с помощью метода `modifyLayout()`.
 
-Метод `modifyLayout` позволяет получить доступ к шаблону после создания его экземпляра и внести в него необходимые изменения. Это особенно полезно, когда вам нужно адаптировать шаблон под конкретные условия или добавить динамический контент.
+Метод `modifyLayout()` позволяет получить доступ к шаблону после создания его экземпляра и внести в него необходимые изменения.
+Это особенно полезно, когда вам нужно адаптировать шаблон под конкретные условия или добавить динамический контент.
 
-Пример использования
-Рассмотрим пример из пакета `moonshine-software/two-factor`, который демонстрирует, как можно использовать modifyLayout для настройки шаблона аутентификации:
+#### Пример использования
+
+Рассмотрим пример из пакета `moonshine-software/two-factor`, который демонстрирует, как можно использовать `modifyLayout()` для настройки шаблона аутентификации:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Contracts\UI\LayoutContract;
 
 /**
@@ -195,9 +216,13 @@ protected function modifyLayout(LayoutContract $layout): LayoutContract
 <a name="alias"></a>
 ## Псевдоним
 
-Если необходимо изменить псевдоним страницы, это можно сделать через свойство `alias`.
+Если необходимо изменить псевдоним страницы, это можно сделать через свойство `$alias`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Pages;
+
 use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
@@ -211,6 +236,10 @@ class CustomPage extends Page
 Также можно переопределить метод `getAlias()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Pages;
+
 use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
@@ -227,11 +256,13 @@ class CustomPage extends Page
 <a name="render"></a>
 ## Рендеринг
 
-Вы можете отображать страницу вне **MoonShine**, просто вернув её в контроллере:
+Вы можете отображать страницу вне **MoonShine**, просто вернув её в контроллере.
 
 ```php
 class ProfileController extends Controller
 {
+    // ...
+
     public function __invoke(ProfilePage $page): ProfilePage
     {
         return $page->loaded();
@@ -239,7 +270,7 @@ class ProfileController extends Controller
 }
 ```
 
-Или с Fortify
+Или с **Fortify**
 
 ```php
 Fortify::loginView(static fn() => app(ProfilePage::class));
@@ -251,6 +282,10 @@ Fortify::loginView(static fn() => app(ProfilePage::class));
 Метод `prepareBeforeRender()` позволяет выполнить какие-либо действия перед отображением страницы.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Pages;
+
 use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
@@ -269,11 +304,16 @@ class CustomPage extends Page
 <a name="modify-response"></a>
 ## Модификатор ответа
 
-По умолчанию страница рендерится через `PageController`, вызывая метод `render()`. Однако иногда возникает необходимость изменить стандартный ответ, например, выполнить редирект при определенных условиях. В таких случаях можно использовать метод `modifyResponse()`.
+По умолчанию, страница рендерится через `PageController`, вызывая метод `render()`.
+Однако иногда возникает необходимость изменить стандартный ответ, например, выполнить редирект при определенных условиях.
+В таких случаях можно использовать метод `modifyResponse()`.
 
-Метод `modifyResponse()` позволяет модифицировать ответ страницы перед его отправкой. Вот пример его использования:
+Метод `modifyResponse()` позволяет модифицировать ответ страницы перед его отправкой.
+Вот пример его использования:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use Symfony\Component\HttpFoundation\Response;
 
 protected function modifyResponse(): ?Response
@@ -299,6 +339,8 @@ protected function modifyResponse(): ?Response
 Метод `onLoad()` дает возможность интегрироваться в момент когда страница загружена и в данный момент является активной.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Pages;
 
 use MoonShine\Laravel\Pages\Page;
@@ -306,22 +348,24 @@ use MoonShine\Laravel\Pages\Page;
 class PostPage extends Page
 {
     // ...
+
     protected function onLoad(): void
     {
         parent::onLoad();
 
-        //
+        // ...
     }
-    // ...
 }
 ```
 
 <a name="on-boot"></a>
 ### Создание экземпляра
 
-Метод `booted` дает возможность интегрироваться в момент, когда **MoonShine** создает экземпляр страницы в системе
+Метод `booted()` дает возможность интегрироваться в момент, когда **MoonShine** создает экземпляр страницы в системе.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Pages;
 
 use MoonShine\Laravel\Pages\Page;
@@ -329,22 +373,24 @@ use MoonShine\Laravel\Pages\Page;
 class PostPage extends Page
 {
     // ...
+
     protected function booted(): void
     {
         parent::booted();
 
-        //
+        // ...
     }
-    // ...
 }
 ```
 
 <a name="link-from-resource"></a>
 ## Создание ссылки на страницу в ресурсе
 
-В данном примере для создания ссылки на новую страницу будем использовать [ActionButton](/docs/{{version}}/components/action-button) и метод [getPageUrl](/docs/{{version}}/model-resource/routes)
+В данном примере для создания ссылки на новую страницу будем использовать [ActionButton](/docs/{{version}}/components/action-button) и метод [getPageUrl](/docs/{{version}}/model-resource/routes).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 
@@ -367,6 +413,8 @@ public function indexButtons(): ListOf
 ## Assets
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\AssetManager\Css;
 use MoonShine\AssetManager\Js;
 
