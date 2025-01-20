@@ -436,7 +436,7 @@ buttons(array $buttons)
 Example:
 
 ```php
-use MoonShine\ActionButtons\ActionButton;
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Fields\Json;
 
 // ...
@@ -480,7 +480,7 @@ modifyRemoveButton(Closure $callback)
 Example:
 
 ```php
-use MoonShine\ActionButtons\ActionButton;
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Fields\Json;
 
 // ...
