@@ -6,17 +6,15 @@
 
 Поле отношения в **Laravel** типа `HasOne`.
 
-То же самое, что `MoonShine\Laravel\Fields\Relationships\HasOne`, только для отношений `MorphOne`.
-
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\ProfileResource;
 use MoonShine\Laravel\Fields\Relationships\MorphOne;
 
-// ...
-
-protected function fields(): iterable
-{
-    return [
-        MorphOne::make('Profile', 'profile')
-    ];
-}
+MorphOne::make(
+    'Profile',
+    'profile',
+    resource: ProfileResource::class
+)
 ```

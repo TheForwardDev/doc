@@ -17,7 +17,7 @@
 <a name="basics"></a>
 ## Basics
 
-The `HasMany` field is designed to work with the relationship of the same name in **Laravel** and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
+The `HasMany` field is designed to work with the same-name relationship in **Laravel** and includes all [Basic methods](/docs/{{version}}/fields/basic-methods).
 
 ```php
 HasMany::make(
@@ -38,50 +38,38 @@ HasMany::make(
 > [!WARNING]
 > Having a `ModelResource` that the relationship refers to is mandatory.
 > The resource must also be [registered](/docs/{{version}}/model-resource/index#declaring-in-the-system) in the `MoonShineServiceProvider` service provider in the `$core->resources()` method.
-> Otherwise, there will be a 500 error (Resource is required for MoonShine\Laravel\Fields\Relationships\HasMany...).
+> Otherwise, there will be a 500 error.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
 use MoonShine\Laravel\Fields\Relationships\HasMany;
 
-HasMany::make('Comments', 'comments', resource: CommentResource::class)
+HasMany::make(
+    'Comments',
+    'comments',
+    resource: CommentResource::class
+)
 ```
 
 ![has_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many.png)
-
 ![has_many_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_dark.png)
 
 You can omit the `$resource` if the `ModelResource` matches the name of the relation.
 
 ```php
-class CommentResource extends ModelResource
-{
-    // ...
+use MoonShine\Laravel\Fields\Relationships\HasMany;
 
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Comments', 'comments')
-        ];
-    }
-}
+HasMany::make('Comments', 'comments')
 ```
 
 If you do not specify `$relationName`, then the name of the relation will be determined automatically based on `$label` (following camelCase rules).
 
 ```php
-class CommentResource extends ModelResource
-{
-    // ...
+use MoonShine\Laravel\Fields\Relationships\HasMany;
 
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Comments')
-        ];
-    }
-}
+HasMany::make('Comments')
 ```
 
 <a name="fields"></a>
@@ -94,6 +82,9 @@ fields(FieldsContract|Closure|iterable $fields)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+use App\MoonShine\Resources\CommentResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 use MoonShine\Laravel\Fields\Relationships\HasMany;
 use MoonShine\UI\Fields\Text;
@@ -106,7 +97,6 @@ HasMany::make('Comments', resource: CommentResource::class)
 ```
 
 ![has_many_fields](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_fields.png)
-
 ![has_many_fields_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_fields_dark.png)
 
 <a name="creatable"></a>
@@ -122,17 +112,27 @@ creatable(
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->creatable()
 ```
 
 ![has_many_creatable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_creatable.png)
-
 ![has_many_creatable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_creatable_dark.png)
 
 You can customize the *create* button by passing the button parameter in the method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->creatable(
         button: ActionButton::make('Custom button', '')
@@ -149,6 +149,11 @@ limit(int $limit)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->limit(1)
 ```
@@ -157,30 +162,40 @@ HasMany::make('Comments', resource: CommentResource::class)
 ## Only link
 
 The `relatedLink()` method allows you to display the relationship as a link with the count of elements.
-The link will lead to the IndexPage of the child resource from the HasMany relationship, only showing those data elements.
+The link will lead to the IndexPage of the child resource from the `HasMany` relationship, only showing those data elements.
 
 ```php
 relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
 ```
 
 You can pass optional parameters to the method:
+
 - `linkRelation` - link to the relation,
 - `condition` - closure or boolean value responsible for displaying the relation as a link.
 
 > [!NOTE]
-> Don’t forget to add the relation to the *with* property of the resource.
+> Don’t forget to add the relation to the `$with` property of the resource.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink()
 ```
 ![has_many_link](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_link.png)
-
 ![has_many_link_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_link_dark.png)
 
 The `linkRelation` parameter allows you to create a link to the relation with parent resource binding.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink('comment')
 ```
@@ -188,6 +203,12 @@ HasMany::make('Comments', resource: CommentResource::class)
 The `condition` parameter through a closure allows you to change the display method based on conditions.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Fields\Field;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink(condition: function (int $count, Field $field): bool {
         return $count > 10;
@@ -197,9 +218,11 @@ HasMany::make('Comments', resource: CommentResource::class)
 <a name="parent-id"></a>
 ## Parent ID
 
-If the relation has a resource, and you want to get the ID of the parent element, you can use the *ResourceWithParent* trait.
+If the relation has a resource, and you want to get the ID of the parent element, you can use the `ResourceWithParent` trait.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Traits\Resource\ResourceWithParent;
 
@@ -232,7 +255,7 @@ $this->getParentId();
 ```
 
 > [!TIP]
-> Recipe: [saving files](/docs/{{version}}/recipes/hasmany-parent-id) of *HasMany* relations in the directory with the parent ID.
+> Recipe: [saving files](/docs/{{version}}/recipes/hasmany-parent-id) of `HasMany` relations in the directory with the parent ID.
 
 <a name="change-edit-button"></a>
 ## Edit button
@@ -240,6 +263,12 @@ $this->getParentId();
 The `changeEditButton()` method allows you to completely override the edit button.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->changeEditButton(
         ActionButton::make(
@@ -252,9 +281,14 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="without-modals"></a>
 ## Modal window
 
-By default, creating and editing a record in the *HasMany* field occurs in a modal window; the `withoutModals()` method allows you to disable this behavior.
+By default, creating and editing a record in the `HasMany` field occurs in a modal window; the `withoutModals()` method allows you to disable this behavior.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->withoutModals()
 ```
@@ -262,17 +296,23 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="modify"></a>
 ## Modification
 
-The *HasMany* field has methods that can be used to modify buttons, change the *TableBuilder* for preview and form, as well as change the *relatedLink* button.
+The `HasMany` field has methods that can be used to modify buttons, change the `TableBuilder` for preview and form, as well as change the *relatedLink* button.
 
 ### searchable()
 
-By default, a search field is available on the form page for the HasMany field; to disable it, you can use the `searchable` method.
+By default, a search field is available on the form page for the `HasMany` field.
+To disable it, you can use the `searchable()` method.
 
 ```php
 public function searchable(Closure|bool|null $condition = null): static
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->searchable(false) // disables the search field
 ```
@@ -289,6 +329,12 @@ modifyItemButtons(Closure $callback)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyItemButtons(
         fn(ActionButton $detail, $edit, $delete, $massDelete, HasMany $ctx) => [$detail]
@@ -300,6 +346,12 @@ HasMany::make('Comments', resource: CommentResource::class)
 The `modifyRelatedLink()` method allows you to change the *relatedLink* button.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink()
     ->modifyRelatedLink(
@@ -314,6 +366,12 @@ HasMany::make('Comments', resource: CommentResource::class)
 The `modifyCreateButton()` and `modifyEditButton()` methods allow you to change the create and edit buttons.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyCreateButton(
         fn(ActionButton $button) => $button->setLabel('Custom create button')
@@ -326,9 +384,15 @@ HasMany::make('Comments', resource: CommentResource::class)
 
 ### modifyTable()
 
-The `modifyTable()` method allows you to change the *TableBuilder* for preview and form.
+The `modifyTable()` method allows you to change the `TableBuilder` for preview and form.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\Table\TableBuilder;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyTable(
         fn(TableBuilder $table, bool $preview) => $table
@@ -342,6 +406,11 @@ HasMany::make('Comments', resource: CommentResource::class)
 The `redirectAfter()` method allows for redirection after saving/adding/deleting.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->redirectAfter(fn(int $parentId) => route('home'))
 ```
@@ -351,6 +420,12 @@ HasMany::make('Comments', resource: CommentResource::class)
 The `modifyBuilder()` method allows you to modify the query through *QueryBuilder*.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyBuilder(fn(Relation $query, HasMany $ctx) => $query)
 ```
@@ -360,9 +435,14 @@ HasMany::make('Comments', resource: CommentResource::class)
 
 ### indexButtons()
 
-The `indexButtons` method allows you to add additional ActionButtons for working with HasMany elements.
+The `indexButtons()` method allows you to add additional ActionButtons for working with HasMany elements.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->indexButtons([
         ActionButton::make('Custom button')
@@ -371,9 +451,15 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 
 ### formButtons()
 
-The `formButtons` method allows you to add additional ActionButtons inside the form when creating or editing a HasMany element.
+The `formButtons()` method allows you to add additional `ActionButtons` inside the form when creating or editing a `HasMany` element.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->formButtons([
         ActionButton::make('Custom form button')
@@ -384,13 +470,17 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ## Advanced usage
 
 ### Relation through JSON field
-The *HasMany* field is displayed outside the main resource form by default.
+The `HasMany` field is displayed outside the main resource form by default.
 If you need to display the relation fields inside the main form, you can use the *JSON* field in `asRelation()` mode.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\UI\Fields\Json;
+
 Json::make('Comments', 'comments')
     ->asRelation(CommentResource::class)
-    // ...
 ```
 
 ### Relation through Template field

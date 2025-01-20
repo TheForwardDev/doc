@@ -4,10 +4,15 @@
 
 \* имеет те же возможности.
 
-Поле `HasOneThrough` предназначено для работы с отношением того же имени в **Laravel**, наследуется от поля `HasOne` и включает все его методы.
+Поле `HasOneThrough` предназначено для работы с одноименной связью в **Laravel**.
+Оно наследуется от поля `HasOne` и включает все его методы.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\HasOneThrough;
 
-HasOneThrough::make('Car owner', 'carOwner', resource: new OwnerResource::class)
+HasOneThrough::make(
+    'Car owner',
+    'carOwner',
+    resource: OwnerResource::class
+)
 ```

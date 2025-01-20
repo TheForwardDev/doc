@@ -4,19 +4,14 @@ Inherits [BelongsToMany](/docs/{{version}}/fields/belongs-to-many).
 
 \* has the same capabilities.
 
-The `BelongsToMany` relationship field in **Laravel**.
-
-The same as `MoonShine\Laravel\Fields\Relationships\BelongsToMany`, but for `MorphToMany` relationships.
+The `MorphToMany` relationship field in **Laravel**.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphToMany;
 
-// ...
-
-protected function fields(): iterable
-{
-    return [
-        MorphToMany::make('Categories', 'categories')
-    ];
-}
+MorphToMany::make(
+    'Categories',
+    'categories',
+    resource: CategoryResource::class
+)
 ```

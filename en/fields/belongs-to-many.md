@@ -21,7 +21,7 @@
 <a name="basics"></a>
 ## Basics
 
-The `BelongsToMany` field is designed to work with the relationship of the same name in **Laravel** and includes all [Basic Methods](/docs/{{version}}/fields/basic-methods).
+The `BelongsToMany` field is designed to work with the same-name relationship in **Laravel** and includes all [Basic Methods](/docs/{{version}}/fields/basic-methods).
 
 ```php
 BelongsToMany::make(
@@ -38,45 +38,39 @@ BelongsToMany::make(
 - `$resource` - `ModelResource` that the relationship references.
 
 > [!WARNING]
-> The model resource that the relationship references is required!
-> The resource must also be registered in the service provider _MoonShineServiceProvider_ in the `$core->resources()` method.
-> Otherwise, a 500 error will occur (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsToMany...).
+> Having a `ModelResource` that the relationship refers to is mandatory.
+> The resource must also be [registered](/docs/{{version}}/model-resource/index#declaring-in-the-system) in the `MoonShineServiceProvider` service provider in the `$core->resources()` method.
+> Otherwise, there will be a 500 error.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 
-BelongsToMany::make('Categories', 'categories', resource: CategoryResource::class)
+BelongsToMany::make(
+    'Categories',
+    'categories',
+    resource: CategoryResource::class
+)
 ```
 
 ![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many.png)
 ![belongs_to_many_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_dark.png)
 
-> [!NOTE]
-> If you do not specify `$relationName`, then the relationship name will be determined automatically based on `$label`.
-
-```php
-BelongsToMany::make('Categories', resource: CategoryResource::class)
-```
-
 You can omit `$resource` if the `ModelResource` matches the relationship name.
 
 ```php
-class CategoryResource extends ModelResource
-{
-    // ...
-}
-// ...
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', 'categories')
 ```
 
 If `$relationName` is not specified, then the relationship name will be determined automatically based on `$label` (following camelCase rules).
 
 ```php
-class CategoryResource extends ModelResource
-{
-    // ...
-}
-// ...
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories')
 ```
 
@@ -85,18 +79,11 @@ BelongsToMany::make('Categories')
 > The `$formatted` argument allows overriding this.
 
 ```php
-namespace App\MoonShine\Resources;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 
-use MoonShine\Laravel\Resources\ModelResource;
-
-class CategoryResource extends ModelResource
-{
-    public string $column = 'title';
-}
-// ...
 BelongsToMany::make(
     'Categories',
-    'Categories',
+    'categories',
     formatted: 'name'
 )
 ```
@@ -104,6 +91,8 @@ BelongsToMany::make(
 If you need to specify a more complex value for display, then you can pass a callback function in the `$formatted` argument.
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make(
     'Categories',
     'categories',
@@ -114,7 +103,7 @@ BelongsToMany::make(
 <a name="label-column"></a>
 ## Column Label
 
-By default, the table column header uses the `$title` property of the relationship model resource.
+By default, the table column header uses the `$title` property specified in the `ModelResource` relationship.
 The `columnLabel()` method allows overriding the header.
 
 ```php
@@ -122,6 +111,11 @@ columnLabel(string $label)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->columnLabel('Title')
 ```
@@ -129,24 +123,29 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 <a name="pivot"></a>
 ## Pivot
 
-The `fields()` method is used to implement *pivot* fields in the BelongsToMany relationship.
+The `fields()` method is used to implement *pivot* fields in the `BelongsToMany` relationship.
 
 ```php
 fields(FieldsContract|Closure|iterable $fields)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\ContactResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 use MoonShine\UI\Fields\Text;
 
-BelongsToMany::make('Contacts', resource: ContactResource::class)
-    ->fields([
-        Text::make('Contact', 'text'),
-    ])
+BelongsToMany::make(
+    'Contacts',
+    resource: ContactResource::class
+)
+->fields([
+    Text::make('Contact', 'text'),
+])
 ```
 
 ![belongs_to_many_pivot](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_pivot.png)
-
 ![belongs_to_many_pivot_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_pivot_dark.png)
 
 > [!WARNING]
@@ -166,17 +165,27 @@ creatable(
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->creatable()
 ```
 
 ![belongs_to_many_creatable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_creatable.png)
-
 ![belongs_to_many_creatable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_creatable_dark.png)
 
 You can customize the creation button by passing the *button* parameter to the method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Components\ActionButton;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->creatable(
         button: ActionButton::make('Custom button', '')
@@ -190,12 +199,16 @@ The `BelongsToMany` field can be displayed as a dropdown list.
 To do this, you need to use the `selectMode()` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->selectMode()
 ```
 
 ![belongs_to_many_select](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_select.png)
-
 ![belongs_to_many_select_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_select_dark.png)
 
 <a name="options"></a>
@@ -204,7 +217,12 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 All select options are available for modification via *data attributes*:
 
 ```php
-BelongsToMany::make('Countries', resource: ContactResource::class)
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
+BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->selectMode()
     ->customAttributes([
         'data-max-item-count' => 2
@@ -243,12 +261,16 @@ tree(string $parentColumn)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->tree('parent_id')
 ```
 
 ![belongs_to_many_tree](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_tree.png)
-
 ![belongs_to_many_tree_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_tree_dark.png)
 
 <a name="preview"></a>
@@ -257,7 +279,6 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 By default, in *preview*, the field will be displayed in a table.
 
 ![belongs_to_many_preview](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview.png)
-
 ![belongs_to_many_preview_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_dark.png)
 
 To change the display in *preview*, you can use the following methods.
@@ -272,7 +293,6 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 ```
 
 ![belongs_to_many_preview_count](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_count.png)
-
 ![belongs_to_many_preview_count_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_count_dark.png)
 
 ### inLine
@@ -293,8 +313,12 @@ When passing a boolean value true to the `badge` parameter, the Primary color wi
 To change the color of the displayed `badge`, use a closure and return the `Badge::make()` component.
 
 ```php
-use MoonShine\UI\Components\Link;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+use App\MoonShine\Resources\CategoryResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Components\Badge;
+use MoonShine\UI\Components\Link;
 
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->inLine(
@@ -308,7 +332,6 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 ```
 
 ![belongs_to_many_preview_in_line](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_in_line.png)
-
 ![belongs_to_many_preview_in_line_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_in_line_dark.png)
 
 <a name="only-link"></a>
@@ -322,12 +345,18 @@ relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
 ```
 
 You can pass optional parameters to the method:
+
 - `linkRelation` - link to the relationship,
 - `condition` - closure or boolean value responsible for displaying the relationship as a link.
 
 The `linkRelation` parameter allows you to create a link to the relationship with the parent resource binding.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->relatedLink('category')
 ```
@@ -335,6 +364,12 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 The `condition` parameter through a closure will allow changing the display method depending on conditions.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Fields\Field;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->relatedLink(condition: function (int $count, Field $field): bool {
         return $count > 10;
@@ -351,10 +386,14 @@ valuesQuery(Closure $callback)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+use App\MoonShine\Resources\CategoryResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Fields\Field;
 
-BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
+BelongsToMany::make('Categories', 'categories', resource: CategoryResource::class)
     ->valuesQuery(fn(Builder $query, Field $field) => $query->where('active', true))
 ```
 
@@ -375,14 +414,21 @@ asyncSearch(
 ```
 
 ```php
-BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
+BelongsToMany::make('Categories', 'categories', resource: CategoryResource::class)
     ->asyncSearch()
 ```
 
-> [!TIP]
-> The search will be performed by the relationship resource `column`. By default, `column=id`
+> [!NOTE]
+> The search will be performed by the relationship resource `column`.
+> By default, `column=id`.
 
 You can pass parameters to the `asyncSearch()` method:
+
 - `$column` - the field to search by,
 - `$searchQuery` - callback function for filtering values,
 - `$formatted` - callback function for customizing the output,
@@ -391,10 +437,15 @@ You can pass parameters to the `asyncSearch()` method:
 - `$url` - url for processing the asynchronous request.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
+use App\MoonShine\Resources\CountryResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Fields\Field;
 
-BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
+BelongsToMany::make('Countries', 'countries', resource: CountryResource::class)
     ->asyncSearch(
         'title',
         10,
@@ -409,15 +460,21 @@ BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
 ```
 
 > [!TIP]
-> When constructing the query in `searchQuery()`, you can use the current form values. To do this, pass `Request` to the callback function.
+> When constructing the query in `searchQuery()`, you can use the current form values.
+> To do this, pass `Request` to the callback function.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:6]
+use App\MoonShine\Resources\CityResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Select;
 
 Select::make('Country', 'country_id'),
+
 BelongsToMany::make('Cities', 'cities', resource: CityResource::class)
     ->asyncSearch(
         'title',
@@ -428,7 +485,8 @@ BelongsToMany::make('Cities', 'cities', resource: CityResource::class)
 ```
 
 > [!TIP]
-> Queries should be set up using the `asyncSearch()` method. Do not use `valuesQuery()`!
+> Queries should be set up using the `asyncSearch()` method.
+> Do not use `valuesQuery()`!
 
 <a name="associated"></a>
 ## Associated Fields
@@ -443,6 +501,11 @@ associatedWith(string $column, ?Closure $searchQuery = null)
 - `searchQuery` - callback function for filtering values.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CityResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsToMany::make('Cities', 'cities', resource: CityResource::class)
     ->associatedWith('country_id')
 ```
@@ -468,12 +531,16 @@ withImage(
 - `$dir` - directory relative to the root of the disk.
 
 ```php
-BelongsToMany::make('Countries', resource: ContactResource::class)
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CityResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
+BelongsToMany::make('Cities', resource: CityResource::class)
     ->withImage('thumb', 'public', 'countries')->selectMode()
 ```
 
 ![with_image](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image.png)
-
 ![belongs_to_image_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image_dark.png)
 
 <a name="buttons"></a>
@@ -486,7 +553,10 @@ buttons(array $buttons)
 ```
 
 ```php
-use MoonShine\ActionButtons\ActionButton;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 
 BelongsToMany::make('Categories', resource: CategoryResource::class)
@@ -504,6 +574,11 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 The `withCheckAll()` method allows you to add a checkAll button to the `BelongsToMany` field, similar to the previous example.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->withCheckAll()
 ```

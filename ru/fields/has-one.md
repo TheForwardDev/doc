@@ -10,10 +10,10 @@
 <a name="basics"></a>
 ## Основы
 
-Поле `HasOne` предназначено для работы с отношением того же имени в **Laravel** и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
+Поле `HasOne` предназначено для работы с одноименной связью в **Laravel** и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
 ```php
-HasMany::make(
+HasOne::make(
     Closure|string $label,
     ?string $relationName = null,
     Closure|string|null $formatted = null,
@@ -26,55 +26,43 @@ HasMany::make(
 - `$resource` - `ModelResource`, на который ссылается отношение.
 
 > [!WARNING]
-> Параметр `$formatted` не используется в поле `HasMany`!
+> Параметр `$formatted` не используется в поле `HasOne`!
 
 > [!WARNING]
 > Наличие `ModelResource`, на который ссылается отношение, обязательно.
 > Ресурс также необходимо [зарегистрировать](/docs/{{version}}/model-resource/index#declaring-in-the-system) в сервис-провайдере `MoonShineServiceProvider` в методе `$core->resources()`.
-> В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\HasOne...).
+> В противном случае будет ошибка 500.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\ProfileResource;
 use MoonShine\Laravel\Fields\Relationships\HasOne;
 
-HasOne::make('Profile', 'profile', resource: ProfileResource::class)
+HasOne::make(
+    'Profile',
+    'profile',
+    resource: ProfileResource::class
+)
 ```
 
 ![has_one](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one.png)
-
 ![has_one_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one_dark.png)
 
 Если вы не указываете `$relationName`, тогда имя отношения будет определено автоматически на основе `$label` (по правилам camelCase).
 
 ```php
-class ProfileResource extends ModelResource
-{
-    // ...
+use MoonShine\Laravel\Fields\Relationships\HasOne;
 
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Profile', 'profile')
-        ];
-    }
-}
+HasOne::make('Profile', 'profile')
 ```
 
 Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
 
 ```php
-class ProfileResource extends ModelResource
-{
-    // ...
+use MoonShine\Laravel\Fields\Relationships\HasOne;
 
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            HasMany::make('Profile')
-        ];
-    }
-}
+HasOne::make('Profile')
 ```
 
 <a name="fields"></a>
@@ -87,11 +75,14 @@ fields(FieldsContract|Closure|iterable $fields)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+use App\MoonShine\Resources\ProfileResource;
 use MoonShine\UI\Fields\Relationships\HasOne;
 use MoonShine\UI\Fields\Phone;
 use MoonShine\UI\Fields\Text;
 
-HasOne::make('Contacts', resource: ContactResource::class)
+HasOne::make('Profile', resource: ProfileResource::class)
     ->fields([
         Phone::make('Phone'),
         Text::make('Address'),
@@ -99,15 +90,16 @@ HasOne::make('Contacts', resource: ContactResource::class)
 ```
 
 ![has_one_preview](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one_preview.png)
-
 ![has_one_preview_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_one_preview_dark.png)
 
 <a name="parent-id"></a>
 ## ID родителя
 
-Если у отношения есть ресурс, и вы хотите получить ID родительского элемента, то вы можете использовать трейт *ResourceWithParent*.
+Если у отношения есть ресурс, и вы хотите получить ID родительского элемента, то вы можете использовать трейт `ResourceWithParent`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Traits\Resource\ResourceWithParent;
 
@@ -144,9 +136,15 @@ $this->getParentId();
 
 ### Preview
 
-Метод `modifyTable()` позволяет изменить *TableBuilder* для предпросмотра.
+Метод `modifyTable()` позволяет изменить `TableBuilder` для предпросмотра.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasOne;
+use MoonShine\UI\Components\Table\TableBuilder;
+
 HasOne::make('Comment', resource: CommentResource::class)
     ->modifyTable(
         fn(TableBuilder $table) => $table
@@ -158,6 +156,12 @@ HasOne::make('Comment', resource: CommentResource::class)
 Метод `modifyForm()` позволяет изменить *FormBuilder* для редактирования.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\UI\Components\FormBuilder;
+use MoonShine\Laravel\Fields\Relationships\HasOne;
+
 HasOne::make('Comment', resource: CommentResource::class)
     ->modifyForm(
         fn(FormBuilder $form) => $form->submit('Custom title')
@@ -169,6 +173,11 @@ HasOne::make('Comment', resource: CommentResource::class)
 Метод `redirectAfter()` позволяет редирект после сохранения/добавления/удаления.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasOne;
+
 HasOne::make('Comment', resource: CommentResource::class)
     ->redirectAfter(fn(int $parentId) => route('home'))
 ```

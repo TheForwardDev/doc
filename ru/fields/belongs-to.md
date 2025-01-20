@@ -20,7 +20,7 @@
 <a name="basics"></a>
 ## Основы
 
-Поле `BelongsTo` предназначено для работы с одноименной связью в **Laravel** и содержит все [Базовые методы](/docs/{{version}}/fields/basic-methods).
+Поле `BelongsTo` предназначено для работы с одноименной связью в **Laravel** и включает все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
 ```php
 BelongsTo::make(
@@ -39,57 +39,38 @@ BelongsTo::make(
 > [!WARNING]
 > Наличие `ModelResource`, на который ссылается отношение, обязательно.
 > Ресурс также необходимо [зарегистрировать](/docs/{{version}}/model-resource/index#declaring-in-the-system) в сервис-провайдере `MoonShineServiceProvider` в методе `$core->resources()`.
-> В противном случае будет ошибка 500 (Resource is required for MoonShine\Laravel\Fields\Relationships\BelongsTo...).
+> В противном случае будет ошибка 500.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\UserResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-BelongsTo::make('Country', 'country', resource: CountryResource::class)
+BelongsTo::make(
+    'User',
+    'user',
+    resource: UserResource::class
+)
 ```
 
 ![belongs_to](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to.png)
-
 ![belongs_to_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_dark.png)
-
-> [!NOTE]
-> Если не указать `$relationName`, то имя связи будет определено автоматически на основе `$label`.
-
-```php
-BelongsTo::make('Country', resource: CountryResource::class)
-```
 
 Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
 
 ```php
-class CountryResource extends ModelResource
-{
-    // ...
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            BelongsTo::make('Country', 'country')
-        ];
-    }
-}
+BelongsTo::make('User', 'user')
 ```
 
 Если не указать `$relationName`, то имя связи будет определено автоматически на основе `$label` (по правилам camelCase).
 
 ```php
-class CountryResource extends ModelResource
-{
-    // ...
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            BelongsTo::make('Country')
-        ];
-    }
-}
+BelongsTo::make('User')
 ```
 
 > [!NOTE]
@@ -97,33 +78,20 @@ class CountryResource extends ModelResource
 > Аргумент `$formatted` позволяет переопределить свойство `$column`.
 
 ```php
-namespace App\MoonShine\Resources;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-use MoonShine\Laravel\Resources\ModelResource;
-
-class CountryResource extends ModelResource
-{
-    public string $column = 'title';
-
-    // ...
-
-    protected function formFields(): iterable
-    {
-        return [
-            // ...
-            BelongsTo::make(
-                'Country',
-                'country',
-                formatted: 'name'
-            )
-        ];
-    }
-}
+BelongsTo::make(
+    'User',
+    'user',
+    formatted: 'first_name'
+)
 ```
 
 Если необходимо указать более сложное значение для отображения, то в аргумент `$formatted` можно передать функцию обратного вызова.
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make(
     'Country',
     'country',
@@ -134,10 +102,18 @@ BelongsTo::make(
 Если необходимо изменить колонку при работе с моделями, используйте метод `onAfterFill()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make(
     'Category',
     resource: CategoryResource::class
-)->afterFill(fn($field) => $field->setColumn('changed_category_id'))
+)
+->afterFill(
+    fn($field) => $field->setColumn('changed_category_id')
+)
 ```
 
 <a name="default"></a>
@@ -152,7 +128,9 @@ default(mixed $default)
 Вы должны передать объект модели в качестве значения по умолчанию.
 
 ```php
-use App\Models\Country;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
 BelongsTo::make('Country', resource: CategoryResource::class)
@@ -162,24 +140,24 @@ BelongsTo::make('Country', resource: CategoryResource::class)
 <a name="nullable"></a>
 ## Nullable
 
-Как и для всех полей, если необходимо хранить NULL, нужно добавить метод `nullable()`
+Как и для всех полей, если необходимо хранить NULL, нужно добавить метод `nullable()`.
 
 ```php
 nullable(Closure|bool|null $condition = null)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Country', resource: CategoryResource::class)
     ->nullable()
 ```
 
 ![select_nullable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable.png)
-
 ![select_nullable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable_dark.png)
-
-> [!TIP]
-> **MoonShine** - очень удобный и функциональный инструмент.
-> Однако для его использования нужно быть уверенным в основах **Laravel**.
 
 Не забудьте указать в таблице базы данных, что поле может принимать значение `Null`.
 
@@ -193,6 +171,8 @@ placeholder(string $value)
 ```
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Country', 'country')
     ->nullable()
     ->placeholder('Country')
@@ -204,8 +184,10 @@ BelongsTo::make('Country', 'country')
 Если необходимо осуществлять поиск среди значений, нужно добавить метод `searchable()`.
 
 ```php
-use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use App\MoonShine\Resources\CountryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
 BelongsTo::make('Country', 'country', resource: CountryResource::class)
     ->searchable()
@@ -229,12 +211,17 @@ BelongsTo::make('Author', resource: AuthorResource::class)
 ```
 
 ![belongs_to_creatable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_creatable.png)
-
 ![belongs_to_creatable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_creatable_dark.png)
 
 Вы можете настроить кнопку создания, передав параметр _button_ в метод.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\AuthorResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use MoonShine\UI\Components\ActionButton;
+
 BelongsTo::make('Author', resource: AuthorResource::class)
     ->creatable(
         button: ActionButton::make('Custom button', '')
@@ -251,8 +238,12 @@ valuesQuery(Closure $callback)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+use App\MoonShine\Resources\CategoryResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use MoonShine\UI\Fields\Field;
 
 BelongsTo::make('Category', 'category', resource: CategoryResource::class)
     ->valuesQuery(fn(Builder $query, Field $field) => $query->where('active', true))
@@ -275,7 +266,12 @@ asyncSearch(
 ```
 
 ```php
-BelongsTo::make('Country', 'country', resource: CategoryResource::class)
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
+BelongsTo::make('Category', 'category', resource: CategoryResource::class)
     ->asyncSearch()
 ```
 
@@ -284,6 +280,7 @@ BelongsTo::make('Country', 'country', resource: CategoryResource::class)
 > По умолчанию `column=id`.
 
 Вы можете передать параметры в метод `asyncSearch()`:
+
 *   `$column` - поле, по которому осуществляется поиск,
 *   `$searchQuery` - функция обратного вызова для фильтрации значений,
 *   `$formatted` - функция обратного вызова для настройки вывода,
@@ -292,10 +289,14 @@ BelongsTo::make('Country', 'country', resource: CategoryResource::class)
 *   `$url` - url для обработки асинхронного запроса.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use MoonShine\UI\Fields\Field;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-BelongsTo::make('Country', 'country', resource: CategoryResource::class)
+BelongsTo::make('Category', 'category', resource: CategoryResource::class)
     ->asyncSearch(
         'title',
         searchQuery: function (Builder $query, Request $request, Field $field) {
@@ -314,12 +315,17 @@ BelongsTo::make('Country', 'country', resource: CategoryResource::class)
 > Для этого необходимо передать `Request` в функцию обратного вызова.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:6]
+use App\MoonShine\Resources\CityResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Select;
 
 Select::make('Country', 'country_id'),
+
 BelongsTo::make('City', 'city',  resource: CityResource::class)
     ->asyncSearch(
         'title',
@@ -334,12 +340,17 @@ BelongsTo::make('City', 'city',  resource: CityResource::class)
 > Если вам нужно заменить его своим построителем, то используйте флаг `replaceQuery`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:6]
+use App\MoonShine\Resources\CityResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Select;
 
 Select::make('Country', 'country_id'),
+
 BelongsTo::make('City', 'city',  resource: CityResource::class)
     ->asyncSearch(
         'title',
@@ -363,6 +374,11 @@ associatedWith(string $column, ?Closure $searchQuery = null)
 - `$searchQuery` - функция обратного вызова для фильтрации значений.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CityResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('City', 'city', resource: CityResource::class)
     ->associatedWith('country_id')
 ```
@@ -389,12 +405,16 @@ withImage(
 - `$dir` - директория относительно корня диска.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CountryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Country', resource: CountryResource::class)
     ->withImage('thumb', 'public', 'countries')
 ```
 
 ![belongs_to_image](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image.png)
-
 ![belongs_to_image_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image_dark.png)
 
 <a name="options"></a>
@@ -403,6 +423,11 @@ BelongsTo::make('Country', resource: CountryResource::class)
 Все опции выбора доступны для изменения через *атрибуты data*:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CountryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Country', resource: CountryResource::class)
     ->searchable()
     ->customAttributes([
@@ -419,6 +444,8 @@ BelongsTo::make('Country', resource: CountryResource::class)
 Метод `native()` отключает библиотеку Choices.js и отображает выбор в нативном режиме.
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Type')->native()
 ```
 
@@ -430,14 +457,19 @@ BelongsTo::make('Type')->native()
 <a name="link"></a>
 ## Ссылка
 
-По умолчанию, `BelongsTo` ссылается на страницу редактирования, под капотом используется метод `link()`.
-При необходимости вы можете переопределить `link`:
+По умолчанию, `BelongsTo` ссылается на страницу редактирования.
+Вы можете переопределить это поведение с помощью метода `link()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make(
-    __('moonshine::ui.resource.role'),
-    'moonshineUserRole',
-    resource: MoonShineUserRoleResource::class,
+    'Category',
+    'category',
+    resource: CategoryResource::class,
 )
 ->link(
     link: fn(string $value, BelongsTo $ctx) => $ctx->getResource()->getDetailPageUrl($ctx->getData()->getKey()),

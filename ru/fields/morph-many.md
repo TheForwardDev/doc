@@ -6,20 +6,18 @@
 
 Поле отношения в **Laravel** типа `MorphMany`.
 
-То же самое, что `MoonShine\Laravel\Fields\Relationships\HasMany`, только для отношений `MorphMany`.
-
 > [!WARNING]
 > Параметр `formatted` не используется в поле `MorphMany`!
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
 use MoonShine\Laravel\Fields\Relationships\MorphMany;
 
-// ...
-
-protected function fields(): iterable
-{
-    return [
-        MorphMany::make('Comments', 'comments')
-    ];
-}
+MorphMany::make(
+    'Comments',
+    'comments',
+    resource: CommentResource::class
+)
 ```
