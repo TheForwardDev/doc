@@ -209,7 +209,7 @@ class PhoneVerification
 Using authentication pipelines allows for complex authentication scenarios while keeping the code clean and modular, and gives full control over the process of users logging into the **MoonShine** admin panel.
 
 <a name="socialite"></a>
-# Socialite
+## Socialite
 
 For convenience, you can link your account with social networks to simplify the authentication process.
 
@@ -292,7 +292,7 @@ protected function components(): iterable
 ```
 
 <a name="2fa"></a>
-# Two-factor authentication
+## Two-factor authentication
 
 For added security, you can set up two-factor authentication:
 
@@ -376,7 +376,7 @@ protected function components(): iterable
 ```
 
 <a name="jwt"></a>
-# JWT
+## JWT
 
 **MoonShine** also provides a simple way to switch the admin panel to `API` mode and interact through tokens.
 
