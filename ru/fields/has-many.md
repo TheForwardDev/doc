@@ -435,7 +435,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 
 ### indexButtons()
 
-Метод `indexButtons()` позволяет добавить дополнительные ActionButtons для работы с элементами HasMany.
+Метод `indexButtons()` позволяет добавить дополнительные `ActionButtons` для работы с элементами `HasMany`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

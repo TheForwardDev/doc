@@ -8,7 +8,7 @@
 <a name="basics"></a>
 ## Basics
 
-**MoonShine** does not deviate from _Laravel_ concepts and also uses _Laravel policy_ for working with access rights.
+**MoonShine** does not deviate from **Laravel** concepts and also uses _Laravel policy_ for working with access rights.
 
 In **MoonShine** resource controllers, each method will be checked for permissions.
 If you encounter difficulties, refer to the official [Laravel](https://laravel.com/docs/authorization#creating-policies) documentation.

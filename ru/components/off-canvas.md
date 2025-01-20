@@ -90,7 +90,7 @@ protected function components(): iterable
 
 ### Вызов события через ActionButton
 
-Событие боковой панели может быть вызвано с помощью компонента *ActionButton*.
+Событие боковой панели может быть вызвано с помощью компонента `ActionButton`.
 
 ```php
 Offcanvas::make(

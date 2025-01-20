@@ -9,15 +9,15 @@
 <a name="basics"></a>
 ## Basics
 
-The *ActionGroup* component is designed for the quick grouping of a set of *ActionButton* instances, as well as for filling the buttons with data.
+The `ActionGroup` component is designed for the quick grouping of a set of `ActionButton` instances, as well as for filling the buttons with data.
 
-You can create an *ActionGroup* using the static method `make()` of the `ActionGroup` class.
+You can create an `ActionGroup` using the static method `make()` of the `ActionGroup` class.
 
 ```php
 make(iterable $actions = [])
 ```
 
-`$actions` - a set of *ActionButton*.
+`$actions` - a set of `ActionButton`.
 
 ```php
 use MoonShine\UI\Components\ActionGroup;
@@ -31,7 +31,7 @@ ActionGroup::make([
 <a name="fill"></a>
 ## Filling with Data
 
-To fill all the buttons with data, use the `fill()` method and pass a *DataWrapperContract*:
+To fill all the buttons with data, use the `fill()` method and pass a `DataWrapperContract`.
 
 ```php
 ActionGroup::make($buttons)->fill($data);
@@ -40,7 +40,7 @@ ActionGroup::make($buttons)->fill($data);
 <a name="add"></a>
 ## Adding Elements
 
-You can conveniently manipulate the set of ActionButton instances using the `add()`, `prepend()`, and `addMany()` methods:
+You can conveniently manipulate the set of `ActionButton` instances using the `add()`, `prepend()`, and `addMany()` methods.
 
 ```php
 ActionGroup::make($buttons)->add(ActionButton::make('Button 3'));

@@ -84,7 +84,7 @@ ActionButton::make(
 <a name="color"></a>
 ## Color
 
-For *ActionButton*, there is a set of methods to set the button color:
+For `ActionButton`, there is a set of methods to set the button color:
 `primary()`, `secondary()`, `warning()`, `success()`, and `error()`.
 
 ```php

@@ -1,6 +1,6 @@
 # HasOne через поле Template
 
-Пример реализации отношения *HasOne* через поле *Template*.
+Пример реализации отношения `HasOne` через поле *Template*.
 
 ```php
 use MoonShine\UI\Fields\Template;
@@ -29,6 +29,4 @@ protected function formFields(): iterable
           })
     ];
 }
-
-// ...
 ```

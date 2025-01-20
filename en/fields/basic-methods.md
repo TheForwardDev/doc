@@ -750,7 +750,7 @@ Select::make('Links')->options([
 
 Using the `onChangeMethod()` and `onChangeUrl()` methods, you can add logic when field values change.
 
-> The methods `onChangeUrl()` or `onChangeMethod()` are present on all fields except for HasOne and HasMany relationship fields.
+> The methods `onChangeUrl()` or `onChangeMethod()` are present on all fields except for HasOne and `HasMany` relationship fields.
 
 #### onChangeUrl()
 

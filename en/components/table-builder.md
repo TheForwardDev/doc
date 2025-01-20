@@ -292,7 +292,7 @@ TableRows::make()->pushRow(
 
 - `$cells` - a collection of cells,
 - `$key` - a unique key for `tr` for bulk actions and row update events,
-- `$builder` - access to TableBuilder.
+- `$builder` - access to `TableBuilder`.
 
 ```php
 TableCells::make()->pushCell(
@@ -305,7 +305,7 @@ TableCells::make()->pushCell(
 
 - `$content` - content of the cell,
 - `$index` - ordinal number of the cell,
-- `$builder` - access to TableBuilder,
+- `$builder` - access to `TableBuilder`,
 - `$attributes` - HTML attributes of the cell.
 
 `TableCells` also has additional helper methods.
@@ -321,7 +321,7 @@ TableCells::make()->pushFields(
 ```
 
 - `$fields` - collection of fields,
-- `$builder` - access to TableBuilder,
+- `$builder` - access to `TableBuilder`,
 - `$startIndex` - starting index (since there may have already been cells added to the table previously)
 
 Conditional methods `pushWhen` and `pushCellWhen` are also available.
@@ -492,7 +492,7 @@ The example below demonstrates selecting the active checkbox by default:
 <a name="attribute-configuration"></a>
 ## Attribute Configuration
 
-TableBuilder provides methods for configuring HTML attributes:
+`TableBuilder` provides methods for configuring HTML attributes:
 
 ```php
 ->trAttributes(fn(?DataWrapperContract $data, int $row): array => ['class' => $row % 2 ? 'bg-gray-100' : ''])
@@ -519,7 +519,7 @@ The `async()` method configures asynchronous loading of the table:
 )
 ```
 
-- `$url` - URL of the asynchronous request (the response must return TableBuilder),
+- `$url` - URL of the asynchronous request (the response must return `TableBuilder`),
 - `$events` - events that will be triggered after a successful response,
 - `$callback` - JS callback that can be added as a wrapper for the response.
 
@@ -537,7 +537,7 @@ TableBuilder::make()
         ])
 ```
 
-Event list for TableBuilder:
+Event list for `TableBuilder`:
 
 - `JsEvent::TABLE_UPDATED` - table update,
 - `JsEvent::TABLE_REINDEX` - table reindexing (see `reindex()`)
@@ -548,7 +548,7 @@ Event list for TableBuilder:
 
 All parameters of the `async` method are optional, and by default, `TableBuilder` will automatically set URL based on the current page.
 
-In the process of using *TableBuilder* in `async` mode, there may arise a task where you use it outside the admin panel on pages that are not declared in the **MoonShine** system.
+In the process of using `TableBuilder` in `async` mode, there may arise a task where you use it outside the admin panel on pages that are not declared in the **MoonShine** system.
 Then you will need to specify your own URL and implement a response with the HTML table. Let's consider an implementation example:
 
 ```php

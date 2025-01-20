@@ -1,6 +1,6 @@
 # Parent ID in HasMany
 
-The HasMany relationship stores file data that needs to be saved in a directory by the parent ID.
+The `HasMany` relationship stores file data that needs to be saved in a directory by the parent ID.
 
 ```php
 use App\Models\PostImage;

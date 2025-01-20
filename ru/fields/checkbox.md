@@ -13,7 +13,7 @@
 
 Содержит все [базовые методы](/docs/{{version}}/fields/basic-methods).
 
-Поле *Checkbox* - это поле для выбора значения типа да/нет.
+Поле `Checkbox` - это поле для выбора значения типа да/нет.
 
 <a name="make"></a>
 ## Создание
@@ -21,9 +21,9 @@
 ~~~tabs
 tab: Class
 ```php
-use MoonShine\UI\Fields\Checkbox; 
+use MoonShine\UI\Fields\Checkbox;
 
-Checkbox::make('Публиковать', 'is_publish') 
+Checkbox::make('Публиковать', 'is_publish')
 ```
 tab: Blade
 ```blade

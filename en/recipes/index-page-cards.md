@@ -1,6 +1,6 @@
 # Index Page via CardsBuilder
 
-Let's change the display of elements on the index page through the *CardsBuilder* component.
+Let's change the display of elements on the index page through the `CardsBuilder` component.
 
 ```php
 class MoonShineUserResource extends ModelResource
@@ -27,7 +27,5 @@ class MoonShineUserResource extends ModelResource
             ->thumbnail(fn ($user) => asset($user->avatar))
             ->buttons($this->getIndexButtons());
     }
-
-    // ...
 }
 ```

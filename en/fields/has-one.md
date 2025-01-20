@@ -153,7 +153,7 @@ HasOne::make('Comment', resource: CommentResource::class)
 
 ### Form
 
-The `modifyForm()` method allows you to change the *FormBuilder* for editing.
+The `modifyForm()` method allows you to change the `FormBuilder` for editing.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

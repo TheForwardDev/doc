@@ -338,7 +338,7 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 ## Only Link
 
 The `relatedLink()` method will display the relationship as a link with a count of elements.
-The link will lead to the IndexPage of the child resource from the HasMany relationship, which will show only those data elements.
+The link will lead to the IndexPage of the child resource from the `HasMany` relationship, which will show only those data elements.
 
 ```php
 relatedLink(?string $linkRelation = null, Closure|bool $condition = null)

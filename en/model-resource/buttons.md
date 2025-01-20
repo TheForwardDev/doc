@@ -27,7 +27,7 @@ In **MoonShine**, there are many methods that allow you to override either a sin
 
 > [!WARNING]
 > The buttons for creating, viewing, editing, deleting, and mass deleting are placed in separate classes
-> to apply all necessary methods to them and thereby eliminate duplication, as these buttons are also used in HasMany, BelongsToMany, etc.
+> to apply all necessary methods to them and thereby eliminate duplication, as these buttons are also used in `HasMany`, `BelongsToMany`, etc.
 
 <a name="create"></a>
 ## Create button

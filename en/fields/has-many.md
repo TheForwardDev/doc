@@ -435,7 +435,7 @@ HasMany::make('Comments', resource: CommentResource::class)
 
 ### indexButtons()
 
-The `indexButtons()` method allows you to add additional ActionButtons for working with HasMany elements.
+The `indexButtons()` method allows you to add additional `ActionButtons` for working with `HasMany` elements.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

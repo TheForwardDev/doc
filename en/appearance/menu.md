@@ -598,7 +598,7 @@ final class MoonShineLayout extends AppLayout
 ```
 
 > [!WARNING]
-> Some parameters of **ActionButton**, such as `url`, `badge`, `icon`, and others are overridden in the system.
+> Some parameters of `ActionButton`, such as `url`, `badge`, `icon`, and others are overridden in the system.
 > To change them, use the corresponding methods.
 
 <a name="custom-view"></a>

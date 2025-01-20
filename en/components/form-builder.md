@@ -488,7 +488,7 @@ apply(
 
 #### Examples
 
-You need to save data from all fields of the *FormBuilder* in the controller:
+You need to save data from all fields of the `FormBuilder` in the controller:
 
 ```php
 $form->apply(fn(Model $item) => $item->save());

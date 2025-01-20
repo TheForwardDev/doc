@@ -598,7 +598,7 @@ final class MoonShineLayout extends AppLayout
 ```
 
 > [!WARNING]
-> Некоторые параметры **ActionButton**, такие, как `url`, `badge`, `icon` и другие, системно переопределяются.
+> Некоторые параметры `ActionButton`, такие, как `url`, `badge`, `icon` и другие, системно переопределяются.
 > Для их изменения используйте соответствующие методы.
 
 <a name="custom-view"></a>
