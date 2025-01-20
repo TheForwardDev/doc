@@ -195,7 +195,7 @@ class PhoneVerification
             return redirect()->route('sms-challenge');
         }
 
-        return $next($user);
+        return $next($request);
     }
 }
 ```
