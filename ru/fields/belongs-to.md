@@ -463,13 +463,13 @@ BelongsTo::make('Type')->native()
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
 // [tl! collapse:2]
-use App\MoonShine\Resources\RoleResource;
+use App\MoonShine\Resources\CategoryResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
 BelongsTo::make(
-    'Role',
-    'role',
-    resource: RoleResource::class,
+    'Category',
+    'category',
+    resource: CategoryResource::class,
 )
 ->link(
     link: fn(string $value, BelongsTo $ctx) => $ctx->getResource()->getDetailPageUrl($ctx->getData()->getKey()),
