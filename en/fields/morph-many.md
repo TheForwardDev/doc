@@ -10,19 +10,14 @@ A relationship field in **Laravel** of type `MorphMany`.
 > The `formatted` parameter is not used in the `MorphMany` field!
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
 use MoonShine\Laravel\Fields\Relationships\MorphMany;
 
-// ...
-
-protected function fields(): iterable
-{
-    return [
-        // ...
-        MorphMany::make(
-            'Comments',
-            'comments',
-            resource: CommentResource::class
-        )
-    ];
-}
+MorphMany::make(
+    'Comments',
+    'comments',
+    resource: CommentResource::class
+)
 ```

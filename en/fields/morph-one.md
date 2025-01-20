@@ -7,19 +7,14 @@ Inherits from [HasOne](/docs/{{version}}/fields/has-one).
 Relationship field in **Laravel** of type `HasOne`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\ProfileResource;
 use MoonShine\Laravel\Fields\Relationships\MorphOne;
 
-// ...
-
-protected function fields(): iterable
-{
-    return [
-        // ...
-        MorphOne::make(
-            'Profile',
-            'profile',
-            resource: ProfileResource::class
-        )
-    ];
-}
+MorphOne::make(
+    'Profile',
+    'profile',
+    resource: ProfileResource::class
+)
 ```

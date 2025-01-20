@@ -44,16 +44,15 @@ BelongsToMany::make(
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        BelongsToMany::make('Categories', 'categories', resource: CategoryResource::class)
-    ];
-}
+BelongsToMany::make(
+    'Categories',
+    'categories',
+    resource: CategoryResource::class
+)
 ```
 
 ![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many.png)
@@ -62,33 +61,17 @@ protected function fields(): iterable
 Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        BelongsToMany::make('Categories', 'categories')
-    ];
-}
+BelongsToMany::make('Categories', 'categories')
 ```
 
 Если не указать `$relationName`, то имя связи будет определено автоматически на основе `$label` (по правилам camelCase).
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        BelongsToMany::make('Categories')
-    ];
-}
+BelongsToMany::make('Categories')
 ```
 
 > [!NOTE]
@@ -96,26 +79,20 @@ protected function fields(): iterable
 > Аргумент `$formatted` позволяет переопределить это.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        BelongsToMany::make(
-            'Categories',
-            'categories',
-            formatted: 'name'
-        )
-    ];
-}
+BelongsToMany::make(
+    'Categories',
+    'categories',
+    formatted: 'name'
+)
 ```
 
 Если вам нужно указать более сложное значение для отображения, тогда в аргумент `$formatted` можно передать функцию обратного вызова.
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make(
     'Categories',
     'categories',
@@ -134,6 +111,11 @@ columnLabel(string $label)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->columnLabel('Title')
 ```
@@ -149,7 +131,8 @@ fields(FieldsContract|Closure|iterable $fields)
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:2]
+// [tl! collapse:3]
+use App\MoonShine\Resources\ContactResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 use MoonShine\UI\Fields\Text;
 
@@ -182,6 +165,11 @@ creatable(
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->creatable()
 ```
@@ -192,6 +180,12 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 Вы можете настроить кнопку создания, передав параметр *button* в метод.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Components\ActionButton;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->creatable(
         button: ActionButton::make('Custom button', '')
@@ -205,6 +199,11 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 Для этого необходимо использовать метод `selectMode()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->selectMode()
 ```
@@ -218,7 +217,12 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 Все опции выбора доступны для изменения через *атрибуты data*:
 
 ```php
-BelongsToMany::make('Countries', resource: ContactResource::class)
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
+BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->selectMode()
     ->customAttributes([
         'data-max-item-count' => 2
@@ -257,6 +261,11 @@ tree(string $parentColumn)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->tree('parent_id')
 ```
@@ -304,6 +313,13 @@ inLine(string $separator = '', Closure|bool $badge = false, ?Closure $link = nul
 Для изменения цвета отображаемого `badge` используйте замыкание и возвращайте компонент `Badge::make()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Components\Badge;
+use MoonShine\UI\Components\Link;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->inLine(
         separator: ' ',
@@ -336,6 +352,11 @@ relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
 Параметр `linkRelation` позволяет создать ссылку на отношение с привязкой родительского ресурса.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->relatedLink('category')
 ```
@@ -343,6 +364,12 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 Параметр `condition` через замыкание позволит изменить метод отображения в зависимости от условий.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Fields\Field;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->relatedLink(condition: function (int $count, Field $field): bool {
         return $count > 10;
@@ -360,11 +387,13 @@ valuesQuery(Closure $callback)
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:2]
+// [tl! collapse:4]
+use App\MoonShine\Resources\CategoryResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+use MoonShine\UI\Fields\Field;
 
-BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
+BelongsToMany::make('Categories', 'categories', resource: CategoryResource::class)
     ->valuesQuery(fn(Builder $query, Field $field) => $query->where('active', true))
 ```
 
@@ -385,7 +414,12 @@ asyncSearch(
 ```
 
 ```php
-BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
+BelongsToMany::make('Categories', 'categories', resource: CategoryResource::class)
     ->asyncSearch()
 ```
 
@@ -404,13 +438,14 @@ BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:4]
+// [tl! collapse:5]
+use App\MoonShine\Resources\CountryResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 use MoonShine\UI\Fields\Field;
 
-BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
+BelongsToMany::make('Countries', 'countries', resource: CountryResource::class)
     ->asyncSearch(
         'title',
         10,
@@ -430,27 +465,23 @@ BelongsToMany::make('Countries', 'countries', resource: ContactResource::class)
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:5]
+// [tl! collapse:6]
+use App\MoonShine\Resources\CityResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Select;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        Select::make('Country', 'country_id'),
-        BelongsToMany::make('Cities', 'cities', resource: CityResource::class)
-            ->asyncSearch(
-                'title',
-                searchQuery: function (Builder $query, Request $request, Field $field): Builder {
-                    return $query->where('country_id', $request->get('country_id'));
-                }
-            )
-    ];
-}
+Select::make('Country', 'country_id'),
+
+BelongsToMany::make('Cities', 'cities', resource: CityResource::class)
+    ->asyncSearch(
+        'title',
+        searchQuery: function (Builder $query, Request $request, Field $field): Builder {
+            return $query->where('country_id', $request->get('country_id'));
+        }
+    )
 ```
 
 > [!TIP]
@@ -470,6 +501,11 @@ associatedWith(string $column, ?Closure $searchQuery = null)
 - `searchQuery` - функция обратного вызова для фильтрации значений.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CityResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsToMany::make('Cities', 'cities', resource: CityResource::class)
     ->associatedWith('country_id')
 ```
@@ -495,7 +531,12 @@ withImage(
 - `$dir` - директория относительно корня диска.
 
 ```php
-BelongsToMany::make('Countries', resource: ContactResource::class)
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CityResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
+BelongsToMany::make('Cities', resource: CityResource::class)
     ->withImage('thumb', 'public', 'countries')->selectMode()
 ```
 
@@ -513,8 +554,9 @@ buttons(array $buttons)
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:2]
-use MoonShine\ActionButtons\ActionButton;
+// [tl! collapse:3]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 
 BelongsToMany::make('Categories', resource: CategoryResource::class)
@@ -532,6 +574,11 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 Метод `withCheckAll()` позволяет добавить кнопку checkAll к полю `BelongsToMany`, аналогично предыдущему примеру.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
 BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->withCheckAll()
 ```

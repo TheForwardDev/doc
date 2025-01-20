@@ -42,16 +42,15 @@ HasMany::make(
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
 use MoonShine\Laravel\Fields\Relationships\HasMany;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        HasMany::make('Comments', 'comments', resource: CommentResource::class)
-    ];
-}
+HasMany::make(
+    'Comments',
+    'comments',
+    resource: CommentResource::class
+)
 ```
 
 ![has_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many.png)
@@ -60,33 +59,17 @@ protected function fields(): iterable
 Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\HasMany;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        HasMany::make('Comments', 'comments')
-    ];
-}
+HasMany::make('Comments', 'comments')
 ```
 
 Если вы не указываете `$relationName`, тогда имя отношения будет определено автоматически на основе `$label` (по правилам camelCase).
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\HasMany;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        HasMany::make('Comments')
-    ];
-}
+HasMany::make('Comments')
 ```
 
 <a name="fields"></a>
@@ -100,7 +83,8 @@ fields(FieldsContract|Closure|iterable $fields)
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:3]
+// [tl! collapse:4]
+use App\MoonShine\Resources\CommentResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 use MoonShine\Laravel\Fields\Relationships\HasMany;
 use MoonShine\UI\Fields\Text;
@@ -128,6 +112,11 @@ creatable(
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->creatable()
 ```
@@ -138,6 +127,12 @@ HasMany::make('Comments', resource: CommentResource::class)
 Вы можете настроить *кнопку* создания, передав параметр button в метод.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->creatable(
         button: ActionButton::make('Custom button', '')
@@ -154,6 +149,11 @@ limit(int $limit)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->limit(1)
 ```
@@ -177,6 +177,11 @@ relatedLink(?string $linkRelation = null, Closure|bool $condition = null)
 > Не забудьте добавить отношение в свойство `$with` ресурса.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink()
 ```
@@ -186,6 +191,11 @@ HasMany::make('Comments', resource: CommentResource::class)
 Параметр `linkRelation` позволяет создать ссылку на отношение с привязкой родительского ресурса.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink('comment')
 ```
@@ -193,6 +203,12 @@ HasMany::make('Comments', resource: CommentResource::class)
 Параметр `condition` через замыкание позволит изменить метод отображения в зависимости от условий.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Fields\Field;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink(condition: function (int $count, Field $field): bool {
         return $count > 10;
@@ -247,6 +263,12 @@ $this->getParentId();
 Метод `changeEditButton()` позволяет полностью переопределить кнопку редактирования.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->changeEditButton(
         ActionButton::make(
@@ -262,6 +284,11 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 По умолчанию, создание и редактирование записи поля `HasMany` происходит в модальном окне, метод `withoutModals()` позволяет отключить это поведение.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->withoutModals()
 ```
@@ -281,6 +308,11 @@ public function searchable(Closure|bool|null $condition = null): static
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->searchable(false) // отключает поле поиска
 ```
@@ -297,6 +329,12 @@ modifyItemButtons(Closure $callback)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyItemButtons(
         fn(ActionButton $detail, $edit, $delete, $massDelete, HasMany $ctx) => [$detail]
@@ -308,6 +346,12 @@ HasMany::make('Comments', resource: CommentResource::class)
 Метод `modifyRelatedLink()` позволяет изменить кнопку *relatedLink*.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink()
     ->modifyRelatedLink(
@@ -322,6 +366,12 @@ HasMany::make('Comments', resource: CommentResource::class)
 Методы `modifyCreateButton()` и `modifyEditButton()` позволяют изменить кнопки создания и редактирования.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyCreateButton(
         fn(ActionButton $button) => $button->setLabel('Custom create button')
@@ -337,6 +387,12 @@ HasMany::make('Comments', resource: CommentResource::class)
 Метод `modifyTable()` позволяет изменить `TableBuilder` для предпросмотра и формы.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\Table\TableBuilder;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyTable(
         fn(TableBuilder $table, bool $preview) => $table
@@ -350,6 +406,11 @@ HasMany::make('Comments', resource: CommentResource::class)
 Метод `redirectAfter()` позволяет редирект после сохранения/добавления/удаления.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->redirectAfter(fn(int $parentId) => route('home'))
 ```
@@ -359,6 +420,12 @@ HasMany::make('Comments', resource: CommentResource::class)
 Метод `modifyBuilder()` позволяет модифицировать запрос через *QueryBuilder*.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyBuilder(fn(Relation $query, HasMany $ctx) => $query)
 ```
@@ -371,6 +438,11 @@ HasMany::make('Comments', resource: CommentResource::class)
 Метод `indexButtons()` позволяет добавить дополнительные ActionButtons для работы с элементами HasMany.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->indexButtons([
         ActionButton::make('Custom button')
@@ -382,6 +454,12 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 Метод `formButtons()` позволяет добавить дополнительные `ActionButtons` внутри формы при создании или редактировании элемента `HasMany`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\UI\Components\ActionButton;
+
 HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->formButtons([
         ActionButton::make('Custom form button')
@@ -396,9 +474,13 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 Если вам нужно отобразить поля отношения внутри основной формы, то вы можете использовать поле *JSON* в режиме `asRelation()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CommentResource;
+use MoonShine\UI\Fields\Json;
+
 Json::make('Comments', 'comments')
     ->asRelation(CommentResource::class)
-    // ...
 ```
 
 ### Отношение через поле Template

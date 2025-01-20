@@ -9,15 +9,9 @@ The `MorphTo` relationship field in **Laravel**.
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphTo;
 
-protected function formFields(): iterable
-{
-    return [
-        // ...
-        MorphTo::make('Commentable')->types([
-            Article::class => 'title'
-        ]),
-    ];
-}
+MorphTo::make('Commentable')->types([
+    Article::class => 'title'
+])
 ```
 
 ![morph_to](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to.png)
@@ -38,15 +32,9 @@ Description of the `types` method value:
 ```php
 use MoonShine\Fields\Relationships\MorphTo;
 
-public function fields(): array
-{
-    return [
-        // ...
-        MorphTo::make('Imageable')->types([
-            Company::class => ['short_name', 'Organization']
-        ]),
-    ];
-}
+MorphTo::make('Imageable')->types([
+    Company::class => ['short_name', 'Organization']
+])
 ```
 
 ![morph_to_array](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to_array.png)

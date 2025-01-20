@@ -43,20 +43,15 @@ BelongsTo::make(
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
+// [tl! collapse:2]
+use App\MoonShine\Resources\UserResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        BelongsTo::make(
-            'User',
-            'user',
-            resource: UserResource::class
-        )
-    ];
-}
+BelongsTo::make(
+    'User',
+    'user',
+    resource: UserResource::class
+)
 ```
 
 ![belongs_to](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to.png)
@@ -65,33 +60,17 @@ protected function fields(): iterable
 You can omit `$resource` if the `ModelResource` matches the relationship name.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        BelongsTo::make('User', 'user')
-    ];
-}
+BelongsTo::make('User', 'user')
 ```
 
 If you do not specify `$relationName`, the name of the relationship will be determined automatically based on `$label` (by camelCase rules).
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        BelongsTo::make('User')
-    ];
-}
+BelongsTo::make('User')
 ```
 
 > [!NOTE]
@@ -99,26 +78,20 @@ protected function fields(): iterable
 > The `$formatted` argument allows overriding the `$column` property.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        BelongsTo::make(
-            'User',
-            'user',
-            formatted: 'first_name'
-        )
-    ];
-}
+BelongsTo::make(
+    'User',
+    'user',
+    formatted: 'first_name'
+)
 ```
 
 If you need to specify a more complex value for display, you can pass a callback function to the `$formatted` argument.
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make(
     'Country',
     'country',
@@ -129,6 +102,11 @@ BelongsTo::make(
 If you need to change the column when working with models, use the `onAfterFill()` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make(
     'Category',
     resource: CategoryResource::class
@@ -150,6 +128,11 @@ default(mixed $default)
 You must pass a model object as the default value.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Country', resource: CategoryResource::class)
     ->default(Country::find(1))
 ```
@@ -164,6 +147,11 @@ nullable(Closure|bool|null $condition = null)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Country', resource: CategoryResource::class)
     ->nullable()
 ```
@@ -183,6 +171,8 @@ placeholder(string $value)
 ```
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Country', 'country')
     ->nullable()
     ->placeholder('Country')
@@ -194,6 +184,11 @@ BelongsTo::make('Country', 'country')
 If you need to search among values, you must add the `searchable()` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CountryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Country', 'country', resource: CountryResource::class)
     ->searchable()
 ```
@@ -221,6 +216,12 @@ BelongsTo::make('Author', resource: AuthorResource::class)
 You can customize the create button by passing the _button_ parameter to the method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use App\MoonShine\Resources\AuthorResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use MoonShine\UI\Components\ActionButton;
+
 BelongsTo::make('Author', resource: AuthorResource::class)
     ->creatable(
         button: ActionButton::make('Custom button', '')
@@ -310,27 +311,23 @@ BelongsTo::make('Category', 'category', resource: CategoryResource::class)
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:5]
+// [tl! collapse:6]
+use App\MoonShine\Resources\CityResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Select;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        Select::make('Country', 'country_id'),
-        BelongsTo::make('City', 'city',  resource: CityResource::class)
-            ->asyncSearch(
-                'title',
-                searchQuery: function (Builder $query, Request $request, Field $field): Builder {
-                    return $query->where('country_id', $request->get('country_id'));
-                }
-            )
-    ];
-}
+Select::make('Country', 'country_id'),
+
+BelongsTo::make('City', 'city',  resource: CityResource::class)
+    ->asyncSearch(
+        'title',
+        searchQuery: function (Builder $query, Request $request, Field $field): Builder {
+            return $query->where('country_id', $request->get('country_id'));
+        }
+    )
 ```
 
 > [!NOTE]
@@ -339,28 +336,24 @@ protected function fields(): iterable
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:5]
+// [tl! collapse:6]
+use App\MoonShine\Resources\CityResource;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Select;
 
-protected function fields(): iterable
-{
-    return [
-        // ...
-        Select::make('Country', 'country_id'),
-        BelongsTo::make('City', 'city',  resource: CityResource::class)
-            ->asyncSearch(
-                'title',
-                asyncSearchQuery: function (Builder $query, Request $request, Field $field): Builder {
-                    return $query->where('country_id', $request->get('country_id'));
-                },
-                replaceQuery: true
-            )
-    ];
-}
+Select::make('Country', 'country_id'),
+
+BelongsTo::make('City', 'city',  resource: CityResource::class)
+    ->asyncSearch(
+        'title',
+        asyncSearchQuery: function (Builder $query, Request $request, Field $field): Builder {
+            return $query->where('country_id', $request->get('country_id'));
+        },
+        replaceQuery: true
+    )
 ```
 
 <a name="associated"></a>
@@ -376,6 +369,11 @@ associatedWith(string $column, ?Closure $searchQuery = null)
 - `$searchQuery` - a callback function for filtering values.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CityResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('City', 'city', resource: CityResource::class)
     ->associatedWith('country_id')
 ```
@@ -402,6 +400,11 @@ withImage(
 - `$dir` - the directory relative to the root of the disk.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CountryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Country', resource: CountryResource::class)
     ->withImage('thumb', 'public', 'countries')
 ```
@@ -415,6 +418,11 @@ BelongsTo::make('Country', resource: CountryResource::class)
 All selection options are available for modification via *data attributes*:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CountryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Country', resource: CountryResource::class)
     ->searchable()
     ->customAttributes([
@@ -431,6 +439,8 @@ BelongsTo::make('Country', resource: CountryResource::class)
 The `native()` method disables the Choices.js library and displays the selection in native mode.
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Type')->native()
 ```
 
@@ -446,6 +456,11 @@ By default, `BelongsTo` links to the edit page.
 You can override this behavior using the `link()` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\RoleResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make(
     'Role',
     'role',
