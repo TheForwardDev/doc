@@ -266,6 +266,11 @@ asyncSearch(
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Category', 'category', resource: CategoryResource::class)
     ->asyncSearch()
 ```
