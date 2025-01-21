@@ -311,7 +311,7 @@ BelongsTo::make('Category', 'category', resource: CategoryResource::class)
 ```
 
 > [!NOTE]
-> При построении запроса в `asyncSearchQuery()` можно использовать текущие значения формы.
+> При построении запроса в `searchQuery` можно использовать текущие значения формы.
 > Для этого необходимо передать `Request` в функцию обратного вызова.
 
 ```php
@@ -336,7 +336,7 @@ BelongsTo::make('City', 'city',  resource: CityResource::class)
 ```
 
 > [!NOTE]
-> При построении запроса в `asyncSearchQuery()` сохраняется исходное состояние построителя.
+> При построении запроса в `searchQuery` сохраняется исходное состояние построителя.
 > Если вам нужно заменить его своим построителем, то используйте флаг `replaceQuery`.
 
 ```php
@@ -354,7 +354,7 @@ Select::make('Country', 'country_id'),
 BelongsTo::make('City', 'city',  resource: CityResource::class)
     ->asyncSearch(
         'title',
-        asyncSearchQuery: function (Builder $query, Request $request, Field $field): Builder {
+        searchQuery: function (Builder $query, Request $request, Field $field): Builder {
             return $query->where('country_id', $request->get('country_id'));
         },
         replaceQuery: true

@@ -311,7 +311,7 @@ BelongsTo::make('Category', 'category', resource: CategoryResource::class)
 ```
 
 > [!NOTE]
-> When building the query in `asyncSearchQuery()`, you can use the current values of the form.
+> When building the query in `searchQuery`, you can use the current values of the form.
 > To do this, it is necessary to pass `Request` into the callback function.
 
 ```php
@@ -336,7 +336,7 @@ BelongsTo::make('City', 'city',  resource: CityResource::class)
 ```
 
 > [!NOTE]
-> When building the query in `asyncSearchQuery()`, the initial state of the builder is preserved.
+> When building the query in `searchQuery`, the initial state of the builder is preserved.
 > If you need to replace it with your builder, use the `replaceQuery` flag.
 
 ```php
@@ -354,7 +354,7 @@ Select::make('Country', 'country_id'),
 BelongsTo::make('City', 'city',  resource: CityResource::class)
     ->asyncSearch(
         'title',
-        asyncSearchQuery: function (Builder $query, Request $request, Field $field): Builder {
+        searchQuery: function (Builder $query, Request $request, Field $field): Builder {
             return $query->where('country_id', $request->get('country_id'));
         },
         replaceQuery: true
