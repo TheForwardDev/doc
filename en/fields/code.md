@@ -28,7 +28,7 @@ Inherits [Textarea](/docs/{{version}}/fields/textarea).
 
 \* has the same capabilities.
 
-The Code field is an extension of *Textarea* with a visual layout for editing code.
+The `Code` field is an extension of `Textarea` with a visual layout for editing code.
 
 ```php
 use MoonShine\Ace\Fields\Code;
@@ -94,7 +94,7 @@ themes(string $light = null, string $dark = null)
 
 ```php
 Code::make('Code')
-    ->themes('chrome', 'cobalt');
+    ->themes('chrome', 'cobalt'),
 ```
 
 <a name="options"></a>

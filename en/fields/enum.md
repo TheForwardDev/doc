@@ -14,7 +14,7 @@ Inherits from [Select](/docs/{{version}}/fields/select).
 
 \* has the same capabilities.
 
-Operates the same as the *Select* field but accepts *Enum* as options.
+Operates the same as the `Select` field but accepts *Enum* as options.
 
 > [!NOTE]
 > The model attributes require Enum Cast.

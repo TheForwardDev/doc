@@ -19,7 +19,7 @@
 
 Contains all [Basic Methods](/docs/{{version}}/fields/basic-methods).
 
-The *Date* field is equivalent to `<input type="date">`.
+The `Date` field is equivalent to `<input type="date">`.
 
 ~~~tabs
 tab: Class

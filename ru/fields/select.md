@@ -201,7 +201,8 @@ Select::make('Country', 'country_id')
 <a name="async"></a>
 ## Асинхронный поиск
 
-У поля *Select* так же можно организовать асинхронный поиск. Для это необходимо методу `async()` передать *url*, на который будет отправляться запрос с *query* параметром для поиска.
+У поля `Select` так же можно организовать асинхронный поиск.
+Для это необходимо методу `async()` передать *url*, на который будет отправляться запрос с *query* параметром для поиска.
 
 ```php
 async(Closure|string|null $url = null, string|array|null $events = null, ?AsyncCallback $callback = null)
@@ -287,7 +288,7 @@ Select::make('Country', 'country_id')
     ->asyncOnInit(whenOpen: false)
 ```
 
-При пустом `asyncOnInit()` или `asyncOnInit(whenOpen: true)` запрос будет отправляться после клика на *Select*.
+При пустом `asyncOnInit()` или `asyncOnInit(whenOpen: true)` запрос будет отправляться после клика на `Select`.
 
 > [!NOTE]
 > Не забудьте обработать `query` при использовании `async`, иначе поиск всегда будет выдавать одинаковые значения
@@ -295,7 +296,7 @@ Select::make('Country', 'country_id')
 <a name="n-change-event"></a>
 ## События при изменении
 
-При изменении значения *Select*, через метод `onChangeEvent`, вы можете вызвать события:
+При изменении значения `Select`, через метод `onChangeEvent`, вы можете вызвать события:
 
 ```php
 use MoonShine\UI\Fields\Select;
@@ -310,7 +311,7 @@ Select::make('Country', 'country_id')
     ),
 ```
 
-Если *Select* находится в форме, то по умолчанию при вызове события с запросом будут отправлены все данные формы.
+Если `Select` находится в форме, то по умолчанию при вызове события с запросом будут отправлены все данные формы.
 Если форма большая, то может потребоваться исключить набор полей.
 Исключить можно через параметр `exclude`:
 
@@ -332,7 +333,7 @@ Select::make('Country', 'country_id')
 
 <a name="update-on-preview"></a>
 ## Редактирование в режиме preview
-Метод `updateOnPreview()` позволяет редактировать поле *Select* в режиме *preview*.
+Метод `updateOnPreview()` позволяет редактировать поле `Select` в режиме *preview*.
 
 ```php
 updateOnPreview(?Closure $url = null, ?ResourceContract $resource = null, mixed $condition = null, array $events = [])
@@ -413,7 +414,7 @@ Select::make('Country', 'country_id')
 
 <a name="native"></a>
 ## Нативный режим отображения
-Метод `native()` отключает библиотеку *Choices.js* и выводит *select* в нативном режиме.
+Метод `native()` отключает библиотеку *Choices.js* и выводит `Select` в нативном режиме.
 
 ```php
 use MoonShine\UI\Fields\Select;

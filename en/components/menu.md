@@ -9,15 +9,15 @@
 <a name="basics"></a>
 ## Basics
 
-The *Menu* component creates a menu based on *MenuManager* or the provided menu items.
+The `Menu` component creates a menu based on `MenuManager` or the provided menu items.
 
-You can create a *Menu* using the static method `make()` of the `Menu` class.
+You can create a menu using the static method `make()` of the `Menu` class.
 
 ```php
 make(?iterable $elements = [])
 ```
 
-`$elements` is a set of menu items; if it is empty, it will take *MenuManager* as the basis.
+`$elements` is a set of menu items; if it is empty, it will take `MenuManager` as the basis.
 
 ~~~tabs
 tab: Class

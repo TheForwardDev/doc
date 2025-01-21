@@ -17,7 +17,7 @@
 
 Contains all [Basic Methods](/docs/{{version}}/fields/basic-methods).
 
-The *Range* field allows you to set a range of values.
+The `Range` field allows you to set a range of values.
 
 <a name="basic-methods"></a>
 ## Basic Methods
@@ -111,7 +111,7 @@ Range::make('Rating')
 <a name="filter"></a>
 ## Filter
 
-When using the *Range* field for building a filter, the `fromTo()` method is not used, as filtering occurs on a single field in the database table.
+When using the `Range` field for building a filter, the `fromTo()` method is not used, as filtering occurs on a single field in the database table.
 
 ```php
 Range::make('Age', 'age')

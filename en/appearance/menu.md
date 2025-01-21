@@ -18,7 +18,7 @@
 <a name="basics"></a>
 ## Basics
 
-**Menu** is the foundation for navigation in the admin panel, so we have tried to create a flexible system
+*`Menu`* is the foundation for navigation in the admin panel, so we have tried to create a flexible system
 that allows you to fully customize the menu for different pages and users.
 
 The navigation menu is configured in a class that extends `MoonShine\Laravel\Layouts\AppLayout` through the `menu()` method.
@@ -261,7 +261,7 @@ final class MoonShineLayout extends AppLayout
 
 ### Through attribute
 
-An icon will be displayed for the menu item if the **ModelResource**, **Page**, or **Resource** class has the `Icon` attribute set and the icon has not been overridden by other means.
+An icon will be displayed for the menu item if the `ModelResource`, `Page`, or `Resource` class has the `Icon` attribute set and the icon has not been overridden by other means.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

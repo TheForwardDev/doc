@@ -137,7 +137,7 @@ $assetManager->add([
 ```
 
 The `append()` method will always add assets before the main list from *CrudResource*, *Page*, *Layout*, *Component*, *Field*, while `prepend()` will add them after.
-The `add()` method will depend on the lifecycle of the application. Suppose you are adding assets to *ModelResource*,
+The `add()` method will depend on the lifecycle of the application. Suppose you are adding assets to `ModelResource`,
 but before the page is displayed, *Layout* will be called, which will also add assets, thus the assets from *Layout* will be added last.
 
 > [!TIP]

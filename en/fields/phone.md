@@ -12,7 +12,7 @@ Inherits from [Text](/docs/{{version}}/fields/text).
 
 \* has the same capabilities.
 
-The *Phone* field is an extension of *Text*, which by default sets `type=tel`.
+The `Phone` field is an extension of `Text`, which by default sets `type=tel`.
 
 ```php
 use MoonShine\UI\Fields\Phone;

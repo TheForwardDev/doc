@@ -201,7 +201,8 @@ Select::make('Country', 'country_id')
 <a name="async"></a>
 ## Asynchronous search
 
-The *Select* field can also be set up for asynchronous searching. To do this, you need to pass a *url* to the `async()` method, which will handle a request with the *query* parameter for the search.
+The `Select` field can also be set up for asynchronous searching.
+To do this, you need to pass a *url* to the `async()` method, which will handle a request with the *query* parameter for the search.
 
 ```php
 async(Closure|string|null $url = null, string|array|null $events = null, ?AsyncCallback $callback = null)
@@ -287,7 +288,7 @@ Select::make('Country', 'country_id')
     ->asyncOnInit(whenOpen: false)
 ```
 
-If `asyncOnInit()` or `asyncOnInit(whenOpen: true)` is empty, the request will be sent after clicking on *Select*.
+If `asyncOnInit()` or `asyncOnInit(whenOpen: true)` is empty, the request will be sent after clicking on `Select`.
 
 > [!NOTE]
 > Don't forget to handle the `query` when using `async`, otherwise, the search will always return the same values.
@@ -295,7 +296,7 @@ If `asyncOnInit()` or `asyncOnInit(whenOpen: true)` is empty, the request will b
 <a name="n-change-event"></a>
 ## Change events
 
-When the *Select* value changes, you can trigger events using the `onChangeEvent` method:
+When the `Select` value changes, you can trigger events using the `onChangeEvent` method:
 
 ```php
 use MoonShine\UI\Fields\Select;
@@ -310,7 +311,7 @@ Select::make('Country', 'country_id')
     ),
 ```
 
-If the *Select* is in a form, then by default, all form data will be sent with the event when triggered.
+If the `Select` is in a form, then by default, all form data will be sent with the event when triggered.
 If the form is large, you may need to exclude a set of fields.
 Exclusions can be made through the `exclude` parameter:
 
@@ -332,7 +333,7 @@ You can also completely exclude sending data through the `withoutPayload` parame
 
 <a name="update-on-preview"></a>
 ## Editing in preview mode
-The `updateOnPreview()` method allows you to edit the *Select* field in *preview* mode.
+The `updateOnPreview()` method allows you to edit the `Select` field in *preview* mode.
 
 ```php
 updateOnPreview(?Closure $url = null, ?ResourceContract $resource = null, mixed $condition = null, array $events = [])
@@ -413,7 +414,7 @@ Select::make('Country', 'country_id')
 
 <a name="native"></a>
 ## Native display mode
-The `native()` method disables the *Choices.js* library and outputs the *select* in native mode.
+The `native()` method disables the *Choices.js* library and outputs the `Select` in native mode.
 
 ```php
 use MoonShine\UI\Fields\Select;

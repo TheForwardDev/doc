@@ -28,7 +28,7 @@ composer require moonshine/ace
 
 \* имеет те же возможности.
 
-Поле Code является расширением *Textarea* с визуальным оформлением редактируемого кода.
+Поле `Code` является расширением `Textarea` с визуальным оформлением редактируемого кода.
 
 ```php
 use MoonShine\Ace\Fields\Code;
@@ -94,7 +94,7 @@ themes(string $light = null, string $dark = null)
 
 ```php
 Code::make('Code')
-    ->themes('chrome', 'cobalt');
+    ->themes('chrome', 'cobalt'),
 ```
 
 <a name="options"></a>
