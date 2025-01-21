@@ -28,10 +28,10 @@ Files::make([
 tab: Blade
 ```blade
 <x-moonshine::files
-    :files="[ 
+    :files="[
         '/images/thumb_1.jpg',
         '/images/thumb_2.jpg',
-        '/images/thumb_3.jpg' 
+        '/images/thumb_3.jpg'
     ]"
     :download="false"
 />

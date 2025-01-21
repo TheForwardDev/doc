@@ -17,8 +17,8 @@ You can create a *Heading* using the static method `make()` of the `Heading` cla
 make(Closure|string $label = '', ?int $h = null, bool $asClass = true)
 ```
 
-`$label` - Value,  
-`$h` - Gradation,  
+`$label` - Value,
+`$h` - Gradation,
 `$asClass` - Use as a div with a gradation class or an `h` tag,
 
 ~~~tabs
@@ -41,7 +41,7 @@ tab: Blade
 h(int $gradation = 3, $asClass = true)
 ```
 
-The method allows wrapping the content in an *h1 - h6* tag or in a *div* with a gradation class.  
+The method allows wrapping the content in an *h1 - h6* tag or in a *div* with a gradation class.
 The first parameter defines the gradation of the tag, the second defines whether to use a tag or a class for *div*.
 
 ```php

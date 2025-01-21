@@ -3,8 +3,8 @@
 1. Через фасад Gate:
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:start] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 use Illuminate\Support\Facades\Gate;
 use MoonShine\Laravel\Enums\Ability;
 use MoonShine\MenuManager\MenuItem; // [tl! collapse:end]

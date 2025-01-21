@@ -18,8 +18,8 @@ or create your own set.
 icon(string $icon, bool $custom = false, ?string $path = null)
 ```
 
-`$icon` - the name of the icon or HTML (if using custom mode),  
-`$custom` - custom mode,  
+`$icon` - the name of the icon or HTML (if using custom mode),
+`$custom` - custom mode,
 `$path` - the path to the directory where the blade templates for icons are located.
 
 Simple example:

@@ -40,9 +40,9 @@ tab: Class
 use MoonShine\UI\Components\Dropdown;
 
 Dropdown::make(
-    'Dropdown', 
-    'Toggler', 
-    'Content', 
+    'Dropdown',
+    'Toggler',
+    'Content',
     ['Item 1', 'Item 1']
 )
 ```

@@ -23,9 +23,9 @@ Breadcrumbs::make([
 tab: Blade
 ```blade
 <x-moonshine::breadcrumbs
-    :items="[ 
-        '/' => 'Home', 
-        '/articles' => 'Articles' 
+    :items="[
+        '/' => 'Home',
+        '/articles' => 'Articles'
     ]"
 />
 ```

@@ -35,7 +35,7 @@ Let's also look at how to add your own events:
 You can also use the convenient directive `defineEvent`, which will do the same thing as the example above:
 
 ```bladehtml
-<div 
+<div
   x-data=""
   @defineEvent('form_updated', 'my-event', 'alert()')
 >

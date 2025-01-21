@@ -14,7 +14,7 @@ use MoonShine\UI\Fields\Text;
 
 Json::make('Product Options', 'options')
     ->fields([
-        Position::make(), 
+        Position::make(),
         Text::make('Title'),
         Text::make('Value'),
         Switcher::make('Active')

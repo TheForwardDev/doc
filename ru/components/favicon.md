@@ -16,7 +16,7 @@ tab: Class
 ```php
 use MoonShine\UI\Components\Layout\Favicon;
 
-Favicon::make(); 
+Favicon::make();
 ```
 tab: Blade
 ```blade
@@ -35,11 +35,11 @@ tab: Blade
 ~~~tabs
 tab: Class
 ```php
-assets(array $assets); 
+assets(array $assets);
 ```
-    
+
 ```php
-Favicon::make([ 
+Favicon::make([
     // ...
 ])
     ->customAssets([
@@ -48,7 +48,7 @@ Favicon::make([
         '16' => Vite::asset('favicons/favicon-16x16.png'),
         'safari-pinned-tab' => Vite::asset('favicons/safari-pinned-tab.svg'),
         'web-manifest' => Vite::asset('favicons/site.webmanifest'),
-    ]); 
+    ]);
 ```
 tab: Blade
 ```blade
@@ -77,16 +77,16 @@ tab: Blade
 ~~~tabs
 tab: Class
 ```php
-bodyColor(string $color); 
+bodyColor(string $color);
 ```
 ```php
-Favicon::make([ 
+Favicon::make([
     // ...
 ])
-    ->bodyColor('#7843e9'); 
+    ->bodyColor('#7843e9');
 ```
 tab: Blade
 ```blade
-<x-moonshine::layout.favicon bodyColor='#7843e9' /> 
+<x-moonshine::layout.favicon bodyColor='#7843e9' />
 ```
 ~~~
