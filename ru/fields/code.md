@@ -41,7 +41,6 @@ Code::make('Code')
 > [!NOTE]
 > Поле работает на основе [Ace](https://ace.c9.io/) библиотеки.
 
-
 <a name="default-config"></a>
 ## Конфиг по умолчанию
 

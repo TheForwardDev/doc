@@ -59,7 +59,6 @@ default(mixed $default)
 ```php
 use MoonShine\UI\Fields\Select;
 
-
 Select::make('Country', 'country_id')
     ->options([
         'value 1' => 'Option Label 1',

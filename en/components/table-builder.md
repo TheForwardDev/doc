@@ -256,7 +256,6 @@ TableBuilder::make()
     )
   )
 
-
 // thead
 TableBuilder::make()
   ->headRows(
@@ -801,7 +800,6 @@ Available classes:
 - bgc-warning
 - bgc-error
 - bgc-info
-
 
 ```php
 <x-moonshine::table>

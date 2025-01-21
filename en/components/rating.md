@@ -15,7 +15,6 @@ make(
 - $min - minimum value,
 - $max - maximum value.
 
-
 ~~~tabs
 tab: Class
 ```php

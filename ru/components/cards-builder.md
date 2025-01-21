@@ -346,7 +346,6 @@ CardsBuilder::make(
 - `$events` - события, которые будут вызваны после успешного ответа,
 - `$callback` - JS callback, который можно добавить как обертку ответа.
 
-
 ```php
 CardsBuilder::make()
     ->items(Article::paginate())

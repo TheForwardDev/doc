@@ -41,7 +41,6 @@ Code::make('Code')
 > [!NOTE]
 > The field is based on the [Ace](https://ace.c9.io/) library.
 
-
 <a name="default-config"></a>
 ## Default Config
 

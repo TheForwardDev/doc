@@ -38,7 +38,6 @@ composer require moonshine/tinymce
 ```php
 use MoonShine\TinyMce\Fields\TinyMce;
 
-
 TinyMce::make('Description')
 ```
 

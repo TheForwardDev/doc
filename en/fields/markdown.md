@@ -14,7 +14,6 @@
 > [!NOTE]
 > Based on the [EasyMDE](https://github.com/Ionaru/easy-markdown-editor) library.
 
-
 <a name="installation"></a>
 ## Installation
 

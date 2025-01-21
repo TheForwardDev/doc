@@ -134,7 +134,6 @@ MoonShine.ui.toggleModal('my-modal')
 > [!NOTE]
 > More detailed information can be found in the official Alpine.js documentation in the sections [Events](https://alpinejs.dev/essentials/events) and [$dispatch](https://alpinejs.dev/magics/dispatch).
 
-
 <a name="open-close"></a>
 ### Open/Close
 

@@ -34,7 +34,6 @@ make(
 - $placement - расположение
 - $footer - footer для списка внутри Dropdown
 
-
 ~~~tabs
 tab: Class
 ```php

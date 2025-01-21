@@ -31,7 +31,6 @@ Slug::make('Slug')
 
 ![slug_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/slug_dark.png)
 
-
 <a name="from"></a>
 ## Генерация slug
 
@@ -73,7 +72,6 @@ locale(string $local)
 Slug::make('Slug')
     ->locale('ru')
 ```
-
 
 <a name="unique"></a>
 ## Уникальные значения

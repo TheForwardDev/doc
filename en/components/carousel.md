@@ -24,7 +24,6 @@ make(
 - `$portrait` - portrait orientation,
 - `$alt` - an attribute containing alternative text for the image.
 
-
 ~~~tabs
 tab: Class
 ```php

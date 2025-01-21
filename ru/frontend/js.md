@@ -391,5 +391,3 @@ document.addEventListener("moonshine:init", () => {
 - `data` - `json` ответ,
 - `messageType` - `ToastType`,
 - `component` - компонент `Alpine.js`.
-
-

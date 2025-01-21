@@ -62,7 +62,6 @@ tab: Blade
 ```
 ~~~
 
-
 <a name="events"></a>
 ## События
 

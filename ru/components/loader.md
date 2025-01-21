@@ -32,4 +32,3 @@ tab: Blade
 Loader::changeView('my-custom-view-path');
 ```
 
-
