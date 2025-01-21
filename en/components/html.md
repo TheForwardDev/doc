@@ -1,6 +1,6 @@
 # Html
 
-The **Html** component serves as the foundation for building an html page in MoonShine. \
+The `Html` component serves as the foundation for building html page in **MoonShine**.
 The component is a wrapper for the `<html>` tag and already includes `<!DOCTYPE html>`.
 
 ~~~tabs
@@ -30,4 +30,4 @@ tab: Blade
 ~~~
 
 > [!TIP]
-> Child components: [Head](/docs/{{version}}/components/head), [Body](/docs/{{version}}/components/body)
+> Child components: [Head](/docs/{{version}}/components/head), [Body](/docs/{{version}}/components/body).

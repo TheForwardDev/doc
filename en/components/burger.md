@@ -1,6 +1,6 @@
 # Burger
 
-The *Burger* component displays a button-icon for showing the mobile menu.
+The `Burger` component displays a button-icon for showing the mobile menu.
 
 ~~~tabs
 tab: Class

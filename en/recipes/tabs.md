@@ -5,8 +5,8 @@ and this recipe will also give you an understanding of the enormous possibilitie
 
 ## Creating a page with a form
 
-First, you need to add a page, in our example it is *ArticleFormPage*, which inherits *FormPage*.
-Then you need to replace *FormPage* with *ArticleFormPage* in the resource:
+First, you need to add a page, in our example it is `ArticleFormPage`, which inherits `FormPage`.
+Then you need to replace `FormPage` with `ArticleFormPage` in the resource:
 
 ```php
 class ArticleResource extends ModelResource

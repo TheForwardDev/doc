@@ -9,10 +9,10 @@
 <a name="basics"></a>
 ## Basics
 
-The **Head** component is used to place document information: metadata (such as the window title or encoding), links to scripts, and stylesheets.
+The `Head` component is used to place document information: metadata (such as the window title or encoding), links to scripts, and stylesheets.
 
 > [!NOTE]
-> The **Head** component contains some standard metadata by default.
+> The `Head` component contains some standard metadata by default.
 
 ~~~tabs
 tab: Class

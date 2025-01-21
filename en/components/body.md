@@ -1,8 +1,8 @@
 # Body
 
-The *Body* component is used to create a `body` block in **MoonShine**.
+The `Body` component is used to create a `body` block in **MoonShine**.
 
-You can create a *Body* using the static method `make()` of the `Body` class.
+You can create a `Body` using the static method `make()` of the `Body` class.
 
 ```php
 make(iterable $components = [])

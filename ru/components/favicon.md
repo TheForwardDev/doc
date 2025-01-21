@@ -9,7 +9,7 @@
 <a name="basics"></a>
 ## Основы
 
-Компонент **Favicon** используется для добавления к html-странице favicon.
+Компонент `Favicon` используется для добавления к html-странице favicon.
 
 ~~~tabs
 tab: Class

@@ -43,7 +43,7 @@ Menu::make([['label' => 'Dashboard', 'url' => '/'], ['label' => 'Section', 'url'
 <a name="top"></a>
 ## Horizontal Menu Mode
 
-If you decide to place the menu in a horizontal mode in the *TopBar*, use the `top()` method:
+If you decide to place the menu in a horizontal mode in the `TopBar`, use the `top()` method:
 
 ```php
 Menu::make()->top()

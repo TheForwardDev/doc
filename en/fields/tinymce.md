@@ -44,7 +44,7 @@ TinyMce::make('Description')
 <a name="default-config"></a>
 ## Default Config
 
-The *TinyMce* field by default uses the most commonly used settings, such as plugins, menubar, and toolbar.
+The `TinyMce` field by default uses the most commonly used settings, such as plugins, menubar, and toolbar.
 
 To change the default settings, you need to publish the configuration file:
 
@@ -52,7 +52,7 @@ To change the default settings, you need to publish the configuration file:
 php artisan vendor:publish --tag="moonshine-tinymce-config"
 ```
 
-You can also add additional parameters to the configuration file that will be applied to all *TinyMce* fields.
+You can also add additional parameters to the configuration file that will be applied to all `TinyMce` fields.
 
 ```php
 'options' => [

@@ -5,8 +5,8 @@
 
 ## Создание страницы с формой
 
-Для начала вам необходимо добавить страницу, в нашем примере это *ArticleFormPage*, которая наследует *FormPage*.
-После необходимо заменить *FormPage* на *ArticleFormPage* в ресурсе:
+Для начала вам необходимо добавить страницу, в нашем примере это `ArticleFormPage`, которая наследует `FormPage`.
+После необходимо заменить `FormPage` на `ArticleFormPage` в ресурсе:
 
 ```php
 class ArticleResource extends ModelResource

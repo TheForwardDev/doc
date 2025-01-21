@@ -9,7 +9,7 @@
 <a name="basics"></a>
 ## Basics
 
-The **Favicon** component is used to add a favicon to an HTML page.
+The `Favicon` component is used to add a favicon to an HTML page.
 
 ~~~tabs
 tab: Class

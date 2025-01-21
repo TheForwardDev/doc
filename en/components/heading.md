@@ -9,9 +9,9 @@
 <a name="basics"></a>
 ## Basics
 
-The *Heading* component allows you to add headings to content.
+The `Heading` component allows you to add headings to content.
 
-You can create a *Heading* using the static method `make()` of the `Heading` class.
+You can create a `Heading` using the static method `make()` of the `Heading` class.
 
 ```php
 make(Closure|string $label = '', ?int $h = null, bool $asClass = true)

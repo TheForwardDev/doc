@@ -19,7 +19,7 @@
 make(iterable $components = [])
 ```
 
-`$components` - набор *FieldContract*.
+`$components` - набор `FieldContract`.
 
 ```php
 use MoonShine\UI\Components\FieldsGroup;

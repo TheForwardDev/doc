@@ -19,7 +19,7 @@ You can create a `FieldsGroup` by using the static method `make()` of the `Field
 make(iterable $components = [])
 ```
 
-`$components` - a set of *FieldContract*.
+`$components` - a set of `FieldContract`.
 
 ```php
 use MoonShine\UI\Components\FieldsGroup;
