@@ -146,4 +146,4 @@ protected function isCan(Ability $ability): bool
 ```
 
 > [!TIP]
-> We also recommend reviewing the [Authorization](/docs/{{version}}/advanced/authorization) section.
+> We also recommend reviewing the [Authorization](/docs/{{version}}/security/authorization) section.
