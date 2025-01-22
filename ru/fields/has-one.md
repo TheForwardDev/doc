@@ -153,7 +153,7 @@ HasOne::make('Comment', resource: CommentResource::class)
 
 ### Форма
 
-Метод `modifyForm()` позволяет изменить *FormBuilder* для редактирования.
+Метод `modifyForm()` позволяет изменить `FormBuilder` для редактирования.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

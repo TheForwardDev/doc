@@ -8,9 +8,9 @@
 <a name="basics"></a>
 ## Basics
 
-The *Sidebar* component is used to create a side menu in **MoonShine**.
+The `Sidebar` component is used to create a side menu in **MoonShine**.
 
-You can create a *Sidebar* using the static method `make()` of the `Sidebar` class.
+You can create a `Sidebar` using the static method `make()` of the `Sidebar` class.
 
 ```php
 make(iterable $components = [])
@@ -53,7 +53,7 @@ tab: Blade
 <a name="collapsed"></a>
 ## Collapsible Option
 
-By default, the *Sidebar* is always open, but using the `collapsed()` method, you can add the option to hide the *Sidebar*:
+By default, the `Sidebar` is always open, but using the `collapsed()` method, you can add the option to hide the `Sidebar`:
 
 ```php
 Sidebar::make([

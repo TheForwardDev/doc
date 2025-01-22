@@ -1,6 +1,6 @@
 # Индексная страница через CardsBuilder
 
-Давайте изменим отображение элементов на индексной странице через компонент *CardsBuilder*.
+Давайте изменим отображение элементов на индексной странице через компонент `CardsBuilder`.
 
 ```php
 class MoonShineUserResource extends ModelResource
@@ -27,7 +27,5 @@ class MoonShineUserResource extends ModelResource
             ->thumbnail(fn ($user) => asset($user->avatar))
             ->buttons($this->getIndexButtons());
     }
-
-    // ...
 }
 ```

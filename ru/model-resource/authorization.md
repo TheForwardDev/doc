@@ -8,7 +8,7 @@
 <a name="policy"></a>
 ## Policy
 
-**MoonShine** не отходит от концепций _Laravel_ и также использует _Laravel policy_ для работы с правами доступа.
+**MoonShine** не отходит от концепций **Laravel** и также использует _Laravel policy_ для работы с правами доступа.
 
 В контроллерах ресурсов **MoonShine** каждый метод будет проверяться на наличие разрешений.
 Если у вас возникнут трудности, обратитесь к официальной документации [Laravel](https://laravel.com/docs/authorization#creating-policies).
@@ -146,4 +146,4 @@ protected function isCan(Ability $ability): bool
 ```
 
 > [!TIP]
-> Также рекомендуем ознакомится с разделом [Авторизация](/docs/{{version}}/advanced/authorization).
+> Также рекомендуем ознакомится с разделом [Авторизация](/docs/{{version}}/security/authorization).

@@ -34,16 +34,15 @@ make(
 - $placement - расположение
 - $footer - footer для списка внутри Dropdown
 
-
 ~~~tabs
 tab: Class
 ```php
 use MoonShine\UI\Components\Dropdown;
 
 Dropdown::make(
-    'Dropdown', 
-    'Toggler', 
-    'Content', 
+    'Dropdown',
+    'Toggler',
+    'Content',
     ['Item 1', 'Item 1']
 )
 ```

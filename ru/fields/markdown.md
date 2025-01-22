@@ -14,7 +14,6 @@
 > [!NOTE]
 > Работает на основе [EasyMDE](https://github.com/Ionaru/easy-markdown-editor) библиотеки.
 
-
 <a name="installation"></a>
 ## Установка
 

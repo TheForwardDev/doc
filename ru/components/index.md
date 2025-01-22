@@ -121,7 +121,7 @@ protected function booted(): void
 <a name="macroable"></a>
 ## Трейт Macroable
 
-Всем компонентам доступен трейт `Illuminate\Support\Traits\Macroable` с методами `mixin` и `macro`.
+Всем компонентам доступен трейт `Illuminate\Support\Traits\Macroable` с методами `mixin()` и `macro()`.
 С помощью этого трейта вы можете расширять возможности компонентов, добавляя в них новый функционал без использования наследования.
 
 ```php

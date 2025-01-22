@@ -11,15 +11,15 @@
 <a name="basics"></a>
 ## Основы
 
-Компонент *FieldsGroup* создан для быстрой группировки набора полей, наполнения их данными и смены их состояний.
+Компонент `FieldsGroup` создан для быстрой группировки набора полей, наполнения их данными и смены их состояний.
 
-Вы можете создать *FieldsGroup*, используя статический метод `make()` класса `FieldsGroup`.
+Вы можете создать `FieldsGroup`, используя статический метод `make()` класса `FieldsGroup`.
 
 ```php
 make(iterable $components = [])
 ```
 
-`$components` - набор *FieldContract*.
+`$components` - набор `FieldContract`.
 
 ```php
 use MoonShine\UI\Components\FieldsGroup;
@@ -58,7 +58,7 @@ FieldsGroup::make($fields)->previewMode();
 Вы можете переключить все поля в наборе в режим без обверток с помощью метода `withoutWrappers()`:
 
 > [!NOTE]
-> Обвертки - поля которые реализуют интерфейс *FieldsWrapperContract*, например *StackFields*.
+> Обвертки - поля которые реализуют интерфейс `FieldsWrapperContract`, например `StackFields`.
 > Тем самым при использовании метода `withoutWrappers` из поля-обвертки будут извлечены все вложенные поля,
 > а само поле-обвертка не будет участвовать в итоговом наборе
 

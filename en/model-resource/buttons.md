@@ -27,7 +27,7 @@ In **MoonShine**, there are many methods that allow you to override either a sin
 
 > [!WARNING]
 > The buttons for creating, viewing, editing, deleting, and mass deleting are placed in separate classes
-> to apply all necessary methods to them and thereby eliminate duplication, as these buttons are also used in HasMany, BelongsToMany, etc.
+> to apply all necessary methods to them and thereby eliminate duplication, as these buttons are also used in `HasMany`, `BelongsToMany`, etc.
 
 <a name="create"></a>
 ## Create button
@@ -230,7 +230,6 @@ protected function indexButtons(): ListOf
 ![resource_buttons_bulk](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_bulk.png)
 ![resource_buttons_bulk_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_bulk_dark.png)
 
-
 <a name="form-buttons"></a>
 ## Form buttons
 
@@ -268,7 +267,6 @@ protected function formBuilderButtons(): ListOf
 ```
 
 ![resource_buttons_form_builder](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_form_builder.png) ![resource_buttons_form_builder_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_form_builder_dark.png)
-
 
 <a name="detail-buttons"></a>
 ## Detail page buttons

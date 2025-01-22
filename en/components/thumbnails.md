@@ -23,13 +23,13 @@ Thumbnails::make([
 ```
 tab: Blade
 ```blade
-<x-moonshine::thumbnails :items="[   
+<x-moonshine::thumbnails :items="[
     '/images/image_1.jpg',
     '/images/image_2.jpg',
     '/images/image_3.jpg',
 ]"/>
 ```
-~~~ 
+~~~
 
 You can specify only one thumbnail
 

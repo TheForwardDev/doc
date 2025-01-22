@@ -8,9 +8,9 @@
 <a name="basics"></a>
 ## Basics
 
-The *Icon* component is used for rendering icons.
+The `Icon` component is used for rendering icons.
 
-You can create an *Icon* using the static method `make()` of the `Icon` class.
+You can create an `Icon` using the static method `make()` of the `Icon` class.
 
 ```php
 make(string $icon, int $size = 5, string|Color $color = '', ?string $path = null)

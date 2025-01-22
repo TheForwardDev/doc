@@ -1,6 +1,6 @@
 # Html
 
-Компонент **Html** служит основой для построения html-страницы в MoonShine. \
+Компонент `Html` служит основой для построения html-страницы в **MoonShine**.
 Компонент является оберткой тега `<html>` и уже включает в себя `<!DOCTYPE html>`.
 
 ~~~tabs
@@ -30,4 +30,4 @@ tab: Blade
 ~~~
 
 > [!TIP]
-> Дочерние компоненты: [Head](/docs/{{version}}/components/head), [Body](/docs/{{version}}/components/body)
+> Дочерние компоненты: [Head](/docs/{{version}}/components/head), [Body](/docs/{{version}}/components/body).

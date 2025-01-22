@@ -9,14 +9,14 @@
 <a name="basics"></a>
 ## Basics
 
-The **Favicon** component is used to add a favicon to an HTML page.
+The `Favicon` component is used to add a favicon to an HTML page.
 
 ~~~tabs
 tab: Class
 ```php
 use MoonShine\UI\Components\Layout\Favicon;
 
-Favicon::make(); 
+Favicon::make();
 ```
 tab: Blade
 ```blade
@@ -35,11 +35,11 @@ To change favicons, you need to use the `customAssets()` method or specify the c
 ~~~tabs
 tab: Class
 ```php
-assets(array $assets); 
+assets(array $assets);
 ```
 
 ```php
-Favicon::make([ 
+Favicon::make([
     // ...
 ])
     ->customAssets([
@@ -48,16 +48,16 @@ Favicon::make([
         '16' => Vite::asset('favicons/favicon-16x16.png'),
         'safari-pinned-tab' => Vite::asset('favicons/safari-pinned-tab.svg'),
         'web-manifest' => Vite::asset('favicons/site.webmanifest'),
-    ]); 
+    ]);
 ```
 tab: Blade
 ```blade
-<x-moonshine::layout.favicon :assets="[ 
-    'apple-touch' => asset('favicons/apple-touch-icon.png'), 
-    '32' => asset('favicons/favicon-32x32.png'), 
-    '16' => asset('favicons/favicon-16x16.png'), 
-    'safari-pinned-tab' => asset('favicons/safari-pinned-tab.svg'), 
-    'web-manifest' => asset('favicons/site.webmanifest'), 
+<x-moonshine::layout.favicon :assets="[
+    'apple-touch' => asset('favicons/apple-touch-icon.png'),
+    '32' => asset('favicons/favicon-32x32.png'),
+    '16' => asset('favicons/favicon-16x16.png'),
+    'safari-pinned-tab' => asset('favicons/safari-pinned-tab.svg'),
+    'web-manifest' => asset('favicons/site.webmanifest'),
 ]" />
 ```
 ~~~
@@ -77,16 +77,16 @@ For the Safari browser, you can set the pinned tab color using the `bodyColor()`
 ~~~tabs
 tab: Class
 ```php
-bodyColor(string $color); 
+bodyColor(string $color);
 ```
 ```php
-Favicon::make([ 
+Favicon::make([
     // ...
 ])
-    ->bodyColor('#7843e9'); 
+    ->bodyColor('#7843e9');
 ```
 tab: Blade
 ```blade
-<x-moonshine::layout.favicon bodyColor='#7843e9' /> 
+<x-moonshine::layout.favicon bodyColor='#7843e9' />
 ```
 ~~~

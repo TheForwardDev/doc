@@ -1,8 +1,8 @@
 # When
 
-Компонент *When* позволяет отображать другие компоненты в соответствии с условием.
+Компонент `When` позволяет отображать другие компоненты в соответствии с условием.
 
-Вы можете создать *When*, используя статический метод `make()` класса `When`.
+Вы можете создать `When`, используя статический метод `make()` класса `When`.
 
 ```php
 make(Closure $condition, Closure $components, ?Closure $default = null)
@@ -30,7 +30,6 @@ final class MoonShineLayout extends AppLayout
                     static fn() => [Profile::make(withBorder: true)]
                 )
             ]),
-            // ...
         ]);
     }
 }

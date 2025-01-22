@@ -256,7 +256,6 @@ TableBuilder::make()
     )
   )
 
-
 // thead
 TableBuilder::make()
   ->headRows(
@@ -292,7 +291,7 @@ TableRows::make()->pushRow(
 
 - `$cells` - коллекция ячеек,
 - `$key` - уникальный ключ tr для массовых действий и событий обновления строк таблицы,
-- `$builder` - доступ к TableBuilder.
+- `$builder` - доступ к `TableBuilder`.
 
 ```php
 TableCells::make()->pushCell(
@@ -305,7 +304,7 @@ TableCells::make()->pushCell(
 
 - `$content` - содержимое ячейки,
 - `$index` - порядковый номер ячейки,
-- `$builder` - доступ к TableBuilder,
+- `$builder` - доступ к `TableBuilder`,
 - `$attributes` - HTML атрибуты ячейки.
 
 У TableCells также есть дополнительные вспомогательные методы.
@@ -321,7 +320,7 @@ TableCells::make()->pushFields(
 ```
 
 - `$fields` - коллекция полей,
-- `$builder` - доступ к TableBuilder,
+- `$builder` - доступ к `TableBuilder`,
 - `$startIndex` - начальный индекс (так как до этого, возможно, уже были добавлены ячейки таблицы)
 
 Также доступны условные методы `pushWhen` и `pushCellWhen`.
@@ -492,7 +491,7 @@ TableBuilder::make()
 <a name="attribute-configuration"></a>
 ## Настройка атрибутов
 
-TableBuilder предоставляет методы для настройки HTML-атрибутов:
+`TableBuilder` предоставляет методы для настройки HTML-атрибутов:
 
 ```php
 ->trAttributes(fn(?DataWrapperContract $data, int $row): array => ['class' => $row % 2 ? 'bg-gray-100' : ''])
@@ -519,7 +518,7 @@ TableBuilder предоставляет методы для настройки H
 )
 ```
 
-- `$url` - URL асинхронного запроса (в ответе необходимо вернуть TableBuilder),
+- `$url` - URL асинхронного запроса (в ответе необходимо вернуть `TableBuilder`),
 - `$events` - события, которые будут вызваны после успешного ответа,
 - `$callback` - JS callback, который можно добавить как обертку ответа.
 
@@ -537,7 +536,7 @@ TableBuilder::make()
         ])
 ```
 
-Список событий для TableBuilder:
+Список событий для `TableBuilder`:
 
 - `JsEvent::TABLE_UPDATED` - обновление таблицы,
 - `JsEvent::TABLE_REINDEX` - реиндексация таблицы (см. `reindex()`)
@@ -548,7 +547,7 @@ TableBuilder::make()
 
 Все параметры метода `async` являются опциональными, и по умолчанию `TableBuilder` автоматически укажет URL на основе текущей страницы.
 
-В процессе использования *TableBuilder* в режиме `async` может возникнуть задача, когда вы используете его вне админ-панели на страницах, не объявленных в системе **MoonShine**.
+В процессе использования `TableBuilder` в режиме `async` может возникнуть задача, когда вы используете его вне админ-панели на страницах, не объявленных в системе **MoonShine**.
 Тогда вам потребуется указать собственный URL и реализовать ответ с HTML таблицей. Давайте рассмотрим пример реализации:
 
 ```php
@@ -801,7 +800,6 @@ TableBuilder::make()
 - bgc-warning
 - bgc-error
 - bgc-info
-
 
 ```php
 <x-moonshine::table>

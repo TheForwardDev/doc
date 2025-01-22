@@ -62,7 +62,6 @@ tab: Blade
 
 Доступные цвета:
 
-
 ```php
 <x-moonshine::spinner color="primary" />
 <x-moonshine::spinner color="secondary" />

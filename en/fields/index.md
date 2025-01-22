@@ -14,11 +14,12 @@
 <a name="concept"></a>
 ## Concept
 Fields play a crucial role in the **MoonShine** admin panel.
-They are used in the `FormBuilder` for building forms, in the `TableBuilder` for creating tables, as well as in forming filters for `ModelResource` (CrudResource). They can also be used in your custom pages and even outside the admin panel, both as objects and directly in blade.
+They are used in the `FormBuilder` for building forms, in the `TableBuilder` for creating tables, as well as in forming filters for `ModelResource` (CrudResource).
+They can also be used in your custom pages and even outside the admin panel, both as objects and directly in blade.
 
 Fields are elements of a form, so their default rendering state is simply an HTML form element.
 
-Creating an instance of a field is very simple; there is a convenient `make` method, and for basic usage, it is sufficient to specify the label and name of the field.
+Creating an instance of a field is very simple; there is a convenient `make()` method, and for basic usage, it is sufficient to specify the label and name of the field.
 
 ```php
 use MoonShine\UI\Fields\Text;
@@ -27,7 +28,7 @@ Text::make('Title')
 Text::make('Title', 'title')
 ```
 
-Most often, fields are used within the FormBuilder, where they can change the original object based on the request due to the FormBuilder itself.
+Most often, fields are used within the `FormBuilder`, where they can change the original object based on the request due to the `FormBuilder` itself.
 
 The complexity of understanding **MoonShine** fields is due to several visual states.
 
@@ -39,11 +40,13 @@ Simply a form element; let's say if we are talking about a Text field, its visua
 <a name="preview-mode"></a>
 ## Preview Mode
 
-The second mode is for displaying the value of the field. When outputting a field through TableBuilder, we do not need to edit it; we just want to show its contents. Let's consider the Image field; its `preview` view will have an `img` thumbnail or a carousel of images if it is in multiple mode.
+The second mode is for displaying the value of the field. When outputting a field through `TableBuilder`, we do not need to edit it; we just want to show its contents.
+Let's consider the Image field; its `preview` view will have an `img` thumbnail or a carousel of images if it is in multiple mode.
 
 Thus, each field looks different, just like the variety of form elements, but they also appear differently in preview mode as they have different purposes.
 
-This has the advantage that we, as developers, do not need to worry about how to display, for example, a Date field. Under the hood, **MoonShine** will perform the formatting, escape text fields for security, or simply make the output more aesthetically pleasing.
+This has the advantage that we, as developers, do not need to worry about how to display, for example, a Date field.
+Under the hood, **MoonShine** will perform the formatting, escape text fields for security, or simply make the output more aesthetically pleasing.
 
 <a name="raw-mode"></a>
 ## Raw Mode
@@ -56,17 +59,17 @@ In the process of declaring fields, you can change the visual states of each of 
 
 **Cycle through FormBuilder**
 - the field is declared in the resource,
-- the field enters the FormBuilder,
-- the FormBuilder fills the field,
-- the FormBuilder renders the field,
-- upon request, the FormBuilder calls the fields and saves the original object using them.
+- the field enters the `FormBuilder`,
+- the `FormBuilder` fills the field,
+- the `FormBuilder` renders the field,
+- upon request, the `FormBuilder` calls the fields and saves the original object using them.
 
 **Cycle through TableBuilder**
 - the field is declared in the resource,
-- the field enters the TableBuilder,
-- the TableBuilder includes the field in preview mode,
-- the TableBuilder iterates the original data and transforms it into TableRow, pre-filling each field with data,
-- the TableBuilder renders itself and each of its rows along with the fields.
+- the field enters the `TableBuilder`,
+- the `TableBuilder` includes the field in preview mode,
+- the `TableBuilder` iterates the original data and transforms it into TableRow, pre-filling each field with data,
+- the `TableBuilder` renders itself and each of its rows along with the fields.
 
 **Cycle through export**
 - the field is declared in the resource in the export method,
@@ -98,16 +101,18 @@ Select::make('Links')->options([
     ) // changed the preview state
 ```
 
-As a result, you will get a carousel of images based on the Select values; you can return a component or any string.
+As a result, you will get a carousel of images based on the `Select` values; you can return a component or any string.
 
 <a name="change-fill"></a>
 ## Change Fill
 
-In the process, we also encountered the fill method and filled the field, but if we use it in a ready ModelResource or FormBuilder, the field will be filled for us, and our called fill will be overwritten. Therefore, in your tasks, a situation may arise when you need to change the filling logic, integrate into this process. For this, the methods `changeFill` and `afterFill` will help you.
+In the process, we also encountered the `fill()` method and filled the field, but if we use it in a ready `ModelResource` or `FormBuilder`, the field will be filled for us, and our called `fill()` method will be overwritten.
+Therefore, in your tasks, a situation may arise when you need to change the filling logic, integrate into this process.
+For this, the methods `changeFill()` and `afterFill()` will help you.
 
 Let's look at the same example with Select and images, but transform the relative path into a full URL.
 
-In this case, the filling happens automatically; these actions will be done for us by FormBuilder and ModelResource; we will just change the process:
+In this case, the filling happens automatically; these actions will be done for us by `FormBuilder` and ModelResource; we will just change the process:
 
 ```php
 use MoonShine\UI\Components\Carousel;
@@ -128,11 +133,13 @@ Select::make('Images')->options([
     ),
 ```
 
-This method accepts the full object that was passed to the fields by FormBuilder, and since we considered the context with ModelResource, our original data was `Model` - `Article`.
+This method accepts the full object that was passed to the fields by `FormBuilder`, and since we considered the context with ModelResource, our original data was `Model` - `Article`.
 
 In the process, we returned the values necessary for the field but changed the content; we used changePreview from the previous step to demonstrate the result.
 
-Let's consider another example of filling. Suppose we need to check its value against a certain condition when outputting the Select in the table and add a class to the cell if it is met. Therefore, we need to obtain the final value with which the Select is filled, and it is important for us that the filling has already occurred (since the conditional `when` method is called before filling, and we do not want that).
+Let's consider another example of filling.
+Suppose we need to check its value against a certain condition when outputting the `Select` in the table and add a class to the cell if it is met.
+Therefore, we need to obtain the final value with which the `Select` is filled, and it is important for us that the filling has already occurred (since the conditional `when` method is called before filling, and we do not want that).
 
 ```php
 use MoonShine\UI\Components\Carousel;
@@ -157,7 +164,8 @@ Select::make('Links')->options([
     ),
 ```
 
-The field builder has wide capabilities, and you can change any states on the fly. Let's consider a rare case of changing the default visual state, although we do not recommend doing this and it would be better to create a separate field class for these tasks to extract the logic and reuse the field later.
+The field builder has wide capabilities, and you can change any states on the fly.
+Let's consider a rare case of changing the default visual state, although we do not recommend doing this and it would be better to create a separate field class for these tasks to extract the logic and reuse the field later.
 
 But let's assume for some reason we want to turn a Select field into a Text field:
 
@@ -177,9 +185,9 @@ Select::make('Links')->options([
 <a name="change-mode"></a>
 ## Change Display Mode
 
-As we have already realized, fields have different visual states and in FormBuilder by default it will be a form element, in TableBuilder different values display, and for example in export - just the original value.
+As we have already realized, fields have different visual states and in `FormBuilder` by default it will be a form element, in `TableBuilder` different values display, and for example in export - just the original value.
 
-But let's imagine a situation where we need to output the field in TableBuilder not in preview mode but in default mode, or conversely, output it in preview mode inside FormBuilder or even in its original:
+But let's imagine a situation where we need to output the field in `TableBuilder` not in preview mode but in default mode, or conversely, output it in preview mode inside `FormBuilder` or even in its original:
 
 ```php
 Text::make('Title')->defaultMode()
@@ -222,22 +230,23 @@ We already know that fields work with any data, and this is not necessarily a `M
 
 **Life Cycle of Field Application (using model saving as an example)**
 
-- FormBuilder takes the original object; let this be a User model,
+- `FormBuilder` takes the original object; let this be a User model,
 - it iterates through the fields passing the User object to them and calling the apply method of the field,
 - fields within apply take the value from the request based on their column property,
 - fields modify the User model's attribute based on their column property and return it back,
-- afterwards, the FormBuilder will call the save method of the model,
+- afterward, the `FormBuilder` will call the save method of the model,
 - additionally, before the apply method of the fields, the beforeApply method will be called if something needs to be done with the object before the main application,
 - after the save method of the model, the fields' afterApply method will be called (which in this case is well suited for relationship fields to ensure they have the original object which is already saved in the database).
 
 **Life Cycle of Field Application (using filtering as an example)**
 
-- FormBuilder takes the original QueryBuilder object,
+- `FormBuilder` takes the original QueryBuilder object,
 - it iterates through the fields passing the QueryBuilder object to them and calling the apply method of the field,
 - fields modify the QueryBuilder based on their column property and return it back,
 - the QueryBuilder object will then be used for data output.
 
-As a result of the knowledge gained and the use of **MoonShine** in real conditions, you may encounter a situation where you need to change the application logic or add logic before or after the main application of the field.
+As a result of the knowledge gained and the use of **MoonShine** in real conditions, you may encounter a situation
+where you need to change the application logic or add logic before or after the main application of the field.
 
 The field builder allows you to easily achieve these goals on the fly:
 
@@ -261,6 +270,6 @@ Text::make('Thumbnail by link', 'thumbnail')
 
 Thus, we simply added a link to the text field, but did not save it as is; rather, we uploaded it and placed it in storage and returned the final path.
 
-We also have the methods `onBeforeApply` and `onAfterApply`.
+We also have the methods `onBeforeApply()` and `onAfterApply()`.
 
 Next, let's take a closer look at the field interface as well as each field separately.

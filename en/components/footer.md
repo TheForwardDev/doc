@@ -9,9 +9,9 @@
 <a name="basics"></a>
 ## Basics
 
-The *Footer* component is used to create a footer block in **MoonShine**.
+The `Footer` component is used to create a footer block in **MoonShine**.
 
-You can create a *Footer* using the static method `make()` of the `Footer` class.
+You can create a `Footer` using the static method `make()` of the `Footer` class.
 
 ```php
 make(iterable $components = [])

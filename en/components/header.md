@@ -1,8 +1,8 @@
 # Header
 
-The *Header* component is used to create a header block in **MoonShine**.
+The `Header` component is used to create a header block in **MoonShine**.
 
-You can create a *Header* using the static `make()` method of the `Header` class.
+You can create a `Header` using the static `make()` method of the `Header` class.
 
 ```php
 make(iterable $components = [])

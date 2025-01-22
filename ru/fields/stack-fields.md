@@ -40,7 +40,7 @@ StackFields::make('Title')->fields([
 <a name="view-condition"></a>
 ## Отображение по условию
 
-Чтобы при определенных условия изменялся набор компонентов у StackFields, необходимо передать условие и наборы компонентов с помощью callback функции.
+Чтобы при определенных условия изменялся набор компонентов у `StackFields`, необходимо передать условие и наборы компонентов с помощью callback функции.
 
 ```php
 StackFields::make('Stack')->fields(fn(StackFields $ctx) => $ctx->getData()?->getOriginal()->id === 3 ? [

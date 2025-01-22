@@ -13,7 +13,7 @@
 
 Contains all [basic methods](/docs/{{version}}/fields/basic-methods).
 
-The *Checkbox* field is a field for selecting a yes/no value.
+The `Checkbox` field is a field for selecting a yes/no value.
 
 <a name="make"></a>
 ## Creation
@@ -21,9 +21,9 @@ The *Checkbox* field is a field for selecting a yes/no value.
 ~~~tabs
 tab: Class
 ```php
-use MoonShine\UI\Fields\Checkbox; 
+use MoonShine\UI\Fields\Checkbox;
 
-Checkbox::make('Publish', 'is_publish') 
+Checkbox::make('Publish', 'is_publish')
 ```
 tab: Blade
 ```blade
@@ -34,7 +34,7 @@ tab: Blade
     />
 </x-moonshine::field-container>
 ```
-~~~ 
+~~~
 
 <a name="on-off"></a>
 ## On/Off Values

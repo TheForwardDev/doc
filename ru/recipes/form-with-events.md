@@ -35,7 +35,7 @@ TableBuilder::make()
 Вы также можете воспользоваться удобной директивой `defineEvent`, которая сделает то же самое что и пример выше:
 
 ```bladehtml
-<div 
+<div
   x-data=""
   @defineEvent('form_updated', 'my-event', 'alert()')
 >

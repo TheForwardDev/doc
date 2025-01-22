@@ -19,7 +19,7 @@
 
 Содержит все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
-Поле *Date* является эквивалентом `<input type="date">`.
+Поле `Date` является эквивалентом `<input type="date">`.
 
 ~~~tabs
 tab: Class

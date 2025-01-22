@@ -7,9 +7,9 @@
 <a name="basics"></a>
 ## Basics
 
-The *TopBar* component is used to create a top navigation panel in **MoonShine**.
+The `TopBar` component is used to create a top navigation panel in **MoonShine**.
 
-You can create a *TopBar* using the static method `make()` of the `TopBar` class.
+You can create a `TopBar` using the static method `make()` of the `TopBar` class.
 
 ```php
 make(iterable $components = [])

@@ -1,8 +1,8 @@
 # Layout
 
-The system component *Layout* is the starting point when creating templates in **MoonShine** and is used once in the `build()` method.
+The system component `Layout` is the starting point when creating templates in **MoonShine** and is used once in the `build()` method.
 
-You can create a *Layout* using the static method `make()` of the `Layout` class.
+You can create a `Layout` using the static method `make()` of the `Layout` class.
 
 ```php
 make(iterable $components = [])

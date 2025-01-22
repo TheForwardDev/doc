@@ -41,10 +41,10 @@ Tabs::make([
 ```
 tab: Blade
 ```blade
-<x-moonshine::tabs :items="[ 
-    'tab_1' => 'Tab 1', 
-    'tab_2' => 'Tab 2', 
-    'tab_3' => 'Tab 3', 
+<x-moonshine::tabs :items="[
+    'tab_1' => 'Tab 1',
+    'tab_2' => 'Tab 2',
+    'tab_3' => 'Tab 3',
 ]">
     <x-slot:tab_1>
         Tab 1 content
@@ -61,7 +61,7 @@ tab: Blade
 ```
 ~~~
 
-> [!WARNING] 
+> [!WARNING]
 > Use `snake_case` for naming the tab key.
 
 <a name="active"></a>
@@ -70,12 +70,12 @@ tab: Blade
 You can specify the default active tab by setting `active`.
 
 ```blade
-<x-moonshine::tabs :items="[ 
-        'tab_1' => 'Tab 1', 
-        'tab_2' => 'Tab 2', 
-        'tab_3' => 'Tab 3', 
-    ]" 
-    active="tab_2" 
+<x-moonshine::tabs :items="[
+        'tab_1' => 'Tab 1',
+        'tab_2' => 'Tab 2',
+        'tab_3' => 'Tab 3',
+    ]"
+    active="tab_2"
 >
     <x-slot:tab_1>
         Tab 1 content

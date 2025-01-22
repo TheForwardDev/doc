@@ -40,7 +40,7 @@ class PostResource extends ModelResource
 > [!NOTE]
 > For more detailed information, refer to the sections [Metrics](/docs/{{version}}/components/metrics).
 
-If you need to wrap the metrics in a *Fragment*:
+If you need to wrap the metrics in a `Fragment`:
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

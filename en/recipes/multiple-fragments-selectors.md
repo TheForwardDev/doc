@@ -18,7 +18,7 @@ protected function components(): iterable
             '.selector1',
             '.selector2',
         ]),
-        
+
         Div::make([])->class('selector1'),
         Div::make([])->class('selector2'),
     ];

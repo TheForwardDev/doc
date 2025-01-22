@@ -40,7 +40,7 @@ StackFields::make('Title')->fields([
 <a name="view-condition"></a>
 ## Conditional Display
 
-To change the set of components in StackFields under certain conditions, you need to pass a condition and sets of components using a callback function.
+To change the set of components in `StackFields` under certain conditions, you need to pass a condition and sets of components using a callback function.
 
 ```php
 StackFields::make('Stack')->fields(fn(StackFields $ctx) => $ctx->getData()?->getOriginal()->id === 3 ? [

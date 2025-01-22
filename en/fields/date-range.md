@@ -17,7 +17,7 @@ Contains all [Basic methods](/docs/{{version}}/fields/basic-methods).
 <a name="make"></a>
 ## Creation
 
-The *DateRange* field allows you to select a date range.
+The `DateRange` field allows you to select a date range.
 Since the date range has two values, they must be specified using the `fromTo()` method.
 
 ```php
@@ -64,7 +64,7 @@ DateRange::make('Dates')
 <a name="attributes"></a>
 ## Attributes
 
-The *DateRange* field has attributes that can be set using the corresponding methods.
+The `DateRange` field has attributes that can be set using the corresponding methods.
 The `min()` and `max()` methods are used to set the minimum and maximum date values.
 
 ```php
@@ -109,7 +109,7 @@ DateRange::make('Dates')
 <a name="filter"></a>
 ## Filter
 
-When using the *DateRange* field to build a filter, the `fromTo()` method is not used, as filtering occurs by one field in the database table.
+When using the `DateRange` field to build a filter, the `fromTo()` method is not used, as filtering occurs by one field in the database table.
 
 ```php
 DateRange::make('Dates', 'dates')

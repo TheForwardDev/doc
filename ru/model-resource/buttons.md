@@ -27,7 +27,7 @@
 
 > [!WARNING]
 > Кнопки для создания, просмотра, редактирования, удаления и массового удаления размещены в отдельных классах,
-> чтобы применить к ним все необходимые методы и тем самым устранить дублирование, поскольку эти кнопки также используются в HasMany, BelongsToMany и т.д.
+> чтобы применить к ним все необходимые методы и тем самым устранить дублирование, поскольку эти кнопки также используются в `HasMany`, `BelongsToMany` и т.д.
 
 <a name="create"></a>
 ## Кнопка создания
@@ -230,7 +230,6 @@ protected function indexButtons(): ListOf
 ![resource_buttons_bulk](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_bulk.png)
 ![resource_buttons_bulk_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_bulk_dark.png)
 
-
 <a name="form-buttons"></a>
 ## Кнопки на странице формы
 
@@ -268,7 +267,6 @@ protected function formBuilderButtons(): ListOf
 ```
 
 ![resource_buttons_form_builder](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_form_builder.png) ![resource_buttons_form_builder_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_buttons_form_builder_dark.png)
-
 
 <a name="detail-buttons"></a>
 ## Кнопки на странице детального просмотра

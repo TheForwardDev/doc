@@ -13,7 +13,7 @@ Inherits [Text](/docs/{{version}}/fields/text).
 <a name="basics"></a>
 ## Basics
 
-The *Url* field is an extension of *Text* that defaults to setting `type=url`.
+The `Url` field is an extension of `Text` that defaults to setting `type=url`.
 
 ```php
 use MoonShine\UI\Fields\Url;

@@ -4,7 +4,7 @@ Inherits [Hidden](/docs/{{version}}/fields/hidden).
 
 \* has the same capabilities
 
-The `ID` field is used for the `primary key`.  
+The `ID` field is used for the `primary key`.
 Like the Hidden field, it is displayed only in the preview and does not appear in forms.
 
 ```php

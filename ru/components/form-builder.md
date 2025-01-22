@@ -61,7 +61,6 @@ tab: Blade
 ```
 ~~~
 
-
 <a name="basic-usage"></a>
 ## Основное использование
 
@@ -258,7 +257,6 @@ FormBuilder::make('/crud/update')
 FormBuilder::make()
     ->customAttributes(['class' => 'custom-form'])
 ```
-
 
 <a name="asynchronous-mode"></a>
 ## Асинхронный режим
@@ -493,7 +491,7 @@ apply(
 
 #### Примеры
 
-Необходимо сохранить данные всех полей *FormBuilder* в контроллере:
+Необходимо сохранить данные всех полей `FormBuilder` в контроллере:
 
 ```php
 $form->apply(fn(Model $item) => $item->save());
@@ -533,7 +531,6 @@ $form->apply(
     throw: true
 );
 ```
-
 
 <a name="dispatch-events"></a>
 ## Отправка событий

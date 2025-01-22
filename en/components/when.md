@@ -1,8 +1,8 @@
 # When
 
-The *When* component allows displaying other components based on a condition.
+The `When` component allows displaying other components based on a condition.
 
-You can create a *When* using the static method `make()` from the `When` class.
+You can create a `When` using the static method `make()` from the `When` class.
 
 ```php
 make(Closure $condition, Closure $components, ?Closure $default = null)
@@ -30,7 +30,6 @@ final class MoonShineLayout extends AppLayout
                     static fn() => [Profile::make(withBorder: true)]
                 )
             ]),
-            // ...
         ]);
     }
 }

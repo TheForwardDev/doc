@@ -1,6 +1,6 @@
 # HasOne through the Template Field
 
-Example of implementing a *HasOne* relationship through the *Template* field.
+Example of implementing a `HasOne` relationship through the *Template* field.
 
 ```php
 use MoonShine\UI\Fields\Template;
@@ -29,6 +29,4 @@ protected function formFields(): iterable
           })
     ];
 }
-
-// ...
 ```

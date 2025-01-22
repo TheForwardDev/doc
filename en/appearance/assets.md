@@ -113,7 +113,7 @@ Raw::make('<link rel="preconnect" href="https://fonts.googleapis.com">');
 
 ***AssetManager*** allows managing the loading order of assets.
 We recommend using DI to start interacting with ***AssetManager***, for the service is responsible through the interface `MoonShine\Contracts\AssetManager\AssetManagerContract`.
-Also, **MoonShine** provides convenient methods to interact with ***AssetManager*** in different entities such as *CrudResource*, *Page*, *Layout*, *Component* and *Field*.
+Also, **MoonShine** provides convenient methods to interact with ***AssetManager*** in different entities such as `CrudResource`, `Page`, `Layout`, `Component` and `Field`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -136,9 +136,9 @@ $assetManager->add([
 ]);
 ```
 
-The `append()` method will always add assets before the main list from *CrudResource*, *Page*, *Layout*, *Component*, *Field*, while `prepend()` will add them after.
-The `add()` method will depend on the lifecycle of the application. Suppose you are adding assets to *ModelResource*,
-but before the page is displayed, *Layout* will be called, which will also add assets, thus the assets from *Layout* will be added last.
+The `append()` method will always add assets before the main list from `CrudResource`, `Page`, `Layout`, `Component`, `Field`, while `prepend()` will add them after.
+The `add()` method will depend on the lifecycle of the application. Suppose you are adding assets to `ModelResource`,
+but before the page is displayed, `Layout` will be called, which will also add assets, thus the assets from `Layout` will be added last.
 
 > [!TIP]
 > You can also use the helper `moonshine()->getAssetManager()`
@@ -324,4 +324,4 @@ final class MyComponent extends MoonShineComponent
 <a name="field"></a>
 ### Field
 
-The same as with *Component*, since *Field* is a component.
+The same as with `Component`, since `Field` is a component.

@@ -67,7 +67,7 @@ QueryTag::make(
 <a name="active-item"></a>
 ## Активный элемент
 
-Вы можете сделать *QueryTag* активным по умолчанию. Для этого нужно использовать метод `default()`.
+Вы можете сделать `QueryTag` активным по умолчанию. Для этого нужно использовать метод `default()`.
 
 ```php
 default(Closure|bool|null $condition = null)

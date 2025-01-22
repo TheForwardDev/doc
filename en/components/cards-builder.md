@@ -25,7 +25,7 @@
 ## Basics
 
 With `CardsBuilder`, you can display a list of items in the form of cards.
-You can also use `CardsBuilder` on your own pages or even outside of **MoonShine**.
+You can also use `CardsBuilder` on your own pages or even outside **MoonShine**.
 
 ~~~tabs
 tab: Class
@@ -342,7 +342,7 @@ If you need to fetch data asynchronously (for example, during pagination), use t
 )
 ```
 
-- `$url` - URL for the asynchronous request (the response must return TableBuilder),
+- `$url` - URL for the asynchronous request (the response must return `TableBuilder`),
 - `$events` - events that will be triggered after a successful response,
 - `$callback` - JS callback that can be added as a wrapper for the response.
 

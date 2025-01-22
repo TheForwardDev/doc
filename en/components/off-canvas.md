@@ -87,7 +87,7 @@ protected function components(): iterable
 
 ### Triggering Event via ActionButton
 
-The side panel event can be triggered using the *ActionButton* component.
+The side panel event can be triggered using the `ActionButton` component.
 
 ```php
 Offcanvas::make(

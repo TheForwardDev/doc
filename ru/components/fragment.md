@@ -12,7 +12,6 @@
 Для этого вы можете использовать [Blade Fragments](https://laravel.com/docs/blade#rendering-blade-fragments).
 `Fragment` позволяет реализовать эту возможность.
 
-
 ```php
 make(iterable $components = [])
 ```
@@ -39,7 +38,6 @@ protected function components(): iterable
 ## Асинхронное взаимодействие
 
 ### Обновление через события
-
 
 ```php
 Fragment::make($components)->name('fragment-name'),

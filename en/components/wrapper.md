@@ -1,8 +1,8 @@
 # Wrapper
 
-The *Wrapper* component is used as a wrapper to ensure that the sidebar and content part are displayed correctly. It is used immediately after the *Body*.
+The `Wrapper` component is used as a wrapper to ensure that the sidebar and content part are displayed correctly. It is used immediately after the `Body`.
 
-You can create a *Wrapper* using the static method `make()` of the `Wrapper` class.
+You can create a `Wrapper` using the static method `make()` of the `Wrapper` class.
 
 ```php
 make(iterable $components = [])

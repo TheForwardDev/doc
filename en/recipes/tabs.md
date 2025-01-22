@@ -5,8 +5,8 @@ and this recipe will also give you an understanding of the enormous possibilitie
 
 ## Creating a page with a form
 
-First, you need to add a page, in our example it is *ArticleFormPage*, which inherits *FormPage*.
-Then you need to replace *FormPage* with *ArticleFormPage* in the resource:
+First, you need to add a page, in our example it is `ArticleFormPage`, which inherits `FormPage`.
+Then you need to replace `FormPage` with `ArticleFormPage` in the resource:
 
 ```php
 class ArticleResource extends ModelResource
@@ -223,7 +223,7 @@ final class ArticleFormPage extends FormPage
 }
 ```
 
-It is worth paying attention to the fact that we have moved the *HasOne* and *HasMany* fields into separate methods, which we also duplicate in the `fields` method.
+It is worth paying attention to the fact that we have moved the `HasOne` and `HasMany` fields into separate methods, which we also duplicate in the `fields` method.
 This is necessary so that **MoonShine**, when interacting with fields, can find them in the system.
 
 ```php
@@ -290,7 +290,7 @@ final class ArticleFormPage extends FormPage
 > [!NOTE]
 > The `bottomLayer` method has been nulled to avoid duplicating relationship fields under the main form
 
-Additionally, in this recipe we have added *TableBuilder*, where we also display data from the relationship, thereby we want to show that you are not limited only by fields,
+Additionally, in this recipe we have added `TableBuilder`, where we also display data from the relationship, thereby we want to show that you are not limited only by fields,
 You can also display your own tables and forms
 
 > [!WARNING]

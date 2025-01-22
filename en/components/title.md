@@ -8,7 +8,7 @@ You can create a *Title* using the static method `make()` of the `Title` class.
 make(Closure|string|null $value, int $h = 1)
 ```
 
-`$value` - Value,  
+`$value` - Value,
 `$h` - Level,
 
 ~~~tabs

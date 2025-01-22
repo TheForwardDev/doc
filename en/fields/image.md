@@ -4,7 +4,7 @@ Inherits [File](/docs/{{version}}/fields/file).
 
 * has the same capabilities
 
-The *Image* field is an extension of *File* that allows previewing uploaded images.
+The `Image` field is an extension of `File` that allows previewing uploaded images.
 
 ~~~tabs
 tab: Class

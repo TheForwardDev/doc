@@ -121,7 +121,7 @@ protected function booted(): void
 <a name="macroable"></a>
 ## Macroable Trait
 
-All components have access to the `Illuminate\Support\Traits\Macroable` trait, which includes the `mixin` and `macro` methods.
+All components have access to the `Illuminate\Support\Traits\Macroable` trait, which includes the `mixin()` and `macro()` methods.
 With this trait, you can extend the capabilities of components by adding new functionality without using inheritance.
 
 ```php

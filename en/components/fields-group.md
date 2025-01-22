@@ -11,15 +11,15 @@
 <a name="basics"></a>
 ## Basics
 
-The *FieldsGroup* component is designed for the quick grouping of a set of fields, filling them with data, and changing their states.
+The `FieldsGroup` component is designed for the quick grouping of a set of fields, filling them with data, and changing their states.
 
-You can create a *FieldsGroup* by using the static method `make()` of the `FieldsGroup` class.
+You can create a `FieldsGroup` by using the static method `make()` of the `FieldsGroup` class.
 
 ```php
 make(iterable $components = [])
 ```
 
-`$components` - a set of *FieldContract*.
+`$components` - a set of `FieldContract`.
 
 ```php
 use MoonShine\UI\Components\FieldsGroup;
@@ -58,7 +58,7 @@ FieldsGroup::make($fields)->previewMode();
 You can switch all fields in the set to without wrappers mode using the `withoutWrappers()` method:
 
 > [!NOTE]
-> Wrappers - fields that implement the *FieldsWrapperContract* interface, for example, *StackFields*.
+> Wrappers - fields that implement the `FieldsWrapperContract` interface, for example, `StackFields`.
 > Therefore, when using the `withoutWrappers` method, all nested fields will be extracted from the wrapper field,
 > and the wrapper field itself will not be included in the final set.
 

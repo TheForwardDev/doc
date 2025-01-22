@@ -21,7 +21,7 @@ Template::make('Config', 'config')->fields([
 ### config/test.php
 
 ```php
-<?php 
+<?php
 
 return [
   'var' => 'foo',
