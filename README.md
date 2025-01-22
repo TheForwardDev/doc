@@ -1,4 +1,5 @@
-Lang: [![en](https://img.shields.io/badge/lang-en-red.svg)](README.md) | [![ru](https://img.shields.io/badge/lang-ru-red.svg)](README.ru.md)
+![en](https://img.shields.io/badge/lang-en-red.svg)
+[![ru](https://img.shields.io/badge/lang-ru-red.svg)](README.ru.md)
 
 # Typography
 
@@ -103,14 +104,15 @@ In addition to `markdown` tags, `html-tags` are allowed.
 
 It is desirable to synchronize the texts in the **ru** and **en** versions of the sections line by line.
 
+Double asterisks `**` are used to format proper name, for example, `**MoonShine**`.
+
 <a name="code"></a>
 ## Code Example
 
 - single apostrophe ``` ` ``` is used to format methods, classes, etc.,
 - method names should end with parentheses, for example: `setLabel()`,
 - triple apostrophes ` ``` ` with the programming language specified are used to format code blocks, and the block should start on a new line,
-- for all classes used in examples, you need to specify use in alphabetical order and wrap them in collapse,
-- double asterisks `**` are used to format proper name, for example, `**MoonShine**`.
+- for all classes used in examples, you need to specify use in alphabetical order and wrap them in collapse.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
