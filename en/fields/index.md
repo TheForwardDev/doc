@@ -19,8 +19,6 @@ Fields play a crucial role in the **MoonShine** admin panel.
 They are used in the `FormBuilder` for building forms, in the `TableBuilder` for creating tables, as well as in forming filters for `ModelResource` (CrudResource).
 They can also be used in your custom pages and even outside the admin panel, both as objects and directly in **Blade**.
 
-Fields are elements of a form, so their default rendering state is simply an HTML form element.
-
 Creating an instance of a field is very simple.
 There is a convenient `make()` method, and for basic usage, it is sufficient to specify the label and name of the field.
 
@@ -41,12 +39,13 @@ The complexity of understanding **MoonShine** fields is due to several visual st
 <a name="default-mode"></a>
 ### Default Mode
 
+Fields are elements of a form, so their default rendering state is simply an HTML form element.
 For example, for the `Text` field, the default visual state will be `<input type="text" .../>`.
 
 <a name="preview-mode"></a>
 ### Preview Mode
 
-The second mode is for displaying the value of the field.
+This mode is for displaying the value of the field.
 When outputting a field through `TableBuilder`, we do not need to edit it; we just want to show its contents.
 Let's consider the `Image` field; its `preview` view will have an `img` thumbnail or a carousel of images if it is in multiple mode.
 
@@ -125,13 +124,14 @@ As a result, you will get a carousel of images based on the `Select` values; you
 <a name="change-fill"></a>
 ## Change Fill
 
-In the process, we also encountered the `fill()` method and filled the field, but if we use it in a ready `ModelResource` or `FormBuilder`, the field will be filled for us, and our called `fill()` method will be overwritten.
-Therefore, in your tasks, a situation may arise when you need to change the filling logic, integrate into this process.
-For this, the methods `changeFill()` and `afterFill()` will help you.
+In the previous example, we used the `fill()` method to fill the `Select` field.
+However, if we use it in a ready-made `ModelResource` or `FormBuilder`, then the field will be filled in for us and the data passed to the `fill()` method will be overwritten.
+In your tasks, there may be a situation when you need to change the logic of content, integrate into this process.
+In this case, the `changeFill()` and `afterFill()` methods will help you.
 
 Let's look at the same example with `Select` and images, but transform the relative path into a full URL.
 
-In this case, the filling happens automatically; these actions will be done for us by `FormBuilder` and ModelResource; we will just change the process:
+In this case, the filling happens automatically; these actions will be done for us by `FormBuilder` and `ModelResource`; we will just change the process.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -145,7 +145,7 @@ Select::make('Images')->options([
 ])
     ->multiple()
     ->changeFill(
-        fn(Article $data, Select $ctx) => $article->images
+        fn(Article $article, Select $ctx) => $article->images
             ->map(fn($value) => "https://cutcode.dev$value")
             ->toArray()
     )
@@ -154,13 +154,14 @@ Select::make('Images')->options([
     ),
 ```
 
-This method accepts the full object that was passed to the fields by `FormBuilder`, and since we considered the context with ModelResource, our original data was `Model` - `Article`.
+This method accepts the full object that was passed to the fields by `FormBuilder`, and since we considered the context with `ModelResource`, our original data was `Model` - `Article`.
 
-In the process, we returned the values necessary for the field but changed the content; we used changePreview from the previous step to demonstrate the result.
+In the process, we returned the values necessary for the field but changed the content.
+We used `changePreview()` from the previous step to demonstrate the result.
 
 Let's consider another example of filling.
 Suppose we need to check its value against a certain condition when outputting the `Select` in the table and add a class to the cell if it is met.
-Therefore, we need to obtain the final value with which the `Select` is filled, and it is important for us that the filling has already occurred (since the conditional `when()` method is called before filling, and we do not want that).
+We need to obtain the final value with which the `Select` is filled, and it is important for us that the filling has already occurred (since the conditional `when()` method is called before filling, and we do not want that).
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -189,7 +190,6 @@ Select::make('Links')->options([
 
 The field builder has wide capabilities, and you can change any states on the fly.
 Let's consider a rare case of changing the default visual state, although we do not recommend doing this, and it would be better to create a separate field class for these tasks to extract the logic and reuse the field later.
-
 But let's assume for some reason we want to turn a `Select` field into a `Text` field:
 
 ```php
@@ -281,7 +281,7 @@ So it is more accurate to say that the fields are "applied" (_apply_).
 - fields modify the `QueryBuilder` based on their column property and return it back,
 - the `QueryBuilder` object will then be used for data output.
 
-As a result of the knowledge gained and the use of **MoonShine** in real conditions, you may encounter a situation
+When using **MoonShine** in real conditions, you may encounter a situation
 where you need to change the application logic or add logic before or after the main application of the field.
 
 The field builder allows you to easily achieve these goals on the fly:
