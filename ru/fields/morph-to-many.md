@@ -4,7 +4,7 @@
 
 \* имеет те же возможности.
 
-Поле отношения `MorphToMany` в **Laravel**.
+Поле отношения в **Laravel** типа `MorphToMany`.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphToMany;
