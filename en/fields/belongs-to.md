@@ -277,7 +277,7 @@ BelongsTo::make('Category', 'category', resource: CategoryResource::class)
 
 > [!TIP]
 > The search will be carried out by the field specified for the resource `column`.
-> By default `column=id`.
+> By default, `column=id`.
 
 You can pass parameters to the `asyncSearch()` method:
 
