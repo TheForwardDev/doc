@@ -171,7 +171,7 @@ protected function formButtons(): ListOf
 <a name="async"></a>
 ## Асинхронный режим
 
-По умолчанию, в `ModelResource` включен "Асинхронный режим", но если вам требуется его выключить, то установить свойство `$isAsync` = false.
+По умолчанию в `ModelResource` включен "Асинхронный режим", но если вам требуется его выключить, то установить свойство `$isAsync` = false.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

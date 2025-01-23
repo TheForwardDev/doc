@@ -162,7 +162,7 @@ class CustomPage extends Page
 <a name="layout"></a>
 ## Шаблон
 
-По умолчанию, страницы используют шаблон отображения `AppLayout` или `CompactLayout`.
+По умолчанию страницы используют шаблон отображения `AppLayout` или `CompactLayout`.
 Подробнее про шаблоны читайте в разделе [Layout](/docs/{{version}}/appearance/layout).
 
 ```php
@@ -304,7 +304,7 @@ class CustomPage extends Page
 <a name="modify-response"></a>
 ## Модификатор ответа
 
-По умолчанию, страница рендерится через `PageController`, вызывая метод `render()`.
+По умолчанию страница рендерится через `PageController`, вызывая метод `render()`.
 Однако иногда возникает необходимость изменить стандартный ответ, например, выполнить редирект при определенных условиях.
 В таких случаях можно использовать метод `modifyResponse()`.
 

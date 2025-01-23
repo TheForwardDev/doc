@@ -281,7 +281,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="without-modals"></a>
 ## Модальное окно
 
-По умолчанию, создание и редактирование записи поля `HasMany` происходит в модальном окне, метод `withoutModals()` позволяет отключить это поведение.
+По умолчанию создание и редактирование записи поля `HasMany` происходит в модальном окне, метод `withoutModals()` позволяет отключить это поведение.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -300,7 +300,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 
 ### searchable()
 
-По умолчанию, на странице формы для поля `HasMany` доступно поле поиска.
+По умолчанию на странице формы для поля `HasMany` доступно поле поиска.
 Чтобы его отключить, можно воспользоваться методом `searchable()`.
 
 ```php
