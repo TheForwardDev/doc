@@ -1,4 +1,4 @@
-![en](https://img.shields.io/badge/lang-en-red.svg)
+[![en](https://img.shields.io/badge/lang-en-red.svg)](#)
 [![ru](https://img.shields.io/badge/lang-ru-red.svg)](README.ru.md)
 
 # Typography
