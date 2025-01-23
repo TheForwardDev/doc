@@ -1,9 +1,10 @@
 # Basics
 
 - [Concept](#concept)
-- [Default Mode](#default-mode)
-- [Preview Mode](#preview-mode)
-- [Raw Mode](#raw-mode)
+- [Modes](#modes)
+  - [Default Mode](#default-mode)
+  - [Preview Mode](#preview-mode)
+  - [Raw Mode](#raw-mode)
 - [Change Preview](#change-preview)
 - [Change Fill](#change-fill)
 - [Change Display Mode](#change-mode)
@@ -30,15 +31,18 @@ Text::make('Title', 'title')
 
 Most often, fields are used within the `FormBuilder`, where they can change the original object based on the request due to the `FormBuilder` itself.
 
+<a name="modes"></a>
+## Modes
+
 The complexity of understanding **MoonShine** fields is due to several visual states.
 
 <a name="default-mode"></a>
-## Default Mode
+### Default Mode
 
 Simply a form element; let's say if we are talking about a Text field, its visual state will be `input type="text"`.
 
 <a name="preview-mode"></a>
-## Preview Mode
+### Preview Mode
 
 The second mode is for displaying the value of the field. When outputting a field through `TableBuilder`, we do not need to edit it; we just want to show its contents.
 Let's consider the Image field; its `preview` view will have an `img` thumbnail or a carousel of images if it is in multiple mode.
@@ -49,7 +53,7 @@ This has the advantage that we, as developers, do not need to worry about how to
 Under the hood, **MoonShine** will perform the formatting, escape text fields for security, or simply make the output more aesthetically pleasing.
 
 <a name="raw-mode"></a>
-## Raw Mode
+### Raw Mode
 
 You may not have to use this mode when using the panel, but the point is that it will simply output the value of the field that was originally assigned to it, without any additional modifications.
 
