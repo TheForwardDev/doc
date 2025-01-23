@@ -41,7 +41,7 @@ Text::make('Title', 'title')
 <a name="default-mode"></a>
 ### Режим по умолчанию
 
-Например, визуальное состояние по умолчанию для поля `Text` будет `<input type="text"/>`.
+Например, для поля `Text` визуальное состояние по умолчанию будет `<input type="text" .../>`.
 
 <a name="preview-mode"></a>
 ### Режим Preview

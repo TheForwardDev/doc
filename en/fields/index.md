@@ -41,7 +41,7 @@ The complexity of understanding **MoonShine** fields is due to several visual st
 <a name="default-mode"></a>
 ### Default Mode
 
-For example, the default visual state for the `Text` field will be `<input type="text"/>`.
+For example, for the `Text` field, the default visual state will be `<input type="text" .../>`.
 
 <a name="preview-mode"></a>
 ### Preview Mode
