@@ -5,6 +5,7 @@
   - [Default Mode](#default-mode)
   - [Preview Mode](#preview-mode)
   - [Raw Mode](#raw-mode)
+- [Field Life Cycle](#life-cycle)
 - [Change Preview](#change-preview)
 - [Change Fill](#change-fill)
 - [Change Display Mode](#change-mode)
@@ -40,7 +41,7 @@ The complexity of understanding **MoonShine** fields is due to several visual st
 <a name="default-mode"></a>
 ### Default Mode
 
-Simply a form element; let's say if we are talking about a `Text` field, its visual state will be `input type="text"`.
+For example, the default visual state for the `Text` field will be `<input type="text"/>`.
 
 <a name="preview-mode"></a>
 ### Preview Mode
@@ -57,13 +58,18 @@ Under the hood, **MoonShine** will perform the formatting, escape text fields fo
 <a name="raw-mode"></a>
 ### Raw Mode
 
-You may not have to use this mode when using the panel, but the point is that it will simply output the value of the field that was originally assigned to it, without any additional modifications.
+You may not have to use this mode when using the panel.
+The point is that it will simply output the value of the field that was originally assigned to it, without any additional modifications.
 
 This mode is ideal for exporting, to ultimately display the original content for further importing.
+
+<a name="life-cycle"></a>
+## Field Life Cycle
 
 In the process of declaring fields, you can change the visual states of each of them, but before we look at the examples, let's briefly review the basic life cycle of a field.
 
 **Cycle through FormBuilder**
+
 - the field is declared in the resource,
 - the field enters the `FormBuilder`,
 - the `FormBuilder` fills the field,
@@ -71,6 +77,7 @@ In the process of declaring fields, you can change the visual states of each of 
 - upon request, the `FormBuilder` calls the fields and saves the original object using them.
 
 **Cycle through TableBuilder**
+
 - the field is declared in the resource,
 - the field enters the `TableBuilder`,
 - the `TableBuilder` includes the field in preview mode,
@@ -78,6 +85,7 @@ In the process of declaring fields, you can change the visual states of each of 
 - the `TableBuilder` renders itself and each of its rows along with the fields.
 
 **Cycle through export**
+
 - the field is declared in the resource in the export method,
 - the field enters the `Handler`,
 - the `Handler` includes the field in raw mode,
@@ -85,12 +93,15 @@ In the process of declaring fields, you can change the visual states of each of 
 
 Fields in **MoonShine** are not tied to a model (except for the `Slug` field and relationship fields), so their application spectrum is limited only by your imagination.
 
-In the process of interacting with the fields, you may encounter a number of tasks regarding their modification; all of them will be related to the cycles and states described above. Let's explore them.
+In the process of interacting with the fields, you may encounter a number of tasks regarding their modification.
+All of them will be related to the cycles and states described above. Let's explore them.
 
 <a name="change-preview"></a>
 ## Change Preview
 
-You are using the `Select` field with options of links to images and want to output not links in preview mode, but to render the images directly; your code would look as follows, and the result will be achieved thanks to the `changePreview()` method:
+Let's say you use the `Select` field with options in the form of links to images and want to output not links in preview mode, but to render the images directly.
+The result can be achieved using the `change Preview()` method.
+Your code will look like this:
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -197,7 +208,7 @@ Select::make('Links')->options([
 <a name="change-mode"></a>
 ## Change Display Mode
 
-As we have already realized, fields have different visual states and in `FormBuilder` by default it will be a form element, in `TableBuilder` different values display, and for example in export - just the original value.
+As we have already realized, fields have different visual states: in `FormBuilder`, by default, it will be a form element, in `TableBuilder` different values display, and for example in export - just the original value.
 
 But let's imagine a situation where we need to output the field in `TableBuilder` not in preview mode but in default mode, or conversely, output it in preview mode inside `FormBuilder` or even in its original:
 
@@ -231,7 +242,9 @@ BelongsTo::make('User')
     )
 ```
 
-Let's also imagine the situation that you need to do export in a format understandable for managers, but also in the future to import this file, no matter how smart **MoonShine** is, it will not understand that the value of “Ivan Ivanov” should be found in the table users on the field name and take only id, but we can solve this problem:
+Let's also imagine the situation that you need to do export in a format understandable for managers, but also in the future to import this file.
+No matter how smart **MoonShine** is, it will not understand that the value of “Ivan Ivanov” should be found in the table users on the field name and take only id.
+This task can be solved as follows:
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
@@ -245,7 +258,11 @@ BelongsTo::make('User')
 <a name="apply"></a>
 ## Field Application Process
 
-We already know that fields work with any data, and this is not necessarily a `Model`, but fields can also modify the original incoming data; simply put, this can be called _saving_, but we do not initially use this term since fields do not always save. For instance, the original data may be a `QueryBuilder`, and the fields will act as filters, thus modifying the `QueryBuilder` request, or any other case, so it is more accurate to say "they are applied" (_apply_).
+We already know that fields work with any data, and this is not necessarily a `Model`.
+But fields can also modify incoming data.
+Simply put, this can be called _saving_, but we do not use this term since fields do not always save.
+For instance, the original data may be a `QueryBuilder`, and the fields will act as filters, thus modifying the `QueryBuilder` request, or any other case.
+So it is more accurate to say that the fields are "applied" (_apply_).
 
 **Life Cycle of Field Application (using model saving as an example)**
 
