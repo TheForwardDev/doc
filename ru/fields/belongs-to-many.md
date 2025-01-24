@@ -75,7 +75,7 @@ BelongsToMany::make('Categories')
 ```
 
 > [!NOTE]
-> По умолчанию, для отображения значения используется поле в связанной таблице, которое указано свойством `$column` в ресурсе модели.
+> По умолчанию для отображения значения используется поле в связанной таблице, которое указано свойством `$column` в ресурсе модели.
 > Аргумент `$formatted` позволяет переопределить это.
 
 ```php
@@ -103,7 +103,7 @@ BelongsToMany::make(
 <a name="label-column"></a>
 ## Заголовок столбца
 
-По умолчанию, заголовок столбца таблицы использует свойство `$title`, указанное в `ModelResource` отношения.
+По умолчанию заголовок столбца таблицы использует свойство `$title`, указанное в `ModelResource` отношения.
 Метод `columnLabel()` позволяет переопределить заголовок.
 
 ```php
@@ -276,7 +276,7 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 <a name="preview"></a>
 ## Предпросмотр
 
-По умолчанию, в *preview* поле будет отображаться в виде таблицы.
+По умолчанию в *preview* поле будет отображаться в виде таблицы.
 
 ![belongs_to_many_preview](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview.png)
 ![belongs_to_many_preview_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_dark.png)
@@ -425,7 +425,7 @@ BelongsToMany::make('Categories', 'categories', resource: CategoryResource::clas
 
 > [!NOTE]
 > Поиск будет осуществляться по полю отношения ресурса `column`.
-> По умолчанию, `column=id`.
+> По умолчанию `column=id`.
 
 Вы можете передать параметры в метод `asyncSearch()`:
 
