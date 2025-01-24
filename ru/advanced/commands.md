@@ -30,7 +30,7 @@ php artisan moonshine:install
 
 Сигнатура:
 ```
-moonshine:install {--u|without-user} {--m|without-migrations} {--l|default-layout} {--a|without-auth} {--d|without-notifications} {--t|tests-mode}
+moonshine:install {--u|without-user} {--m|without-migrations} {--l|default-layout} {--a|without-auth} {--d|without-notifications} {--t|tests-mode} {--Q|quick-mode}
 ```
 
 Доступные опции:
@@ -40,7 +40,8 @@ moonshine:install {--u|without-user} {--m|without-migrations} {--l|default-layou
 - `--l|default-layout` - выбор шаблона по умолчанию (без вопроса про компактную тему),
 - `--a|without-auth` - без аутентификации,
 - `--d|without-notifications` - без уведомлений,
-- `--t|tests-mode` - тестовый режим.
+- `--t|tests-mode` - тестовый режим,
+- `--Q|quick-mode` - "быстрый" режим (пропускаются все диалоги с использованием параметров по умолчанию).
 
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Установка](/docs/{{version}}/installation).
