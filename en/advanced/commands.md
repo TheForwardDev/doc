@@ -30,7 +30,7 @@ php artisan moonshine:install
 
 Signature:
 ```
-moonshine:install {--u|without-user} {--m|without-migrations} {--l|default-layout} {--a|without-auth} {--d|without-notifications} {--t|tests-mode}
+moonshine:install {--u|without-user} {--m|without-migrations} {--l|default-layout} {--a|without-auth} {--d|without-notifications} {--t|tests-mode} {--Q|quick-mode}
 ```
 
 Available options:
@@ -40,7 +40,8 @@ Available options:
 - `--l|default-layout` - select the default template (without prompting for a compact theme),
 - `--a|without-auth` - without authentication,
 - `--d|without-notifications` - without notifications,
-- `--t|tests-mode` - test mode.
+- `--t|tests-mode` - test mode,
+- `--Q|quick-mode` - "quick" mode (skipping all dialogs using default settings).
 
 > [!NOTE]
 > For more details, refer to the [Installation](/docs/{{version}}/installation) section.
