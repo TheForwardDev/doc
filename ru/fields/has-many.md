@@ -474,7 +474,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 Если вам нужно отобразить поля отношения внутри основной формы, то вы можете использовать поле *RelationRepeater*.
 
 > [!NOTE]
-> Для более подробной информации обратитесь к разделу [Поле Template](/docs/{{version}}/fields/relation-repeater).
+> Для более подробной информации обратитесь к разделу [Поле RelationRepeater](/docs/{{version}}/fields/relation-repeater).
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -482,7 +482,6 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
  
-// ...
 RelationRepeater::make('Характеристики', 'characteristics')
     ->fields([
         ID::make(),
