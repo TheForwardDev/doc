@@ -4,7 +4,7 @@ Inherits from [HasOne](/docs/{{version}}/fields/has-one).
 
 \* has the same capabilities.
 
-Relationship field in **Laravel** of type `HasOne`.
+Relationship field in **Laravel** of type `MorphOne`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}

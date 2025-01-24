@@ -4,7 +4,7 @@ Inherits [BelongsToMany](/docs/{{version}}/fields/belongs-to-many).
 
 \* has the same capabilities.
 
-The `MorphToMany` relationship field in **Laravel**.
+Relationship field in **Laravel** of type `MorphToMany`.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphToMany;

@@ -4,7 +4,7 @@
 
 \* имеет те же возможности.
 
-Поле отношения `MorphTo` в **Laravel**.
+Поле отношения в **Laravel** типа `MorphTo`.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\MorphTo;

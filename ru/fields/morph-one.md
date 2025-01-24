@@ -4,7 +4,7 @@
 
 \* имеет те же возможности.
 
-Поле отношения в **Laravel** типа `HasOne`.
+Поле отношения в **Laravel** типа `MorphOne`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
