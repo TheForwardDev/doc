@@ -19,7 +19,7 @@
 
 To use the field, you need to install the package:
 
-```bash
+```shell
 composer require moonshine/easymde
 ```
 
@@ -43,7 +43,7 @@ The `Markdown` field by default uses the most common settings, such as plugins, 
 
 To change the default settings, you need to publish the configuration file:
 
-```bash
+```shell
 php artisan vendor:publish --tag="moonshine-easymde-config"
 ```
 

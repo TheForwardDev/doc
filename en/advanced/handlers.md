@@ -24,7 +24,7 @@ The main advantages:
 
 To create a new `Handler`, use the command:
 
-```bash
+```shell
 php artisan moonshine:handler MyCustomHandler
 ```
 

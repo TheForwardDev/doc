@@ -19,7 +19,7 @@
 
 Для использования поля необходимо установить пакет:
 
-```bash
+```shell
 composer require moonshine/easymde
 ```
 
@@ -43,7 +43,7 @@ Markdown::make('Description')
 
 Чтобы изменить настройки по умолчанию, необходимо опубликовать файл конфигурации:
 
-```bash
+```shell
 php artisan vendor:publish --tag="moonshine-easymde-config"
 ```
 

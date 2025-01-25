@@ -4,7 +4,7 @@
 
 Before using, you need to install the package:
 
-```bash
+```shell
 composer require moonshine/ace
 ```
 
