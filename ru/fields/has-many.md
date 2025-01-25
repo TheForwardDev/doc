@@ -469,7 +469,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="advanced"></a>
 ## Продвинутое использование
 
-### Отношение через JSON поле
+### Отношение через RelationRepeater поле
 Поле `HasMany` по умолчанию отображается вне основной формы ресурса.
 Если вам нужно отобразить поля отношения внутри основной формы, то вы можете использовать поле `RelationRepeater`.
 
