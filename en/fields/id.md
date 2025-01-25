@@ -1,6 +1,6 @@
 # ID
 
-Inherits [Hidden](/docs/{{version}}/fields/hidden).
+Inherits from [Hidden](/docs/{{version}}/fields/hidden).
 
 \* has the same capabilities
 

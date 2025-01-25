@@ -18,11 +18,13 @@
 <a name="basics"></a>
 ## Basics
 
+Contains all [Basic methods](/docs/{{version}}/fields/basic-methods).
+
 > [!TIP]
 > Before using, ensure that a symbolic link is set up for the **storage** directory.
 > `php artisan storage:link`
 
-The _File_ field is used for file uploads and includes all basic methods.
+The `File` field is used for file uploads and includes all basic methods.
 
 ~~~tabs
 tab: Class

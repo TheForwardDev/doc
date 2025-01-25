@@ -6,7 +6,7 @@
 
 ---
 
-Inherits [Text](/docs/{{version}}/fields/text).
+Inherits from [Text](/docs/{{version}}/fields/text).
 
 \* has the same capabilities.
 

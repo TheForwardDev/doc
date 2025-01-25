@@ -1,6 +1,6 @@
 # MorphToMany
 
-Inherits [BelongsToMany](/docs/{{version}}/fields/belongs-to-many).
+Inherits from [BelongsToMany](/docs/{{version}}/fields/belongs-to-many).
 
 \* has the same capabilities.
 

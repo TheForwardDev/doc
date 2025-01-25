@@ -1,6 +1,8 @@
 # Template
 
-*Template* не имеет готовой реализации и позволяет конструировать поле с помощью *fluent interface* в процессе объявления.
+Содержит все [Базовые методы](/docs/{{version}}/fields/basic-methods).
+
+Поле `Template` не имеет готовой реализации и позволяет конструировать поле с помощью *fluent interface* в процессе объявления.
 
 ```php
 use MoonShine\UI\Fields\Template;

@@ -20,7 +20,7 @@
 <a name="basics"></a>
 ## Основы
 
-Поле `Select` включает в себя все [базовые методы создания поля](/docs/{{version}}/fields/basic-methods).
+Содержит все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
 ~~~tabs
 tab: Class

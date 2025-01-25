@@ -24,7 +24,7 @@
 
 Содержит все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
-Поле `Number` - это базовое числовое поле ввода в MoonShine. Это поле эквивалент `<input type="number">`
+Поле `Number` - это базовое числовое поле ввода в **MoonShine**. Это поле эквивалент `<input type="number">`
 
 ~~~tabs
 tab: Class

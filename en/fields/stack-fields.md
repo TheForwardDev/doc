@@ -9,6 +9,8 @@
 <a name="basics"></a>
 ## Basics
 
+Contains all [Basic Methods](/docs/{{version}}/fields/basic-methods).
+
 The `StackFields` field allows you to group fields when displaying in the preview.
 
 The `fields()` method should accept an array of fields to group.

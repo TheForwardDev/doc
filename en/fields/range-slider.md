@@ -9,7 +9,7 @@
 <a name="basics"></a>
 ## Basics
 
-Inherits [Range](/docs/{{version}}/fields/range)
+Inherits from [Range](/docs/{{version}}/fields/range).
 
 \* has the same capabilities.
 

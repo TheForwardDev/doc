@@ -24,7 +24,7 @@
 
 Contains all [Basic Methods](/docs/{{version}}/fields/basic-methods).
 
-The `Number` field is a basic numeric input field in MoonShine. This field is equivalent to `<input type="number">`.
+The `Number` field is a basic numeric input field in **MoonShine**. This field is equivalent to `<input type="number">`.
 
 ~~~tabs
 tab: Class

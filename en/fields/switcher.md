@@ -2,7 +2,7 @@
 
 Inherits from [Checkbox](/docs/{{version}}/fields/checkbox).
 
-* has the same features
+\* has the same features
 
 The `Switcher` field is an extension of `Checkbox` with a different visual design.
 
