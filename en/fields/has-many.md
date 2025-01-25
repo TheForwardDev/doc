@@ -471,7 +471,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 
 ### Relation through RelationRepeater field
 The `HasMany` field is displayed outside the main resource form by default.
-If you need to display the relation fields inside the main form, you can use the *RelationRepeater* field.
+If you need to display the relation fields inside the main form, you can use the `RelationRepeater` field.
 
 > [!NOTE]
 > For more detailed information, refer to the [RelationRepeater field](/docs/{{version}}/fields/relation-repeater).
