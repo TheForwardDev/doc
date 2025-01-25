@@ -30,7 +30,7 @@ Change the package version in your composer.json:
 ### 2. Create Backups
 Before updating, you need to back up the following files:
 
-```bash
+```shell
 mv config/moonshine.php config/moonshine_old.php
 mv app/Providers/MoonShineServiceProvider.php app/Providers/MoonShineServiceProvider_old.php
 mv app/MoonShine/Pages/Dashboard.php app/MoonShine/Pages/Dashboard_old.php
@@ -46,7 +46,7 @@ If you have Laravel < 11, you need to find and remove `App\Providers\MoonShineSe
 
 ### 4. Run the Update
 
-```bash
+```shell
 composer update
 ```
 
@@ -56,7 +56,7 @@ composer update
 ### 1. Install the New Version
 Run the command:
 
-```bash
+```shell
 php artisan moonshine:install
 ```
 
@@ -101,12 +101,12 @@ $core->pages([
 Commands to generate lists:
 
 For importing namespaces:
-```bash
+```shell
 find app/MoonShine/Resources -type f | sed "s/app/use App/" | sed "s|/|\\\|g" | sed "s/.php/;/" | sort
 ```
 
 For the list of resources:
-```bash
+```shell
 find app/MoonShine/Resources -type f -exec basename {} \; | sed "s/.php/::class,/" | sort
 ```
 
@@ -117,7 +117,7 @@ find app/MoonShine/Resources -type f -exec basename {} \; | sed "s/.php/::class,
 ### 5. Remove Old Files
 After successful migration, remove:
 
-```bash
+```shell
 # Old Layout (if it exists)
 rm app/MoonShine/MoonShineLayout.php
 

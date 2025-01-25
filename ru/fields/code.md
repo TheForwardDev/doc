@@ -4,7 +4,7 @@
 
 Перед использованием требуется установить пакет:
 
-```bash
+```shell
 composer require moonshine/ace
 ```
 

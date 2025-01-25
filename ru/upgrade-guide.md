@@ -30,7 +30,7 @@ title: Upgrade guide
 ### 2. Создание резервных копий
 Перед обновлением необходимо сделать резервные копии следующих файлов:
 
-```bash
+```shell
 mv config/moonshine.php config/moonshine_old.php
 mv app/Providers/MoonShineServiceProvider.php app/Providers/MoonShineServiceProvider_old.php
 mv app/MoonShine/Pages/Dashboard.php app/MoonShine/Pages/Dashboard_old.php
@@ -46,7 +46,7 @@ mv app/MoonShine/Pages/Dashboard.php app/MoonShine/Pages/Dashboard_old.php
 
 ### 4. Запуск обновления
 
-```bash
+```shell
 composer update
 ```
 
@@ -56,7 +56,7 @@ composer update
 ### 1. Установка новой версии
 Выполните команду:
 
-```bash
+```shell
 php artisan moonshine:install
 ```
 
@@ -101,12 +101,12 @@ $core->pages([
 Команды для генерации списков:
 
 Для импорта пространств имен:
-```bash
+```shell
 find app/MoonShine/Resources -type f | sed "s/app/use App/" | sed "s|/|\\\|g" | sed "s/.php/;/" | sort
 ```
 
 Для списка ресурсов:
-```bash
+```shell
 find app/MoonShine/Resources -type f -exec basename {} \; | sed "s/.php/::class,/" | sort
 ```
 
@@ -117,7 +117,7 @@ find app/MoonShine/Resources -type f -exec basename {} \; | sed "s/.php/::class,
 ### 5. Удаление старых файлов
 После успешной миграции удалите:
 
-```bash
+```shell
 # Старый Layout (если существует)
 rm app/MoonShine/MoonShineLayout.php
 
