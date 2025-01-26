@@ -47,5 +47,5 @@ session()->flash('toast', [
 Работая в асинхронном режиме, уведомление можно вызвать с помощью [JsEvents](/docs/{{version}}/frontend/js#default-events):
 
 ```php
-AlpineJs::event(JsEvent::TOAST, params: ['type' => 'success', 'message' => 'Success'])
+AlpineJs::event(JsEvent::TOAST, params: ['type' => 'success', 'text' => 'Success'])
 ```

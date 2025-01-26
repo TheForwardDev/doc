@@ -47,5 +47,5 @@ session()->flash('toast', [
 When working asynchronously, you can trigger the notification using [JsEvents](/docs/{{version}}/frontend/js#default-events):
 
 ```php
-AlpineJs::event(JsEvent::TOAST, params: ['type' => 'success', 'message' => 'Success'])
+AlpineJs::event(JsEvent::TOAST, params: ['type' => 'success', 'text' => 'Success'])
 ```
