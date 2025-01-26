@@ -35,7 +35,7 @@ Route::get('/admin/resource/{resourceUri}/{pageUri}', CustomController::class)
 
 Данный пример включает в себя роут с параметрами ресурса и страницы, а также группу middleware `moonshine`, список которой располагается в конфиге `moonshine.php`, и middleware `Authenticate` для доступа к ендпоинту только для авторизованного пользователя.
 
-Для быстрой реализации примера выше, можно воспользоваться Route директивой `moonshine`.
+Для быстрой реализации примера выше, можно воспользоваться `Route` директивой `moonshine`.
 
 ```php
 Route::moonshine(static function (Router $router) {
