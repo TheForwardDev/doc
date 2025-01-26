@@ -14,8 +14,8 @@ MorphTo::make('Commentable')->types([
 ])
 ```
 
-![morph_to](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to.png)
-![morph_to_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to_dark.png)
+![morph_to](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to.png#light)
+![morph_to_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to_dark.png#dark)
 
 > [!NOTE]
 > The `types()` method is required, specifying the available classes.
@@ -37,5 +37,5 @@ MorphTo::make('Imageable')->types([
 ])
 ```
 
-![morph_to_array](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to_array.png)
-![morph_to_array_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to_array_dark.png)
+![morph_to_array](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to_array.png#light)
+![morph_to_array_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/morph_to_array_dark.png#dark)

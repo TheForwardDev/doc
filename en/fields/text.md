@@ -41,9 +41,8 @@ tab: Blade
 ```
 ~~~
 
-![mask](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/mask.png)
-
-![mask_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/mask_dark.png)
+![mask](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/mask.png#light)
+![mask_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/mask_dark.png#dark)
 
 <a name="basic-methods"></a>
 ## Basic methods
@@ -77,9 +76,8 @@ Text::make('Phone', 'phone')
     ->mask('+7 (999) 999-99-99')
 ```
 
-![mask](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/mask.png)
-
-![mask_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/mask_dark.png)
+![mask](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/mask.png#light)
+![mask_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/mask_dark.png#dark)
 
 <a name="tags"></a>
 ### Tags
@@ -116,9 +114,8 @@ Text::make('HTML Content', 'content')
 
 Fields support various extensions to assist with input control.
 
-![expansion](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/expansion.png)
-
-![expansion_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/expansion_dark.png)
+![expansion](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/expansion.png#light)
+![expansion_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/expansion_dark.png#dark)
 
 <a name="copy"></a>
 ### Copy

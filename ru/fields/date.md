@@ -40,9 +40,8 @@ tab: Blade
 ```
 ~~~
 
-![Creation date](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/date_dark.png)
-
-![Creation date](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/date.png)
+![Creation date](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/date.png#light)
+![Creation date](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/date_dark.png#dark)
 
 <a name="basic-methods"></a>
 ## Основные методы
@@ -61,9 +60,8 @@ Date::make('Created at', 'created_at')
     ->withTime()
 ```
 
-![date_time](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/date_time.png)
-
-![date_time_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/date_time_dark.png)
+![date_time](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/date_time.png#light)
+![date_time_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/date_time_dark.png#dark)
 
 <a name="format"></a>
 ### Формат
@@ -84,9 +82,8 @@ Date::make('Created at', 'created_at')
 
 Поля поддерживает различные расширения для помощи и контроля ввода
 
-![expansion](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/expansion.png)
-
-![expansion_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/expansion_dark.png)
+![expansion](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/expansion.png#light)
+![expansion_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/expansion_dark.png#dark)
 
 <a name="copy"></a>
 ### Копирование

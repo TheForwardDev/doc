@@ -61,5 +61,5 @@
 
 Ваш вклад очень важен для развития проекта и улучшения опыта использования **MoonShine** для всех разработчиков.
 
-![main](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/main.png)
-![main_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/main_dark.png)
+![main](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/main.png#light)
+![main_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/main_dark.png#dark)
