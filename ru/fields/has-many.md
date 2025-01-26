@@ -469,18 +469,25 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="advanced"></a>
 ## Продвинутое использование
 
-### Отношение через JSON поле
+### Отношение через RelationRepeater поле
 Поле `HasMany` по умолчанию отображается вне основной формы ресурса.
-Если вам нужно отобразить поля отношения внутри основной формы, то вы можете использовать поле *JSON* в режиме `asRelation()`.
+Если вам нужно отобразить поля отношения внутри основной формы, то вы можете использовать поле `RelationRepeater`.
+
+> [!NOTE]
+> Для более подробной информации обратитесь к разделу [Поле RelationRepeater](/docs/{{version}}/fields/relation-repeater).
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
 // [tl! collapse:2]
-use App\MoonShine\Resources\CommentResource;
-use MoonShine\UI\Fields\Json;
-
-Json::make('Comments', 'comments')
-    ->asRelation(CommentResource::class)
+use MoonShine\UI\Fields\Text;
+use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
+ 
+RelationRepeater::make('Characteristics', 'characteristics')
+    ->fields([
+        ID::make(),
+        Text::make('Name', 'name'),
+        Text::make('Value', 'value'),
+    ])
 ```
 
 ### Отношение через поле Template
