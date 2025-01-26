@@ -1,6 +1,6 @@
 # Position
 
-Inherits [Preview](/docs/{{version}}/fields/preview).
+Inherits from [Preview](/docs/{{version}}/fields/preview).
 
 * has the same capabilities
 

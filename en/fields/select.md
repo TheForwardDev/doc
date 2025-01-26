@@ -20,7 +20,7 @@
 <a name="basics"></a>
 ## Basics
 
-The `Select` field includes all [basic methods for creating a field](/docs/{{version}}/fields/basic-methods).
+Contains all [Basic Methods](/docs/{{version}}/fields/basic-methods).
 
 ~~~tabs
 tab: Class

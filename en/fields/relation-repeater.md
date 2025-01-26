@@ -12,6 +12,8 @@
 <a name="basics"></a>
 ## Basics
 
+Contains all [Basic Methods](/docs/{{version}}/fields/basic-methods).
+
 The `RelationRepeater` field is designed for working with `HasMany` and `HasOne` relationships. It allows you to create, edit, and delete related records directly from the main model's form.
 
 > [!NOTE]

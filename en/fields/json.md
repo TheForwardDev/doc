@@ -17,6 +17,8 @@
 <a name="basics"></a>
 ## Basics
 
+Contains all [Basic methods](/docs/{{version}}/fields/basic-methods).
+
 The `Json` field is designed for convenient work with the `json` data type. In most cases, it is used with arrays of objects via `TableBuilder`, but it also supports a mode for working with a single object.
 
 > [!NOTE]
