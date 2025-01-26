@@ -15,8 +15,6 @@
 
 Компонент `Card` позволяет создавать карточки элементов.
 
-Вы можете создать `Card`, используя статический метод `make()` класса `Card`.
-
 ```php
 make(
     Closure|string $title = '',
@@ -74,7 +72,7 @@ header(Closure|string $value)
 - `$value` - столбец или замыкание, возвращающее html-код.
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
     thumbnail: '/images/image_2.jpg',
 )
@@ -91,7 +89,7 @@ actions(Closure|string $value)
 ```
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
     thumbnail: '/images/image_1.jpg',
 )
@@ -110,7 +108,7 @@ subtitle(Closure|string $value)
 - `$value` - столбец или замыкание, возвращающее подзаголовок.
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
     thumbnail: '/images/image_2.jpg',
 )
@@ -129,7 +127,7 @@ url(Closure|string $value)
 - `$value` - *url* или замыкание.
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
     thumbnail: '/images/image_1.jpg',
 )
@@ -146,7 +144,7 @@ thumbnails(Closure|string|array $value)
 ```
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
 )
     ->thumbnail(['/images/image_2.jpg','/images/image_1.jpg'])
@@ -164,7 +162,7 @@ values(Closure|array $value)
 - `$value` - ассоциативный массив значений или замыкание.
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
     thumbnail: '/images/image_1.jpg',
 )
