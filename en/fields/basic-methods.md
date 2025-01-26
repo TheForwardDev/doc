@@ -1052,8 +1052,6 @@ reactive(
 - `$debounce` - time between function calls (ms.),
 - `$throttle` - function call interval (ms.).
 
-> Fields that support reactivity: Text, Number, Checkbox, Select, Date, and their descendants.
-
 ```php
 use MoonShine\UI\Collections\Fields;
 use MoonShine\UI\Components\FormBuilder;

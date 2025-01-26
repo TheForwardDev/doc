@@ -6,6 +6,8 @@
 - [Display Condition](#display-condition)
 - [Alias](#alias)
 - [Dropdown](#dropdown)
+- [Events](#events)
+- [Button modifier](#modify-button)
 
 ---
 
@@ -139,4 +141,24 @@ class PostResource extends ModelResource
 
     // ...
 }
+```
+
+<a name="events"></a>
+## Events
+
+Raising custom events after a successful data update:
+
+```php
+QueryTag::make('QueryTag', fn($q) => $q)->events([
+    AlpineJs::event(
+        JsEvent::FRAGMENT_UPDATED, 'custom-fragment'
+    )
+])
+```
+
+<a name="modify-button"></a>
+## Button modifier
+
+```php
+QueryTag::make('QueryTag', fn($q) => $q)->modifyButton(fn(ActionButton $btn) => $btn),
 ```
