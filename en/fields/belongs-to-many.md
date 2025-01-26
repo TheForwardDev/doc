@@ -55,8 +55,8 @@ BelongsToMany::make(
 )
 ```
 
-![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many.png)
-![belongs_to_many_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_dark.png)
+![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many.png#light)
+![belongs_to_many_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_dark.png#dark)
 
 You can omit `$resource` if the `ModelResource` matches the relationship name.
 
@@ -145,8 +145,8 @@ BelongsToMany::make(
 ])
 ```
 
-![belongs_to_many_pivot](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_pivot.png)
-![belongs_to_many_pivot_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_pivot_dark.png)
+![belongs_to_many_pivot](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_pivot.png#light)
+![belongs_to_many_pivot_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_pivot_dark.png#dark)
 
 > [!WARNING]
 > In the relationship, you must specify which *pivot* fields are used in the intermediate table!
@@ -174,8 +174,8 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->creatable()
 ```
 
-![belongs_to_many_creatable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_creatable.png)
-![belongs_to_many_creatable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_creatable_dark.png)
+![belongs_to_many_creatable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_creatable.png#light)
+![belongs_to_many_creatable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_creatable_dark.png#dark)
 
 You can customize the creation button by passing the *button* parameter to the method.
 
@@ -208,8 +208,8 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->selectMode()
 ```
 
-![belongs_to_many_select](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_select.png)
-![belongs_to_many_select_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_select_dark.png)
+![belongs_to_many_select](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_select.png#light)
+![belongs_to_many_select_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_select_dark.png#dark)
 
 <a name="options"></a>
 ## Options
@@ -270,16 +270,16 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->tree('parent_id')
 ```
 
-![belongs_to_many_tree](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_tree.png)
-![belongs_to_many_tree_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_tree_dark.png)
+![belongs_to_many_tree](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_tree.png#light)
+![belongs_to_many_tree_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_tree_dark.png#dark)
 
 <a name="preview"></a>
 ## Preview
 
 By default, in *preview*, the field will be displayed in a table.
 
-![belongs_to_many_preview](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview.png)
-![belongs_to_many_preview_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_dark.png)
+![belongs_to_many_preview](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview.png#light)
+![belongs_to_many_preview_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_dark.png#dark)
 
 To change the display in *preview*, you can use the following methods.
 
@@ -292,8 +292,8 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
     ->onlyCount()
 ```
 
-![belongs_to_many_preview_count](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_count.png)
-![belongs_to_many_preview_count_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_count_dark.png)
+![belongs_to_many_preview_count](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_count.png#light)
+![belongs_to_many_preview_count_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_count_dark.png#dark)
 
 ### inLine
 
@@ -331,8 +331,8 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
     )
 ```
 
-![belongs_to_many_preview_in_line](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_in_line.png)
-![belongs_to_many_preview_in_line_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_in_line_dark.png)
+![belongs_to_many_preview_in_line](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_in_line.png#light)
+![belongs_to_many_preview_in_line_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_preview_in_line_dark.png#dark)
 
 <a name="only-link"></a>
 ## Only Link
@@ -540,8 +540,8 @@ BelongsToMany::make('Cities', resource: CityResource::class)
     ->withImage('thumb', 'public', 'countries')->selectMode()
 ```
 
-![with_image](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image.png)
-![belongs_to_image_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image_dark.png)
+![with_image](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image.png#light)
+![belongs_to_image_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image_dark.png#dark)
 
 <a name="buttons"></a>
 ## Buttons

@@ -40,8 +40,8 @@ class PostResource extends ModelResource
 
 ```
 
-![query_tags](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/query_tags.png)
-![query_tags_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/query_tags_dark.png)
+![query_tags](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/query_tags.png#light)
+![query_tags_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/query_tags_dark.png#dark)
 
 <a name="icon"></a>
 ## Иконка

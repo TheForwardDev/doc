@@ -49,5 +49,5 @@ tab: Blade
 ```
 ~~~
 
-![topbar](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/topbar.png)
-![topbar_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/topbar_dark.png)
+![topbar](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/topbar.png#light)
+![topbar_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/topbar_dark.png#dark)

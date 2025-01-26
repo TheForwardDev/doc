@@ -53,8 +53,8 @@ HasMany::make(
 )
 ```
 
-![has_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many.png)
-![has_many_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_dark.png)
+![has_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many.png#light)
+![has_many_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_dark.png#dark)
 
 Вы можете опустить `$resource`, если `ModelResource` совпадает с названием связи.
 
@@ -96,8 +96,8 @@ HasMany::make('Comments', resource: CommentResource::class)
     ])
 ```
 
-![has_many_fields](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_fields.png)
-![has_many_fields_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_fields_dark.png)
+![has_many_fields](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_fields.png#light)
+![has_many_fields_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_fields_dark.png#dark)
 
 <a name="creatable"></a>
 ## Создание объекта отношения
@@ -121,8 +121,8 @@ HasMany::make('Comments', resource: CommentResource::class)
     ->creatable()
 ```
 
-![has_many_creatable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_creatable.png)
-![has_many_creatable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_creatable_dark.png)
+![has_many_creatable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_creatable.png#light)
+![has_many_creatable_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_creatable_dark.png#dark)
 
 Вы можете настроить *кнопку* создания, передав параметр button в метод.
 
@@ -185,8 +185,8 @@ use MoonShine\Laravel\Fields\Relationships\HasMany;
 HasMany::make('Comments', resource: CommentResource::class)
     ->relatedLink()
 ```
-![has_many_link](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_link.png)
-![has_many_link_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_link_dark.png)
+![has_many_link](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_link.png#light)
+![has_many_link_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/has_many_link_dark.png#dark)
 
 Параметр `linkRelation` позволяет создать ссылку на отношение с привязкой родительского ресурса.
 

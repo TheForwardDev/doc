@@ -46,7 +46,8 @@ tab: Blade
 ```
 ~~~
 
-![select](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_dark.png)
+![select](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select.png#light)
+![select](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_dark.png#dark)
 
 <a name="default"></a>
 ### Значение по умолчанию
@@ -96,7 +97,9 @@ Select::make('Country', 'country_id')
     ])
     ->nullable()
 ```
-![select nullabledark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable_dark.png)
+
+![select nullable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable.png#light)
+![select nullable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_nullable_dark.png#dark)
 
 <a name="placeholder"></a>
 ## Placeholder
@@ -148,7 +151,9 @@ Select::make('City')->options(
     ])
 ),
 ```
-![select group dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_group_dark.png)
+
+![select group](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_group.png#light)
+![select group](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_group_dark.png#dark)
 
 <a name="multiple"></a>
 ## Выбор нескольких значений
@@ -175,7 +180,8 @@ Select::make('Country', 'country_id')
 > При использовании `multiple()` для Eloquent модели требуется использовать в базе данных тип text или json.
 Также необходимо добавить *cast* - json, array, collection.
 
-![select multiple dark.](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_multiple_dark.png)
+![select multiple](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_multiple.png#light)
+![select multiple](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_multiple_dark.png#dark)
 
 <a name="search"></a>
 ## Поиск
@@ -195,7 +201,9 @@ Select::make('Country', 'country_id')
     ])
     ->searchable()
 ```
-![searchable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_searchable_dark.png)
+
+![searchable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_searchable.png#light)
+![searchable](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_searchable_dark.png#dark)
 
 <a name="async"></a>
 ## Асинхронный поиск
@@ -388,7 +396,8 @@ Select::make('Select')->options(
 )
 ```
 
-![belongs to image dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image_dark.png)
+![belongs to image](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image.png#light)
+![belongs to image](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image_dark.png#dark)
 
 <a name="options"></a>
 ## Опции
