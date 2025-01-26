@@ -15,8 +15,6 @@
 
 The `Card` component allows you to create element cards.
 
-You can create a `Card` using the static method `make()` of the `Card` class.
-
 ```php
 make(
     Closure|string $title = '',
@@ -74,7 +72,7 @@ header(Closure|string $value)
 - `$value` - a column or closure that returns HTML code.
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
     thumbnail: '/images/image_2.jpg',
 )
@@ -91,7 +89,7 @@ actions(Closure|string $value)
 ```
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
     thumbnail: '/images/image_1.jpg',
 )
@@ -110,7 +108,7 @@ subtitle(Closure|string $value)
 - `$value` - a column or closure that returns a subtitle.
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
     thumbnail: '/images/image_2.jpg',
 )
@@ -129,7 +127,7 @@ url(Closure|string $value)
 - `$value` - *url* or closure.
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
     thumbnail: '/images/image_1.jpg',
 )
@@ -146,7 +144,7 @@ thumbnails(Closure|string|array $value)
 ```
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
 )
     ->thumbnail(['/images/image_2.jpg','/images/image_1.jpg'])
@@ -164,7 +162,7 @@ values(Closure|array $value)
 - `$value` - an associative array of values or a closure.
 
 ```php
-Cards::make(
+Card::make(
     title: fake()->sentence(3),
     thumbnail: '/images/image_1.jpg',
 )
