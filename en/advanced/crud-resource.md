@@ -10,24 +10,26 @@
 <a name="basics"></a>
 ## Basics
 
-`CrudResource` is a fundamental part of `MoonShine for Laravel`.
-It is important to understand that the core of **MoonShine** does not depend on **Laravel** and even more so on `Eloquent` models.
+`CrudResource` is a fundamental part of "**MoonShine** for **Laravel**".
+It is important to understand that the core of **MoonShine** does not depend on **Laravel** and even more so on **Eloquent** models.
 However, in the implementation for **Laravel**, we provide a ready-made `ModelResource` for working with models and corresponding `type-casts`.
 **MoonShine** is very flexible, and you can create your own resource to work with any data sources.
 
 `CrudResource` provides a basic structure for working with data without being tied to a specific implementation.
 This allows:
 
-- Working with any data sources (databases, `API`, files, etc.),
-- Creating your own implementations for specific tasks,
-- Using a single interface regardless of the data source.
+- working with any data sources (databases, API, files, etc.),
+- creating your own implementations for specific tasks,
+- using a single interface regardless of the data source.
 
 <a name="custom-resource"></a>
 ## Creating a Custom Resource
 
-To create a custom resource, it is enough to extend `CrudResource` and implement the abstract methods:
+To create a custom resource, it is enough to extend `CrudResource` and implement the abstract methods.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 namespace App\MoonShine\Resources;
 
 use MoonShine\Contracts\Core\DependencyInjection\FieldsContract;
@@ -68,6 +70,8 @@ final class RestCrudResource extends CrudResource
 Here is an example of implementing a resource for working with a `REST API`:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:6]
 namespace App\MoonShine\Resources;
 
 use Illuminate\Http\Client\Response;
@@ -121,5 +125,5 @@ final class RestCrudResource extends CrudResource
 <a name="full-customization"></a>
 # Full Customization
 
-If you require complete control over the resource, instead of inheriting from `CrudResource`, you can implement the interface `MoonShine\Contracts\Core\CrudResourceContract`.
+If you require complete control over the resource, instead of inheriting from `CrudResource`, you can implement the interface `CrudResourceContract`.
 This will give you maximum flexibility in implementing all necessary methods.
