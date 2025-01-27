@@ -6,6 +6,8 @@
 - [Условие отображения](#display-condition)
 - [Псевдоним](#alias)
 - [Выпадающий список](#dropdown)
+- [События](#events)
+- [Модификатор кнопки](#modify-button)
 
 ---
 
@@ -139,4 +141,24 @@ class PostResource extends ModelResource
 
     // ...
 }
+```
+
+<a name="events"></a>
+## События
+
+Вызов собственных событий после успешного обновления данных:
+
+```php
+QueryTag::make('QueryTag', fn($q) => $q)->events([
+    AlpineJs::event(
+        JsEvent::FRAGMENT_UPDATED, 'custom-fragment'
+    )
+])
+```
+
+<a name="modify-button"></a>
+## Модификатор кнопки
+
+```php
+QueryTag::make('Test', fn($q) => $q)->modifyButton(fn(ActionButton $btn) => $btn),
 ```

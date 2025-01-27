@@ -265,7 +265,7 @@ class PostResource extends ModelResource
 If you need to exclude fields from the selection, use the `columnSelection()` method.
 
 ```php
-public function columnSelection(bool $active = true)
+public function columnSelection(bool $active = true, bool $hideOnInit = false)
 ```
 
 ```php
@@ -294,6 +294,12 @@ class PostResource extends ModelResource
         ];
     }
 }
+```
+
+If you need to hide the default field:
+
+```php
+->columnSelection(hideOnInit: true)
 ```
 
 <a name="sticky"></a>
