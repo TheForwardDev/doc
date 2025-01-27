@@ -125,9 +125,7 @@ class MoonShineServiceProvider extends ServiceProvider
             ->middleware([
                 // ...
             ])
-            ->layout(\MoonShine\Laravel\Layouts\AppLayout::class)
-            // ...
-        ;
+            ->layout(\MoonShine\Laravel\Layouts\AppLayout::class);
 
         $core
             ->resources([
@@ -136,8 +134,7 @@ class MoonShineServiceProvider extends ServiceProvider
             ])
             ->pages([
                 ...$config->getPages(),
-            ])
-        ;
+            ]);
     }
 }
 ```
@@ -176,8 +173,7 @@ $config
     ->dir(dir: 'app/MoonShine', namespace: 'App\MoonShine')
     ->useMigrations()
     ->useNotifications()
-    ->useDatabaseNotifications()
-;
+    ->useDatabaseNotifications();
 ```
 ~~~
 
@@ -230,9 +226,10 @@ tab: config/moonshine.php
 ```
 tab: app/Providers/MoonShineServiceProvider.php
 ```php
-$config->middleware(['web', 'auth'])
-       ->addMiddleware('custom-middleware')
-       ->exceptMiddleware(['auth']);
+$config
+    ->middleware(['web', 'auth'])
+    ->addMiddleware('custom-middleware')
+    ->exceptMiddleware(['auth']);
 ```
 ~~~
 
@@ -665,8 +662,7 @@ class MoonShineServiceProvider extends ServiceProvider
             ->cacheDriver('redis')
             ->authorizationRules(function(ResourceContract $ctx, mixed $user, Ability $ability, mixed $data): bool {
                  return true;
-            })
-        ;
+            });
 
         // ...
     }
