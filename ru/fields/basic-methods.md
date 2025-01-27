@@ -322,6 +322,7 @@ Text::make('Title')->rawMode()
 ```php
 required(Closure|bool|null $condition = null)
 ```
+
 ```php
 Text::make('Title')->required()
 ```
@@ -332,6 +333,7 @@ Text::make('Title')->required()
 ```php
 disabled(Closure|bool|null $condition = null)
 ```
+
 ```php
 Text::make('Title')->disabled()
 ```
@@ -342,6 +344,7 @@ Text::make('Title')->disabled()
 ```php
 readonly(Closure|bool|null $condition = null)
 ```
+
 ```php
 Text::make('Title')->readonly()
 ```
@@ -354,7 +357,10 @@ Text::make('Title')->readonly()
 > Поля являются компонентами, подробнее об атрибутах читайте в разделе [Атрибуты компонентов](/docs/{{version}}/components/attributes).
 
 ```php
-customAttributes(array $attributes, bool $override = false)
+customAttributes(
+    array $attributes,
+    bool $override = false
+)
 ```
 
 - `$attributes` - массив атрибутов,
@@ -370,7 +376,7 @@ Password::make('Title')
 <a name="custom-wrapper-attributes"></a>
 ### Атрибуты для wrapper поля
 
-Метод `customWrapperAttributes()` позволяет добавить атрибуты для `wrapper` поля.
+Метод `customWrapperAttributes()` позволяет добавить атрибуты для обертки поля.
 
 ```php
 customWrapperAttributes(array $attributes)
@@ -388,7 +394,8 @@ Password::make('Title')
 Для того чтобы добавить wrapper для значения атрибута `name`, используется метод `wrapName()`.
 
 ```php
-Text::make('Name')->wrapName('options')
+Text::make('Name')
+    ->wrapName('options')
 ```
 
 В результате атрибут name примет вид `<input name="options[name]>`. Это особенно полезно для настройки фильтров.
@@ -409,9 +416,13 @@ File::make('image')
 Для того чтобы изменить атрибут name у этих полей, используется метод `virtualName()`.
 
 ```php
-File::make('image')->virtualColumn('image_1')
+File::make('image')
+    ->virtualColumn('image_1')
+
 // ...
-File::make('image')->virtualColumn('image_2')
+
+File::make('image')
+    ->virtualColumn('image_2')
 ```
 
 Далее, например в `onApply()` методе, мы обрабатываем эти поля по своему усмотрению.
@@ -430,11 +441,8 @@ default(mixed $default)
 ```php
 Text::make('Name')
     ->default('Default value')
-```
 
-или
-
-```php
+// или
 Enum::make('Status')
     ->attach(ColorEnum::class)
     ->default(ColorEnum::from('B')->value)
@@ -489,7 +497,7 @@ Text::make('Thumbnail')
 /**
  * @param  Closure(static $ctx): void  $onBeforeRender
  */
-public function onBeforeRender(Closure $onBeforeRender)
+onBeforeRender(Closure $onBeforeRender)
 ```
 
 ```php
@@ -539,16 +547,14 @@ Text::make('Title')
 Отображать компонент можно по условию, воспользовавшись методом `canSee()`.
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 Text::make('Name')
     ->canSee(function (Text $field) {
         return $field->toValue() !== 'hide';
     })
-```
-или для полей отношений:
 
-```php
-use MoonShine\Laravel\Fields\Relationships\BelongsTo;
-
+// или для полей отношений
 BelongsTo::make('Item', 'item', resource: ItemResource::class)
     ->canSee(function (Comment $comment, BelongsTo $field) {
         // ваше условие
@@ -569,7 +575,10 @@ when(
 use MoonShine\UI\Fields\Field;
 
 Text::make('Slug')
-    ->when(fn() => true, fn(Field $field) => $field->locked())
+    ->when(
+        fn() => true,
+        fn(Field $field) => $field->locked()
+    )
 ```
 
 Метод `unless()` обратный методу `when()`.
@@ -619,7 +628,7 @@ Text::make('Thumbnail by link', 'thumbnail')
 /**
  * @param  Closure(mixed, mixed, FieldContract): static  $onBeforeApply
  */
-function onBeforeApply(Closure $onBeforeApply)
+onBeforeApply(Closure $onBeforeApply)
 ```
 
 Для того чтобы выполнить какие-либо действия после "apply", можно воспользоваться методом `onAfterApply()`.
@@ -628,7 +637,7 @@ function onBeforeApply(Closure $onBeforeApply)
 /**
  * @param  Closure(mixed, mixed, FieldContract): static  $onBeforeApply
  */
-function onAfterApply(Closure $onBeforeApply)
+onAfterApply(Closure $onBeforeApply)
 ```
 
 #### Глобальное определение apply логики
@@ -661,7 +670,7 @@ final class FileModelApply implements ApplyContract
         return function (mixed $item) use ($field): mixed {
             $requestValue = $field->getRequestValue();
 
-            $newValue = // ..
+            $newValue = // ...
 
             return data_set($item, $field->getColumn(), $newValue);
         };
@@ -786,7 +795,7 @@ onChangeUrl(
     HttpMethod $method = HttpMethod::GET,
     array $events = [],
     ?string $selector = null,
-    ?AsyncCallback $callback = null,
+    ?AsyncCallback $callback = null
 )
 ```
 
@@ -821,7 +830,7 @@ onChangeMethod(
   array $events = [],
   ?AsyncCallback $callback = null,
   ?PageContract $page = null,
-  ?ResourceContract $resource = null,
+  ?ResourceContract $resource = null
 )
 ```
 
@@ -880,7 +889,7 @@ Select::make('Links')->options([
  * @param  Closure(mixed $raw, static): mixed  $callback
  * @return $this
  */
-    fromRaw(Closure $callback)
+fromRaw(Closure $callback)
 ```
 
 ```php
@@ -928,7 +937,7 @@ Enum::make('Status')
 После внесения изменений (по событию onChange), значение поля будет сохранено для конкретного элемента.
 
 ```php
-public function updateOnPreview(
+updateOnPreview(
     ?Closure $url = null,
     ?ResourceContract $resource = null,
     mixed $condition = null,
@@ -954,7 +963,7 @@ Text::make('Name')->updateOnPreview()
 `withUpdateRow()` работает по аналогии с `updateOnPreview()`, но при этом может полностью обновить строку в таблице без перезагрузки страницы.
 
 ```php
-public function withUpdateRow(string $component)
+withUpdateRow(string $component)
 ```
 
 - `$component` - имя компонента, в котором присутствует данная строка.
@@ -974,7 +983,7 @@ Text::make('Name')->updateOnPreview(url: '/my/url')->withUpdateRow()
 Метод `updateInPopover()` работает аналогично методу `withUpdateRow()`, но теперь все значения для редактирования появляются в отдельном окне.
 
 ```php
-public function updateInPopover(string $component)
+updateInPopover(string $component)
 ```
 
 - `$component` - имя компонента, в котором присутствует данная строка.
@@ -1136,7 +1145,7 @@ Select::make('Category', 'category_id')
 Метод `showWhen()` позволяет задать условие отображения поля в зависимости от значения другого поля.
 
 ```php
-public function showWhen(
+showWhen(
     string $column,
     mixed $operator = null,
     mixed $value = null
@@ -1183,11 +1192,11 @@ class ArticleResource extends ModelResource
 Логика для работы с датами была вынесена в отдельный метод из-за специфики конвертации и сравнения типа date и datetime на backend и frontent.
 
 ```php
-public function showWhenDate(
+showWhenDate(
     string $column,
     mixed $operator = null,
     mixed $value = null
-): static
+)
 ```
 
 - `$column` - имя поля с датой, от которого зависит отображение,
@@ -1226,12 +1235,10 @@ Text::make('Parts')
 Json::make('Attributes', 'attributes')->fields([
     Text::make('Size'),
     Text::make('Parts')
-        ->showWhen('category_id', 3)
-    ,
+        ->showWhen('category_id', 3),
     Json::make('Settings', 'settings')->fields([
         Text::make('Width')
-            ->showWhen('category_id', 3)
-        ,
+            ->showWhen('category_id', 3),
         Text::make('Height'),
     ])
 ]),
@@ -1244,7 +1251,7 @@ Json::make('Attributes', 'attributes')->fields([
 Методы `showWhen()` и `showWhenDate()` могут быть вызваны несколько раз для одного поля, что позволяет задать несколько условий отображения.
 
 ```php
-BelongsTo::make('Category', 'category', , resource: CategoryResource::class)
+BelongsTo::make('Category', 'category', resource: CategoryResource::class)
     ->showWhenDate('created_at', '>', '2024-08-05 10:00')
     ->showWhenDate('created_at', '<', '2024-08-05 19:00')
 ```

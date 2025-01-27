@@ -322,6 +322,7 @@ Basic HTML attributes such as `required`, `disabled`, and `readonly` should be s
 ```php
 required(Closure|bool|null $condition = null)
 ```
+
 ```php
 Text::make('Title')->required()
 ```
@@ -332,6 +333,7 @@ Text::make('Title')->required()
 ```php
 disabled(Closure|bool|null $condition = null)
 ```
+
 ```php
 Text::make('Title')->disabled()
 ```
@@ -342,6 +344,7 @@ Text::make('Title')->disabled()
 ```php
 readonly(Closure|bool|null $condition = null)
 ```
+
 ```php
 Text::make('Title')->readonly()
 ```
@@ -354,7 +357,10 @@ To specify any other attributes, the `customAttributes()` method is used.
 > Fields are components, read more about attributes in the section [Component Attributes](/docs/{{version}}/components/attributes).
 
 ```php
-customAttributes(array $attributes, bool $override = false)
+customAttributes(
+    array $attributes,
+    bool $override = false
+)
 ```
 
 - `$attributes` - an array of attributes,
@@ -388,7 +394,8 @@ Password::make('Title')
 To add a wrapper for the value of the `name` attribute, the `wrapName()` method is used.
 
 ```php
-Text::make('Name')->wrapName('options')
+Text::make('Name')
+    ->wrapName('options')
 ```
 
 As a result, the name attribute will look like `<input name="options[name]>`. This is especially useful for setting up filters.
@@ -409,9 +416,13 @@ File::make('image')
 To change the name attribute of these fields, the `virtualName()` method is used.
 
 ```php
-File::make('image')->virtualColumn('image_1')
+File::make('image')
+    ->virtualColumn('image_1')
+
 // ...
-File::make('image')->virtualColumn('image_2')
+
+File::make('image')
+    ->virtualColumn('image_2')
 ```
 
 Then, for example in the `onApply()` method, we can handle these fields as we see fit.
@@ -430,11 +441,8 @@ default(mixed $default)
 ```php
 Text::make('Name')
     ->default('Default value')
-```
 
-or
-
-```php
+// or
 Enum::make('Status')
     ->attach(ColorEnum::class)
     ->default(ColorEnum::from('B')->value)
@@ -489,7 +497,7 @@ If you need to access a field just before rendering, you can use the `onBeforeRe
 /**
  * @param  Closure(static $ctx): void  $onBeforeRender
  */
-public function onBeforeRender(Closure $onBeforeRender)
+onBeforeRender(Closure $onBeforeRender)
 ```
 
 ```php
@@ -539,16 +547,14 @@ Text::make('Title')
 Components can be displayed conditionally using the `canSee()` method.
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 Text::make('Name')
     ->canSee(function (Text $field) {
         return $field->toValue() !== 'hide';
     })
-```
-or for relationship fields:
 
-```php
-use MoonShine\Laravel\Fields\Relationships\BelongsTo;
-
+// or for relationship fields
 BelongsTo::make('Item', 'item', resource: ItemResource::class)
     ->canSee(function (Comment $comment, BelongsTo $field) {
         // your condition
@@ -569,7 +575,10 @@ when(
 use MoonShine\UI\Fields\Field;
 
 Text::make('Slug')
-    ->when(fn() => true, fn(Field $field) => $field->locked())
+    ->when(
+        fn() => true,
+        fn(Field $field) => $field->locked()
+    )
 ```
 
 The `unless()` method is the opposite of the `when()` method.
@@ -619,7 +628,7 @@ To perform actions before "apply", you can use the `onBeforeApply()` method.
 /**
  * @param  Closure(mixed, mixed, FieldContract): static  $onBeforeApply
  */
-function onBeforeApply(Closure $onBeforeApply)
+onBeforeApply(Closure $onBeforeApply)
 ```
 
 To perform actions after "apply", you can use the `onAfterApply()` method.
@@ -628,7 +637,7 @@ To perform actions after "apply", you can use the `onAfterApply()` method.
 /**
  * @param  Closure(mixed, mixed, FieldContract): static  $onBeforeApply
  */
-function onAfterApply(Closure $onBeforeApply)
+onAfterApply(Closure $onBeforeApply)
 ```
 
 #### Global Definition of Apply Logic
@@ -661,7 +670,7 @@ final class FileModelApply implements ApplyContract
         return function (mixed $item) use ($field): mixed {
             $requestValue = $field->getRequestValue();
 
-            $newValue = // ..
+            $newValue = // ...
 
             return data_set($item, $field->getColumn(), $newValue);
         };
@@ -786,7 +795,7 @@ onChangeUrl(
     HttpMethod $method = HttpMethod::GET,
     array $events = [],
     ?string $selector = null,
-    ?AsyncCallback $callback = null,
+    ?AsyncCallback $callback = null
 )
 ```
 
@@ -821,7 +830,7 @@ onChangeMethod(
   array $events = [],
   ?AsyncCallback $callback = null,
   ?PageContract $page = null,
-  ?ResourceContract $resource = null,
+  ?ResourceContract $resource = null
 )
 ```
 
@@ -880,7 +889,7 @@ The `fromRaw()` method allows adding a closure to obtain the final value from th
  * @param  Closure(mixed $raw, static): mixed  $callback
  * @return $this
  */
-    fromRaw(Closure $callback)
+fromRaw(Closure $callback)
 ```
 
 ```php
@@ -928,7 +937,7 @@ The `updateOnPreview()` method allows editing a field in preview mode.
 After making changes (onChange event), the value of the field will be saved for the specific item.
 
 ```php
-public function updateOnPreview(
+updateOnPreview(
     ?Closure $url = null,
     ?ResourceContract $resource = null,
     mixed $condition = null,
@@ -954,7 +963,7 @@ Text::make('Name')->updateOnPreview()
 `withUpdateRow()` works similarly to `updateOnPreview()`, but can completely update the row in the table without reloading the page.
 
 ```php
-public function withUpdateRow(string $component)
+withUpdateRow(string $component)
 ```
 
 - `$component` - the name of the component that contains this row.
@@ -974,7 +983,7 @@ Text::make('Name')->updateOnPreview(url: '/my/url')->withUpdateRow()
 The `updateInPopover()` method works similarly to the `withUpdateRow()` method, but now all values for editing appear in a separate window.
 
 ```php
-public function updateInPopover(string $component)
+updateInPopover(string $component)
 ```
 
 - `$component` - the name of the component that contains this row.
@@ -1136,7 +1145,7 @@ The `showWhen()` and `showWhenDate()` methods are used for this.
 The `showWhen()` method allows setting a display condition for a field based on the value of another field.
 
 ```php
-public function showWhen(
+showWhen(
     string $column,
     mixed $operator = null,
     mixed $value = null
@@ -1183,11 +1192,11 @@ The `showWhenDate()` method allows setting a display condition for a field based
 The logic for working with dates has been separated into a specific method due to the specifics of converting and comparing date and datetime types on both the backend and frontend.
 
 ```php
-public function showWhenDate(
+showWhenDate(
     string $column,
     mixed $operator = null,
     mixed $value = null
-): static
+)
 ```
 
 - `$column` - the name of the date field on which the display depends,
@@ -1226,12 +1235,10 @@ In this example, the field "Parts" will only be displayed if the value of the ne
 Json::make('Attributes', 'attributes')->fields([
     Text::make('Size'),
     Text::make('Parts')
-        ->showWhen('category_id', 3)
-    ,
+        ->showWhen('category_id', 3),
     Json::make('Settings', 'settings')->fields([
         Text::make('Width')
-            ->showWhen('category_id', 3)
-        ,
+            ->showWhen('category_id', 3),
         Text::make('Height'),
     ])
 ]),
