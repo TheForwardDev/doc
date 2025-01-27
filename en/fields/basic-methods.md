@@ -59,18 +59,25 @@ To create an instance of a field, the static method `make()` is used.
 use Closure;
 use MoonShine\UI\Fields\Text;
 
-Text::make(Closure|string|null $label = null, ?string $column = null, ?Closure $formatted = null)
+Text::make(
+    Closure|string|null $label = null,
+    ?string $column = null,
+    ?Closure $formatted = null
+)
 ```
 
-- `$label` - the label or title of the field.
-- `$column` - the relationship between the database column and the `name` attribute of the input field (e.g.: `description` > `<input name="description">`). If this field is a relationship, the name of the relationship is used (e.g.: countries).
-- `$formatted` - a closure for formatting the field's value in preview mode (for BelongsTo and BelongsToMany, formats values for selection).
+- `$label` - field title,
+- `$column` - the relationship between the database column and the `name` attribute of the input field (e.g.: `description` > `<input name="description">`).
+If this field is a relationship, the name of the relationship is used (e.g.: countries),
+- `$formatted` - a closure for formatting the field's value in preview mode (for `BelongsTo` and `BelongsToMany`, formats values for selection).
 
+> [!NOTE]
 > HTML tags can be added in `$label`, they will not be escaped.
 
+> [!NOTE]
 > If `$column` is not specified, the database field will be automatically determined based on `$label` (only for English).
 
-Example of a closure `$formatted` for formatting a value.
+Example of a closure `$formatted` for formatting a value:
 
 ```php
 use MoonShine\UI\Fields\Text;
@@ -82,7 +89,8 @@ Text::make(
 )
 ```
 
-> Fields that do not support `formatted`: `Json`, `File`, `Range`, `RangeSlider`, `DateRange`, `Select`, `Enum`, `HasOne`, `HasMany`.
+> [!NOTE]
+> Fields that do not support `$formatted`: `Json`, `File`, `Range`, `RangeSlider`, `DateRange`, `Select`, `Enum`, `HasOne`, `HasMany`.
 
 <a name="view"></a>
 ## Field Display
@@ -90,7 +98,7 @@ Text::make(
 <a name="label"></a>
 ### Label
 
-If you need to change the `Label` after creating an instance of the field, you can use the `setLabel()` method.
+If you need to change the label after creating an instance of the field, you can use the `setLabel()` method.
 
 ```php
 setLabel(Closure|string $label)
@@ -108,7 +116,7 @@ Slug::make('Slug')
     )
 ```
 
-To translate `Label`, you must pass a translation key as the name and add the `translatable()` method.
+To translate label, you must pass a translation key as the name and add the `translatable()` method.
 
 ```php
 translatable(string $key = '')
@@ -116,17 +124,11 @@ translatable(string $key = '')
 
 ```php
 Text::make('ui.Title')->translatable()
-```
 
-or
-
-```php
+// or
 Text::make('Title')->translatable('ui')
-```
 
-or
-
-```php
+// or
 Text::make(fn() => __('Title'))
 ```
 
@@ -141,7 +143,7 @@ Text::make('Name')
 
 #### beforeLabel()
 
-To display the Label after the input field, you can use the `beforeLabel()` method.
+To display the label after the input field, you can use the `beforeLabel()` method.
 
 ```php
 Text::make('Name')
@@ -196,7 +198,12 @@ badge(string|Color|Closure|null $color = null)
 
 Available colors:
 
-<span style="background-color: #7843e9; padding: 5px; border-radius: 0.375rem">primary</span> <span style="background-color: #ec4176; padding: 5px; border-radius: 0.375rem">secondary</span> <span style="background-color: #00aa00; padding: 5px; border-radius: 0.375rem">success</span> <span style="background-color: #ffdc2a; padding: 5px; border-radius: 0.375rem; color: rgb(139 116 0 / 1);">warning</span> <span style="background-color: #e02d2d; padding: 5px; border-radius: 0.375rem">error</span> <span style="background-color: #0079ff; padding: 5px; border-radius: 0.375rem">info</span>
+<span style="background-color: #7843e9; padding: 5px; border-radius: 0.375rem">primary</span>
+<span style="background-color: #ec4176; padding: 5px; border-radius: 0.375rem">secondary</span>
+<span style="background-color: #00aa00; padding: 5px; border-radius: 0.375rem">success</span>
+<span style="background-color: #ffdc2a; padding: 5px; border-radius: 0.375rem; color: rgb(139 116 0 / 1);">warning</span>
+<span style="background-color: #e02d2d; padding: 5px; border-radius: 0.375rem">error</span>
+<span style="background-color: #0079ff; padding: 5px; border-radius: 0.375rem">info</span>
 
 <span style="background-color: rgb(243 232 255 / 1); color: rgb(107 33 168 / 1); padding: 5px; border-radius: 0.375rem">purple</span>
 <span style="background-color: rgb(252 231 243 / 1); color: rgb(157 23 77 / 1); padding: 5px; border-radius: 0.375rem">pink</span>
@@ -208,15 +215,12 @@ Available colors:
 
 ```php
 use MoonShine\Support\Enums\Color;
+use MoonShine\UI\Fields\Field;
 
 Text::make('Title')
     ->badge(Color::PRIMARY)
-```
 
-or
-
-```php
-use MoonShine\UI\Fields\Field;
+// or
 
 Text::make('Title')
     ->badge(fn($status, Field $field) => 'green')
@@ -241,7 +245,7 @@ Text::make('Title')
 
 Fields when displayed in forms use a special wrapper for headers, hints, links, etc.
 Sometimes there may arise a situation when it is necessary to display a field without additional elements.
-The `withoutWrapper()` method allows disabling the creation of a *wrapper*.
+The `withoutWrapper()` method allows disabling the creation of a wrapper.
 
 ```php
 withoutWrapper(mixed $condition = null)
@@ -273,9 +277,10 @@ use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
 BelongsTo::make('Author')->sortable('author_id'),
 
-Text::make('Title')->sortable(function (Builder $query, string $column, string $direction) {
-    $query->orderBy($column, $direction);
-})
+Text::make('Title')
+    ->sortable(function (Builder $query, string $column, string $direction) {
+        $query->orderBy($column, $direction);
+    })
 ```
 
 <a name="view-modes"></a>
@@ -346,14 +351,16 @@ Text::make('Title')->readonly()
 To specify any other attributes, the `customAttributes()` method is used.
 
 > [!NOTE]
-> Fields are components, read more about attributes in the section [Component Attributes](/docs/{{version}}/components/attributes)
+> Fields are components, read more about attributes in the section [Component Attributes](/docs/{{version}}/components/attributes).
 
 ```php
 customAttributes(array $attributes, bool $override = false)
 ```
 
-- `$attributes` - an array of attributes
-- `$override` - to add attributes to the field, use `merge`. If the attribute you want to add to the field already exists, it will not be added. Setting `$override = true` allows changing this behavior and overwriting the already added attribute.
+- `$attributes` - an array of attributes,
+- `$override` - to add attributes to the field, use `merge`.
+If the attribute you want to add to the field already exists, it will not be added.
+Setting `$override = true` allows changing this behavior and overwriting the already added attribute.
 
 ```php
 Password::make('Title')
@@ -378,7 +385,7 @@ Password::make('Title')
 ### Modifying the "name" Attribute
 
 #### wrapName
-To add a wrapper for the value of the `name` attribute, the `wrapName` method is used.
+To add a wrapper for the value of the `name` attribute, the `wrapName()` method is used.
 
 ```php
 Text::make('Name')->wrapName('options')
@@ -392,12 +399,14 @@ Sometimes it is necessary to store two values in one input field.
 For example, under a display condition one of the fields may become invisible but still exist in the DOM and be sent with the request.
 
 ```php
-File::make('image') // this is displayed in DOM under one condition
+// this is displayed in DOM under one condition
+File::make('image')
 
-File::make('image') // this is displayed in DOM under another condition
+// this is displayed in DOM under another condition
+File::make('image')
 ```
 
-To change the name attribute of these fields, the `virtualName` method is used.
+To change the name attribute of these fields, the `virtualName()` method is used.
 
 ```php
 File::make('image')->virtualColumn('image_1')
@@ -405,7 +414,7 @@ File::make('image')->virtualColumn('image_1')
 File::make('image')->virtualColumn('image_2')
 ```
 
-Then, for example in the onApply method, we can handle these fields as we see fit.
+Then, for example in the `onApply()` method, we can handle these fields as we see fit.
 
 <a name="field-value"></a>
 ## Modifying Field Value
@@ -448,14 +457,15 @@ Password::make('Title')
 <a name="custom-view"></a>
 ### Changing Display
 
-When you need to change the view using the fluent interface, you can use the `customView()` method.
+When you need to change the view using the _fluent interface_, you can use the `customView()` method.
 
 ```php
 customView(string $view, array $data = [])
 ```
 
 ```php
-Text::make('Title')->customView('fields.my-custom-input')
+Text::make('Title')
+    ->customView('fields.my-custom-input')
 ```
 
 The `changePreview()` method allows overriding the view for preview (everywhere except the form).
@@ -479,13 +489,14 @@ If you need to access a field just before rendering, you can use the `onBeforeRe
 /**
  * @param  Closure(static $ctx): void  $onBeforeRender
  */
-public function onBeforeRender(Closure $onBeforeRender): static
+public function onBeforeRender(Closure $onBeforeRender)
 ```
 
 ```php
-Text::make('Thumbnail')->onBeforeRender(function(Text $ctx) {
-    // ...
-})
+Text::make('Thumbnail')
+    ->onBeforeRender(function(Text $ctx) {
+        // ...
+    })
 ```
 
 <a name="request-value-resolver"></a>
@@ -500,7 +511,8 @@ The `requestValueResolver()` method allows overriding the logic for obtaining th
 requestValueResolver(Closure $resolver)
 ```
 
-> Relationship fields do not support the `requestValueResolver` method.
+> [!NOTE]
+> Relationship fields do not support the `requestValueResolver()` method.
 
 <a name="before-and-after-render"></a>
 ### Before and After Rendering
@@ -541,13 +553,16 @@ BelongsTo::make('Item', 'item', resource: ItemResource::class)
     ->canSee(function (Comment $comment, BelongsTo $field) {
         // your condition
     })
-,
 ```
 
-The `when()` method implements a *fluent interface* and will execute the callback when the first argument passed to the method is true.
+The `when()` method implements a _fluent interface_ and will execute the callback when the first argument passed to the method is true.
 
 ```php
-when($value = null, ?callable $callback = null, ?callable $default = null)
+when(
+    $value = null,
+    ?callable $callback = null,
+    ?callable $default = null
+)
 ```
 
 ```php
@@ -560,7 +575,11 @@ Text::make('Slug')
 The `unless()` method is the opposite of the `when()` method.
 
 ```php
-unless($value = null, ?callable $callback = null, ?callable $default = null)
+unless(
+    $value = null,
+    ?callable $callback = null,
+    ?callable $default = null
+)
 ```
 
 <a name="apply"></a>
@@ -628,6 +647,7 @@ php artisan moonshine:apply FileModelApply
 ```php
 use MoonShine\Contracts\UI\ApplyContract;
 use MoonShine\Contracts\UI\FieldContract;
+
 /**
  * @implements ApplyContract<File>
  */
@@ -690,10 +710,15 @@ class MoonShineServiceProvider extends ServiceProvider
 <a name="fill"></a>
 ### Fill
 
-Fields can be filled with values using the `fill()` method. You can read more details about the filling process in the section [Basics > Change Fill](/docs/{{version}}/fields/index#change-fill).
+Fields can be filled with values using the `fill()` method.
+You can read more details about the filling process in the section [Basics > Change Fill](/docs/{{version}}/fields/index#change-fill).
 
 ```php
-fill(mixed $value = null, ?DataWrapperContract $casted = null, int $index = 0)
+fill(
+    mixed $value = null,
+    ?DataWrapperContract $casted = null,
+    int $index = 0
+)
 ```
 
 ```php
@@ -726,7 +751,7 @@ To apply logic to an already filled field, you can use the `afterFill()` method.
 
 > [!NOTE]
 > A similar logic method [when](#conditional-methods) triggers when creating a field instance, when it is not yet filled.
-> The `afterFill` method works with an already filled field.
+> The `afterFill()` method works with an already filled field.
 
 ```php
 Select::make('Links')->options([
@@ -750,7 +775,8 @@ Select::make('Links')->options([
 
 Using the `onChangeMethod()` and `onChangeUrl()` methods, you can add logic when field values change.
 
-> The methods `onChangeUrl()` or `onChangeMethod()` are present on all fields except for HasOne and `HasMany` relationship fields.
+> [!NOTE]
+> The methods `onChangeUrl()` or `onChangeMethod()` are present on all fields except for `HasOne` and `HasMany` relationship fields.
 
 #### onChangeUrl()
 
@@ -891,7 +917,7 @@ Enum::make('Status')
 ## Editing in Preview Mode
 
 > [!NOTE]
-> Editing in preview mode is available for `Text`, `Number`, `Checkbox`, `Select`, `Date` fields.
+> Editing in preview mode is available for fields `Text`, `Number`, `Checkbox`, `Select` and `Date`.
 
 For editing fields in preview mode, such as in a table or any other `IterableComponent`, there are the following methods.
 
@@ -958,7 +984,7 @@ Text::make('Name')->updateInPopover('index-table-post-resource')
 ```
 
 > [!NOTE]
-> The methods `updateOnPreview`, `withUpdateRow`, and `updateInPopover` create the necessary endpoints and pass them to the `setUpdateOnPreviewUrl()` method, which works with [onChangeUrl()](#onchangeurl).
+> The methods `updateOnPreview()`, `withUpdateRow()` and `updateInPopover()` create the necessary endpoints and pass them to the `setUpdateOnPreviewUrl()` method, which works with [onChangeUrl()](#on-change).
 
 <a name="assets"></a>
 ## Assets
@@ -1014,7 +1040,7 @@ protected function booted(): void
 <a name="macroable"></a>
 ## Macroable Trait
 
-All fields have access to the `Illuminate\Support\Traits\Macroable` trait with the `mixin` and `macro` methods.
+All fields have access to the `Illuminate\Support\Traits\Macroable` trait with the `mixin()` and `macro()` methods.
 You can use this trait to extend the functionality of fields by adding new features without the need for inheritance.
 
 ```php
@@ -1023,12 +1049,8 @@ use MoonShine\UI\Fields\Field;
 Field::macro('myMethod', fn() => /*implementation*/)
 
 Text::make()->myMethod()
-```
 
-or
-
-```php
-use MoonShine\UI\Fields\Field;
+// or
 
 Field::mixin(new MyNewMethods())
 ```
@@ -1078,7 +1100,7 @@ The slug will be generated during the input process.
 > [!WARNING]
 > A reactive field can change the state of other fields but does not change its own state!
 
-To change the state of the field initiating reactivity, it is convenient to use the parameters of the `callback` function.
+To change the state of the field initiating reactivity, it is convenient to use the parameters of the callback function.
 
 ```php
 use MoonShine\UI\Fields\Field;
@@ -1105,19 +1127,20 @@ Select::make('Category', 'category_id')
 <a name="show-when"></a>
 ## Dynamic Display
 
-To change the display of fields depending on the values of other fields in real-time, without reloading the page and making server requests, the `showWhen` and `showWhenDate` methods are used.
+Fields can be hidden or shown dynamically, depending on the values of other fields in real time without reloading the page and making requests to the server.
+The `showWhen()` and `showWhenDate()` methods are used for this.
 
 <a name="show-when"></a>
 ### showWhen Method
 
-The `showWhen` method allows setting a display condition for a field based on the value of another field.
+The `showWhen()` method allows setting a display condition for a field based on the value of another field.
 
 ```php
 public function showWhen(
     string $column,
     mixed $operator = null,
     mixed $value = null
-): static
+)
 ```
 
 - `$column` - the name of the field on which the display depends,
@@ -1156,7 +1179,8 @@ class ArticleResource extends ModelResource
 <a name="show-when-date"></a>
 ### showWhenDate Method
 
-The `showWhenDate` method allows setting a display condition for a field based on the value of a date-type field. The logic for working with dates has been separated into a specific method due to the specifics of converting and comparing date and datetime types on both the backend and frontend.
+The `showWhenDate()` method allows setting a display condition for a field based on the value of a date-type field.
+The logic for working with dates has been separated into a specific method due to the specifics of converting and comparing date and datetime types on both the backend and frontend.
 
 ```php
 public function showWhenDate(
@@ -1186,7 +1210,7 @@ In this example, the field "Content" will only be displayed if the value of the 
 <a name="nested-fields"></a>
 ### Nested Fields
 
-The `showWhen` and `showWhenDate` methods support working with nested fields, such as working with the `Json` field.
+The `showWhen()` and `showWhenDate()` methods support working with nested fields, such as working with the `Json` field.
 Point notation is used to access nested fields.
 
 ```php
@@ -1196,7 +1220,7 @@ Text::make('Parts')
 
 In this example, the field "Parts" will only be displayed if the value of the nested field "size" in the second element of the array "attributes" is not equal to 2.
 
-showWhen also works with nested `Json` fields:
+`showWhen()` also works with nested `Json` fields:
 
 ```php
 Json::make('Attributes', 'attributes')->fields([
@@ -1217,7 +1241,7 @@ In this example, the entire column `Parts` inside `attributes` and the entire co
 <a name="multiple-conditions"></a>
 ### Multiple Conditions
 
-The `showWhen` and `showWhenDate` methods can be called multiple times for the same field, allowing the specification of several display conditions.
+The `showWhen()` and `showWhenDate()` methods can be called multiple times for the same field, allowing the specification of several display conditions.
 
 ```php
 BelongsTo::make('Category', 'category', resource: CategoryResource::class)
