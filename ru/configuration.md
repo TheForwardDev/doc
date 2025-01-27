@@ -82,7 +82,7 @@ return [
 ```
 
 > [!NOTE]
-> `use_migrations`, `use_notifications`, `use_database_notifications` должны присутствовать всегда либо в `moonshine.php`, либо в `MoonShineServiceProvider`
+> `use_migrations`, `use_notifications`, `use_database_notifications` должны присутствовать всегда либо в `moonshine.php`, либо в `MoonShineServiceProvider`.
 
 > [!NOTE]
 > Все остальные параметры, не указанные в файле, будут использовать значения по умолчанию.
@@ -176,15 +176,14 @@ $config
     ->dir(dir: 'app/MoonShine', namespace: 'App\MoonShine')
     ->useMigrations()
     ->useNotifications()
-    ->useDatabaseNotifications()
-;
+    ->useDatabaseNotifications();
 ```
 ~~~
 
 <a name="title"></a>
 ### Заголовок
 
-Мета заголовок на страницах (`<title>Мое приложение</title>`)
+Мета заголовок на страницах (`<title>Мое приложение</title>`).
 
 ~~~tabs
 tab: config/moonshine.php
@@ -230,9 +229,10 @@ tab: config/moonshine.php
 ```
 tab: app/Providers/MoonShineServiceProvider.php
 ```php
-$config->middleware(['web', 'auth'])
-       ->addMiddleware('custom-middleware')
-       ->exceptMiddleware(['auth']);
+$config
+    ->middleware(['web', 'auth'])
+    ->addMiddleware('custom-middleware')
+    ->exceptMiddleware(['auth']);
 ```
 ~~~
 
@@ -273,7 +273,7 @@ $config->domain('admin.example.com');
 
 #### 404
 
-Вы можете заменить `Exception` на собственный
+Вы можете заменить `Exception` на собственный.
 
 ~~~tabs
 tab: config/moonshine.php
@@ -453,7 +453,7 @@ $config->cacheDriver('redis');
 <a name="layout"></a>
 ### Layout
 
-Шаблон используемый по умолчанию
+Шаблон используемый по умолчанию.
 
 ~~~tabs
 tab: config/moonshine.php
@@ -665,8 +665,7 @@ class MoonShineServiceProvider extends ServiceProvider
             ->cacheDriver('redis')
             ->authorizationRules(function(ResourceContract $ctx, mixed $user, Ability $ability, mixed $data): bool {
                  return true;
-            })
-        ;
+            });
 
         // ...
     }
