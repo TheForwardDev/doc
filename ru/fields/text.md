@@ -21,7 +21,7 @@
 
 Содержит все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
-Поле `Text` - это базовое текстовое поле ввода в MoonShine. Это поле эквивалент `<input type="text">`
+Поле `Text` - это базовое текстовое поле ввода в **MoonShine**. Это поле эквивалент `<input type="text">`
 
 ~~~tabs
 tab: Class
@@ -165,6 +165,7 @@ Text::make('Защищенное поле', 'protected_field')
     ->locked()
 ```
 
+<a name="suffix"></a>
 ### Суффикс
 
 Метод `suffix()` добавляет суффикс к полю ввода.
@@ -181,7 +182,7 @@ Text::make('Домен', 'domain')
 ```
 
 <a name="preview-edit"></a>
-### Редактирование в режиме preview
+## Редактирование в режиме preview
 
 Данному полю доступно [редактирование в режиме preview](/docs/{{version}}/fields/basic-methods#preview-edit).
 
