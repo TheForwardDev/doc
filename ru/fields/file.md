@@ -43,7 +43,7 @@ tab: Blade
 ```
 ~~~
 
-![File](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/file.png#light)
+![File](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/file_light.png#light)
 ![File](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/file_dark.png#dark)
 
 > [!NOTE]
