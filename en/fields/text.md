@@ -21,7 +21,7 @@
 
 Contains all [Basic methods](/docs/{{version}}/fields/basic-methods).
 
-The `Text` field is a basic text input field in MoonShine. This field is equivalent to `<input type="text">`
+The `Text` field is a basic text input field in **MoonShine**. This field is equivalent to `<input type="text">`
 
 ~~~tabs
 tab: Class
@@ -165,6 +165,7 @@ Text::make('Protected field', 'protected_field')
     ->locked()
 ```
 
+<a name="suffix"></a>
 ### Suffix
 
 The `suffix()` method adds a suffix to the input field.
@@ -181,7 +182,7 @@ Text::make('Domain', 'domain')
 ```
 
 <a name="preview-edit"></a>
-### Editing in preview mode
+## Editing in preview mode
 
 This field supports [editing in preview mode](/docs/{{version}}/fields/basic-methods#preview-edit).
 
