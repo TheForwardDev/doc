@@ -25,7 +25,7 @@ make(
 ~~~tabs
 tab: Class
 ```php
-use MoonShine\UI\Components\Layout\Link;
+use MoonShine\UI\Components\Link;
 
 Link::make('https://moonshine-laravel.com', 'Moonshine')
 ```
