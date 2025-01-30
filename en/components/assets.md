@@ -18,5 +18,5 @@ tab: Blade
 ```
 ~~~
 
-> [!TIP]
-> Parent component: [head](/docs/{{version}}/components/head)
+> [!NOTE]
+> Parent component: [Head](/docs/{{version}}/components/head).
