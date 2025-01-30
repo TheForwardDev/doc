@@ -296,8 +296,7 @@ Text::make('Title')
 Чтобы поле вне зависимости от контекста всегда работало в режиме "Default" (отображение "input" поля), необходимо использовать метод `defaultMode()`.
 
 ```php
-Text::make('Title')
-    ->defaultMode()
+Text::make('Title')->defaultMode()
 ```
 
 #### Режим "Preview"

@@ -296,8 +296,7 @@ You can read more about view modes in the section [Basics > Change View Mode](/d
 To ensure that the field always works in "Default" mode (render as "input" field) regardless of context, use the `defaultMode()` method.
 
 ```php
-Text::make('Title')
-    ->defaultMode()
+Text::make('Title')->defaultMode()
 ```
 
 #### Preview Mode
