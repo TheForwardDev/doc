@@ -14,8 +14,8 @@ To highlight content, you can use the `Box` component. The component is perfect 
 
 ```php
 make(
-Closure|string|iterable $labelOrComponents = [],
-iterable $components = [],
+    Closure|string|iterable $labelOrComponents = [],
+    iterable $components = []
 )
 ```
 
@@ -79,7 +79,7 @@ tab: Blade
 <a name="icon"></a>
 ## Icon
 
-To display an icon in the box, use the `icon` method.
+To display an icon in the box, use the `icon()` method.
 
 ~~~tabs
 tab: Class
