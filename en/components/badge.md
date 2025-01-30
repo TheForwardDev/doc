@@ -7,7 +7,10 @@ The following badges are available:
 ~~~tabs
 tab: Class
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Support\Enums\Color;
+use MoonShine\UI\Components\Badge;
 
 Badge::make('Primary', Color::PRIMARY);
 Badge::make('Secondary', Color::SECONDARY);
