@@ -56,10 +56,7 @@
 Для создания экземпляра поля используется статический метод `make()`.
 
 ```php
-use Closure;
-use MoonShine\UI\Fields\Text;
-
-Text::make(
+make(
     Closure|string|null $label = null,
     ?string $column = null,
     ?Closure $formatted = null
@@ -105,6 +102,8 @@ setLabel(Closure|string $label)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Slug;
 
@@ -125,10 +124,10 @@ translatable(string $key = '')
 ```php
 Text::make('ui.Title')->translatable()
 
-// или
 Text::make('Title')->translatable('ui')
+```
 
-// или
+```php
 Text::make(fn() => __('Title'))
 ```
 
@@ -215,12 +214,13 @@ badge(string|Color|Closure|null $color = null)
 
 ```php
 use MoonShine\Support\Enums\Color;
-use MoonShine\UI\Fields\Field;
 
 Text::make('Title')
     ->badge(Color::PRIMARY)
+```
 
-// или
+```php
+use MoonShine\UI\Fields\Field;
 
 Text::make('Title')
     ->badge(fn($status, Field $field) => 'green')
@@ -237,7 +237,7 @@ horizontal()
 
 ```php
 Text::make('Title')
-    ->horizontal(),
+    ->horizontal()
 ```
 
 <a name="wrapper"></a>
@@ -272,10 +272,14 @@ Text::make('Title')->sortable()
 Метод `sortable()` в качестве параметра может принимать название поля в базе данных или замыкание.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use MoonShine\UI\Fields\Text;
 
-BelongsTo::make('Author')->sortable('author_id'),
+BelongsTo::make('Author')
+    ->sortable('author_id'),
 
 Text::make('Title')
     ->sortable(function (Builder $query, string $column, string $direction) {
@@ -292,7 +296,8 @@ Text::make('Title')
 Чтобы поле вне зависимости от контекста всегда работало в режиме "Default" (отображение "input" поля), необходимо использовать метод `defaultMode()`.
 
 ```php
-Text::make('Title')->defaultMode()
+Text::make('Title')
+    ->defaultMode()
 ```
 
 #### Режим "Preview"
@@ -441,8 +446,9 @@ default(mixed $default)
 ```php
 Text::make('Name')
     ->default('Default value')
+```
 
-// или
+```php
 Enum::make('Status')
     ->attach(ColorEnum::class)
     ->default(ColorEnum::from('B')->value)
@@ -479,13 +485,15 @@ Text::make('Title')
 Метод `changePreview()` позволяет переопределить view для превью (везде кроме формы).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\UI\Components\Thumbnails;
 use MoonShine\UI\Fields\Text;
 
 Text::make('Thumbnail')
-  ->changePreview(function (?string $value, Text $field) {
-      return Thumbnails::make($value);
-  })
+    ->changePreview(function (?string $value, Text $field) {
+        return Thumbnails::make($value);
+    })
 ```
 
 <a name="on-before-render"></a>
@@ -606,6 +614,8 @@ onApply(Closure $onApply)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use MoonShine\UI\Fields\Text;
@@ -865,7 +875,9 @@ public function someMethod(MoonShineRequest $request): void
 ```php
 changeRender(Closure $callback)
 ```
-В данном поле Select трансформируется в текст:
+
+В данном поле `Select` трансформируется в текст:
+
 ```php
 Select::make('Links')->options([
     '/images/1.png' => 'Picture 1',
@@ -941,7 +953,7 @@ updateOnPreview(
     ?Closure $url = null,
     ?ResourceContract $resource = null,
     mixed $condition = null,
-    array $events = [],
+    array $events = []
 )
 ```
 
@@ -954,7 +966,8 @@ updateOnPreview(
 > Параметры не являются обязательными, но должны быть заданы, если поле находится вне ресурса или же вы хотите указать полностью свой endpoint (тогда и ресурс не нужен).
 
 ```php
-Text::make('Name')->updateOnPreview()
+Text::make('Name')
+    ->updateOnPreview()
 ```
 
 <a name="with-update-row"></a>
@@ -969,13 +982,16 @@ withUpdateRow(string $component)
 - `$component` - имя компонента, в котором присутствует данная строка.
 
 ```php
-Text::make('Name')->withUpdateRow('index-table-post-resource')
+Text::make('Name')
+    ->withUpdateRow('index-table-post-resource')
 ```
 
 `withUpdateRow()` может использовать все параметры `updateOnPreview()`, например для изменения url запроса, для этого их необходимо вызвать вместе.
 
 ```php
-Text::make('Name')->updateOnPreview(url: '/my/url')->withUpdateRow()
+Text::make('Name')
+    ->updateOnPreview(url: '/my/url')
+    ->withUpdateRow()
 ```
 
 ### updateInPopover
@@ -989,7 +1005,8 @@ updateInPopover(string $component)
 - `$component` - имя компонента, в котором присутствует данная строка.
 
 ```php
-Text::make('Name')->updateInPopover('index-table-post-resource')
+Text::make('Name')
+    ->updateInPopover('index-table-post-resource')
 ```
 
 > [!NOTE]
@@ -1058,9 +1075,9 @@ use MoonShine\UI\Fields\Field;
 Field::macro('myMethod', fn() => /*реализация*/)
 
 Text::make()->myMethod()
+```
 
-// или
-
+```php
 Field::mixin(new MyNewMethods())
 ```
 

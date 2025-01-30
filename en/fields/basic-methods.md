@@ -56,10 +56,7 @@ All fields inherit the base class `Field`, which provides basic methods for work
 To create an instance of a field, the static method `make()` is used.
 
 ```php
-use Closure;
-use MoonShine\UI\Fields\Text;
-
-Text::make(
+make(
     Closure|string|null $label = null,
     ?string $column = null,
     ?Closure $formatted = null
@@ -105,6 +102,8 @@ setLabel(Closure|string $label)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Slug;
 
@@ -125,10 +124,10 @@ translatable(string $key = '')
 ```php
 Text::make('ui.Title')->translatable()
 
-// or
 Text::make('Title')->translatable('ui')
+```
 
-// or
+```php
 Text::make(fn() => __('Title'))
 ```
 
@@ -215,12 +214,13 @@ Available colors:
 
 ```php
 use MoonShine\Support\Enums\Color;
-use MoonShine\UI\Fields\Field;
 
 Text::make('Title')
     ->badge(Color::PRIMARY)
+```
 
-// or
+```php
+use MoonShine\UI\Fields\Field;
 
 Text::make('Title')
     ->badge(fn($status, Field $field) => 'green')
@@ -237,7 +237,7 @@ horizontal()
 
 ```php
 Text::make('Title')
-    ->horizontal(),
+    ->horizontal()
 ```
 
 <a name="wrapper"></a>
@@ -272,10 +272,14 @@ Text::make('Title')->sortable()
 The `sortable()` method can accept a database field name or a closure as a parameter.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use MoonShine\UI\Fields\Text;
 
-BelongsTo::make('Author')->sortable('author_id'),
+BelongsTo::make('Author')
+    ->sortable('author_id'),
 
 Text::make('Title')
     ->sortable(function (Builder $query, string $column, string $direction) {
@@ -292,7 +296,8 @@ You can read more about view modes in the section [Basics > Change View Mode](/d
 To ensure that the field always works in "Default" mode (render as "input" field) regardless of context, use the `defaultMode()` method.
 
 ```php
-Text::make('Title')->defaultMode()
+Text::make('Title')
+    ->defaultMode()
 ```
 
 #### Preview Mode
@@ -441,8 +446,9 @@ default(mixed $default)
 ```php
 Text::make('Name')
     ->default('Default value')
+```
 
-// or
+```php
 Enum::make('Status')
     ->attach(ColorEnum::class)
     ->default(ColorEnum::from('B')->value)
@@ -479,13 +485,15 @@ Text::make('Title')
 The `changePreview()` method allows overriding the view for preview (everywhere except the form).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\UI\Components\Thumbnails;
 use MoonShine\UI\Fields\Text;
 
 Text::make('Thumbnail')
-  ->changePreview(function (?string $value, Text $field) {
-      return Thumbnails::make($value);
-  })
+    ->changePreview(function (?string $value, Text $field) {
+        return Thumbnails::make($value);
+    })
 ```
 
 <a name="on-before-render"></a>
@@ -606,6 +614,8 @@ onApply(Closure $onApply)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use MoonShine\UI\Fields\Text;
@@ -865,7 +875,9 @@ To completely change the render of a field, you can use the `changeRender()` met
 ```php
 changeRender(Closure $callback)
 ```
-In this example, the Select field transforms into text:
+
+In this example, the `Select` field transforms into text:
+
 ```php
 Select::make('Links')->options([
     '/images/1.png' => 'Picture 1',
@@ -941,7 +953,7 @@ updateOnPreview(
     ?Closure $url = null,
     ?ResourceContract $resource = null,
     mixed $condition = null,
-    array $events = [],
+    array $events = []
 )
 ```
 
@@ -954,7 +966,8 @@ updateOnPreview(
 > Parameters are not mandatory but should be provided if the field is outside a resource or if you want to specify a completely custom endpoint (then the resource is not needed).
 
 ```php
-Text::make('Name')->updateOnPreview()
+Text::make('Name')
+    ->updateOnPreview()
 ```
 
 <a name="with-update-row"></a>
@@ -969,13 +982,16 @@ withUpdateRow(string $component)
 - `$component` - the name of the component that contains this row.
 
 ```php
-Text::make('Name')->withUpdateRow('index-table-post-resource')
+Text::make('Name')
+    ->withUpdateRow('index-table-post-resource')
 ```
 
 `withUpdateRow()` can use all parameters from `updateOnPreview()`, for example, to change the request url; they need to be called together.
 
 ```php
-Text::make('Name')->updateOnPreview(url: '/my/url')->withUpdateRow()
+Text::make('Name')
+    ->updateOnPreview(url: '/my/url')
+    ->withUpdateRow()
 ```
 
 ### updateInPopover
@@ -989,7 +1005,8 @@ updateInPopover(string $component)
 - `$component` - the name of the component that contains this row.
 
 ```php
-Text::make('Name')->updateInPopover('index-table-post-resource')
+Text::make('Name')
+    ->updateInPopover('index-table-post-resource')
 ```
 
 > [!NOTE]
@@ -1058,9 +1075,9 @@ use MoonShine\UI\Fields\Field;
 Field::macro('myMethod', fn() => /*implementation*/)
 
 Text::make()->myMethod()
+```
 
-// or
-
+```php
 Field::mixin(new MyNewMethods())
 ```
 
