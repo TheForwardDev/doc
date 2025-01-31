@@ -1,39 +1,26 @@
 # Body
 
-Компонент `Body` используется для создания блока `body` в **MoonShine**.
-
-Вы можете создать `Body`, используя статический метод `make()` класса `Body`.
+Компонент `Body` используется для создания тега `<body>`.
 
 ```php
 make(iterable $components = [])
 ```
-`$components` - массив компонентов, которые располагаются в заголовке.
+
+`$components` - массив компонентов.
 
 ~~~tabs
 tab: Class
 ```php
-namespace App\MoonShine\Layouts;
-
 use MoonShine\UI\Components\Layout\Body;
 
-final class MoonShineLayout extends AppLayout
-{
-    public function build(): Layout
-    {
-        return Layout::make([
-            // ...
-
-            Body::make([])
-
-            // ...
-        ]);
-    }
-}
+Body::make([
+    // ...
+])
 ```
 tab: Blade
 ```blade
 <x-moonshine::layout.body>
-Any content
+    Any content
 </x-moonshine::layout.body>
 ```
 ~~~
