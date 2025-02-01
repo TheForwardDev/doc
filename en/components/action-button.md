@@ -279,6 +279,9 @@ ActionGroup::make([
 ])
 ```
 
+> [!NOTE]
+> Learn more about [ActionGroup](/docs/{{version}}/components/action-group) component.
+
 ### Display
 
 With `ActionGroup`, you can also change the display of buttons, showing them inline or in a dropdown for space-saving.
