@@ -16,7 +16,8 @@
 
 ___
 
-Components offer a convenient mechanism for managing HTML classes, styles, and other attributes, allowing for more flexibility in configuring their behavior and appearance.
+Components offer a convenient mechanism for managing HTML classes, styles, and other attributes,
+allowing for more flexibility in configuring their behavior and appearance.
 
 <a name="set-attribute"></a>
 ## Adding
@@ -24,7 +25,10 @@ Components offer a convenient mechanism for managing HTML classes, styles, and o
 The method `setAttribute()` adds or alters a component's attribute.
 
 ```php
-setAttribute(string $name, string|bool $value)
+setAttribute(
+    string $name,
+    string|bool $value
+)
 ```
 
 - `$name` - the name of the attribute,
@@ -65,7 +69,10 @@ iterableAttributes(int $level = 0)
 The method `customAttributes()` adds or replaces multiple attributes of a component.
 
 ```php
-customAttributes(array $attributes, bool $override = false)
+customAttributes(
+    array $attributes,
+    bool $override = false
+)
 ```
 
 - `$attributes` - an array of attributes to be added,
@@ -81,7 +88,11 @@ $component->customAttributes(['data-role' => 'admin'], true);
 The method `mergeAttribute()` merges the value of an attribute with a new value, using the specified separator.
 
 ```php
-mergeAttribute(string $name, string $value, string $separator = ' ')
+mergeAttribute(
+    string $name,
+    string $value,
+    string $separator = ' '
+)
 ```
 
 - `$name` - the name of the attribute,
@@ -131,56 +142,62 @@ For convenient integration with the JavaScript framework `Alpine.js`, methods fo
     - [x-if](#x-if-link)
     - [x-show](#x-show-link)
     - [x-html](#x-html-link)
+
 ---
 
 <a name="description"></a>
 ## Description
 
-Methods that allow convenient interaction with Alpine.js
+Methods that allow convenient interaction with **Alpine.js**.
 
 <a name="x-data"></a>
 ### x-data
+
+Everything in Alpine starts with the directive `x-data`.
+The `xData()` method defines an HTML fragment as an **Alpine** component and provides reactive data to reference this component.
 
 ```php
 xData(null|array|string $data = null)
 ```
 
-Everything in Alpine starts with the directive `x-data`. The `xData` method defines an HTML fragment as an Alpine component and provides reactive data to reference this component.
-
 ```php
-Div::make([])->xData(['title' => 'Hello world']) // title is a reactive variable inside
+// title is a reactive variable inside
+Div::make([])
+    ->xData(['title' => 'Hello world'])
 ```
+
+`x-data` specifying the component and its parameters:
 
 ```php
 xDataMethod(string $method, ...$parameters)
 ```
 
-`x-data` specifying the component and its parameters
-
 ```php
-Div::make([])->xDataMethod('some-component', 'var', ['foo' => 'bar'])
+Div::make([])
+    ->xDataMethod('some-component', 'var', ['foo' => 'bar'])
 ```
 
 <a name="x-model"></a>
 ### x-model
-`x-model` binds a field to a reactive variable
+
+`x-model` binds a field to a reactive variable.
+
 ```php
 xModel(?string $column = null)
 ```
+
 ```php
 Div::make([
     Text::make('Title')->xModel()
-])->xData(['title' => 'Hello world'])
-
-// or
-
-Div::make([
-    Text::make('Name')->xModel('title')
-])->xData(['title' => 'Hello world'])
+])
+    ->xData(['title' => 'Hello world'])
 ```
 
 <a name="x-if"></a>
 ### x-if
+
+`x-if` hides a field by removing it from the DOM.
+
 ```php
 xIf(
     string|Closure $variable,
@@ -190,31 +207,52 @@ xIf(
 )
 ```
 
-`x-if` hides a field by removing it from the DOM
-
 ```php
 Div::make([
-    Select::make('Type')->native()->options([1 => 1, 2 => 2])->xModel(),
-    Text::make('Title')->xModel()->xIf('type', 1)
-])->xData(['title' => 'Hello world', 'type' => 1])
+    Select::make('Type')
+        ->native()
+        ->options([1 => 1, 2 => 2])
+        ->xModel(),
+
+    Text::make('Title')
+        ->xModel()
+        ->xIf('type', 1)
+])
+    ->xData(['title' = 'Hello world', 'type' => 1])
 
 // or
 
 Div::make([
-    Select::make('Type')->options([1 => 1, 2 => 2])->xModel(),
-    Text::make('Title')->xModel()->xIf(fn() => 'type==2||type.value==2')
-])->xData(['title' => 'Hello world', 'type' => 1])
+    Select::make('Type')
+        ->options([1 => 1, 2 => 2])
+        ->xModel(),
+
+    Text::make('Title')
+        ->xModel()
+        ->xIf(fn() => 'type==2||type.value==2')
+])
+    ->xData(['title' => 'Hello world', 'type' => 1])
 
 // if you need to hide the field without a container
 
 Div::make([
-    Select::make('Type')->native()->options([1 => 1, 2 => 2])->xModel(),
-    Text::make('Title')->xModel()->xIf('type', '=', 2, wrapper: false)
-])->xData(['title' => 'Hello world', 'type' => 1])
+    Select::make('Type')
+        ->native()
+        ->options([1 => 1, 2 => 2])
+        ->xModel(),
+
+    Text::make('Title')
+        ->xModel()
+        ->xIf('type', '=', 2, wrapper: false)
+])
+    ->xData(['title' => 'Hello world', 'type' => 1])
 ```
 
 <a name="x-show"></a>
 ### x-show
+
+`x-show` is the same as `x-if`, but it does not remove the element from the DOM; it only hides it.
+
 ```php
 xShow(
     string|Closure $variable,
@@ -224,16 +262,17 @@ xShow(
 )
 ```
 
-`x-show` is the same as `x-if`, but it does not remove the element from the DOM; it only hides it.
-
 ```php
-xDisplay(string $value, bool $html = true)
+xDisplay(
+    string $value,
+    bool $html = true
+)
 ```
 
 <a name="x-html"></a>
 ### x-html
 
-`x-html` outputs the value
+`x-html` outputs the value.
 
 ```php
 Div::make([
@@ -258,8 +297,7 @@ Div::make([
 
     Div::make()
         ->xShow('type', '1')
-        ->xDisplay('"Result:" + (price * rate)')
-    ,
+        ->xDisplay('"Result:" + (price * rate)'),
 ])->xData([
     'price' => 0,
     'rate' => 90,
