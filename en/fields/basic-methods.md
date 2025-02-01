@@ -23,7 +23,6 @@
   - [Nullable](#nullable)
   - [Changing Display](#custom-view)
   - [Hook Before Render](#on-before-render)
-  - [Getting Value from Request](#request-value-resolver)
   - [Before and After Rendering](#before-and-after-render)
   - [Conditional Methods](#conditional-methods)
   - [Apply](#apply)
@@ -518,21 +517,6 @@ Text::make('Thumbnail')
         // ...
     })
 ```
-
-<a name="request-value-resolver"></a>
-### Getting Value from Request
-
-The `requestValueResolver()` method allows overriding the logic for obtaining the value from the Request.
-
-```php
-/**
-* @param  Closure(string|int|null $index, mixed $default, static $ctx): mixed  $resolver
-*/
-requestValueResolver(Closure $resolver)
-```
-
-> [!NOTE]
-> Relationship fields do not support the `requestValueResolver()` method.
 
 <a name="before-and-after-render"></a>
 ### Before and After Rendering
