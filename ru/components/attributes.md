@@ -25,7 +25,10 @@ ___
 Метод `setAttribute()` добавляет или изменяет атрибут компонента.
 
 ```php
-setAttribute(string $name, string|bool $value)
+setAttribute(
+    string $name,
+    string|bool $value
+)
 ```
 
 - `$name` - название атрибута,
@@ -66,7 +69,10 @@ iterableAttributes(int $level = 0)
 Метод `customAttributes()` добавляет или заменяет несколько атрибутов компонента.
 
 ```php
-customAttributes(array $attributes, bool $override = false)
+customAttributes(
+    array $attributes,
+    bool $override = false
+)
 ```
 
 - `$attributes` - массив добавляемых атрибутов,
@@ -82,7 +88,11 @@ $component->customAttributes(['data-role' => 'admin'], true);
 Метод `mergeAttribute()` объединяет значение атрибута с новым значением, используя указанный разделитель.
 
 ```php
-mergeAttribute(string $name, string $value, string $separator = ' ')
+mergeAttribute(
+    string $name,
+    string $value,
+    string $separator = ' '
+)
 ```
 
 - `$name` - название атрибута,
@@ -132,56 +142,62 @@ $component->style(['color: red']);
     - [x-if](#x-if-link)
     - [x-show](#x-show-link)
     - [x-html](#x-html-link)
+
 ---
 
 <a name="description"></a>
 ## Описание
 
-Методы, позволяющие удобно взаимодействовать с Alpine.js
+Методы, позволяющие удобно взаимодействовать с **Alpine.js**.
 
 <a name="x-data"></a>
 ### x-data
+
+Всё в Alpine начинается с директивы `x-data`.
+Метод `xData()` определяет фрагмент HTML как компонент **Alpine** и предоставляет реактивные данные для ссылки на этот компонент.
 
 ```php
 xData(null|array|string $data = null)
 ```
 
-Всё в Alpine начинается с директивы `x-data`. метод `xData` определяет фрагмент HTML как компонент Alpine и предоставляет реактивные данные для ссылки на этот компонент.
-
 ```php
-Div::make([])->xData(['title' = 'Hello world']) // title реактивная переменная внутри
+// title реактивная переменная внутри
+Div::make([])
+    ->xData(['title' => 'Hello world'])
 ```
+
+`x-data` с указанием компонента и его параметров:
 
 ```php
 xDataMethod(string $method, ...$parameters)
 ```
 
-`x-data` с указанием компонента и его параметров
-
 ```php
-Div::make([])->xDataMethod('some-component', 'var', ['foo' => 'bar'])
+Div::make([])
+    ->xDataMethod('some-component', 'var', ['foo' => 'bar'])
 ```
 
 <a name="x-model"></a>
 ### x-model
-`x-model` связывание поля с реактивной переменной
+
+`x-model` связывание поля с реактивной переменной.
+
 ```php
 xModel(?string $column = null)
 ```
+
 ```php
 Div::make([
     Text::make('Title')->xModel()
-])->xData(['title' = 'Hello world'])
-
-// или
-
-Div::make([
-    Text::make('Name')->xModel('title')
-])->xData(['title' = 'Hello world'])
+])
+    ->xData(['title' => 'Hello world'])
 ```
 
 <a name="x-if"></a>
 ### x-if
+
+`x-if` скрывает поле, удаляя его из DOM.
+
 ```php
 xIf(
     string|Closure $variable,
@@ -191,31 +207,52 @@ xIf(
 )
 ```
 
-`x-if` скрывает поле, удаляя его из DOM
-
 ```php
 Div::make([
-    Select::make('Type')->native()->options([1 => 1, 2 => 2])->xModel(),
-    Text::make('Title')->xModel()->xIf('type', 1)
-])->xData(['title' = 'Hello world', 'type' => 1])
+    Select::make('Type')
+        ->native()
+        ->options([1 => 1, 2 => 2])
+        ->xModel(),
+
+    Text::make('Title')
+        ->xModel()
+        ->xIf('type', 1)
+])
+    ->xData(['title' = 'Hello world', 'type' => 1])
 
 // или
 
 Div::make([
-    Select::make('Type')->options([1 => 1, 2 => 2])->xModel(),
-    Text::make('Title')->xModel()->xIf(fn() => 'type==2||type.value==2')
-])->xData(['title' = 'Hello world', 'type' => 1])
+    Select::make('Type')
+        ->options([1 => 1, 2 => 2])
+        ->xModel(),
+
+    Text::make('Title')
+        ->xModel()
+        ->xIf(fn() => 'type==2||type.value==2')
+])
+    ->xData(['title' => 'Hello world', 'type' => 1])
 
 // если нужно скрыть поле без контейнера
 
 Div::make([
-    Select::make('Type')->native()->options([1 => 1, 2 => 2])->xModel(),
-    Text::make('Title')->xModel()->xIf('type', '=', 2, wrapper: false)
-])->xData(['title' = 'Hello world', 'type' => 1])
+    Select::make('Type')
+        ->native()
+        ->options([1 => 1, 2 => 2])
+        ->xModel(),
+
+    Text::make('Title')
+        ->xModel()
+        ->xIf('type', '=', 2, wrapper: false)
+])
+    ->xData(['title' => 'Hello world', 'type' => 1])
 ```
 
 <a name="x-show"></a>
 ### x-show
+
+`x-show` тоже самое что и `x-if`, но не удаляет элемент из DOM, а только скрывает.
+
 ```php
 xShow(
     string|Closure $variable,
@@ -225,32 +262,33 @@ xShow(
 )
 ```
 
-`x-show` тоже самое что и x-if, но не удаляет элемент из DOM, а только скрывает
-
 ```php
-xDisplay(string $value, bool $html = true)
+xDisplay(
+    string $value,
+    bool $html = true
+)
 ```
 
 <a name="x-html"></a>
 ### x-html
 
-`x-html` вывод значения
+`x-html` вывод значения.
 
 ```php
 Div::make([
     Select::make('Type')
         ->native()
         ->options([
-            1 => 'Платно',
-            2 => 'Бесплатно',
+            1 => 'Paid',
+            2 => 'Free',
         ])
         ->xModel(),
 
-    Number::make('Стоимость', 'price')
+    Number::make('Cost', 'price')
         ->xModel()
         ->xIf('type', '1'),
 
-    Number::make('Ставка', 'rate')
+    Number::make('Rate', 'rate')
         ->xModel()
         ->xIf('type', '1')
         ->setValue(90),
@@ -259,8 +297,7 @@ Div::make([
 
     Div::make()
         ->xShow('type', '1')
-        ->xDisplay('"Result:" + (price * rate)')
-    ,
+        ->xDisplay('"Result:" + (price * rate)'),
 ])->xData([
     'price' => 0,
     'rate' => 90,
