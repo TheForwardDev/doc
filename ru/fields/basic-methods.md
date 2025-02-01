@@ -23,6 +23,7 @@
   - [Nullable](#nullable)
   - [Изменение отображения](#custom-view)
   - [Хук до рендера](#on-before-render)
+  - [Получение значения из запроса](#request-value-resolver)
   - [До и после рендеринга](#before-and-after-render)
   - [Условные методы](#conditional-methods)
   - [Apply](#apply)
@@ -517,6 +518,21 @@ Text::make('Thumbnail')
         // ...
     })
 ```
+
+<a name="request-value-resolver"></a>
+### Получение значения из запроса
+
+Метод `requestValueResolver()` позволяет переопределить логику получения значения из Request.
+
+```php
+/**
+* @param  Closure(string|int|null $index, mixed $default, static $ctx): mixed  $resolver
+*/
+requestValueResolver(Closure $resolver)
+```
+
+> [!NOTE]
+> Поля отношений не поддерживают метод `requestValueResolver()`.
 
 <a name="before-and-after-render"></a>
 ### До и после рендеринга
