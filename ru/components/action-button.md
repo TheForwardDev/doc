@@ -43,15 +43,10 @@ ActionButton::make(
 ```php
 use MoonShine\UI\Components\ActionButton;
 
-protected function components(): iterable
-{
-    return [
-        ActionButton::make(
-            label: 'Заголовок кнопки',
-            url: 'https://moonshine-laravel.com',
-        )
-    ];
-}
+ActionButton::make(
+    'Button Label',
+    'https://moonshine-laravel.com'
+)
 ```
 
 <a name="blank"></a>
@@ -60,10 +55,8 @@ protected function components(): iterable
 Метод `blank()` позволяет открыть URL в новом окне. Добавится атрибут `target="_blank"`.
 
 ```php
-ActionButton::make(
-    label: 'Нажми меня',
-    url: '/',
-)->blank()
+ActionButton::make('Button Label', '/')
+    ->blank()
 ```
 
 <a name="icon"></a>
@@ -72,10 +65,8 @@ ActionButton::make(
 Метод `icon()` позволяет указать иконку для кнопки.
 
 ```php
-ActionButton::make(
-    label: fn() => 'Нажми меня',
-    url: 'https://moonshine-laravel.com',
-)->icon('pencil')
+ActionButton::make('Button Label')
+    ->icon('pencil')
 ```
 
 > [!NOTE]
@@ -88,10 +79,8 @@ ActionButton::make(
 `primary()`, `secondary()`, `warning()`, `success()` и `error()`.
 
 ```php
-ActionButton::make(
-    label: 'Нажми меня',
-    url: fn() => 'https://moonshine-laravel.com',
-)->primary()
+ActionButton::make('Button Label')
+    ->primary()
 ```
 
 <a name="badge"></a>
@@ -104,29 +93,27 @@ badge(Closure|string|int|float|null $value)
 ```
 
 ```php
-ActionButton::make('Кнопка')->badge(fn() => Comment::count())
-// ...
+ActionButton::make('Button Label')
+    ->badge(fn() => Comment::count())
 ```
 
 <a name="onclick"></a>
 ## onClick
 
-Метод `onClick` позволяет выполнить js-код при клике:
+Метод `onClick()` позволяет выполнить js-код при клике.
 
 ```php
-ActionButton::make(
-    label: 'Нажми меня',
-    url: 'https://moonshine-laravel.com',
-)->onClick(fn() => "alert('Пример')", 'prevent')
+ActionButton::make('Button Label')
+    ->onClick(fn() => "alert('Пример')", 'prevent')
 ```
 
-Если вам необходимо получить данные в методе `onClick()`, то воспользуйтесь методом `onAfterSet()`:
+Если вам необходимо получить данные в методе `onClick()`, то воспользуйтесь методом `onAfterSet()`.
 
 ```php
 ActionButton::make('Alert')
-  ->onAfterSet(function (?DataWrapperContract $data, ActionButton $button) {
-    return $button->onClick(fn() => 'alert('.$data?->getKey().')');
-  })
+    ->onAfterSet(function (?DataWrapperContract $data, ActionButton $button) {
+        return $button->onClick(fn() => 'alert('.$data?->getKey().')');
+    })
 ```
 
 <a name="modal"></a>
@@ -136,28 +123,37 @@ ActionButton::make('Alert')
 
 Для вызова модального окна при нажатии на кнопку используйте метод `inModal()`.
 
-> [!NOTE]
-> Для получения более подробной информации по методам модальных окон, обратитесь к разделу [Modal](/docs/{{version}}/components/modal).
-
 ```php
-use MoonShine\UI\Components\Modal;
-
-ActionButton::make(
-    label: 'Нажми меня',
-    url: 'https://moonshine-laravel.com',
+/**
+ * @param  ?Closure(Modal $modal, ActionButtonContract $ctx): Modal  $builder
+ */
+inModal(
+    Closure|string|null $title = null,
+    Closure|string|null $content = null,
+    Closure|string|null $name = null,
+    ?Closure $builder = null,
 )
-    ->inModal(
-        title: fn() => 'Заголовок модального окна',
-        content: fn() => 'Содержимое модального окна',
-        name: 'my-modal',
-        builder: fn(Modal $modal, ActionButton $ctx) => $modal
-    )
 ```
 
 - `title` - заголовок модального окна,
 - `content` - содержимое модального окна,
 - `name` - уникальное наименование модального окна для вызова событий,
 - `builder` - замыкание с доступом к компоненту `Modal`.
+
+> [!NOTE]
+> Для получения более подробной информации по методам модальных окон, обратитесь к разделу [Modal](/docs/{{version}}/components/modal).
+
+```php
+use MoonShine\UI\Components\Modal;
+
+ActionButton::make('Button Label')
+    ->inModal(
+        title: 'Modal Window Title',
+        content: 'Modal Window Content',
+        name: 'my-modal',
+        builder: fn(Modal $modal, ActionButton $ctx) => $modal
+    )
+```
 
 > [!WARNING]
 > Если вы используете несколько однотипных модальных окон, например в таблицах для каждого элемента, то вам необходимо указывать уникальный `name` для каждой.
@@ -174,39 +170,26 @@ ActionButton::make(
 use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\Modal;
 
-protected function components(): iterable
-{
-    return [
-        Modal::make(
-            'Заголовок',
-            fn() => 'Содержимое',
-        )->name('my-modal')
+Modal::make('Title','Content')
+    ->name('my-modal'),
 
-        ActionButton::make(
-            label: 'Открыть модальное окно',
-        )->toggleModal('my-modal')
-    ];
-}
+ActionButton::make('Open modal window')
+    ->toggleModal('my-modal'),
 ```
 
 ### Асинхронный режим
 
-Если вам нужно загрузить содержимое в модальное окно асинхронно, то включите режим `async` у `ActionButton`.
+Если вам нужно загрузить содержимое в модальное окно асинхронно, то включите асинхронный режим с помощью метода `async()` у `ActionButton`.
 
 ```php
-protected function components(): iterable
-{
-    return [
-        ActionButton::make(
-            label: 'Нажми меня',
-            url: to_page('action_button', fragment: 'doc-content'),
-        )
-            ->async()
-            ->inModal(
-                title: fn() => 'Заголовок модального окна',
-            )
-    ];
-}
+ActionButton::make(
+    'Button Label',
+    to_page('action_button', fragment: 'doc-content'),
+)
+    ->async()
+    ->inModal(
+        title: fn() => 'Modal Window Title',
+    )
 ```
 
 > [!NOTE]
@@ -218,14 +201,28 @@ protected function components(): iterable
 Метод `withConfirm()` позволяет создать кнопку с подтверждением действия.
 
 ```php
-ActionButton::make(
-    label: 'Нажми меня',
-    url: 'https://moonshine-laravel.com',
+/**
+ * @param  ?Closure(FormBuilderContract $form, mixed $data): FormBuilderContract  $formBuilder
+ * @param  ?Closure(Modal $modal, ActionButtonContract $ctx): Modal  $modalBuilder
+ */
+withConfirm(
+    Closure|string|null $title = null,
+    Closure|string|null $content = null,
+    Closure|string|null $button = null,
+    Closure|array|null $fields = null,
+    HttpMethod $method = HttpMethod::POST,
+    ?Closure $formBuilder = null,
+    ?Closure $modalBuilder = null,
+    Closure|string|null $name = null,
 )
+```
+
+```php
+ActionButton::make('Button Label')
     ->withConfirm(
-        title: 'Заголовок модального окна подтверждения',
-        content: 'Содержимое модального окна подтверждения',
-        button: 'Кнопка модального окна подтверждения',
+        title: 'Confirmation Modal Window Title',
+        content: 'Confirmation Modal Window Content',
+        button: 'Confirmation Modal Window Button',
         // опционально - дополнительные поля формы
         fields: null,
         method: HttpMethod::POST,
@@ -241,9 +238,10 @@ ActionButton::make(
 > Если вы используете несколько однотипных модальных окон, например в таблицах для каждого элемента, то вам необходимо указывать уникальный `name` для каждой.
 
 ```php
-->inModal(
-    name: static fn (mixed $item, ActionButtonContract $ctx): string => "delete-button-{$ctx->getData()?->getKey()}"
-)
+ActionButton::make('Button Label')
+    ->inModal(
+        name: static fn (mixed $item, ActionButtonContract $ctx): string => "delete-button-{$ctx->getData()?->getKey()}"
+    )
 ```
 
 <a name="offcanvas"></a>
@@ -254,23 +252,15 @@ ActionButton::make(
 ```php
 use MoonShine\UI\Components\OffCanvas;
 
-protected function components(): iterable
-{
-    return [
-        ActionButton::make(
-            label: 'Нажми меня',
-            url: 'https://moonshine-laravel.com',
-        )
-            ->inOffCanvas(
-                title: fn() => 'Заголовок боковой панели',
-                content: fn() => 'Содержимое',
-                name: false,
-                builder: fn(OffCanvas $offCanvas, ActionButton $ctx) => $offCanvas->left()
-                // опционально - необходимо чтобы компоненты были доступны для поиска в системе, т.к. content всего лишь HTML
-                components: []
-            )
-    ];
-}
+ActionButton::make('Button Label')
+    ->inOffCanvas(
+        title: fn() => 'Offcanvas Title',
+        content: fn() => 'Content',
+        name: false,
+        builder: fn(OffCanvas $offCanvas, ActionButton $ctx) => $offCanvas->left(),
+        // опционально - необходимо чтобы компоненты были доступны для поиска в системе, т.к. content всего лишь HTML
+        components: [],
+    )
 ```
 
 <a name="group"></a>
@@ -281,15 +271,12 @@ protected function components(): iterable
 ```php
 use MoonShine\UI\Components\ActionGroup;
 
-protected function components(): iterable
-{
-    return [
-        ActionGroup::make([
-            ActionButton::make('Кнопка 1', '/')->canSee(fn() => false),
-            ActionButton::make('Кнопка 2', '/', $model)->canSee(fn($model) => $model->active)
-        ])
-    ];
-}
+ActionGroup::make([
+    ActionButton::make('Button 1', '/')
+        ->canSee(fn() => false),
+    ActionButton::make('Button 2', '/', $model)
+        ->canSee(fn($model) => $model->active)
+])
 ```
 
 ### Отображение
@@ -299,15 +286,13 @@ protected function components(): iterable
 ```php
 use MoonShine\UI\Components\ActionGroup;
 
-protected function components(): iterable
-{
-    return [
-        ActionGroup::make([
-            ActionButton::make('Кнопка 1', '/')->showInLine(),
-            ActionButton::make('Кнопка 2', '/')->showInDropdown()
-        ])
-    ];
-}
+ActionGroup::make([
+    ActionButton::make('Button 1', '/')
+        ->showInLine(),
+
+    ActionButton::make('Button 2', '/')
+        ->showInDropdown()
+])
 ```
 
 <a name="bulk"></a>
@@ -318,11 +303,12 @@ protected function components(): iterable
 ```php
 protected function indexButtons(): ListOf
 {
-    return parent::indexButtons()->add(ActionButton::make('Ссылка', '/endpoint')->bulk());
+    return parent::indexButtons()
+        ->add(ActionButton::make('Link', '/endpoint')->bulk());
 }
 ```
 
-> [!TIP]
+> [!NOTE]
 > Метод `bulk()`, используется только внутри `ModelResource`.
 
 <a name="async"></a>
@@ -335,7 +321,7 @@ async(
     HttpMethod $method = HttpMethod::GET,
     ?string $selector = null,
     array $events = [],
-    ?AsyncCallback $callback = null
+    ?AsyncCallback $callback = null,
 )
 ```
 
@@ -345,33 +331,29 @@ async(
 - `$callback` - js функция обратного вызова после получения ответа.
 
 > [!NOTE]
-> О [Events](/docs/{{version}}/frontend/js#events) можно узнать в разделе "Frontend"
+> О [Events](/docs/{{version}}/frontend/js#events) можно узнать в разделе "Frontend".
 >
 > [!NOTE]
-> О [Callback](/docs/{{version}}/frontend/js#response-calback) можно узнать в разделе "Frontend"
+> О [Callback](/docs/{{version}}/frontend/js#response-calback) можно узнать в разделе "Frontend".
 
 ```php
-protected function components(): iterable
-{
-    return [
-        ActionButton::make(
-            'Нажми меня',
-            '/endpoint'
-        )
-            ->async()
-    ];
-}
+ActionButton::make('Button Label', '/endpoint')
+    ->async()
 ```
 
 ### Уведомления
 
-Если вам нужно отобразить уведомление или сделать редирект после клика, то достаточно реализовать json ответ согласно структуре:
+Если вам нужно отобразить уведомление или сделать редирект после клика, то достаточно реализовать json ответ согласно cледующей структуре:
 
 ```php
-{message: 'Toast', messageType: 'success', redirect: '/url'}
+{
+    message: 'Toast',
+    messageType: 'success',
+    redirect: '/url'
+}
 ```
 
-> [!TIP]
+> [!NOTE]
 > Параметр `redirect` является необязательным.
 
 ### HTML содержимое
@@ -383,35 +365,24 @@ protected function components(): iterable
 ```
 
 ```php
-protected function components(): iterable
-{
-    return [
-        ActionButton::make(
-            'Нажми меня',
-            '/endpoint'
-        )
-            ->async(selector: '#my-selector')
-    ];
-}
+ActionButton::make('Button Label', '/endpoint')
+    ->async(selector: '#my-selector')
 ```
 
 ### События
 
-После успешного запроса вы можете вызвать события:
+После успешного запроса вы можете вызвать события.
 
 ```php
-protected function components(): iterable
-{
-    return [
-        ActionButton::make(
-            'Нажми меня',
-            '/endpoint'
-        )
-            ->async(events: [AlpineJs::event(JsEvent::TABLE_UPDATED, $this->getListComponentName())])
-    ];
-}
+ActionButton::make('Button Label', '/endpoint')
+    ->async(
+        events: [
+            AlpineJs::event(JsEvent::TABLE_UPDATED, $this->getListComponentName())
+        ]
+    )
 ```
-> [!TIP]
+
+> [!NOTE]
 > Для работы события `JsEvent::TABLE_UPDATED` у таблицы должен быть включен [асинхронный режим](/docs/{{version}}/model-resource/table#async).
 
 ### Обратный вызов
@@ -419,25 +390,19 @@ protected function components(): iterable
 Если вам нужно обработать ответ иным способом, необходимо реализовать функцию-обработчик и указать её в методе `async()`.
 
 ```php
-protected function components(): iterable
-{
-    return [
-        ActionButton::make(
-            'Нажми меня',
-            '/endpoint'
-        )
-            ->async(callback: AsyncCallback::with(responseHandler: 'myFunction'))
-    ];
-}
+ActionButton::make('Button Label', '/endpoint')
+    ->async(
+        callback: AsyncCallback::with(responseHandler: 'myFunction')
+    )
 ```
 
 ```javascript
 document.addEventListener("moonshine:init", () => {
     MoonShine.onCallback('myFunction', function(response, element, events, component) {
         if(response.confirmed === true) {
-            component.$dispatch('toast', {type: 'success', text: 'Успех'})
+            component.$dispatch('toast', {type: 'success', text: 'Success'})
         } else {
-            component.$dispatch('toast', {type: 'error', text: 'Ошибка'})
+            component.$dispatch('toast', {type: 'error', text: 'Error'})
         }
     })
 })
@@ -460,7 +425,7 @@ method(
     array $events = [],
     ?AsyncCallback $callback = null,
     ?PageContract $page = null,
-    ?ResourceContract $resource = null
+    ?ResourceContract $resource = null,
 )
 ```
 
@@ -474,13 +439,8 @@ method(
 - `$resource` - опционально - ресурс, содержащий метод (если кнопка находится вне ресурса).
 
 ```php
-protected function components(): iterable
-{
-    return [
-        ActionButton::make('Нажми меня')
-            ->method('updateSomething'),
-    ];
-}
+ActionButton::make('Button Label')
+    ->method('updateSomething')
 ```
 ```php
 // С уведомлением
@@ -490,7 +450,7 @@ public function updateSomething(MoonShineRequest $request): MoonShineJsonRespons
     // $request->getResource()->getItem();
     // $request->getPage();
 
-    return MoonShineJsonResponse::make()->toast('Мое сообщение', ToastType::SUCCESS);
+    return MoonShineJsonResponse::make()->toast('My message', ToastType::SUCCESS);
 }
 
 // Редирект
@@ -508,15 +468,16 @@ public function updateSomething(MoonShineRequest $request): RedirectResponse
 // Исключение
 public function updateSomething(MoonShineRequest $request): void
 {
-    throw new \Exception('Мое сообщение');
+    throw new \Exception('My message');
 }
 
 // Пользовательский JSON-ответ
 public function updateSomething(MoonShineRequest $request)
 {
-    return MoonShineJsonResponse::make()->html('Контент');
+    return MoonShineJsonResponse::make()->html('Content');
 }
 ```
+
 > [!WARNING]
 > Методы, вызываемые через `ActionButton` в ресурсе, должны быть публичными!
 
@@ -533,7 +494,7 @@ public function updateSomething(MoonShineRequest $request)
 Когда кнопка находится на странице формы `ModelResource`, вы можете передать id текущего элемента.
 
 ```php
-ActionButton::make('Нажми меня')
+ActionButton::make('Button Label')
     ->method(
         'updateSomething',
         params: ['resourceItem' => $this->getResource()->getItemID()]
@@ -543,7 +504,7 @@ ActionButton::make('Нажми меня')
 Когда кнопка находится в индексной таблице `ModelResource`, нужно использовать замыкание.
 
 ```php
-ActionButton::make('Нажми меня')
+ActionButton::make('Button Label')
     ->method(
         'updateSomething',
         params: fn(Model $item) => ['resourceItem' => $item->getKey()]
@@ -555,12 +516,12 @@ ActionButton::make('Нажми меня')
 Метод `withSelectorsParams()` позволяет передавать значения полей с запросом, используя селекторы элементов.
 
 ```php
-ActionButton::make('Асинхронный метод')
+ActionButton::make('Button Label')
     ->method('updateSomething')
     ->withSelectorsParams([
         'alias' => '[data-column="title"]',
-        'slug' => '#slug'
-    ]),
+        'slug' => '#slug',
+    ])
 ```
 
 ```php
@@ -570,7 +531,7 @@ use MoonShine\Laravel\MoonShineRequest;
 public function updateSomething(MoonShineRequest $request): MoonShineJsonResponse
 {
     return MoonShineJsonResponse::make()
-        ->toast($request->get('slug', 'Ошибка'));
+        ->toast($request->get('slug', 'Error'));
 }
 ```
 
@@ -582,10 +543,13 @@ public function updateSomething(MoonShineRequest $request): MoonShineJsonRespons
 Вызываемый метод может возвращать `BinaryFileResponse`, что позволяет скачать файл.
 
 ```php
-ActionButton::make('Скачать')->method('download')
+ActionButton::make('Download')
+    ->method('download')
 ```
 
 ```php
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
 public function download(): BinaryFileResponse
 {
     // ...
@@ -604,36 +568,41 @@ dispatchEvent(array|string $events)
 ```
 
 ```php
-ActionButton::make('Обновить')
-    ->dispatchEvent(AlpineJs::event(JsEvent::TABLE_UPDATED, 'index-table')),
+ActionButton::make('Refresh')
+    ->dispatchEvent(
+        AlpineJs::event(JsEvent::TABLE_UPDATED, 'index-table')
+    )
 ```
 
 По умолчанию при вызове события с запросом будут отправлены все query параметры (например, `?param=value`) из  `url` (указанного при создании `ActionButton`).
 
-Исключить ненужные можно через параметр `exclude`:
+Исключить ненужные можно через параметр `exclude`.
 
 ```php
-->dispatchEvent(
-    AlpineJs::event(JsEvent::TABLE_UPDATED, 'index-table'),
-    exclude: ['something']
-)
+ActionButton::make('Refresh')
+    ->dispatchEvent(
+        AlpineJs::event(JsEvent::TABLE_UPDATED, 'index-table'),
+        exclude: ['something'],
+    )
 ```
 
-Также можно полностью исключить отправку `withoutPayload`:
+Также можно полностью исключить отправку `withoutPayload`.
 
 ```php
-->dispatchEvent(
-    AlpineJs::event(JsEvent::TABLE_UPDATED, 'index-table'),
-    withoutPayload: true
-)
+ActionButton::make('Refresh')
+    ->dispatchEvent(
+        AlpineJs::event(JsEvent::TABLE_UPDATED, 'index-table'),
+        withoutPayload: true
+    )
 ```
 
 ### Параметры запроса URL
 
-Вы можете включить параметры текущего запроса URL (например, `?param=value`) в запрос:
+Вы можете включить параметры текущего запроса URL (например, `?param=value`) в запрос.
 
 ```php
-->withQueryParams()
+ActionButton::make('Button Label')
+    ->withQueryParams()
 ```
 
 <a name="fill"></a>
@@ -644,7 +613,8 @@ ActionButton::make('Обновить')
 Давайте рассмотрим этот механизм подробнее.
 
 ```php
-ActionButton::make('Button')->setData(?DataWrapperContract $data = null)
+ActionButton::make('Button Label')
+    ->setData(?DataWrapperContract $data = null)
 ```
 
 > [!NOTE]
@@ -653,11 +623,13 @@ ActionButton::make('Button')->setData(?DataWrapperContract $data = null)
 Также доступны методы с колбеками до и после наполнения кнопки.
 
 ```php
-ActionButton::make('Button')->onBeforeSet(fn(?DataWrapperContract $data, ActionButton $ctx) => $data)
+ActionButton::make('Button Label')
+    ->onBeforeSet(fn(?DataWrapperContract $data, ActionButton $ctx) => $data)
 ```
 
 ```php
-ActionButton::make('Button')->onAfterSet(function(?DataWrapperContract $data, ActionButton $ctx): void {
-    // logic
-})
+ActionButton::make('Button Label')
+    ->onAfterSet(function(?DataWrapperContract $data, ActionButton $ctx): void {
+        // logic
+    })
 ```
