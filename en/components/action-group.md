@@ -15,7 +15,7 @@ The `ActionGroup` component is designed for the quick grouping of a set of `Acti
 ActionGroup::make(iterable $actions = [])
 ```
 
-`$actions` - a set of `ActionButton`.
+- `$actions` - a set of `ActionButton`.
 
 ```php
 use MoonShine\UI\Components\ActionGroup;

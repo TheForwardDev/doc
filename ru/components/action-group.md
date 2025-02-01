@@ -15,7 +15,7 @@
 ActionGroup::make(iterable $actions = [])
 ```
 
-`$actions` - набор `ActionButton`.
+- `$actions` - набор `ActionButton`.
 
 ```php
 use MoonShine\UI\Components\ActionGroup;
