@@ -3,7 +3,7 @@
 The `Components` component has no visual features; it is used for the quick output of a set of components.
 
 ```php
-make(iterable $components = [])
+Components::make(iterable $components = [])
 ```
 
 - `$components` - an array of components.

@@ -3,7 +3,7 @@
 Компонент `Components` не имеет визуальных особенностей, используется для быстрого вывода набора компонентов.
 
 ```php
-make(iterable $components = [])
+Components::make(iterable $components = [])
 ```
 
 - `$components` - массив компонентов.
