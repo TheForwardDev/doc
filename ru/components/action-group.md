@@ -23,7 +23,7 @@ use MoonShine\UI\Components\ActionGroup;
 ActionGroup::make([
     ActionButton::make('Button 1'),
     ActionButton::make('Button 2'),
-]);
+])
 ```
 
 <a name="fill"></a>
@@ -33,7 +33,7 @@ ActionGroup::make([
 
 ```php
 ActionGroup::make($buttons)
-    ->fill($data);
+    ->fill($data)
 ```
 
 <a name="add"></a>
