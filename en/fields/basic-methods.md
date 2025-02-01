@@ -137,7 +137,7 @@ To wrap a field in a `<label>` tag, you can use the `insideLabel()` method.
 
 ```php
 Text::make('Name')
-    ->insideLabel(),
+    ->insideLabel()
 ```
 
 #### beforeLabel()
@@ -146,7 +146,7 @@ To display the label after the input field, you can use the `beforeLabel()` meth
 
 ```php
 Text::make('Name')
-    ->beforeLabel(),
+    ->beforeLabel()
 ```
 
 <a name="hint"></a>
@@ -197,20 +197,24 @@ badge(string|Color|Closure|null $color = null)
 
 Available colors:
 
-<span style="background-color: #7843e9; padding: 5px; border-radius: 0.375rem">primary</span>
-<span style="background-color: #ec4176; padding: 5px; border-radius: 0.375rem">secondary</span>
-<span style="background-color: #00aa00; padding: 5px; border-radius: 0.375rem">success</span>
-<span style="background-color: #ffdc2a; padding: 5px; border-radius: 0.375rem; color: rgb(139 116 0 / 1);">warning</span>
-<span style="background-color: #e02d2d; padding: 5px; border-radius: 0.375rem">error</span>
-<span style="background-color: #0079ff; padding: 5px; border-radius: 0.375rem">info</span>
+<div style="display: flex; flex-wrap: wrap; gap: .25rem">
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: #7843e9">primary</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: #ec4176">secondary</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: #00aa00">success</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: #ffdc2a; color: rgb(139 116 0 / 1)">warning</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: #e02d2d">error</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: #0079ff">info</span>
+</div>
 
-<span style="background-color: rgb(243 232 255 / 1); color: rgb(107 33 168 / 1); padding: 5px; border-radius: 0.375rem">purple</span>
-<span style="background-color: rgb(252 231 243 / 1); color: rgb(157 23 77 / 1); padding: 5px; border-radius: 0.375rem">pink</span>
-<span style="background-color: rgb(219 234 254 / 1); color: rgb(30 64 175 / 1); padding: 5px; border-radius: 0.375rem">blue</span>
-<span style="background-color: rgb(220 252 231 / 1); color: rgb(22 101 52 / 1); padding: 5px; border-radius: 0.375rem">green</span>
-<span style="background-color: rgb(254 249 195 / 1); color: rgb(133 77 14 / 1); padding: 5px; border-radius: 0.375rem">yellow</span>
-<span style="background-color: rgb(243 232 255 / 1); color: rgb(153 27 27 / 1); padding: 5px; border-radius: 0.375rem">red</span>
-<span style="background-color: rgb(243 244 246 / 1); color: rgb(31 41 55 / 1); padding: 5px; border-radius: 0.375rem">gray</span>
+<div style="display: flex; flex-wrap: wrap; gap: .25rem">
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: rgb(243 232 255 / 1); color: rgb(107 33 168 / 1)">purple</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: rgb(252 231 243 / 1); color: rgb(157 23 77 / 1)">pink</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: rgb(219 234 254 / 1); color: rgb(30 64 175 / 1)">blue</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: rgb(220 252 231 / 1); color: rgb(22 101 52 / 1)">green</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: rgb(254 249 195 / 1); color: rgb(133 77 14 / 1)">yellow</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: rgb(243 232 255 / 1); color: rgb(153 27 27 / 1)">red</span>
+    <span style="padding: .125rem .625rem; border-radius: .375rem; background-color: rgb(243 244 246 / 1); color: rgb(31 41 55 / 1)">gray</span>
+</div>
 
 ```php
 use MoonShine\Support\Enums\Color;
@@ -438,6 +442,7 @@ Then, for example in the `onApply()` method, we can handle these fields as we se
 ### Default Value
 
 To specify a default value, the `default()` method is used.
+
 ```php
 default(mixed $default)
 ```
@@ -554,14 +559,16 @@ Text::make('Title')
 Components can be displayed conditionally using the `canSee()` method.
 
 ```php
-use MoonShine\Laravel\Fields\Relationships\BelongsTo;
-
 Text::make('Name')
     ->canSee(function (Text $field) {
         return $field->toValue() !== 'hide';
     })
+```
 
-// or for relationship fields
+```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
+// for relationship fields
 BelongsTo::make('Item', 'item', resource: ItemResource::class)
     ->canSee(function (Comment $comment, BelongsTo $field) {
         // your condition
@@ -663,6 +670,8 @@ php artisan moonshine:apply FileModelApply
 > You can learn about all supported options in the section [Commands](/docs/{{version}}/advanced/commands#apply).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Contracts\UI\ApplyContract;
 use MoonShine\Contracts\UI\FieldContract;
 
@@ -690,6 +699,8 @@ final class FileModelApply implements ApplyContract
 Then register it for the field:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:10]
 use Illuminate\Support\ServiceProvider;
 use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
 use MoonShine\Laravel\DependencyInjection\MoonShine;
@@ -904,6 +915,8 @@ fromRaw(Closure $callback)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use App\Enums\StatusEnum;
 use MoonShine\UI\Fields\Enum;
 
@@ -925,6 +938,8 @@ modifyRawValue(Closure $callback)
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use App\Enums\StatusEnum;
 use MoonShine\UI\Fields\Enum;
 
@@ -1017,13 +1032,15 @@ Text::make('Name')
 To add assets to the field, you can use the `addAssets()` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use Illuminate\Support\Facades\Vite;
 use MoonShine\AssetManager\Css;
 
 Text::make('Name')
     ->addAssets([
         new Css(Vite::asset('resources/css/text-field.css'))
-    ]),
+    ])
 ```
 
 If you are implementing your custom field, you can declare the asset set in it in two ways.
@@ -1031,6 +1048,8 @@ If you are implementing your custom field, you can declare the asset set in it i
 1. Through the `assets()` method:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\AssetManager\Css;
 use MoonShine\AssetManager\Js;
 
@@ -1049,6 +1068,8 @@ protected function assets(): array
 2. Through the `booted()` method:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\AssetManager\Css;
 use MoonShine\AssetManager\Js;
 
@@ -1100,8 +1121,11 @@ reactive(
 - `$throttle` - function call interval (ms.).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\UI\Collections\Fields;
 use MoonShine\UI\Components\FormBuilder;
+use MoonShine\UI\Fields\Text;
 
 FormBuilder::make()
     ->name('my-form')
@@ -1128,6 +1152,8 @@ The slug will be generated during the input process.
 To change the state of the field initiating reactivity, it is convenient to use the parameters of the callback function.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\UI\Fields\Field;
 use MoonShine\UI\Fields\Select;
 use MoonShine\UI\Collections\Fields;
