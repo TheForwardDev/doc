@@ -13,7 +13,7 @@
 Используя компонент `Dropdown`, вы можете создавать выпадающие блоки.
 
 ```php
-make(
+Dropdown::make(
     ?string $title = null,
     Closure|string $toggler = '',
     Closure|Renderable|string $content = '',
@@ -25,14 +25,14 @@ make(
 )
 ```
 
-- $title - заголовок для списка внутри Dropdown
-- $toggler - внешний вид кнопки для отображения
-- $content - контент Dropdown
-- $items - элементы, для формирования списка вида ul li
-- $searchable - поиск по контенту
-- $searchPlaceholder - placeholder для поиска
-- $placement - расположение
-- $footer - footer для списка внутри Dropdown
+- `$title` - заголовок для списка внутри `Dropdown`,
+- `$toggler` - внешний вид кнопки для отображения,
+- `$content` - контент Dropdown,
+- `$items` - элементы, для формирования списка вида ul li,
+- `$searchable` - поиск по контенту,
+- `$searchPlaceholder` - placeholder для поиска,
+- `$placement` - расположение,
+- `$footer` - footer для списка внутри `Dropdown`.
 
 ~~~tabs
 tab: Class

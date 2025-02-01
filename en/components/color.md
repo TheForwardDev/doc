@@ -12,7 +12,7 @@ tab: Class
 use MoonShine\Support\Enums\Color as ColorEnum;
 use MoonShine\UI\Components\Color;
 
-Color::make(color: ColorEnum::PURPLE)
+Color::make(ColorEnum::PURPLE)
 ```
 tab: Blade
 ```blade
@@ -20,7 +20,7 @@ tab: Blade
 ```
 ~~~
 
-Available values in the enum MoonShine\Support\Enums\Color:
+Available values in the enum `MoonShine\Support\Enums\Color`:
 
 ```php
 enum Color: string

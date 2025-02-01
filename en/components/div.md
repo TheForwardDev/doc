@@ -1,9 +1,9 @@
 # Div
 
-The `Div` component simply displays a div tag with the ability to specify nested components and add attributes.
+The `Div` component simply displays a `<div>` tag with the ability to specify nested components and add attributes.
 
 ```php
-make(iterable $components)
+Div::make(iterable $components)
 ```
 
 ~~~tabs

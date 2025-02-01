@@ -1,6 +1,6 @@
 # Color
 
-Для отображения html блока div, закрашенным определенным цветом, можно использовать компонент `Color`.
+Для отображения html блока `<div>`, закрашенным определенным цветом, можно использовать компонент `Color`.
 
 ```php
 make(public string|ColorEnum $color)
@@ -12,7 +12,7 @@ tab: Class
 use MoonShine\Support\Enums\Color as ColorEnum;
 use MoonShine\UI\Components\Color;
 
-Color::make(color: ColorEnum::PURPLE)
+Color::make(ColorEnum::PURPLE)
 ```
 tab: Blade
 ```blade
@@ -20,7 +20,7 @@ tab: Blade
 ```
 ~~~
 
-Доступные значения в enum MoonShine\Support\Enums\Color:
+Доступные значения в enum `MoonShine\Support\Enums\Color`:
 
 ```php
 enum Color: string
