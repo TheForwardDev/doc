@@ -522,7 +522,21 @@ Text::make('Thumbnail')
 <a name="request-value-resolver"></a>
 ### Getting Value from Request
 
-The `requestValueResolver()` method allows overriding the logic for obtaining the value from the Request.
+The `onRequestValue()` method allows you to redefine the logic of obtaining a value from Request.
+
+```php
+/**
+* @param  Closure(mixed $value, string $name, mixed $default, static $ctx): mixed  $callback
+*/
+onRequestValue(Closure $callback)
+```
+
+- `$value` - default value,
+- `$name` - name of the request parameter,
+- `$default` - default field value, in the absence in the request,
+- `$ctx` - current Field,
+
+Static method `requestValueResolver()` allows you to globally reduce the logic of obtaining a value from Request for all fields.
 
 ```php
 /**
@@ -531,8 +545,11 @@ The `requestValueResolver()` method allows overriding the logic for obtaining th
 requestValueResolver(Closure $resolver)
 ```
 
-> [!NOTE]
-> Relationship fields do not support the `requestValueResolver()` method.
+```php
+FormElement::requestValueResolver(function (string|int|null $index, mixed $default, static $ctx): mixed {
+    return request()->input($ctx->getRequestNameDot($index), $default);
+})
+```
 
 <a name="before-and-after-render"></a>
 ### Before and After Rendering
@@ -635,6 +652,20 @@ Text::make('Thumbnail by link', 'thumbnail')
         }
 
         return $item;
+    })
+```
+
+An example of `onApply` for filters:
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use MoonShine\UI\Fields\Text;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+
+Text::make('Title')
+    ->onApply(function (Builder $query, mixed $value, Text $field) {
+        $q->where('title', $value);
     })
 ```
 
