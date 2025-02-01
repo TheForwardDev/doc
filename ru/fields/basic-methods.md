@@ -517,7 +517,21 @@ Text::make('Thumbnail')
 <a name="request-value-resolver"></a>
 ### Получение значения из запроса
 
-Метод `requestValueResolver()` позволяет переопределить логику получения значения из Request.
+Метод `onRequestValue()` позволяет переопределить логику получения значения из Request.
+
+```php
+/**
+* @param  Closure(mixed $value, string $name, mixed $default, static $ctx): mixed  $callback
+*/
+onRequestValue(Closure $callback)
+```
+
+- `$value` - значение полученное по умолчанию,
+- `$name` - наименование параметра запроса,
+- `$default` - значение поля по умолчанию, при отсутствии в запросе,
+- `$ctx` - текущее поле,
+
+Статический метод `requestValueResolver()` позволяет глобально переопределить логику получения значения из Request для всех полей.
 
 ```php
 /**
@@ -526,8 +540,11 @@ Text::make('Thumbnail')
 requestValueResolver(Closure $resolver)
 ```
 
-> [!NOTE]
-> Поля отношений не поддерживают метод `requestValueResolver()`.
+```php
+FormElement::requestValueResolver(function (string|int|null $index, mixed $default, static $ctx): mixed {
+    return request()->input($ctx->getRequestNameDot($index), $default);
+})
+```
 
 <a name="before-and-after-render"></a>
 ### До и после рендеринга
@@ -620,7 +637,7 @@ use Illuminate\Support\Facades\Storage;
 use MoonShine\UI\Fields\Text;
 
 Text::make('Thumbnail by link', 'thumbnail')
-    ->onApply(function(Model $item, $value, Field $field) {
+    ->onApply(function(Model $item, $value, Text $field) {
         $path = 'thumbnail.jpg';
 
         if ($value) {
@@ -628,6 +645,20 @@ Text::make('Thumbnail by link', 'thumbnail')
         }
 
         return $item;
+    })
+```
+
+Пример `onApply` для фильтров:
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+use MoonShine\UI\Fields\Text;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+
+Text::make('Title')
+    ->onApply(function (Builder $query, mixed $value, Text $field) {
+        $q->where('title', $value);
     })
 ```
 
