@@ -131,24 +131,9 @@ $component->style(['color: red']);
 ```
 
 <a name="alpine"></a>
-## Quick Attributes for Alpine.js
+## Attributes for Alpine.js
 
-For convenient integration with the JavaScript framework `Alpine.js`, methods for setting corresponding attributes are used.
-
-# Alpine.js (Editing...)
-- [Description](#description)
-    - [x-data](#x-data-link)
-    - [x-model](#x-model-link)
-    - [x-if](#x-if-link)
-    - [x-show](#x-show-link)
-    - [x-html](#x-html-link)
-
----
-
-<a name="description"></a>
-## Description
-
-Methods that allow convenient interaction with **Alpine.js**.
+For convenient integration with the JavaScript framework **Alpine.js**, you can use methods for setting corresponding attributes.
 
 <a name="x-data"></a>
 ### x-data
@@ -169,7 +154,10 @@ Div::make([])
 `x-data` specifying the component and its parameters:
 
 ```php
-xDataMethod(string $method, ...$parameters)
+xDataMethod(
+    string $method,
+    ...$parameters
+)
 ```
 
 ```php
@@ -262,17 +250,17 @@ xShow(
 )
 ```
 
+<a name="x-html"></a>
+### x-html
+
+`x-html` outputs the value.
+
 ```php
 xDisplay(
     string $value,
     bool $html = true
 )
 ```
-
-<a name="x-html"></a>
-### x-html
-
-`x-html` outputs the value.
 
 ```php
 Div::make([
@@ -292,8 +280,6 @@ Div::make([
         ->xModel()
         ->xIf('type', '1')
         ->setValue(90),
-
-    LineBreak::make(),
 
     Div::make()
         ->xShow('type', '1')
