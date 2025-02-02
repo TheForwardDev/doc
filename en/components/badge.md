@@ -1,9 +1,5 @@
 # Badge
 
-Inherits [MoonShineComponent](/docs/{{version}}/components/index).
-
-\* has the same capabilities.
-
 If you need to place a badge on the page, use `Badge` component.
 
 ```php
