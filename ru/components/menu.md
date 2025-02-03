@@ -11,8 +11,6 @@
 
 Компонент `Menu` создает меню на основе `MenuManager` или переданных элементов меню.
 
-Вы можете создать меню, используя статический метод `make()` класса `Menu`.
-
 ```php
 make(?iterable $elements = [])
 ```
@@ -30,11 +28,14 @@ Menu::make([
 ```
 tab: Blade
 ```blade
-<x-moonshine::layout.menu :elements="[['label' => 'Dashboard', 'url' => '/'], ['label' => 'Section', 'url' => '/section']]" :top="false" :scroll-to="false" />
+<x-moonshine::layout.menu
+    :elements="[['label' => 'Dashboard', 'url' => '/'], ['label' => 'Section', 'url' => '/section']]"
+    :top="false"
+    :scroll-to="false" />
 ```
 ~~~
 
-Также можно инициализировать меню через примитивный массив:
+Также можно инициализировать меню через примитивный массив.
 
 ```php
 Menu::make([['label' => 'Dashboard', 'url' => '/'], ['label' => 'Section', 'url' => '/section']])
@@ -43,16 +44,17 @@ Menu::make([['label' => 'Dashboard', 'url' => '/'], ['label' => 'Section', 'url'
 <a name="top"></a>
 ## Режим горизонтальное меню
 
-Если вы решили расположить меню в горизонтальном режиме в `TopBar`, то воспользуйтесь методом `top()`:
+Если вы решили расположить меню в горизонтальном режиме в `TopBar`, то воспользуйтесь методом `top()`.
 
 ```php
 Menu::make()->top()
 ```
 
 <a name="scroll-to"></a>
-## Режим горизонтальное меню
+## Прокрутка к активному пункту
 
-По умолчанию если меню не в режиме *top*, то происходит скролл к активному пункту меню, но это поведение можно отключить с помощью метода `withoutScrollTo()`:
+По умолчанию если меню не в режиме *top*, то происходит скролл к активному пункту меню.
+Это поведение можно отключить с помощью метода `withoutScrollTo()`.
 
 ```php
 Menu::make()->withoutScrollTo()
