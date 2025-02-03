@@ -8,7 +8,7 @@
 - [onClick](#onclick)
 - [Модальное окно](#modal)
 - [Подтверждение](#confirm)
-- [Боковая панель](#offcanvas)
+- [Offcanvas](#offcanvas)
 - [Группировка](#group)
 - [Массовые действия](#bulk)
 - [Асинхронный режим](#async)
@@ -254,9 +254,9 @@ ActionButton::make('Button Label')
 ```
 
 <a name="offcanvas"></a>
-## Боковая панель
+## Offcanvas
 
-Для того чтобы при нажатии на кнопку вызывалась боковая панель, используйте метод `inOffCanvas()`.
+Для того чтобы при нажатии на кнопку вызывалась боковую панель (Offcanvas), используйте метод `inOffCanvas()`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
