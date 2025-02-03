@@ -8,7 +8,7 @@
 - [onClick](#onclick)
 - [Modal](#modal)
 - [Confirmation](#confirm)
-- [Offcanvas](#offcanvas)
+- [Sidebar](#offcanvas)
 - [Grouping](#group)
 - [Bulk actions](#bulk)
 - [Async mode](#async)
@@ -18,10 +18,6 @@
 
 ---
 
-Inherits [MoonShineComponent](/docs/{{version}}/components/index).
-
-\* has the same capabilities.
-
 <a name="basics"></a>
 ## Basics
 
@@ -29,7 +25,11 @@ When you need to add a button with a specific action, `ActionButton` comes to th
 In **MoonShine**, they are already used - in forms, tables, and on pages.
 
 ```php
-ActionButton::make(
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+
+make(
     Closure|string $label,
     Closure|string $url = '#',
     ?DataWrapperContract $data = null,
@@ -124,6 +124,11 @@ ActionButton::make('Alert')
 To trigger a modal window when the button is clicked, use the `inModal()` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Contracts\UI\ActionButtonContract;
+use MoonShine\UI\Components\Modal;
+
 /**
  * @param  ?Closure(Modal $modal, ActionButtonContract $ctx): Modal  $builder
  */
@@ -144,8 +149,6 @@ inModal(
 > For more detailed information on modal methods, refer to the [Modal](/docs/{{version}}/components/modal) section.
 
 ```php
-use MoonShine\UI\Components\Modal;
-
 ActionButton::make('Button Label')
     ->inModal(
         title: 'Modal Window Title',
@@ -159,9 +162,15 @@ ActionButton::make('Button Label')
 > If you are using multiple similar modal windows, such as in tables for each item, you need to specify a unique `name` for each.
 
 ```php
-->inModal(
-    name: static fn (mixed $item, ActionButtonContract $ctx): string => "delete-button-{$ctx->getData()?->getKey()}"
-)
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Contracts\UI\ActionButtonContract;
+use MoonShine\UI\Components\ActionButton;
+
+ActionButton::make('Button Label')
+    ->inModal(
+        name: static fn (mixed $item, ActionButtonContract $ctx): string => "delete-button-{$ctx->getData()?->getKey()}"
+    )
 ```
 
 You can also open a modal window using the `toggleModal()` method, and if the `ActionButton` is inside a modal window, simply `openModal()`.
@@ -245,11 +254,14 @@ ActionButton::make('Button Label')
 ```
 
 <a name="offcanvas"></a>
-## Offcanvas
+## Sidebar
 
-To trigger an offcanvas panel when clicking the button, use the `inOffCanvas()` method.
+To trigger a sidebar when clicking the button, use the `inOffCanvas()` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\OffCanvas;
 
 ActionButton::make('Button Label')
@@ -269,6 +281,9 @@ ActionButton::make('Button Label')
 If you need to organize logic with multiple `ActionButton`, with some of them needing to be hidden or displayed in a dropdown menu, use the `ActionGroup` component.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\ActionGroup;
 
 ActionGroup::make([
@@ -323,6 +338,11 @@ protected function indexButtons(): ListOf
 The `async()` method allows implementing asynchronous functionality for `ActionButton`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Support\DTOs\AsyncCallback;
+use MoonShine\Support\Enums\HttpMethod;
+
 async(
     HttpMethod $method = HttpMethod::GET,
     ?string $selector = null,
@@ -351,11 +371,11 @@ ActionButton::make('Button Label', '/endpoint')
 
 If you need to display a notification or redirect after clicking, simply implement a json response according to the following structure:
 
-```php
+```json
 {
-    message: 'Toast',
-    messageType: 'success',
-    redirect: '/url'
+    "message": "Toast",
+    "messageType": "success",
+    "redirect": "/url"
 }
 ```
 
@@ -364,10 +384,10 @@ If you need to display a notification or redirect after clicking, simply impleme
 
 ### HTML content
 
-If you need to replace an HTML area upon clicking, you can return HTML content or json with the html key in the response:
+If you need to replace an HTML area upon clicking, you can return HTML content or json with the html key in the response, for example:
 
-```php
-{html: 'Html content'}
+```json
+{"html": "Html content"}
 ```
 
 ```php
