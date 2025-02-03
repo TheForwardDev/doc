@@ -25,14 +25,14 @@ make(
 )
 ```
 
-- $title - the title for the list inside the Dropdown
-- $toggler - the appearance of the button to display
-- $content - the content of the Dropdown
-- $items - items for forming the list in the form of ul li
-- $searchable - search by content
-- $searchPlaceholder - placeholder for search
-- $placement - location
-- $footer - footer for the list inside the Dropdown
+- `$title` - the title for the list inside the `Dropdown`,
+- `$toggler` - the appearance of the button to display,
+- `$content` - the content of the Dropdown,
+- `$items` - items for forming the list in the form of ul li,
+- `$searchable` - search by content,
+- `$searchPlaceholder` - placeholder for search,
+- `$placement` - location,
+- `$footer` - footer for the list inside the `Dropdown`.
 
 ~~~tabs
 tab: Class

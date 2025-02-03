@@ -24,13 +24,13 @@ tab: Blade
 ```
 ~~~
 
-> [!TIP]
-> Родительский компонент: [head](/docs/{{version}}/components/head)
+> [!NOTE]
+> Родительский компонент: [head](/docs/{{version}}/components/head).
 
 <a name="assets"></a>
 ## Кастомные favicons
 
-Для изменения favicons, необходимо воспользоваться методом `customAssets()` или указать соответствующий параметр в blade компоненте.
+Для изменения favicons, необходимо воспользоваться методом `customAssets()` или указать соответствующий параметр в **Blade** компоненте.
 
 ~~~tabs
 tab: Class
