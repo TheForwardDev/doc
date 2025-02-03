@@ -8,7 +8,7 @@
 - [onClick](#onclick)
 - [Modal](#modal)
 - [Confirmation](#confirm)
-- [Sidebar](#offcanvas)
+- [OffCanvas](#offcanvas)
 - [Grouping](#group)
 - [Bulk actions](#bulk)
 - [Async mode](#async)
@@ -254,9 +254,9 @@ ActionButton::make('Button Label')
 ```
 
 <a name="offcanvas"></a>
-## Sidebar
+## OffCanvas
 
-To trigger a sidebar when clicking the button, use the `inOffCanvas()` method.
+To trigger an offcanvas when clicking the button, use  `inOffCanvas()` method.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
