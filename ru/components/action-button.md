@@ -256,7 +256,7 @@ ActionButton::make('Button Label')
 <a name="offcanvas"></a>
 ## Offcanvas
 
-Для того чтобы при нажатии на кнопку вызывалась боковую панель (Offcanvas), используйте метод `inOffCanvas()`.
+Для того чтобы при нажатии на кнопку вызывалась боковая панель (Offcanvas), используйте метод `inOffCanvas()`.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
