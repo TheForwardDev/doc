@@ -287,6 +287,9 @@ ActionGroup::make([
 With `ActionGroup`, you can also change the display of buttons, showing them inline or in a dropdown for space-saving.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\ActionGroup;
 
 ActionGroup::make([

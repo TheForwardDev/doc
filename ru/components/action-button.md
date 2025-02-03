@@ -287,6 +287,9 @@ ActionGroup::make([
 Благодаря `ActionGroup` вы также можете изменить отображение кнопок, отображать их в линию или в выпадающем меню для экономии места.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\ActionGroup;
 
 ActionGroup::make([
