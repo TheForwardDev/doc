@@ -8,7 +8,7 @@
 - [onClick](#onclick)
 - [Modal](#modal)
 - [Confirmation](#confirm)
-- [OffCanvas](#offcanvas)
+- [Offcanvas](#offcanvas)
 - [Grouping](#group)
 - [Bulk actions](#bulk)
 - [Async mode](#async)
@@ -254,7 +254,7 @@ ActionButton::make('Button Label')
 ```
 
 <a name="offcanvas"></a>
-## OffCanvas
+## Offcanvas
 
 To trigger an offcanvas when clicking the button, use  `inOffCanvas()` method.
 
