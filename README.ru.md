@@ -130,6 +130,18 @@ use MoonShine\UI\Fields\Text; // [tl! collapse:end]
 Text::make('Title')
 ```
 
+Если необходимо указать какие изменения в коде, то можно воспользоваться специальной конструкцией.
+
+```php
+MenuItem::make('Settings', new SettingResource(), 'heroicons.outline.adjustments-vertical') // [tl! remove]
+MenuItem::make('Settings', SettingResource::class, 'adjustments-vertical') // [tl! add]
+```
+или
+```php
+MenuItem::make('Settings', new SettingResource(), 'heroicons.outline.adjustments-vertical') // [tl! --]
+MenuItem::make('Settings', SettingResource::class, 'adjustments-vertical') // [tl! ++]
+```
+
 <a name="list"></a>
 ## Списки
 
@@ -182,4 +194,13 @@ Content tab 2
 
 Пример:
 
+```
 ![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many.png)
+```
+
+Для показа изображения в темной или светлой теме, необходимо к ссылке добавить hash тег `#light` или `#dark`.
+
+```
+![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many.png#light)
+![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_dark.png#dark)
+```

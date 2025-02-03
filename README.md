@@ -130,6 +130,18 @@ use MoonShine\UI\Fields\Text; // [tl! collapse:end]
 Text::make('Title')
 ```
 
+If you need to specify what changes in the code, then you can use a special design.
+
+```php
+MenuItem::make('Settings', new SettingResource(), 'heroicons.outline.adjustments-vertical') // [tl! remove]
+MenuItem::make('Settings', SettingResource::class, 'adjustments-vertical') // [tl! add]
+```
+или
+```php
+MenuItem::make('Settings', new SettingResource(), 'heroicons.outline.adjustments-vertical') // [tl! --]
+MenuItem::make('Settings', SettingResource::class, 'adjustments-vertical') // [tl! ++]
+```
+
 <a name="list"></a>
 ## Lists
 
@@ -182,4 +194,13 @@ The link is specified - https://raw.githubusercontent.com/moonshine-software/doc
 
 Example:
 
+```
 ![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many.png)
+```
+
+To show the image in a dark or light themes, you must add to the link hashtag `#light` or `#dark`.
+
+```
+![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many.png#light)
+![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_dark.png#dark)
+```
