@@ -3,7 +3,7 @@
 The `Content` component is used for the area that displays the content part of the page.
 
 ```php
-Content::make(iterable $components = [])
+make(iterable $components = [])
 ```
 
 - `$components` - array of components.

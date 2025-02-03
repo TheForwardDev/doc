@@ -13,7 +13,7 @@
 Using the `Dropdown` component, you can create dropdown blocks.
 
 ```php
-Dropdown::make(
+make(
     ?string $title = null,
     Closure|string $toggler = '',
     Closure|Renderable|string $content = '',
@@ -22,6 +22,7 @@ Dropdown::make(
     Closure|string $searchPlaceholder = '',
     string $placement = 'bottom-start',
     Closure|string $footer = '',
+    string $strategy = 'fixed',
 )
 ```
 

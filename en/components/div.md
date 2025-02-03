@@ -3,7 +3,7 @@
 The `Div` component simply displays a `<div>` tag with the ability to specify nested components and add attributes.
 
 ```php
-Div::make(iterable $components)
+make(iterable $components)
 ```
 
 ~~~tabs

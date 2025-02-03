@@ -3,7 +3,7 @@
 Компонент `Content` используется для области с отображением контентной части страницы.
 
 ```php
-Content::make(iterable $components = [])
+make(iterable $components = [])
 ```
 
 - `$components` - массив компонентов.

@@ -3,7 +3,7 @@
 Компонент `Div` просто отображает тег `<div>` с возможностью указания вложенных компонентов и добавления атрибутов.
 
 ```php
-Div::make(iterable $components)
+make(iterable $components)
 ```
 
 ~~~tabs
