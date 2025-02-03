@@ -22,7 +22,6 @@ make(
     Closure|string $searchPlaceholder = '',
     string $placement = 'bottom-start',
     Closure|string $footer = '',
-    string $strategy = 'fixed',
 )
 ```
 
