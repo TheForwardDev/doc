@@ -493,7 +493,7 @@ final class MoonShineLayout extends AppLayout
 <a name="active"></a>
 ## Active item
 
-A menu item becomes active if it matches the ***url***, but the `forceActive()` method allows you to forcibly make an item active.
+A menu item becomes active if it matches the ***url***, but the `whenActive()` method allows you to forcibly make an item active.
 
 ```php
 /**
