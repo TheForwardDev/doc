@@ -20,7 +20,10 @@ make(?iterable $elements = [])
 ~~~tabs
 tab: Class
 ```php
-use MoonShine\UI\Components\Layout\Body;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\MenuManager\MenuItem;
+use MoonShine\UI\Components\Layout\Menu;
 
 Menu::make([
     MenuItem::make('Item', '/')
@@ -38,7 +41,10 @@ tab: Blade
 You can also initialize the menu through a primitive array.
 
 ```php
-Menu::make([['label' => 'Dashboard', 'url' => '/'], ['label' => 'Section', 'url' => '/section']])
+Menu::make([
+    ['label' => 'Dashboard', 'url' => '/'],
+    ['label' => 'Section', 'url' => '/section'],
+])
 ```
 
 <a name="top"></a>
