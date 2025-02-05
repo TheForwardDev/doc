@@ -8,7 +8,7 @@
 - [onClick](#onclick)
 - [Модальное окно](#modal)
 - [Подтверждение](#confirm)
-- [Боковая панель](#offcanvas)
+- [Offcanvas](#offcanvas)
 - [Группировка](#group)
 - [Массовые действия](#bulk)
 - [Асинхронный режим](#async)
@@ -18,10 +18,6 @@
 
 ---
 
-Наследует [MoonShineComponent](/docs/{{version}}/components/index).
-
-\* имеет те же возможности.
-
 <a name="basics"></a>
 ## Основы
 
@@ -29,7 +25,11 @@
 В **MoonShine** они уже используются - в формах, таблицах, на страницах.
 
 ```php
-ActionButton::make(
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+
+make(
     Closure|string $label,
     Closure|string $url = '#',
     ?DataWrapperContract $data = null,
@@ -124,6 +124,11 @@ ActionButton::make('Alert')
 Для вызова модального окна при нажатии на кнопку используйте метод `inModal()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Contracts\UI\ActionButtonContract;
+use MoonShine\UI\Components\Modal;
+
 /**
  * @param  ?Closure(Modal $modal, ActionButtonContract $ctx): Modal  $builder
  */
@@ -144,6 +149,9 @@ inModal(
 > Для получения более подробной информации по методам модальных окон, обратитесь к разделу [Modal](/docs/{{version}}/components/modal).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\Modal;
 
 ActionButton::make('Button Label')
@@ -159,9 +167,15 @@ ActionButton::make('Button Label')
 > Если вы используете несколько однотипных модальных окон, например в таблицах для каждого элемента, то вам необходимо указывать уникальный `name` для каждой.
 
 ```php
-->inModal(
-    name: static fn (mixed $item, ActionButtonContract $ctx): string => "delete-button-{$ctx->getData()?->getKey()}"
-)
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Contracts\UI\ActionButtonContract;
+use MoonShine\UI\Components\ActionButton;
+
+ActionButton::make('Button Label')
+    ->inModal(
+        name: static fn (mixed $item, ActionButtonContract $ctx): string => "delete-button-{$ctx->getData()?->getKey()}"
+    )
 ```
 
 Вы также можете открыть модальное окно с помощью метода `toggleModal()`, а если `ActionButton` находится внутри модального окна, то просто `openModal()`.
@@ -245,11 +259,14 @@ ActionButton::make('Button Label')
 ```
 
 <a name="offcanvas"></a>
-## Боковая панель
+## Offcanvas
 
-Для того чтобы при нажатии на кнопку вызывалась боковая панель, используйте метод `inOffCanvas()`.
+Для того чтобы при нажатии на кнопку вызывалась боковая панель (Offcanvas), используйте метод `inOffCanvas()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\OffCanvas;
 
 ActionButton::make('Button Label')
@@ -269,6 +286,9 @@ ActionButton::make('Button Label')
 Если вам необходимо организовать логику с несколькими `ActionButton`, при этом некоторые из них должны быть скрыты или отображены в выпадающем меню, используйте компонент `ActionGroup`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\ActionGroup;
 
 ActionGroup::make([
@@ -323,6 +343,11 @@ protected function indexButtons(): ListOf
 Метод `async()` позволяет реализовать асинхронную работу для `ActionButton`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Support\DTOs\AsyncCallback;
+use MoonShine\Support\Enums\HttpMethod;
+
 async(
     HttpMethod $method = HttpMethod::GET,
     ?string $selector = null,
@@ -349,13 +374,13 @@ ActionButton::make('Button Label', '/endpoint')
 
 ### Уведомления
 
-Если вам нужно отобразить уведомление или сделать редирект после клика, то достаточно реализовать json ответ согласно cледующей структуре:
+Если вам нужно отобразить уведомление или сделать редирект после клика, то достаточно реализовать json ответ согласно следующей структуре:
 
-```php
+```json
 {
-    message: 'Toast',
-    messageType: 'success',
-    redirect: '/url'
+    "message": "Toast",
+    "messageType": "success",
+    "redirect": "/url"
 }
 ```
 
@@ -364,10 +389,10 @@ ActionButton::make('Button Label', '/endpoint')
 
 ### HTML содержимое
 
-Если вам нужно заменить область HTML по клику, то можно вернуть HTML содержимое или json с ключом html в ответе:
+Если вам нужно заменить область HTML по клику, то можно вернуть HTML содержимое или json с ключом html в ответе, например:
 
-```php
-{html: 'Html content'}
+```json
+{"html": "Html content"}
 ```
 
 ```php
