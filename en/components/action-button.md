@@ -149,6 +149,11 @@ inModal(
 > For more detailed information on modal methods, refer to the [Modal](/docs/{{version}}/components/modal) section.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\UI\Components\Modal;
+
 ActionButton::make('Button Label')
     ->inModal(
         title: 'Modal Window Title',
