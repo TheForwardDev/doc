@@ -1,8 +1,9 @@
 # Header
 
-Компонент `Header` используется для создания блока заголовка в **MoonShine**.
+> [!NOTE]
+> Используется для создания [шаблонов](/docs/{{version}}/appearance/layout) в **MoonShine**.
 
-Вы можете создать `Header`, используя статический метод `make()` класса `Header`.
+Компонент `Header` предназначен для создания блока заголовка.
 
 ```php
 make(iterable $components = [])
@@ -12,30 +13,16 @@ make(iterable $components = [])
 ~~~tabs
 tab: Class
 ```php
-namespace App\MoonShine\Layouts;
-
 use MoonShine\UI\Components\Layout\Header;
 
-final class MoonShineLayout extends AppLayout
-{
-    public function build(): Layout
-    {
-        return Layout::make([
-            // ...
-
-            Header::make([
-                Search::make(),
-            ]),
-
-            // ...
-        ]);
-    }
-}
+Header::make([
+    Search::make(),
+])
 ```
 tab: Blade
 ```blade
 <x-moonshine::layout.header>
-Any content
+    Any content
 </x-moonshine::layout.header>
 ```
 ~~~

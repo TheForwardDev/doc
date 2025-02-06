@@ -9,9 +9,10 @@
 <a name="basics"></a>
 ## Основы
 
-Компонент `Footer` используется для создания блока подвала в **MoonShine**.
+> [!NOTE]
+> Используется для создания [шаблонов](/docs/{{version}}/appearance/layout) в **MoonShine**.
 
-Вы можете создать `Footer`, используя статический метод `make()` класса `Footer`.
+Компонент `Footer` предназначен для создания блока подвала.
 
 ```php
 make(iterable $components = [])
@@ -22,31 +23,17 @@ make(iterable $components = [])
 ~~~tabs
 tab: Class
 ```php
-namespace App\MoonShine\Layouts;
-
 use MoonShine\UI\Components\Layout\Footer;
 
-final class MoonShineLayout extends AppLayout
-{
-    public function build(): Layout
-    {
-        return Layout::make([
-            // ...
-
-            Footer::make([
-                // ..
-            ]),
-
-            // ...
-        ]);
-    }
-}
+Footer::make([
+    // ...
+]),
 ```
 tab: Blade
 ```blade
 <x-moonshine::layout.footer
     copyright="Your brand"
-    :menu="['https://moonshine-laravel.com/docs' => 'Документация']"
+    :menu="['https://moonshine-laravel.com/docs' => 'Documentation']"
 >
 Any content
 </x-moonshine::layout.footer>
@@ -63,7 +50,8 @@ copyright(string|Closure $text)
 ```
 
 ```php
-Footer::make()->copyright(fn (): string => 'Your brand')
+Footer::make()
+    ->copyright(fn (): string => 'Your brand')
 ```
 
 <a name="menu"></a>
@@ -83,6 +71,6 @@ menu(array $data)
 ```php
 Footer::make()
     ->menu([
-        'https://moonshine-laravel.com/docs' => 'Документация',
+        'https://moonshine-laravel.com/docs' => 'Documentation',
     ])
 ```
