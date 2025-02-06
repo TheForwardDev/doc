@@ -19,7 +19,7 @@ use MoonShine\UI\Components\Layout\Divider;
 Divider::make()
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.divider/>
 ```
 ~~~

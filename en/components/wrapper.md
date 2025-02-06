@@ -34,7 +34,7 @@ final class MoonShineLayout extends AppLayout
 }
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.body>
     <x-moonshine::layout.wrapper>
     </x-moonshine::layout.wrapper>

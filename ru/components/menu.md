@@ -30,7 +30,7 @@ Menu::make([
 ]);
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.menu
     :elements="[['label' => 'Dashboard', 'url' => '/'], ['label' => 'Section', 'url' => '/section']]"
     :top="false"

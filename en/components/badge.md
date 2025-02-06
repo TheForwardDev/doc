@@ -38,7 +38,7 @@ Badge::make('Red', 'red');
 Badge::make('Gray', 'gray');
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::badge color="primary">Primary</x-moonshine::badge>
 <x-moonshine::badge color="secondary">Secondary</x-moonshine::badge>
 <x-moonshine::badge color="success">Success</x-moonshine::badge>

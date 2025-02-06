@@ -45,7 +45,7 @@ FormBuilder::make(
 )
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::form name="crud-edit">
     <x-moonshine::form.input
         name="title"

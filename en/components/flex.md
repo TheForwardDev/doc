@@ -39,7 +39,7 @@ Flex::make([
 ]),
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.flex :justifyAlign="'end'">
     <div>Text 1</div>
     <div>Text 2</div>

@@ -21,7 +21,7 @@ use MoonShine\UI\Components\Color;
 Color::make(ColorEnum::PURPLE)
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::color :color="'red'"/>
 ```
 ~~~

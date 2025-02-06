@@ -42,7 +42,7 @@ final class MoonShineLayout extends AppLayout
 }
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.top-bar>
 <x-moonshine::layout.menu :elements="[['label' => 'Dashboard', 'url' => '/'], ['label' => 'Section', 'url' => '/section']]"/>
 </x-moonshine::layout.top-bar>

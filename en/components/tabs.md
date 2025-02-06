@@ -40,7 +40,7 @@ Tabs::make([
 ]),
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::tabs :items="[
     'tab_1' => 'Tab 1',
     'tab_2' => 'Tab 2',
@@ -69,7 +69,7 @@ tab: Blade
 
 You can specify the default active tab by setting `active`.
 
-```bladehtml
+```blade
 <x-moonshine::tabs :items="[
         'tab_1' => 'Tab 1',
         'tab_2' => 'Tab 2',

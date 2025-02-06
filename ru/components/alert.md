@@ -20,7 +20,7 @@ use MoonShine\UI\Components\Alert;
 Alert::make()->content('Text'),
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::alert>Alert</x-moonshine::alert>
 ```
 ~~~
@@ -50,7 +50,7 @@ Alert::make(type: 'error')->content('Error'),
 Alert::make(type: 'info')->content('Text'),
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::alert type="primary">Primary</x-moonshine::alert>
 <x-moonshine::alert type="secondary">Secondary</x-moonshine::alert>
 <x-moonshine::alert type="success">Success</x-moonshine::alert>
@@ -72,7 +72,7 @@ Alert::make(icon: "academic-cap")
     ->content('Text'),
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::alert icon="academic-cap">
     Alert
 </x-moonshine::alert>
@@ -93,7 +93,7 @@ Alert::make(removable: true)
     ->content('Text'),
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::alert removable="true">
     Alert
 </x-moonshine::alert>

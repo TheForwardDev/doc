@@ -46,7 +46,7 @@ Modal::make(
 )
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::modal title="Title">
     <div>
         Content...
@@ -271,7 +271,7 @@ Modal::make('Заголовок', 'Содержимое...', ActionButton::make(
 
 Для создания модальных окон используется компонент `moonshine::modal`.
 
-```bladehtml
+```blade
 <x-moonshine::modal title="Title">
     <div>
         Content...
@@ -289,7 +289,7 @@ Modal::make('Заголовок', 'Содержимое...', ActionButton::make(
 
 Параметр `wide` позволяет модальным окнам заполнять всю ширину.
 
-```bladehtml
+```blade
 <x-moonshine::modal wide title="Title">
     <div>
         Content...
@@ -307,7 +307,7 @@ Modal::make('Заголовок', 'Содержимое...', ActionButton::make(
 
 Параметр `auto` позволяет модальным окнам занимать ширину на основе содержимого.
 
-```bladehtml
+```blade
 <x-moonshine::modal auto title="Title">
     <div>
         Content...
@@ -325,7 +325,7 @@ Modal::make('Заголовок', 'Содержимое...', ActionButton::make(
 
 По умолчанию модальные окна закрываются при клике вне области окна. Вы можете переопределить это поведение с помощью параметра `closeOutside`.
 
-```bladehtml
+```blade
 <x-moonshine::modal :closeOutside="false" title="Title">
     <div>
         Content...
@@ -343,7 +343,7 @@ Modal::make('Заголовок', 'Содержимое...', ActionButton::make(
 
 Компонент `moonshine::modal` позволяет загружать контент асинхронно.
 
-```bladehtml
+```blade
 <x-moonshine::modal
     async
     :asyncUrl="route('async')"

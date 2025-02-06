@@ -34,7 +34,7 @@ Select::make('Country', 'country_id')
     ])
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::form.wrapper label="Country">
     <<x-moonshine::form.select>
         <x-slot:options>
@@ -460,7 +460,7 @@ You can pass additional parameters to the component:
 
 To asynchronously load values, you need to specify the url in the asyncRoute attribute that will return data in JSON format.
 
-```bladehtml
+```blade
 <x-moonshine::form.select asyncRoute='url' />
 ```
 

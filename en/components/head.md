@@ -29,7 +29,7 @@ Head::make([
 ]);
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.head>
     <meta name="csrf-token" content="token" />
 </x-moonshine::layout.head>
@@ -57,7 +57,7 @@ Head::make([
     ->title('Page Title');
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.head title='Page Title'>
     // ...
 </x-moonshine::layout.head>
@@ -82,7 +82,7 @@ Head::make([
     ->bodyColor('#7843e9');
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.head bodyColor='#7843e9'>
     // ...
 </x-moonshine::layout.head>

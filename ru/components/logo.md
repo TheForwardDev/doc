@@ -40,7 +40,7 @@ Logo::make(
 ),
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.logo
     :href="'/admin'"
     :logo="'/vendor/moonshine/logo.svg'"

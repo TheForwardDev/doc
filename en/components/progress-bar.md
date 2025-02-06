@@ -30,7 +30,7 @@ use MoonShine\UI\Components\Layout\Divider;
 ProgressBar::make(10)
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::progress-bar
     color="primary"
     :value="10"

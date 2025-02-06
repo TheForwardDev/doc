@@ -71,7 +71,7 @@ Grid::make([
 ])
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.grid>
     <x-moonshine::layout.column adaptiveColSpan="6" colSpan="6">
         {{ fake()->text() }}

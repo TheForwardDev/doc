@@ -10,7 +10,7 @@ use MoonShine\UI\Components\Layout\Burger;
 Burger::make()
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.burger />
 ```
 ~~~

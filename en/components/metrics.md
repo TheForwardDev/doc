@@ -24,7 +24,7 @@ use MoonShine\UI\Components\Metrics\Wrapped\ValueMetric;
 ValueMetric::make('Completed orders')->value(fn() => Order::completed()->count())
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::metrics.value
     title="Completed orders"
     icon="shopping-bag"

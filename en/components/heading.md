@@ -29,7 +29,7 @@ use MoonShine\UI\Components\Heading;
 Heading::make('Title')->h(2);
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::heading h="2">Hello world</x-moonshine::heading>
 ```
 ~~~

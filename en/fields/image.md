@@ -14,7 +14,7 @@ use MoonShine\UI\Fields\Image;
 Image::make('Thumbnail')
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::form.file
     :imageable="true"
     name="thumbnail"

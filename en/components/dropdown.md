@@ -47,7 +47,7 @@ Dropdown::make(
 )
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::dropdown>
     <div class="m-4">
         {{ fake()->text() }}

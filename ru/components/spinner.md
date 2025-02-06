@@ -34,7 +34,7 @@ use MoonShine\UI\Components\Spinner;
 Spinner::make()
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::spinner size="md" />
 ```
 ~~~

@@ -22,7 +22,7 @@ Thumbnails::make([
 ]),
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::thumbnails :items="[
     '/images/image_1.jpg',
     '/images/image_2.jpg',
@@ -33,7 +33,7 @@ tab: Blade
 
 Можно указывать только одну миниатюру
 
-```bladehtml
+```blade
 <x-moonshine::thumbnails :items="/images/thumb_1.jpg"/>
 ```
 

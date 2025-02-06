@@ -18,7 +18,7 @@ use MoonShine\UI\Components\Loader;
 Loader::make()
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::loader />
 ```
 ~~~

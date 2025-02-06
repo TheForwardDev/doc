@@ -34,7 +34,7 @@ use MoonShine\UI\Fields\Number;
 Number::make('Sort')
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::field-container label="Sort">
     <x-moonshine::form.input
         type="number"

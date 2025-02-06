@@ -543,7 +543,7 @@ final class MyLayout extends AppLayout
 
 An example of a basic template:
 
-```bladehtml
+```blade
 <x-moonshine::layout>
     <x-moonshine::layout.html :with-alpine-js="true" :with-themes="true">
         <x-moonshine::layout.head>

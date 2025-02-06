@@ -16,7 +16,7 @@ use MoonShine\UI\Components\Layout\LineBreak;
 LineBreak::make(),
 ```
 tab: Blade
-```bladehtml
+```blade
 <x-moonshine::layout.line-break/>
 ```
 ~~~
