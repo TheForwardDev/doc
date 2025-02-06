@@ -9,7 +9,10 @@
 <a name="basics"></a>
 ## Основы
 
-Компонент `Footer` используется для создания блока подвала в **MoonShine**.
+> [!NOTE]
+> Используется для создания [шаблонов](/docs/{{version}}/appearance/layout) в **MoonShine**.
+
+Компонент `Footer` предназначен для создания блока подвала.
 
 ```php
 make(iterable $components = [])

@@ -9,7 +9,10 @@
 <a name="basics"></a>
 ## Basics
 
-The `Footer` component is used to create a footer block in **MoonShine**.
+> [!NOTE]
+> Used to create **MoonShine** [layouts](/docs/{{version}}/appearance/layout).
+
+The `Footer` component is designed to create a footer block.
 
 ```php
 make(iterable $components = [])

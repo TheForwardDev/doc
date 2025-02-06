@@ -1,6 +1,9 @@
 # Header
 
-Компонент `Header` используется для создания блока заголовка в **MoonShine**.
+> [!NOTE]
+> Используется для создания [шаблонов](/docs/{{version}}/appearance/layout) в **MoonShine**.
+
+Компонент `Header` предназначен для создания блока заголовка.
 
 ```php
 make(iterable $components = [])

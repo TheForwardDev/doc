@@ -1,6 +1,9 @@
 # Header
 
-The `Header` component is used to create a header block in **MoonShine**.
+> [!NOTE]
+> Used to create **MoonShine** [layouts](/docs/{{version}}/appearance/layout).
+
+The `Header` component is designed to create a header block.
 
 ```php
 make(iterable $components = [])
