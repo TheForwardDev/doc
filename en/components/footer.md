@@ -11,8 +11,6 @@
 
 The `Footer` component is used to create a footer block in **MoonShine**.
 
-You can create a `Footer` using the static method `make()` of the `Footer` class.
-
 ```php
 make(iterable $components = [])
 ```
@@ -22,25 +20,11 @@ make(iterable $components = [])
 ~~~tabs
 tab: Class
 ```php
-namespace App\MoonShine\Layouts;
-
 use MoonShine\UI\Components\Layout\Footer;
 
-final class MoonShineLayout extends AppLayout
-{
-    public function build(): Layout
-    {
-        return Layout::make([
-            // ...
-
-            Footer::make([
-                // ..
-            ]),
-
-            // ...
-        ]);
-    }
-}
+Footer::make([
+    // ...
+]),
 ```
 tab: Blade
 ```blade
@@ -63,7 +47,8 @@ copyright(string|Closure $text)
 ```
 
 ```php
-Footer::make()->copyright(fn (): string => 'Your brand')
+Footer::make()
+    ->copyright(fn (): string => 'Your brand')
 ```
 
 <a name="menu"></a>
