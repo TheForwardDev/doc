@@ -8,7 +8,8 @@
 <a name="basics"></a>
 ## Basics
 
-To position elements on the page, you can use the `Flex` component. Components inside `Flex` will be displayed in `display: flex` mode.
+To position elements on the page, you can use the `Flex` component.
+Components inside `Flex` will be displayed in `display: flex` mode.
 
 ```php
 make(
@@ -21,12 +22,12 @@ make(
 )
 ```
 
-- $components - a list of components,
-- $colSpan - the number of columns the block occupies for screen sizes of 1280px and above,
-- $adaptiveColSpan - the number of columns the block occupies for screen sizes up to 1280px,
-- $itemsAlign - an equivalent of the CSS class `items-$itemsAlign` in Tailwind,
-- $justifyAlign - an equivalent of the CSS class `justify-$justifyAlign` in Tailwind,
-- $withoutSpace - a flag for margins.
+- `$components` - a list of components,
+- `$colSpan` - the number of columns the block occupies for screen sizes of 1280px and above,
+- `$adaptiveColSpan` - the number of columns the block occupies for screen sizes up to 1280px,
+- `$itemsAlign` - an equivalent of the CSS class `items-$itemsAlign` in **Tailwind**,
+- `$justifyAlign` - an equivalent of the CSS class `justify-$justifyAlign` in **Tailwind**,
+- `$withoutSpace` - a flag for margins.
 
 ~~~tabs
 tab: Class
