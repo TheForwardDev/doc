@@ -13,7 +13,7 @@ use MoonShine\UI\Components\Layout\Assets;
 Assets::make();
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.assets />
 ```
 ~~~

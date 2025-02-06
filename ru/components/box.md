@@ -33,7 +33,7 @@ Box::make([
 ]);
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.box>
     {{ 'Hello!' }}
 </x-moonshine::box>
@@ -51,7 +51,7 @@ tab: Class
 Box::make('Title box', ['Hello!']);
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::box title="Title box">
     {{ 'Hello!' }}
 </x-moonshine::box>
@@ -69,7 +69,7 @@ tab: Class
 Box::make(['Hello!'])->dark();
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::box dark>
     {{ 'Hello!' }}
 </x-moonshine::box>
@@ -87,7 +87,7 @@ tab: Class
 Box::make('Title box', ['Hello!'])->icon('users');
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::box title="Title box">
     <x-moonshine::icon name="users"></x-moonshine::icon>
     {{ 'Hello!' }}

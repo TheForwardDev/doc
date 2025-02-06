@@ -29,7 +29,7 @@ use MoonShine\UI\Components\Icon;
 Icon::make('users');
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::icon icon="users" />
 ```
 ~~~

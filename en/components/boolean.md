@@ -11,7 +11,7 @@ Boolean::make(true);
 Boolean::make(false);
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::boolean :value="true" />
 <x-moonshine::boolean :value="false" />
 ```

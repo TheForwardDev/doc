@@ -19,7 +19,7 @@ use MoonShine\UI\Components\Title;
 Title::make('Hello world');
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::title>Hello world</x-moonshine::title>
 ```
 ~~~

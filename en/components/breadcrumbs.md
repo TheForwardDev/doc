@@ -19,7 +19,7 @@ Breadcrumbs::make([
 ]),
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::breadcrumbs
     :items="[
         '/' => 'Home',

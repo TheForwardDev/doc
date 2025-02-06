@@ -35,7 +35,7 @@ use MoonShine\UI\Components\CardsBuilder;
 CardsBuilder::make(iterable $items = [], FieldsContract|iterable $fields = [])
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.grid>
     <x-moonshine::layout.column colSpan="4" adaptiveColSpan="12">
         <x-moonshine::card
@@ -394,7 +394,7 @@ In this example, we cast the data to the format of the `User` model using `Model
 <a name="blade-basics"></a>
 ### Basics
 
-```blade
+```bladehtml
 <x-moonshine::layout.grid>
     <x-moonshine::layout.column colSpan="4" adaptiveColSpan="12">
         <x-moonshine::card

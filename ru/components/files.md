@@ -26,7 +26,7 @@ Files::make([
 ]),
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::files
     :files="[
         '/images/thumb_1.jpg',

@@ -26,7 +26,7 @@ use MoonShine\UI\Fields\Checkbox;
 Checkbox::make('Publish', 'is_publish')
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::form.wrapper label="Publish">
     <x-moonshine::form.input
         type="checkbox"

@@ -30,7 +30,7 @@ use MoonShine\UI\Components\Link;
 Link::make('https://moonshine-laravel.com', 'Moonshine')
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::link-button href="#">Link</x-moonshine::link-button>
 
 <x-moonshine::link-native href="#">Link</x-moonshine::link-native>
@@ -57,7 +57,7 @@ Link::make('https://moonshine-laravel.com', 'Moonshine')
     ->filled()
 ```
 
-```blade
+```bladehtml
 <x-moonshine::link-button
     href="#"
     :filled="true"

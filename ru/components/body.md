@@ -18,7 +18,7 @@ Body::make([
 ])
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.body>
     Any content
 </x-moonshine::layout.body>

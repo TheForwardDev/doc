@@ -19,7 +19,7 @@ Html::make([
 ]);
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.html>
     <x-moonshine::layout.head />
     <x-moonshine::layout.body>

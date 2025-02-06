@@ -24,7 +24,7 @@ Content::make([
 ])
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.content>
     <article class="article">
         Content

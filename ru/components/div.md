@@ -14,7 +14,7 @@ use MoonShine\UI\Components\Layout\Div;
 Div::make([])
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.div></x-moonshine::layout.div>
 ```
 ~~~

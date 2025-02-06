@@ -43,7 +43,7 @@ final class MoonShineLayout extends AppLayout
 }
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.footer
     copyright="Your brand"
     :menu="['https://moonshine-laravel.com/docs' => 'Документация']"

@@ -28,7 +28,7 @@ final class MoonShineLayout extends AppLayout
 }
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.theme-switcher />
 ```
 ~~~

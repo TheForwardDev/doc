@@ -14,7 +14,7 @@ use MoonShine\UI\Fields\Switcher;
 Switcher::make('Publish', 'is_publish')
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::form.wrapper label="Publish">
     <x-moonshine::form.switcher
         name="is_publish"

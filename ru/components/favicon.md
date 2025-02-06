@@ -19,7 +19,7 @@ use MoonShine\UI\Components\Layout\Favicon;
 Favicon::make();
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.favicon />
 ```
 ~~~
@@ -51,7 +51,7 @@ Favicon::make([
     ]);
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.favicon :assets="[
     'apple-touch' => asset('favicons/apple-touch-icon.png'),
     '32' => asset('favicons/favicon-32x32.png'),
@@ -86,7 +86,7 @@ Favicon::make([
     ->bodyColor('#7843e9');
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::layout.favicon bodyColor='#7843e9' />
 ```
 ~~~

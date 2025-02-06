@@ -33,7 +33,7 @@ Carousel::make(
 )
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::carousel
     :items="['/images/image_2.jpg','/images/image_1.jpg']"
     :alt="fake()->sentence(3)"

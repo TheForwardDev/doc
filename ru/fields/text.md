@@ -31,7 +31,7 @@ use MoonShine\UI\Fields\Text;
 Text::make('Title')
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::field-container label="Title">
     <x-moonshine::form.input
         type="text"

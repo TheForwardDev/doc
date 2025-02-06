@@ -46,7 +46,7 @@ Modal::make(
 )
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::modal title="Title">
     <div>
         Content...
@@ -270,7 +270,7 @@ Modal::make('Title', 'Content...', ActionButton::make('Show Modal', '#'))
 
 The `moonshine::modal` component is used to create modal windows.
 
-```blade
+```bladehtml
 <x-moonshine::modal title="Title">
     <div>
         Content...
@@ -288,7 +288,7 @@ The `moonshine::modal` component is used to create modal windows.
 
 The `wide` parameter allows modal windows to fill the entire width.
 
-```blade
+```bladehtml
 <x-moonshine::modal wide title="Title">
     <div>
         Content...
@@ -306,7 +306,7 @@ The `wide` parameter allows modal windows to fill the entire width.
 
 The `auto` parameter allows modal windows to take width based on content.
 
-```blade
+```bladehtml
 <x-moonshine::modal auto title="Title">
     <div>
         Content...
@@ -324,7 +324,7 @@ The `auto` parameter allows modal windows to take width based on content.
 
 By default, modal windows close when clicking outside the window area. You can override this behavior using the `closeOutside` parameter.
 
-```blade
+```bladehtml
 <x-moonshine::modal :closeOutside="false" title="Title">
     <div>
         Content...
@@ -342,7 +342,7 @@ By default, modal windows close when clicking outside the window area. You can o
 
 The `moonshine::modal` component allows for loading content asynchronously.
 
-```blade
+```bladehtml
 <x-moonshine::modal
     async
     :asyncUrl="route('async')"

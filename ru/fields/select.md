@@ -34,7 +34,7 @@ Select::make('Country', 'country_id')
     ])
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::form.wrapper label="Country">
     <<x-moonshine::form.select>
         <x-slot:options>
@@ -460,7 +460,7 @@ Select::make('Type')->native()
 
 Для асинхронной загрузки значений необходимо атрибуту asyncRoute указать url, который вернет данные в формате json.
 
-```blade
+```bladehtml
 <x-moonshine::form.select asyncRoute='url' />
 ```
 

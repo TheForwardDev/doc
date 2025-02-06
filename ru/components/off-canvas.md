@@ -49,7 +49,7 @@ OffCanvas::make(
 )
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::offcanvas
     title="Offcanvas"
     :left="false"

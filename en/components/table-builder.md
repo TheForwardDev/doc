@@ -51,7 +51,7 @@ use MoonShine\UI\Components\Table\TableBuilder;
 TableBuilder::make(iterable $fields = [], iterable $items = [])
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::table
     :columns="[
         '#', 'First', 'Last', 'Email'

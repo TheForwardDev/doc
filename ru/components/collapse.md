@@ -38,7 +38,7 @@ Collapse::make('Title/Slug', [
 ])
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::collapse
     :label="'Title/Slug'"
     :components='$components'

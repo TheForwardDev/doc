@@ -23,7 +23,7 @@ use MoonShine\UI\Fields\Hidden;
 Hidden::make('category_id')
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::form.input
     type="hidden"
     name="hidden_id"

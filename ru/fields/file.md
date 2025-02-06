@@ -34,7 +34,7 @@ use MoonShine\UI\Fields\File;
 File::make('File')
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::form.wrapper label="File">
     <x-moonshine::form.file
         name="file"

@@ -47,7 +47,7 @@ Card::make(
 )
 ```
 tab: Blade
-```blade
+```bladehtml
 <x-moonshine::card
         :title="fake()->sentence(3)"
         :thumbnail="'https://moonshine-laravel.com/images/image_1.jpg'"
