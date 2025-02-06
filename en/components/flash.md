@@ -49,11 +49,15 @@ session()->flash('toast', [
 When working asynchronously, you can trigger the notification using [JsEvents](/docs/{{version}}/frontend/js#default-events).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+use MoonShine\Support\AlpineJs;
+use MoonShine\Support\Enums\JsEvent;
+use MoonShine\Support\Enums\ToastType;
+use MoonShine\Support\ToastEventParams;
+
 AlpineJs::event(
     JsEvent::TOAST,
-    params: [
-        'type' => 'success',
-        'text' => 'Success',
-    ]
+    params: ToastEventParams::make(ToastType::SUCCESS, 'Success')
 )
 ```
