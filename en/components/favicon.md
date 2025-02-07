@@ -9,7 +9,10 @@
 <a name="basics"></a>
 ## Basics
 
-The `Favicon` component is used to add a favicon to an HTML page.
+> [!NOTE]
+> Used to create **MoonShine** [layouts](/docs/{{version}}/appearance/layout).
+
+The `Favicon` designed is used to add a favicon to an HTML page.
 
 ~~~tabs
 tab: Class

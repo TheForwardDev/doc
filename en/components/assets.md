@@ -1,6 +1,9 @@
 # Assets
 
-The `Assets` component is used to include scripts and stylesheets into the HTML page, added through [AssetManager](/docs/{{version}}/appearance/assets).
+> [!NOTE]
+> Used to create **MoonShine** [layouts](/docs/{{version}}/appearance/layout).
+
+The `Assets` component is designed to include scripts and stylesheets into the HTML page, added through [AssetManager](/docs/{{version}}/appearance/assets).
 
 > [!NOTE]
 > The `Assets` component also includes system styles and scripts.

@@ -17,14 +17,17 @@ The `Head` component is designed to place document information: metadata (such a
 > [!NOTE]
 > The `Head` component contains some standard metadata by default.
 
+```php
+make(array|iterable $components = [])
+```
+
+- `$components` - array of components.
+
 ~~~tabs
 tab: Class
 ```php
 use MoonShine\UI\Components\Layout\Head;
 
-Head::make(array|iterable $components = [])
-```
-```php
 Head::make([
     Meta::make('csrf-token')->customAttributes([
         'content' => 'token',

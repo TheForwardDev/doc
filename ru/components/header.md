@@ -8,7 +8,8 @@
 ```php
 make(iterable $components = [])
 ```
-`$components` - массив компонентов, которые располагаются в заголовке.
+
+- `$components` - массив компонентов.
 
 ~~~tabs
 tab: Class

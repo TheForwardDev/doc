@@ -9,7 +9,10 @@
 <a name="basics"></a>
 ## Основы
 
-Компонент `Favicon` используется для добавления к html-странице favicon.
+> [!NOTE]
+> Используется для создания [шаблонов](/docs/{{version}}/appearance/layout) в **MoonShine**.
+
+Компонент `Favicon` предназначен для добавления к html-странице favicon.
 
 ~~~tabs
 tab: Class

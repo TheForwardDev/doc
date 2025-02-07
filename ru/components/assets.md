@@ -1,6 +1,9 @@
 # Assets
 
-Компонент `Assets` используется для подключения к html-странице скриптов и таблиц стилей, добавленных через [AssetManager](/docs/{{version}}/appearance/assets).
+> [!NOTE]
+> Используется для создания [шаблонов](/docs/{{version}}/appearance/layout) в **MoonShine**.
+
+Компонент `Assets` предназначен для подключения к html-странице скриптов и таблиц стилей, добавленных через [AssetManager](/docs/{{version}}/appearance/assets).
 
 > [!NOTE]
 > Компонент `Assets` также подключает системные стили и скрипты.

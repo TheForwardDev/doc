@@ -18,16 +18,14 @@ The `Footer` component is designed to create a footer block.
 make(iterable $components = [])
 ```
 
-- `$components` - an array of components that are placed in the footer.
+- `$components` - array of components.
 
 ~~~tabs
 tab: Class
 ```php
 use MoonShine\UI\Components\Layout\Footer;
 
-Footer::make([
-    // ...
-]),
+Footer::make([]),
 ```
 tab: Blade
 ```blade
@@ -57,7 +55,7 @@ Footer::make()
 <a name="menu"></a>
 ## Menu
 
-The method `menu()` allows you to create a menu block in the footer.
+The `menu()` method allows you to create a menu block in the footer.
 
 ```php
 /**
@@ -66,7 +64,7 @@ The method `menu()` allows you to create a menu block in the footer.
 menu(array $data)
 ```
 
-- `$data` - an array of items where the key is the URL, and the value is the name of the menu item.
+- `$data` - array of items where the key is the URL, and the value is the name of the menu item.
 
 ```php
 Footer::make()
