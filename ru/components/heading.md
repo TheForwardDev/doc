@@ -2,7 +2,7 @@
 
 - [Основы](#basics)
 - [Градация](#gradation)
-- [Тег](#custom-tag)
+- [Тег-обёртка](#wrapper-tag)
 
 ---
 
@@ -11,26 +11,30 @@
 
 Компонент `Heading` позволяет добавлять заголовки к контенту.
 
-Вы можете создать `Heading`, используя статический метод `make()` класса `Heading`.
-
 ```php
-make(Closure|string $label = '', ?int $h = null, bool $asClass = true)
+make(
+    Closure|string $label = '',
+    ?int $h = null,
+    bool $asClass = true
+)
 ```
 
 `$label` - Значение,
 `$h` - Градация,
-`$asClass` - Использовать как div с классом градации или тег `h`,
+`$asClass` - Использовать как div с классом градации или тег `h`.
 
 ~~~tabs
 tab: Class
 ```php
 use MoonShine\UI\Components\Heading;
 
-Heading::make('Title')->h(2);
+Heading::make('Title', 2)
 ```
 tab: Blade
 ```blade
-<x-moonshine::heading h="2">Hello world</x-moonshine::heading>
+<x-moonshine::heading h="2">
+    Hello world
+</x-moonshine::heading>
 ```
 ~~~
 
@@ -48,20 +52,20 @@ h(int $gradation = 3, $asClass = true)
 use MoonShine\UI\Components\Heading;
 
 // Будут теги h1 - h4
-Heading::make('Панель управления')->h(1, false),
+Heading::make('Dashboard')->h(1, false),
 Heading::make('MoonShine')->h(2, false),
-Heading::make('Демо версия')->h(asClass: false),
-Heading::make('Заголовок')->h(4, false),
+Heading::make('Demo version')->h(asClass: false),
+Heading::make('Heading')->h(4, false),
 
 // Будут div.h1 - div.h4
-Heading::make('Панель управления')->h(1),
+Heading::make('Dashboard')->h(1),
 Heading::make('MoonShine')->h(2),
-Heading::make('Демо версия')->h(), // h3
-Heading::make('Заголовок')->h(4),
+Heading::make('Demo version')->h(), // h3
+Heading::make('Heading')->h(4),
 ```
 
-<a name="custom-tag"></a>
-## Тег
+<a name="wrapper-tag"></a>
+## Тег-обёртка
 
 ```php
 tag(string $tag)
@@ -70,8 +74,8 @@ tag(string $tag)
 Метод позволяет обернуть содержимое в указанный тег.
 
 ```php
-Heading::make('Панель управления')->tag('p')->h(1),
+Heading::make('Dashboard')->tag('p')->h(1),
 Heading::make('MoonShine')->tag('p')->h(2),
-Heading::make('Демо версия')->tag('p')->h(),
-Heading::make('Заголовок')->tag('p')->h(4),
+Heading::make('Demo version')->tag('p')->h(),
+Heading::make('Heading')->tag('p')->h(4),
 ```

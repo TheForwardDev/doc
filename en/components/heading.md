@@ -2,7 +2,7 @@
 
 - [Basics](#basics)
 - [Gradation](#gradation)
-- [Tag](#custom-tag)
+- [Wrapper Tag](#wrapper-tag)
 
 ---
 
@@ -11,26 +11,30 @@
 
 The `Heading` component allows you to add headings to content.
 
-You can create a `Heading` using the static method `make()` of the `Heading` class.
-
 ```php
-make(Closure|string $label = '', ?int $h = null, bool $asClass = true)
+make(
+    Closure|string $label = '',
+    ?int $h = null,
+    bool $asClass = true
+)
 ```
 
 `$label` - Value,
 `$h` - Gradation,
-`$asClass` - Use as a div with a gradation class or an `h` tag,
+`$asClass` - Use as a div with a gradation class or an `h` tag.
 
 ~~~tabs
 tab: Class
 ```php
 use MoonShine\UI\Components\Heading;
 
-Heading::make('Title')->h(2);
+Heading::make('Title', 2)
 ```
 tab: Blade
 ```blade
-<x-moonshine::heading h="2">Hello world</x-moonshine::heading>
+<x-moonshine::heading h="2">
+    Hello world
+</x-moonshine::heading>
 ```
 ~~~
 
@@ -41,7 +45,7 @@ tab: Blade
 h(int $gradation = 3, $asClass = true)
 ```
 
-The method allows wrapping the content in an *h1 - h6* tag or in a *div* with a gradation class.
+The method allows wrapping the content in *h1 - h6* tag or in a *div* with a gradation class.
 The first parameter defines the gradation of the tag, the second defines whether to use a tag or a class for *div*.
 
 ```php
@@ -60,8 +64,8 @@ Heading::make('Demo version')->h(), // h3
 Heading::make('Heading')->h(4),
 ```
 
-<a name="custom-tag"></a>
-## Tag
+<a name="wrapper-tag"></a>
+## Wrapper Tag
 
 ```php
 tag(string $tag)
