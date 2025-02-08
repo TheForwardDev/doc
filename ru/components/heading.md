@@ -61,6 +61,8 @@ Heading::make('Title')->h(1, false),
 Heading::make('Title')->h(),
 // <h3>
 Heading::make('Title')->h(asClass: false),
+// <h4 class="h5">
+Heading::make('Title', 4, false)->h(5)
 ```
 
 <a name="custom-tag"></a>
