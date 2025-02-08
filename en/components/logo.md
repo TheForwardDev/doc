@@ -10,8 +10,6 @@
 
 The `Logo` component displays the logo of your admin panel.
 
-You can create a `Logo` using the static method `make()`.
-
 ```php
 make(
     string $href,
@@ -22,11 +20,11 @@ make(
 )
 ```
 
- - \$href - the URL for the link when clicking on the logo,
- - \$logo - the URL to the logo image,
- - \$logoSmall - the URL to the small version of the logo,
- - \$title - tooltip on hover,
- - \$minimized - interacts with [Sidebar](/docs/{{version}}/components/sidebar). If set to true, the small logo will automatically be selected.
+ - `$href` - the URL for the link when clicking on the logo,
+ - `$logo` - the URL to the logo image,
+ - `$logoSmall` - the URL to the small version of the logo,
+ - `$title` - tooltip on hover,
+ - `$minimized` - interacts with [Sidebar](/docs/{{version}}/components/sidebar). If set to true, the small logo will automatically be selected.
 
 ~~~tabs
 tab: Class
@@ -52,10 +50,10 @@ tab: Blade
 <a name="attributes"></a>
 ## Attributes
 
-To add attributes to the `img` tag of the logo, there are two methods for the two display modes - `logoAttributes()` and `logoSmallAttributes()`
+To add attributes to the `img` tag of the logo, there are two methods for the two display modes - `logoAttributes()` and `logoSmallAttributes()`.
 
 ```php
-logoAttributes(array $attributes): self
+logoAttributes(array $attributes)
 
-logoSmallAttributes(array $attributes): self
+logoSmallAttributes(array $attributes)
 ```
