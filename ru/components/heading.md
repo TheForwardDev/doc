@@ -2,7 +2,7 @@
 
 - [Основы](#basics)
 - [Градация](#gradation)
-- [Тег-обёртка](#wrapper-tag)
+- [Тег](#custom-tag)
 
 ---
 
@@ -15,13 +15,13 @@
 make(
     Closure|string $label = '',
     ?int $h = null,
-    bool $asClass = true
+    bool $asClass = true,
 )
 ```
 
 `$label` - Значение,
-`$h` - Градация,
-`$asClass` - Использовать как div с классом градации или тег `h`.
+`$h` - Градация (1-6),
+`$asClass` - Использовать `<div>` с классом градации или тег `h`.
 
 ~~~tabs
 tab: Class
@@ -41,41 +41,43 @@ tab: Blade
 <a name="gradation"></a>
 ## Градация
 
+Параметры заголовка так же можно задать с помощью метода `h()`.
+
 ```php
 h(int $gradation = 3, $asClass = true)
 ```
 
-Метод позволяет обернуть содержимое в тег *h1 - h6* или в *div* с классом градации.
-Первый параметр определяет градацию тега, второй определяет, использовать ли тег или класс для *div*.
+`$gradation` - Градация (1-6),
+`$asClass` - Использовать `<div>` с классом градации или тег `h`.
 
 ```php
 use MoonShine\UI\Components\Heading;
 
-// Будут теги h1 - h4
-Heading::make('Dashboard')->h(1, false),
-Heading::make('MoonShine')->h(2, false),
-Heading::make('Demo version')->h(asClass: false),
-Heading::make('Heading')->h(4, false),
-
-// Будут div.h1 - div.h4
-Heading::make('Dashboard')->h(1),
-Heading::make('MoonShine')->h(2),
-Heading::make('Demo version')->h(), // h3
-Heading::make('Heading')->h(4),
+// <div class="h1">
+Heading::make('Title')->h(1),
+// <h1>
+Heading::make('Title')->h(1, false),
+// <div class="h3">
+Heading::make('Title')->h(),
+// <h3>
+Heading::make('Title')->h(asClass: false),
 ```
 
-<a name="wrapper-tag"></a>
-## Тег-обёртка
+<a name="custom-tag"></a>
+## Тег
+
+Чтобы изменить тег заголовка, воспользуйтесь методом `tag()`.
 
 ```php
 tag(string $tag)
 ```
 
-Метод позволяет обернуть содержимое в указанный тег.
-
 ```php
-Heading::make('Dashboard')->tag('p')->h(1),
-Heading::make('MoonShine')->tag('p')->h(2),
-Heading::make('Demo version')->tag('p')->h(),
-Heading::make('Heading')->tag('p')->h(4),
+// <p class="h2">
+Heading::make('Title', 2)
+    ->tag('p'),
+
+// <p>
+Heading::make('Title', 2, false)
+    ->tag('p'),
 ```
