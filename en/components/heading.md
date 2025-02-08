@@ -74,10 +74,7 @@ tag(string $tag)
 
 ```php
 // <p class="h2">
-Heading::make('Title', 2)
-    ->tag('p'),
-
-// <p>
-Heading::make('Title', 2, false)
-    ->tag('p'),
+Heading::make('Title')
+    ->tag('p')
+    ->h(2),
 ```
