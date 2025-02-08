@@ -472,7 +472,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ### Location of the field
 
 The field is used only within *CRUD* pages, as it retrieves the resource and page from the *URL*.
-However, you can also use it on other pages by specifying its location with the `nowOn()` method:
+However, you can also use it on other pages by specifying its location with the `nowOn()` method.
 
 ```php
 HasMany::make('Comments', resource: CommentResource::class)
