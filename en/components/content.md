@@ -1,6 +1,9 @@
 # Content
 
-The `Content` component is used for the area that displays the content part of the page.
+> [!NOTE]
+> Used to create **MoonShine** [layouts](/docs/{{version}}/appearance/layout).
+
+The `Content` component is designed for the area that displays the content part of the page.
 
 ```php
 make(iterable $components = [])

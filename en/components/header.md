@@ -8,7 +8,8 @@ The `Header` component is designed to create a header block.
 ```php
 make(iterable $components = [])
 ```
-`$components` - an array of components that are placed in the header.
+
+- `$components` - array of components.
 
 ~~~tabs
 tab: Class

@@ -17,14 +17,17 @@
 > [!NOTE]
 > Компонент `Head` содержит по умолчанию некоторые стандартные метаданные.
 
+```php
+make(array|iterable $components = [])
+```
+
+- `$components` - массив компонентов.
+
 ~~~tabs
 tab: Class
 ```php
 use MoonShine\UI\Components\Layout\Head;
 
-Head::make(array|iterable $components = [])
-```
-```php
 Head::make([
     Meta::make('csrf-token')->customAttributes([
         'content' => 'token',

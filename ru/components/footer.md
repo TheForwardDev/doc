@@ -18,7 +18,7 @@
 make(iterable $components = [])
 ```
 
-- `$components` - массив компонентов, которые располагаются в подвале.
+- `$components` - массив компонентов.
 
 ~~~tabs
 tab: Class

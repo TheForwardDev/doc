@@ -1,14 +1,15 @@
 # Layout
 
-Системный компонент `Layout` является стартовой точкой при создании шаблонов в **MoonShine** и используется единожды в методе `build()`.
+> [!NOTE]
+> Используется для создания [шаблонов](/docs/{{version}}/appearance/layout) в **MoonShine**.
 
-Вы можете создать `Layout`, используя статический метод `make()` класса `Layout`.
+Системный компонент `Layout` является стартовой точкой при создании шаблонов и используется единожды в методе `build()`.
 
 ```php
 make(iterable $components = [])
 ```
 
-`$components` - массив компонентов, которые располагаются в заголовке.
+- `$components` - массив компонентов.
 
 ~~~tabs
 tab: Class
@@ -30,7 +31,7 @@ final class MoonShineLayout extends AppLayout
 tab: Blade
 ```blade
 <x-moonshine::layout>
-Any content
+    Any content
 </x-moonshine::layout>
 ```
 ~~~
