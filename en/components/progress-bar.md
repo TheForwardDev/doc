@@ -25,7 +25,7 @@ make(float|int $value, string $size = 'sm', string|Color $color = '', bool $radi
 ~~~tabs
 tab: Class
 ```php
-use MoonShine\UI\Components\Layout\Divider;
+use MoonShine\UI\Components\ProgressBar;
 
 ProgressBar::make(10)
 ```
