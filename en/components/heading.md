@@ -19,9 +19,9 @@ make(
 )
 ```
 
-`$label` - Value,
-`$h` - Gradation (1-6),
-`$asClass` - Use `<div>` with a gradation class or `h` tag.
+- `$label` - Value,
+- `$h` - Gradation (1-6),
+- `$asClass` - Use `<div>` with a gradation class or `h` tag.
 
 ~~~tabs
 tab: Class
@@ -47,8 +47,8 @@ Heading parameters can also be set using the `h()` method.
 h(int $gradation = 3, $asClass = true)
 ```
 
-`$gradation` - Gradation (1-6),
-`$asClass` - Use `<div>` with a gradation class or `h` tag.
+- `$gradation` - Gradation (1-6),
+- `$asClass` - Use `<div>` with a gradation class or `h` tag.
 
 ```php
 use MoonShine\UI\Components\Heading;
