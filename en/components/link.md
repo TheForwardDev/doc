@@ -19,8 +19,8 @@ make(
 )
 ```
 
-- $href - link to the resource,
-- $value - name of the link.
+- `$href` - link to the resource,
+- `$value` - name of the link.
 
 ~~~tabs
 tab: Class
@@ -50,7 +50,7 @@ Link::make('https://moonshine-laravel.com', 'Moonshine')
 <a name="fill"></a>
 ## Fill
 
-The `filled` parameter is responsible for the fill.
+The `filled()` method is responsible for the fill.
 
 ```php
 Link::make('https://moonshine-laravel.com', 'Moonshine')
@@ -76,7 +76,7 @@ Link::make('https://moonshine-laravel.com', 'Moonshine')
 <a name="icon"></a>
 ## Icon
 
-You can pass the `icon` parameter.
+To add an icon, use the `icon()` method.
 
 ```php
 Link::make('https://moonshine-laravel.com', 'Moonshine')

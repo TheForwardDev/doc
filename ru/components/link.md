@@ -19,8 +19,8 @@ make(
 )
 ```
 
-- $href - ссылка на ресурс,
-- $value - название ссылки.
+- `$href` - ссылка на ресурс,
+- `$value` - название ссылки.
 
 ~~~tabs
 tab: Class
@@ -44,13 +44,13 @@ tab: Blade
 
 ```php
 Link::make('https://moonshine-laravel.com', 'Moonshine')
-    ->tooltip('Подсказка')
+    ->tooltip('Tooltip')
 ```
 
 <a name="fill"></a>
 ## Заливка
 
-За заливку отвечает параметр `filled`.
+За заливку отвечает метод `filled()`.
 
 ```php
 Link::make('https://moonshine-laravel.com', 'Moonshine')
@@ -76,7 +76,7 @@ Link::make('https://moonshine-laravel.com', 'Moonshine')
 <a name="icon"></a>
 ## Иконка
 
-Вы можете передать параметр `icon`.
+Для добавления иконки используйте метод `icon()`.
 
 ```php
 Link::make('https://moonshine-laravel.com', 'Moonshine')
