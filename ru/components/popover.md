@@ -12,10 +12,10 @@
 
 Доступные расположения:
 
-- `bottom`
-- `top`
-- `left`
-- `right`
+- `bottom`,
+- `top`,
+- `left`,
+- `right`.
 
 ```php
 <x-moonshine::popover title="Popover title" placement="right">

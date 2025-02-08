@@ -15,7 +15,7 @@
 make(?iterable $elements = [])
 ```
 
-`$elements` - набор элементов меню, если пусто за основу берет `MenuManager`.
+- `$elements` - набор элементов меню, если пусто за основу берет `MenuManager`.
 
 ~~~tabs
 tab: Class

@@ -11,16 +11,19 @@
 
 Компонент `ProgressBar` позволяет создать индикатор прогресса.
 
-Вы можете создать `ProgressBar`, используя статический метод `make()`.
-
 ```php
-make(float|int $value, string $size = 'sm', string|Color $color = '', bool $radial = false,)
+make(
+    float|int $value,
+    string $size = 'sm',
+    string|Color $color = '',
+    bool $radial = false,
+)
 ```
 
- - $value - значение индикатора,
- - $size - размер,
- - $color - цвет,
- - $radial - радиальный индикатор прогресса
+ - `$value` - значение индикатора,
+ - `$size` - размер,
+ - `$color` - цвет,
+ - `$radial` - радиальный индикатор прогресса.
 
 ~~~tabs
 tab: Class
