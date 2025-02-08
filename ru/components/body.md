@@ -16,7 +16,9 @@ tab: Class
 ```php
 use MoonShine\UI\Components\Layout\Body;
 
-Body::make([])
+Body::make([
+    // ...
+])
 ```
 tab: Blade
 ```blade

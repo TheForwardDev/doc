@@ -25,7 +25,9 @@ tab: Class
 ```php
 use MoonShine\UI\Components\Layout\Footer;
 
-Footer::make([]),
+Footer::make([
+    // ...
+]),
 ```
 tab: Blade
 ```blade

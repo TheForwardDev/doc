@@ -19,7 +19,9 @@ use MoonShine\UI\Components\Layout\Body;
 use MoonShine\UI\Components\Layout\Wrapper;
 
 Body::make([
-    Wrapper::make([])
+    Wrapper::make([
+        // ...
+    ])
 ])
 ```
 tab: Blade
