@@ -205,7 +205,7 @@ Modal::make(
     ->autoClose(false),
 ```
 
-<a name="wide"></a>
+<a name="width"></a>
 ## Width
 
 #### wide
