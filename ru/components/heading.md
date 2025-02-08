@@ -19,9 +19,9 @@ make(
 )
 ```
 
-- `$label` - Значение,
-- `$h` - Градация (1-6),
-- `$asClass` - Использовать `<div>` с классом градации или тег `h`.
+- `$label` - значение,
+- `$h` - градация (1-6),
+- `$asClass` - использовать `<div>` с классом градации или тег `h`.
 
 ~~~tabs
 tab: Class
@@ -47,8 +47,8 @@ tab: Blade
 h(int $gradation = 3, $asClass = true)
 ```
 
-- `$gradation` - Градация (1-6),
-- `$asClass` - Использовать `<div>` с классом градации или тег `h`.
+- `$gradation` - градация (1-6),
+- `$asClass` - использовать класс градации или тег `h`.
 
 ```php
 use MoonShine\UI\Components\Heading;
@@ -75,6 +75,10 @@ tag(string $tag)
 ```
 
 ```php
+// <p class="h1">
+Heading::make('Title', 1)
+    ->tag('p'),
+
 // <p class="h2">
 Heading::make('Title')
     ->tag('p')
