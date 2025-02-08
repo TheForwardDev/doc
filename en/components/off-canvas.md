@@ -5,6 +5,7 @@
   -  [Open/Close](#open-close)
 - [Default State](#open)
 - [Position](#position)
+- [Width](#width)
 - [Asynchronous](#async)
 - [Toggler Attributes](#toggler-attributes)
 
@@ -185,6 +186,31 @@ left(Closure|bool|null $condition = null)
 ```php
 OffCanvas::make('Title', 'Content...', 'Show Panel')
     ->left()
+```
+
+<a name="width"></a>
+## Width
+
+The `wide()` method of the *OffCanvas* component allows you to make the panel wider.
+
+```php
+wide(Closure|bool|null $condition = null)
+```
+
+```php
+OffCanvas::make('Title', 'Content...', 'Show Panel')
+    ->wide(),
+```
+
+The `full()` method sets the maximum width for the panel.
+
+```php
+full(Closure|bool|null $condition = null)
+```
+
+```php
+OffCanvas::make('Title', 'Content...', 'Show Panel')
+    ->full(),
 ```
 
 <a name="async"></a>
