@@ -469,6 +469,18 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="advanced"></a>
 ## Продвинутое использование
 
+### Местоположение поля
+
+Поле используется только внутри *CRUD*-страниц, так как получает ресурс и страницу из *URL*.
+Однако вы можете использовать его и на других страницах, указав местоположение через метод `nowOn()`:
+
+```php
+HasMany::make('Comments', resource: CommentResource::class)
+    ->creatable()
+    ->nowOn(page: $resource->getFormPage(), reseource: $resource, params: ['resourceItem' => $item->getKey()])
+    ->fillCast($item, new ModelCaster(Article::class)),
+```
+
 ### Отношение через RelationRepeater поле
 Поле `HasMany` по умолчанию отображается вне основной формы ресурса.
 Если вам нужно отобразить поля отношения внутри основной формы, то вы можете использовать поле `RelationRepeater`.
@@ -481,7 +493,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 // [tl! collapse:2]
 use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
- 
+
 RelationRepeater::make('Characteristics', 'characteristics')
     ->fields([
         ID::make(),

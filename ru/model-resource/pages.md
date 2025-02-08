@@ -5,6 +5,7 @@
 - [Добавление полей](#fields)
 - [Основные компоненты](#components)
 - [Слои на странице](#layers)
+- [Симуляция Route](#simulate)
 
 ---
 
@@ -385,5 +386,21 @@ protected function onLoad(): void
                 $this,
             )
         );
+}
+```
+
+<a name="simulate"></a>
+## Симуляция Route
+
+Мы не рекомендуем использовать *CRUD*-страницы на произвольных *URL*.
+Однако, если вы хорошо понимаете их логику, можете применять *CRUD*-страницы на нестандартных маршрутах, эмулируя нужные *URL*.
+
+```php
+class HomeController extends Controller
+{
+    public function __invoke(FormArticlePage $page, ArticleResource $resource)
+    {
+        return $page->simulateRoute($page, $resource)->loaded();
+    }
 }
 ```

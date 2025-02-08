@@ -469,6 +469,18 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 <a name="advanced"></a>
 ## Advanced usage
 
+### Location of the field
+
+The field is used only within *CRUD* pages, as it retrieves the resource and page from the *URL*.
+However, you can also use it on other pages by specifying its location with the `nowOn()` method:
+
+```php
+HasMany::make('Comments', resource: CommentResource::class)
+    ->creatable()
+    ->nowOn(page: $resource->getFormPage(), reseource: $resource, params: ['resourceItem' => $item->getKey()])
+    ->fillCast($item, new ModelCaster(Article::class)),
+```
+
 ### Relation through RelationRepeater field
 The `HasMany` field is displayed outside the main resource form by default.
 If you need to display the relation fields inside the main form, you can use the `RelationRepeater` field.
@@ -481,7 +493,7 @@ If you need to display the relation fields inside the main form, you can use the
 // [tl! collapse:2]
 use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
- 
+
 RelationRepeater::make('Characteristics', 'characteristics')
     ->fields([
         ID::make(),
