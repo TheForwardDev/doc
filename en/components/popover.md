@@ -12,10 +12,10 @@ Using the component `moonshine::popover`, you can create a popover.
 
 Available positions:
 
-- `bottom`
-- `top`
-- `left`
-- `right`
+- `bottom`,
+- `top`,
+- `left`,
+- `right`.
 
 ```php
 <x-moonshine::popover title="Popover title" placement="right">

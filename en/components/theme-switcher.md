@@ -10,7 +10,7 @@ tab: Class
 ```php
 use MoonShine\UI\Components\Layout\ThemeSwitcher;
 
-ThemeSwitcher::make(),
+ThemeSwitcher::make()
 ```
 tab: Blade
 ```blade

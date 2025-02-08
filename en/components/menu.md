@@ -15,7 +15,7 @@ The `Menu` component creates a menu based on `MenuManager` or the provided menu 
 make(?iterable $elements = [])
 ```
 
-`$elements` is a set of menu items; if it is empty, it will take `MenuManager` as the basis.
+- `$elements` - set of menu items; if it is empty, it will take `MenuManager` as the basis.
 
 ~~~tabs
 tab: Class
