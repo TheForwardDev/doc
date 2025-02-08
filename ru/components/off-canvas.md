@@ -193,15 +193,17 @@ OffCanvas::make('Title', 'Content...', 'Show Panel')
 <a name="width"></a>
 ## Ширина
 
-Метод `wide()` компонента *OffCanvas* позволяет сделать боковую панель более широкой.
+Метод `wide()` компонента `OffCanvas` позволяет сделать боковую панель более широкой.
 
 ```php
 wide(Closure|bool|null $condition = null)
 ```
 
+- `$condition` - условие выполнения метода.
+
 ```php
 OffCanvas::make('Title', 'Content...', 'Show Panel')
-    ->wide(),
+    ->wide()
 ```
 
 Метод `full()` устанавливает максимальную ширину для боковой панели.
@@ -210,9 +212,11 @@ OffCanvas::make('Title', 'Content...', 'Show Panel')
 full(Closure|bool|null $condition = null)
 ```
 
+- `$condition` - условие выполнения метода.
+
 ```php
 OffCanvas::make('Title', 'Content...', 'Show Panel')
-    ->full(),
+    ->full()
 ```
 
 <a name="async"></a>

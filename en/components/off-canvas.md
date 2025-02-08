@@ -14,7 +14,8 @@
 <a name="basics"></a>
 ## Basics
 
-The `Offcanvas` component allows you to create side panels. You can create an `Offcanvas` using the static method `make()`.
+The `Offcanvas` component allows you to create side panels.
+You can create an `Offcanvas` using the static method `make()`.
 
 ```php
 make(
@@ -65,7 +66,8 @@ tab: Blade
 <a name="events"></a>
 ## Events
 
-You can show or hide the side panel outside of the component using *JavaScript* events. To access the events, you need to set a unique name for the side panel using the `name()` method.
+You can show or hide the side panel outside of the component using *JavaScript* events.
+To access the events, you need to set a unique name for the side panel using the `name()` method.
 
 ```php
 use MoonShine\UI\Components\OffCanvas;
@@ -191,15 +193,17 @@ OffCanvas::make('Title', 'Content...', 'Show Panel')
 <a name="width"></a>
 ## Width
 
-The `wide()` method of the *OffCanvas* component allows you to make the panel wider.
+The `wide()` method of the `OffCanvas` component allows you to make the panel wider.
 
 ```php
 wide(Closure|bool|null $condition = null)
 ```
 
+- `$condition` - method execution condition.
+
 ```php
 OffCanvas::make('Title', 'Content...', 'Show Panel')
-    ->wide(),
+    ->wide()
 ```
 
 The `full()` method sets the maximum width for the panel.
@@ -208,9 +212,11 @@ The `full()` method sets the maximum width for the panel.
 full(Closure|bool|null $condition = null)
 ```
 
+- `$condition` - method execution condition.
+
 ```php
 OffCanvas::make('Title', 'Content...', 'Show Panel')
-    ->full(),
+    ->full()
 ```
 
 <a name="async"></a>
