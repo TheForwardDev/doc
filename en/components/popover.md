@@ -18,6 +18,10 @@ make(
 )
 ```
 
+- `title` - title in the popover,
+- `trigger` - text or html that pops up when you hover over it,
+- `placement` - location of the popover is relative to the `trigger`.
+
 Available positions:
 
 - `bottom`,
