@@ -3,7 +3,7 @@
 To create thumbnails, you can use the `Thumbnails` component.
 
 ```php
-make(array|FileItem|null|string $items)
+make(FileItem|string|array|null $items)
 ```
 
 - `$items` - thumbnail or a list of thumbnails.
@@ -31,7 +31,7 @@ tab: Blade
 ```
 ~~~
 
-You can specify only one thumbnail as string.
+You can specify one thumbnail.
 
 ```blade
 <x-moonshine::thumbnails

@@ -3,7 +3,7 @@
 Для создания миниатюр можно использовать компонент `Thumbnails`.
 
 ```php
-make(array|FileItem|null|string $items)
+make(FileItem|string|array|null $items)
 ```
 
 - `$items` - миниатюра или список миниатюр.
@@ -31,7 +31,7 @@ tab: Blade
 ```
 ~~~
 
-Вы можете указать только одну миниатюру в виде строки.
+Вы можете указать одну миниатюру.
 
 ```blade
 <x-moonshine::thumbnails
