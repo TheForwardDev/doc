@@ -11,10 +11,7 @@
 Для создания вкладок можно использовать компонент `Tabs`.
 
 ```php
-make(
-    iterable $components = [],
-    array $items = [],
-)
+make(iterable $components = [])
 ```
 
 Для добавления вкладок используется компонент `Tab`.
