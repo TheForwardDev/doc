@@ -421,6 +421,8 @@ $config->locales(['en', 'ru']);
 ```
 ~~~
 
+For more information, see [localization](/docs/{{version}}/advanced/localization) section.
+
 <a name="storage"></a>
 ### Storage
 

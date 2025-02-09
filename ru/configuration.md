@@ -421,6 +421,8 @@ $config->locales(['en', 'ru']);
 ```
 ~~~
 
+Подробнее смотрите в разделе [локализация](/docs/{{version}}/advanced/localization).
+
 <a name="storage"></a>
 ### Хранилище
 
