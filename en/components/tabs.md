@@ -11,10 +11,7 @@
 To create tabs, you can use the `Tabs` component.
 
 ```php
-make(
-    iterable $components = [],
-    array $items = [],
-)
+make(iterable $components = [])
 ```
 
 To add tabs, the `Tab` component is used.
