@@ -1,10 +1,9 @@
 # FormBuilder
 
 - [Основы](#basics)
-- [Основное использование](#basic-usage)
 - [Основные методы](#basic-methods)
-  - [Имя формы](#form-name)
   - [Поля](#fields)
+  - [Имя формы](#form-name)
   - [Заполнение полей](#fill-fields)
   - [Приведение к типу](#type-cast)
   - [Кнопки](#buttons)
@@ -20,7 +19,6 @@
   - [Несколько форм одновременно](#multiple-forms)
 - [Применение](#apply)
 - [Отправка событий](#dispatch-events)
-- [Использование в Blade](#blade)
 
 ---
 
@@ -46,11 +44,10 @@ make(
 - `fields` - поля и компоненты,
 - `values` - значения полей.
 
-<a name="basic-usage"></a>
-## Основное использование
-
 Пример использования:
 
+~~~tabs
+tab: Class
 ```php
 FormBuilder::make(
     action:'/crud/update',
@@ -73,6 +70,25 @@ FormBuilder::make()
     ])
     ->fill(['text' => 'Value'])
 ```
+tab: Blade
+```blade
+<x-moonshine::form
+name="crud-form"
+:errors="$errors"
+precognitive
+>
+    <x-moonshine::form.input
+        name="title"
+        placeholder="Title"
+        value=""
+    />
+    <x-slot:buttons>
+        <x-moonshine::form.button type="reset">Cancel</x-moonshine::form.button>
+        <x-moonshine::form.button class="btn-primary">Submit</x-moonshine::form.button>
+    </x-slot:buttons>
+</x-moonshine::form>
+```
+~~~
 
 <a name="basic-methods"></a>
 ## Основные методы
@@ -590,26 +606,3 @@ protected function formButtons(): ListOf
 
 > [!NOTE]
 > Для получения дополнительной информации о js событиях обратитесь к разделу [Events](/docs/{{version}}/frontend/events).
-
-<a name="blade"></a>
-## Использование в Blade
-
-Формы можно создавать с помощью компонента `moonshine::form`.
-
-```blade
-<x-moonshine::form
-name="crud-form"
-:errors="$errors"
-precognitive
->
-    <x-moonshine::form.input
-        name="title"
-        placeholder="Title"
-        value=""
-    />
-    <x-slot:buttons>
-        <x-moonshine::form.button type="reset">Cancel</x-moonshine::form.button>
-        <x-moonshine::form.button class="btn-primary">Submit</x-moonshine::form.button>
-    </x-slot:buttons>
-</x-moonshine::form>
-```

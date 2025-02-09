@@ -1,10 +1,9 @@
 # FormBuilder
 
 - [Basics](#basics)
-- [Basic Usage](#basic-usage)
 - [Basic Methods](#basic-methods)
-  - [Form Name](#form-name)
   - [Fields](#fields)
+  - [Form Name](#form-name)
   - [Fill Fields](#fill-fields)
   - [Type Cast](#type-cast)
   - [Buttons](#buttons)
@@ -20,7 +19,6 @@
   - [Multiple Forms Simultaneously](#multiple-forms)
 - [Apply](#apply)
 - [Dispatch Events](#dispatch-events)
-- [Using in Blade](#blade)
 
 ---
 
@@ -46,11 +44,10 @@ make(
 - `fields` - fields and components,
 - `values` - field values.
 
-<a name="basic-usage"></a>
-## Basic Usage
-
 Example usage:
 
+~~~tabs
+tab: Class
 ```php
 FormBuilder::make(
     action:'/crud/update',
@@ -73,6 +70,25 @@ FormBuilder::make()
     ])
     ->fill(['text' => 'Value'])
 ```
+tab: Blade
+```blade
+<x-moonshine::form
+name="crud-form"
+:errors="$errors"
+precognitive
+>
+    <x-moonshine::form.input
+        name="title"
+        placeholder="Title"
+        value=""
+    />
+    <x-slot:buttons>
+        <x-moonshine::form.button type="reset">Cancel</x-moonshine::form.button>
+        <x-moonshine::form.button class="btn-primary">Submit</x-moonshine::form.button>
+    </x-slot:buttons>
+</x-moonshine::form>
+```
+~~~
 
 <a name="basic-methods"></a>
 ## Basic Methods
@@ -590,26 +606,3 @@ protected function formButtons(): ListOf
 
 > [!NOTE]
 > For additional information on JS events, refer to the [Events](/docs/{{version}}/frontend/events) section.
-
-<a name="blade"></a>
-## Using in Blade
-
-Forms can be created using the `moonshine::form` component.
-
-```blade
-<x-moonshine::form
-name="crud-form"
-:errors="$errors"
-precognitive
->
-    <x-moonshine::form.input
-        name="title"
-        placeholder="Title"
-        value=""
-    />
-    <x-slot:buttons>
-        <x-moonshine::form.button type="reset">Cancel</x-moonshine::form.button>
-        <x-moonshine::form.button class="btn-primary">Submit</x-moonshine::form.button>
-    </x-slot:buttons>
-</x-moonshine::form>
-```
