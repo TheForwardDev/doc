@@ -31,9 +31,13 @@ Link::make('https://moonshine-laravel.com', 'Moonshine')
 ```
 tab: Blade
 ```blade
-<x-moonshine::link-button href="#">Link</x-moonshine::link-button>
+<x-moonshine::link-button href="#">
+    Link
+</x-moonshine::link-button>
 
-<x-moonshine::link-native href="#">Link</x-moonshine::link-native>
+<x-moonshine::link-native href="#">
+    Link
+</x-moonshine::link-native>
 ```
 ~~~
 
@@ -52,11 +56,13 @@ Link::make('https://moonshine-laravel.com', 'Moonshine')
 
 The `filled()` method is responsible for the fill.
 
+~~~tabs
+tab: Class
 ```php
 Link::make('https://moonshine-laravel.com', 'Moonshine')
     ->filled()
 ```
-
+tab: Blade
 ```blade
 <x-moonshine::link-button
     href="#"
@@ -72,6 +78,7 @@ Link::make('https://moonshine-laravel.com', 'Moonshine')
     Link
 </x-moonshine::link-native>
 ```
+~~~
 
 <a name="icon"></a>
 ## Icon
