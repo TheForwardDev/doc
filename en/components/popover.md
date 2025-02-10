@@ -8,7 +8,19 @@
 <a name="basics"></a>
 ## Basics
 
-Using the component `moonshine::popover`, you can create a popover.
+Using the component `Popover`, you can create a popover.
+
+```php
+make(
+    string $title,
+    string $trigger,
+    string $placement = 'right',
+)
+```
+
+- `title` - title in the popover,
+- `trigger` - text or html that pops up when you hover over it,
+- `placement` - location of the popover is relative to the `trigger`.
 
 Available positions:
 
@@ -17,7 +29,14 @@ Available positions:
 - `left`,
 - `right`.
 
+~~~tabs
+tab: Class
 ```php
+Popover::make('Title', 'Trigger')
+    ->content('HTML content')
+```
+tab: Blade
+```blade
 <x-moonshine::popover title="Popover title" placement="right">
     <x-slot:trigger>
         <button class="btn">Popover</button>
@@ -29,6 +48,7 @@ Available positions:
     </div>
 </x-moonshine::popover>
 ```
+~~~
 
 <a name="without"></a>
 ## Without using the component

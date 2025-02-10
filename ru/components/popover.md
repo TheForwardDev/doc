@@ -8,7 +8,19 @@
 <a name="basics"></a>
 ## Основы
 
-Используя компонент `moonshine::popover`, вы можете создать всплывающее окно.
+Используя компонент `Popover`, вы можете создать всплывающее окно.
+
+```php
+make(
+    string $title,
+    string $trigger,
+    string $placement = 'right',
+)
+```
+
+- `title` - заголовок во всплывающем окне,
+- `trigger` - текст или html, при наведении на который появляется всплывающее окно,
+- `placement` - расположение всплывающего окна относительно `trigger`.
 
 Доступные расположения:
 
@@ -17,7 +29,14 @@
 - `left`,
 - `right`.
 
+~~~tabs
+tab: Class
 ```php
+Popover::make('Title', 'Trigger')
+    ->content('HTML content')
+```
+tab: Blade
+```blade
 <x-moonshine::popover title="Popover title" placement="right">
     <x-slot:trigger>
         <button class="btn">Popover</button>
@@ -29,6 +48,7 @@
     </div>
 </x-moonshine::popover>
 ```
+~~~
 
 <a name="without"></a>
 ## Без использования компонента
