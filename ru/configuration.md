@@ -70,11 +70,12 @@ return [
 
 Альтернативно, вы можете оставить в файле `moonshine.php` только те параметры, которые отличаются от значений по умолчанию.
 Это делает конфигурацию более чистой и легкой для понимания.
+
 Пример оптимизированного содержимого файла `moonshine.php`:
 
 ```php
 return [
-    'title' => 'Мое приложение MoonShine',
+    'title' => 'My MoonShine Application',
     'use_migrations' => true,
     'use_notifications' => true,
     'use_database_notifications' => true,
@@ -90,11 +91,14 @@ return [
 <a name="service-provider"></a>
 ### Конфигурация через MoonShineServiceProvider
 
-Альтернативный способ настройки - `MoonShineServiceProvider`. Этот метод предоставляет более программный подход к конфигурации.
+Альтернативный способ настройки - `MoonShineServiceProvider`.
+Этот метод предоставляет более программный подход к конфигурации.
 
 Пример конфигурации в `MoonShineServiceProvider`:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 use Illuminate\Support\ServiceProvider;
 use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
 use MoonShine\Laravel\DependencyInjection\MoonShine;
@@ -114,7 +118,7 @@ class MoonShineServiceProvider extends ServiceProvider
     ): void
     {
         $config
-            ->title('Мое приложение')
+            ->title('My Application')
             ->logo('/assets/logo.png')
             ->prefixes('admin', 'page', 'resource')
             ->guard('moonshine')
@@ -125,9 +129,7 @@ class MoonShineServiceProvider extends ServiceProvider
             ->middleware([
                 // ...
             ])
-            ->layout(\MoonShine\Laravel\Layouts\AppLayout::class)
-            // ...
-        ;
+            ->layout(\MoonShine\Laravel\Layouts\AppLayout::class);
 
         $core
             ->resources([
@@ -136,8 +138,7 @@ class MoonShineServiceProvider extends ServiceProvider
             ])
             ->pages([
                 ...$config->getPages(),
-            ])
-        ;
+            ]);
     }
 }
 ```
@@ -154,11 +155,11 @@ class MoonShineServiceProvider extends ServiceProvider
 <a name="options"></a>
 ### Опции
 
-- `use_migrations` - Использовать публикацию миграций системы по умолчанию (`moonshine_users`, `moonshine_user_roles`),
-- `use_notifications` - Использовать систему уведомлений,
-- `use_database_notifications` - Использовать систему уведомлений Laravel на основе драйвера базы данных,
-- `dir` - Директория для **MoonShine** (по умолчанию `app/MoonShine`). Директория используется для генерации файлов через `artisan` команды, в целом **MoonShine** не привязан к структуре,
-- `namespace` - Namespace для классов созданных через `artisan` команды (по умолчанию `App\MoonShine`).
+- `use_migrations` - использовать публикацию миграций системы по умолчанию (`moonshine_users`, `moonshine_user_roles`),
+- `use_notifications` - использовать систему уведомлений,
+- `use_database_notifications` - использовать систему уведомлений Laravel на основе драйвера базы данных,
+- `dir` - директория для **MoonShine** (по умолчанию `app/MoonShine`). Директория используется для генерации файлов через `artisan` команды, в целом **MoonShine** не привязан к структуре,
+- `namespace` - namespace для классов созданных через `artisan` команды (по умолчанию `App\MoonShine`).
 
 ~~~tabs
 tab: config/moonshine.php
@@ -183,16 +184,16 @@ $config
 <a name="title"></a>
 ### Заголовок
 
-Мета заголовок на страницах (`<title>Мое приложение</title>`).
+Мета заголовок на страницах (`<title>My Application</title>`).
 
 ~~~tabs
 tab: config/moonshine.php
 ```php
-'title' => 'Мое приложение',
+'title' => 'My Application',
 ```
 tab: app/Providers/MoonShineServiceProvider.php
 ```php
-$config->title('Мое приложение');
+$config->title('My Application');
 ```
 ~~~
 
@@ -256,7 +257,7 @@ $config->prefixes('admin', 'page', 'resource');
 
 > [!WARNING]
 > Вы можете оставить `resource_prefix` пустым и `URL` ресурсов будет иметь вид `/admin/{resourceUri}/{pageUri}`,
-> но вы можете создать конфликт с роутами пакетов
+> но вы можете создать конфликт с роутами пакетов.
 
 #### Установка домена
 
@@ -373,7 +374,7 @@ $config->authPipelines([TwoFactor::class]);
 #### Поля пользователя
 
 Если вы просто заменили модель на свою `auth.model`, то скорее всего вы столкнетесь с проблемой несоответствия наименования полей.
-Чтобы настроить соответствие, воспользуйтесь настройкой `userField`:
+Чтобы настроить соответствие, воспользуйтесь настройкой `userField()`.
 
 ~~~tabs
 tab: config/moonshine.php
@@ -407,7 +408,7 @@ $config->locale('en');
 ```
 ~~~
 
-### Установка доступных языков
+#### Установка доступных языков
 
 ~~~tabs
 tab: config/moonshine.php
@@ -419,6 +420,8 @@ tab: app/Providers/MoonShineServiceProvider.php
 $config->locales(['en', 'ru']);
 ```
 ~~~
+
+Подробнее смотрите в разделе [локализация](/docs/{{version}}/advanced/localization).
 
 <a name="storage"></a>
 ### Хранилище
@@ -537,13 +540,17 @@ $config->homeUrl('/admin/page/some-page');
 Метод `getPage` позволяет получить экземпляр страницы по её имени или использовать страницу по умолчанию.
 
 ```php
-public function getPage(string $name, string $default, mixed ...$parameters): PageContract
+getPage(
+    string $name,
+    string $default,
+    mixed ...$parameters,
+)
 ```
 
 Параметры:
-- `$name`: Имя страницы в конфиге
-- `$default`: Класс страницы по умолчанию, если не найдена в конфиге
-- `$parameters`: Дополнительные параметры для конструктора страницы
+- `$name` - имя страницы в конфиге,
+- `$default` - класс страницы по умолчанию, если не найдена в конфиге,
+- `$parameters` - дополнительные параметры для конструктора страницы.
 
 Пример использования:
 
@@ -573,13 +580,17 @@ public function index(ConfiguratorContract $config)
 Метод `getForm` позволяет получить экземпляр формы по её имени или использовать форму по умолчанию.
 
 ```php
-public function getForm(string $name, string $default, mixed ...$parameters): FormBuilderContract
+getForm(
+    string $name,
+    string $default,
+    mixed ...$parameters,
+)
 ```
 
 Параметры:
-- `$name`: Имя формы в конфиге
-- `$default`: Класс формы по умолчанию
-- `$parameters`: Дополнительные параметры для конструктора формы
+- `$name` - имя формы в конфиге,
+- `$default` - класс формы по умолчанию,
+- `$parameters` - дополнительные параметры для конструктора формы.
 
 Пример использования:
 
@@ -606,7 +617,7 @@ public function index(ConfiguratorContract $config)
 
 ### Объявление страниц и форм в конфигурации
 
-Вы можете настроить соответствие между именами и классами страниц и форм в файле `moonshine.php`:
+Вы можете настроить соответствие между именами и классами страниц и форм в файле `moonshine.php`.
 
 ```php
 return [
@@ -627,11 +638,14 @@ return [
 Это позволит вам легко получать нужные страницы и формы по их именам, используя методы `getPage` и `getForm`.
 
 > [!NOTE]
-> Некоторые методы `MoonShineConfigurator` не имеют прямых аналогов в файле `moonshine.php` и наоборот. Это связано с различиями в подходах к конфигурации через файл и через код.
+> Некоторые методы `MoonShineConfigurator` не имеют прямых аналогов в файле `moonshine.php` и наоборот.
+> Это связано с различиями в подходах к конфигурации через файл и через код.
 
 ### Пример использования в MoonShineServiceProvider
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 use Illuminate\Support\ServiceProvider;
 use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
 use MoonShine\Laravel\DependencyInjection\MoonShine;
@@ -651,7 +665,7 @@ class MoonShineServiceProvider extends ServiceProvider
     ): void
     {
         $config
-            ->title('Мое приложение')
+            ->title('My Application')
             ->dir('app/MoonShine', 'App\MoonShine')
             ->prefix('admin')
             ->guard('moonshine')
@@ -663,9 +677,11 @@ class MoonShineServiceProvider extends ServiceProvider
             ->useNotifications()
             ->useDatabaseNotifications()
             ->cacheDriver('redis')
-            ->authorizationRules(function(ResourceContract $ctx, mixed $user, Ability $ability, mixed $data): bool {
-                 return true;
-            });
+            ->authorizationRules(
+                function(ResourceContract $ctx, mixed $user, Ability $ability, mixed $data): bool {
+                    return true;
+                }
+            );
 
         // ...
     }

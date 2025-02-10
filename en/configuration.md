@@ -70,6 +70,7 @@ return [
 
 Alternatively, you can leave only those parameters in the `moonshine.php` file that differ from the default values.
 This makes the configuration cleaner and easier to understand.
+
 Example of optimized content for the `moonshine.php` file:
 
 ```php
@@ -90,11 +91,14 @@ return [
 <a name="service-provider"></a>
 ### Configuration via MoonShineServiceProvider
 
-An alternative way to configure is via `MoonShineServiceProvider`. This method provides a more programmatic approach to configuration.
+An alternative way to configure is via `MoonShineServiceProvider`.
+This method provides a more programmatic approach to configuration.
 
 Example configuration in `MoonShineServiceProvider`:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 use Illuminate\Support\ServiceProvider;
 use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
 use MoonShine\Laravel\DependencyInjection\MoonShine;
@@ -151,11 +155,11 @@ Regardless of the chosen configuration method, you can set up the following basi
 <a name="options"></a>
 ### Options
 
-- `use_migrations` - Use default system migrations (`moonshine_users`, `moonshine_user_roles`),
-- `use_notifications` - Use notification system,
-- `use_database_notifications` - Use Laravel notification system based on database driver,
-- `dir` - Directory for **MoonShine** (by default `app/MoonShine`). The directory is used for generating files via `artisan` commands, in general **MoonShine** is not tied to structure,
-- `namespace` - Namespace for classes created via `artisan` commands (by default `App\MoonShine`).
+- `use_migrations` - use default system migrations (`moonshine_users`, `moonshine_user_roles`),
+- `use_notifications` - use notification system,
+- `use_database_notifications` - use Laravel notification system based on database driver,
+- `dir` - directory for **MoonShine** (by default `app/MoonShine`). The directory is used for generating files via `artisan` commands, in general **MoonShine** is not tied to structure,
+- `namespace` - namespace for classes created via `artisan` commands (by default `App\MoonShine`).
 
 ~~~tabs
 tab: config/moonshine.php
@@ -180,7 +184,7 @@ $config
 <a name="title"></a>
 ### Title
 
-Meta title on pages (`<title>My Application</title>`)
+Meta title on pages (`<title>My Application</title>`).
 
 ~~~tabs
 tab: config/moonshine.php
@@ -270,7 +274,7 @@ $config->domain('admin.example.com');
 
 #### 404
 
-You can replace the `Exception` with your own
+You can replace the `Exception` with your own.
 
 ~~~tabs
 tab: config/moonshine.php
@@ -370,7 +374,7 @@ $config->authPipelines([TwoFactor::class]);
 #### User Fields
 
 If you have simply replaced the model with your own `auth.model`, you will likely encounter a naming mismatch of fields.
-To configure the correspondence, use the `userField` setting:
+To configure the correspondence, use the `userField()` setting.
 
 ~~~tabs
 tab: config/moonshine.php
@@ -404,7 +408,7 @@ $config->locale('en');
 ```
 ~~~
 
-### Setting Available Languages
+#### Setting Available Languages
 
 ~~~tabs
 tab: config/moonshine.php
@@ -416,6 +420,8 @@ tab: app/Providers/MoonShineServiceProvider.php
 $config->locales(['en', 'ru']);
 ```
 ~~~
+
+For more information, see [localization](/docs/{{version}}/advanced/localization) section.
 
 <a name="storage"></a>
 ### Storage
@@ -450,7 +456,7 @@ $config->cacheDriver('redis');
 <a name="layout"></a>
 ### Layout
 
-The default template used
+The default template used.
 
 ~~~tabs
 tab: config/moonshine.php
@@ -534,13 +540,17 @@ $config->homeUrl('/admin/page/some-page');
 The `getPage` method allows you to retrieve an instance of a page by its name or use the default page.
 
 ```php
-public function getPage(string $name, string $default, mixed ...$parameters): PageContract
+getPage(
+    string $name,
+    string $default,
+    mixed ...$parameters,
+)
 ```
 
 Parameters:
-- `$name`: Page name in the config
-- `$default`: Default page class if not found in the config
-- `$parameters`: Additional parameters for the page constructor
+- `$name` - page name in the config,
+- `$default` - default page class if not found in the config,
+- `$parameters` - additional parameters for the page constructor.
 
 Example usage:
 
@@ -570,13 +580,17 @@ public function index(ConfiguratorContract $config)
 The `getForm` method allows you to retrieve an instance of a form by its name or use the default form.
 
 ```php
-public function getForm(string $name, string $default, mixed ...$parameters): FormBuilderContract
+getForm(
+    string $name,
+    string $default,
+    mixed ...$parameters,
+)
 ```
 
 Parameters:
-- `$name`: Form name in the config
-- `$default`: Default form class
-- `$parameters`: Additional parameters for the form constructor
+- `$name` - form name in the config,
+- `$default` - default form class,
+- `$parameters` - additional parameters for the form constructor.
 
 Example usage:
 
@@ -603,7 +617,7 @@ public function index(ConfiguratorContract $config)
 
 ### Declaring Pages and Forms in Configuration
 
-You can set up the correspondence between the names and classes of pages and forms in the `moonshine.php` file:
+You can set up the correspondence between the names and classes of pages and forms in the `moonshine.php` file.
 
 ```php
 return [
@@ -624,11 +638,14 @@ return [
 This will allow you to easily retrieve the desired pages and forms by their names using the `getPage` and `getForm` methods.
 
 > [!NOTE]
-> Some methods of `MoonShineConfigurator` do not have direct analogs in the `moonshine.php` file and vice versa. This is due to differences in approaches to configuration through the file and through code.
+> Some methods of `MoonShineConfigurator` do not have direct analogs in the `moonshine.php` file and vice versa.
+> This is due to differences in approaches to configuration through the file and through code.
 
 ### Example Usage in MoonShineServiceProvider
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 use Illuminate\Support\ServiceProvider;
 use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
 use MoonShine\Laravel\DependencyInjection\MoonShine;
@@ -660,9 +677,11 @@ class MoonShineServiceProvider extends ServiceProvider
             ->useNotifications()
             ->useDatabaseNotifications()
             ->cacheDriver('redis')
-            ->authorizationRules(function(ResourceContract $ctx, mixed $user, Ability $ability, mixed $data): bool {
-                 return true;
-            });
+            ->authorizationRules(
+                function(ResourceContract $ctx, mixed $user, Ability $ability, mixed $data): bool {
+                    return true;
+                }
+            );
 
         // ...
     }
