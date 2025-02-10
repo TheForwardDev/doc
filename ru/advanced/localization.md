@@ -10,7 +10,8 @@
 <a name="basics"></a>
 ## Основы
 
-После установки **MoonShine** в директории с переводами также появится директория `lang/vendor/moonshine`, где вы можете добавить поддержку нового языка или изменить текущие переводы.
+После установки **MoonShine** в директории с переводами также появится директория `lang/vendor/moonshine`,
+где вы можете добавить поддержку нового языка или изменить текущие переводы.
 
 > [!NOTE]
 > По умолчанию в **MoonShine** присутствует только английский язык.
@@ -53,7 +54,7 @@ $config->locales(['en', 'ru']);
 <a name="middleware"></a>
 ## Смена языка
 
-За логику смены языка в интерфейсе панели отвечает `middleware` `MoonShine\Laravel\Http\Middleware\ChangeLocale`.
+За логику смены языка в интерфейсе панели отвечает middleware `MoonShine\Laravel\Http\Middleware\ChangeLocale`.
 `ChangeLocale` в свою очередь при наличии запроса на смену языка сохраняет выбор в сессии и берет значение из сессии, чтобы установить язык, либо использует данные из конфига.
 
 Если вы хотите изменить логику смены языка на собственную, просто замените `middleware` на свой.
@@ -62,13 +63,15 @@ $config->locales(['en', 'ru']);
 tab: config/moonshine.php
 ```php
 'middleware' => [
-    // ..
+    // ...
     ChangeLocale::class,
 ],
 ```
 tab: app/Providers/MoonShineServiceProvider.php
 ```php
-$config->exceptMiddleware(ChangeLocale::class)->addMiddleware(MyChangeLocale::class);
+$config
+    ->exceptMiddleware(ChangeLocale::class)
+    ->addMiddleware(MyChangeLocale::class);
 ```
 ~~~
 
@@ -86,17 +89,3 @@ composer require moonshine/ru
 ```shell
 php artisan vendor:publish --provider="MoonShine\Ru\Providers\RuServiceProvider"
 ```
-
-### Конфигурация
-
-~~~tabs
-tab: config/moonshine.php
-```php
-'locale' => 'ru',
-'locales' => ['en', 'ru'],
-```
-tab: app/Providers/MoonShineServiceProvider.php
-```php
-$config->locale('ru')->locales(['en', 'ru']);
-```
-~~~

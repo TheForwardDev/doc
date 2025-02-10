@@ -9,7 +9,8 @@
 <a name="basics"></a>
 ## Basics
 
-After installing **MoonShine**, a directory `lang/vendor/moonshine` will also appear in the translations directory, where you can add support for a new language or modify the current translations.
+After installing **MoonShine**, a directory `lang/vendor/moonshine` will also appear in the translations directory,
+where you can add support for a new language or modify the current translations.
 
 > [!NOTE]
 > By default, **MoonShine** only includes the English language.
@@ -52,7 +53,7 @@ $config->locales(['en', 'ru']);
 <a name="middleware"></a>
 ## Language Switching
 
-The logic for switching languages in the panel interface is handled by the `middleware` `MoonShine\Laravel\Http\Middleware\ChangeLocale`.
+The logic for switching languages in the panel interface is handled by the middleware `MoonShine\Laravel\Http\Middleware\ChangeLocale`.
 `ChangeLocale` saves the selection in the session and retrieves the value from the session to set the language, or uses the data from the config if a request to change the language is present.
 
 If you want to change the language switching logic to your own, simply replace the `middleware` with your own.
@@ -61,12 +62,14 @@ If you want to change the language switching logic to your own, simply replace t
 tab: config/moonshine.php
 ```php
 'middleware' => [
-    // ..
+    // ...
     ChangeLocale::class,
 ],
 ```
 tab: app/Providers/MoonShineServiceProvider.php
 ```php
-$config->exceptMiddleware(ChangeLocale::class)->addMiddleware(MyChangeLocale::class);
+$config
+    ->exceptMiddleware(ChangeLocale::class)
+    ->addMiddleware(MyChangeLocale::class);
 ```
 ~~~
