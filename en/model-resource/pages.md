@@ -5,6 +5,7 @@
 - [Adding Fields](#fields)
 - [Main Components](#components)
 - [Layers on the Page](#layers)
+- [Simulate Route](#simulate)
 
 ---
 
@@ -385,5 +386,21 @@ protected function onLoad(): void
                 $this,
             )
         );
+}
+```
+
+<a name="simulate"></a>
+## Simulate Route
+
+We do not recommend using *CRUD* pages to arbitrary *URL*.
+However, if you understand their logic well, you can use *CRUD* pages on non-standard routes, emulating the necessary *URL*.
+
+```php
+class HomeController extends Controller
+{
+    public function __invoke(FormArticlePage $page, ArticleResource $resource)
+    {
+        return $page->simulateRoute($page, $resource)->loaded();
+    }
 }
 ```
