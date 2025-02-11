@@ -22,12 +22,7 @@ make(
 - `trigger` - text or html that pops up when you hover over it,
 - `placement` - location of the popover is relative to the `trigger`.
 
-Available positions:
-
-- `bottom`,
-- `top`,
-- `left`,
-- `right`.
+For an up-to-date list of available locations, see [tippy.js](https://atomiks.github.io/tippyjs/v6/all-props/#placement) documentation.
 
 ~~~tabs
 tab: Class

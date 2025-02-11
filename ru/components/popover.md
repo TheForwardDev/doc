@@ -22,12 +22,7 @@ make(
 - `trigger` - текст или html, при наведении на который появляется всплывающее окно,
 - `placement` - расположение всплывающего окна относительно `trigger`.
 
-Доступные расположения:
-
-- `bottom`,
-- `top`,
-- `left`,
-- `right`.
+Актуальный список доступных расположений смотрите в документации [tippy.js](https://atomiks.github.io/tippyjs/v6/all-props/#placement).
 
 ~~~tabs
 tab: Class
