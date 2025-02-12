@@ -1,6 +1,6 @@
 # FlexibleRender
 
-The `FlexibleRender` decorator allows you to quickly render simple text, HTML, or Blade views.
+The `FlexibleRender` component allows you to quickly render simple text, HTML, or Blade views.
 
 ```php
 make(
