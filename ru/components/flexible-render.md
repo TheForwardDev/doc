@@ -1,6 +1,6 @@
 # FlexibleRender
 
-Декоратор `FlexibleRender` позволяет быстро отрендерить простой текст, html или Blade views.
+Компонент `FlexibleRender` позволяет быстро отрендерить простой текст, html или Blade views.
 
 ```php
 make(
