@@ -39,7 +39,8 @@ tab: Blade
 <a name="on-off"></a>
 ## On/Off Values
 
-By default, the field has values `1` and `0` for selected and unselected states respectively. The `onValue()` and `offValue()` methods allow you to override these values.
+By default, the field has values `1` and `0` for selected and unselected states respectively.
+The `onValue()` and `offValue()` methods allow you to override these values.
 
 ```php
 onValue(int|string $onValue)
