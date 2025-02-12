@@ -52,10 +52,6 @@ tab: Blade
 Using the `withTime()` method allows you to enter both date and time in the field.
 
 ```php
-withTime()
-```
-
-```php
 Date::make('Created at', 'created_at')
     ->withTime()
 ```
@@ -94,8 +90,6 @@ The `copy()` method adds a button to copy the field's value.
 copy(string $value = '{{value}}')
 ```
 
-Example usage:
-
 ```php
 Date::make('Created at', 'created_at')
     ->copy()
@@ -107,12 +101,6 @@ Date::make('Created at', 'created_at')
 The `eye()` method adds a button to show/hide the field's value (for example, for passwords).
 
 ```php
-eye()
-```
-
-Example usage:
-
-```php
 Date::make('Created at', 'created_at')
     ->eye()
 ```
@@ -121,12 +109,6 @@ Date::make('Created at', 'created_at')
 ### Lock
 
 The `locked()` method adds a lock icon to the field.
-
-```php
-locked()
-```
-
-Example usage:
 
 ```php
 Date::make('Created at', 'created_at')
