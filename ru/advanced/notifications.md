@@ -31,7 +31,7 @@ MoonShineNotification::send(
     ids: [1,2,3],
     // Необязательный цвет иконки
     color: Color::GREEN,
-    // Необязательный иконка
+    // Необязательная иконка
     icon: 'information-circle'
 );
 ```
