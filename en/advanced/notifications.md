@@ -30,7 +30,9 @@ MoonShineNotification::send(
     // Optional administrator IDs (default for all)
     ids: [1,2,3],
     // Optional icon color
-    color: Color::green
+    color: Color::GREEN,
+    // Optional icon
+    icon: 'information-circle'
 );
 ```
 
