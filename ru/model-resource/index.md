@@ -352,7 +352,7 @@ protected function activeActions(): ListOf
 ## Кнопки
 
 По умолчанию на индексной странице ресурса модели присутствует только кнопка для создания.
-Метод `actions()` позволяет добавить дополнительные [кнопки](/docs/{{version}}/components/action-button).
+Метод `topButtons()` позволяет добавить дополнительные [кнопки](/docs/{{version}}/components/action-button).
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
