@@ -4,7 +4,6 @@
 - [Creation](#make)
 - [On/Off Values](#on-off)
 - [Preview Editing](#preview-edit)
-- [Reactivity](#reactive)
 
 ---
 
@@ -60,8 +59,3 @@ Checkbox::make('Publish', 'is_publish')
 ## Preview Editing
 
 This field supports [preview editing](/docs/{{version}}/fields/basic-methods#preview-edit).
-
-<a name="reactive"></a>
-## Reactivity
-
-This field supports [reactivity](/docs/{{version}}/fields/basic-methods#reactive).
