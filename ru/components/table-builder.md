@@ -752,7 +752,7 @@ TableBuilder::make()
         '#', 'First', 'Last', 'Email'
     ]"
     :notfound="true"
-    :translates="['notfound' => 'Custom Not Found']"
+    :translates="['notfound' => __('moonshine.ui.notfound')]"
 />
 ```
 

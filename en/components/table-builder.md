@@ -752,7 +752,7 @@ To translate or change the text of a notification, you must set the `translates`
         '#', 'First', 'Last', 'Email'
     ]"
     :notfound="true"
-    :translates="['notfound' => 'Custom Not Found']"
+    :translates="['notfound' => __('moonshine.ui.notfound')]"
 />
 ```
 
