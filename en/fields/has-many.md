@@ -72,6 +72,15 @@ use MoonShine\Laravel\Fields\Relationships\HasMany;
 HasMany::make('Comments')
 ```
 
+By default, the field is displayed outside the main form.
+If you want to change this behavior and display it inside the main form, use the `disableOutside()` method.
+
+```php
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
+HasMany::make('Comments')->disableOutside()
+```
+
 <a name="fields"></a>
 ## Fields
 

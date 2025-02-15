@@ -26,7 +26,7 @@ use MoonShine\Support\Enums\Color;
 MoonShineNotification::send(
     message: 'Текст уведомления',
     // Необязательная кнопка
-    button: new NotificationButton('Нажми меня', 'https://moonshine.cutcode.dev'),
+    button: new NotificationButton('Нажми меня', 'https://moonshine.cutcode.dev', attributes: ['target' => '_blank']),
     // Необязательные ID администраторов (по умолчанию для всех)
     ids: [1,2,3],
     // Необязательный цвет иконки

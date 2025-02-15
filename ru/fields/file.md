@@ -10,6 +10,7 @@
 - [Оригинальное имя файла](#filename)
 - [Пользовательское имя файла](#customname)
 - [Имена элементов](#name)
+- [Сортировка перетаскиванием](#reorderable)
 - [Атрибуты элементов](#item-attributes)
 - [Вспомогательные методы](#helper-methods)
 
@@ -246,6 +247,17 @@ File::make('File', 'file')
     ->names(fn(string $filename, int $index = 0) => 'File ' . $index + 1)
 ```
 
+<a name="reorderable"></a>
+## Сортировка перетаскиванием
+
+Вы можете указать *URL*, который обработает позиции и сохранит новые.
+
+```php
+File::make('Files')
+    ->reorderable(fn(File $ctx) => "/reorder/" . $ctx->getData()->getKey())
+    ->multiple(),
+```
+
 <a name="item-attributes"></a>
 ## Атрибуты элементов
 
@@ -262,6 +274,14 @@ File::make('File', 'file')
     ->itemAttributes(fn(string $filename, int $index = 0) => [
         'style' => 'width: 250px; height: 250px;'
     ])
+```
+
+### Атрибуты dropzone
+
+```php
+File::make('Files')
+    ->dropzoneAttributes(fn(File $ctx) => ['class' => 'custom-class'])
+    ->multiple(),
 ```
 
 <a name="helper-methods"></a>
