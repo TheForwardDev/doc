@@ -443,22 +443,22 @@ Select::make('Country', 'country_id')
 Или через объект `Options`:
 
 ```php
-Select::make('Select')->options(
-    new Options([
-        new Option(
-            label: 'Option 1',
-            value: '1',
-            selected: true,
-            properties: new OptionProperty(image: 'https://cutcode.dev/images/platforms/youtube.png'),
-        ),
-        new Option(
-            label: 'Option 2',
-            value: '2',
-            properties: new OptionProperty(image: 'https://cutcode.dev/images/platforms/youtube.png'),
-        ),
-    ]
-)
-)
+Select::make('Select')
+    ->options(
+        new Options([
+            new Option(
+                label: 'Option 1',
+                value: '1',
+                selected: true,
+                properties: new OptionProperty(image: 'https://cutcode.dev/images/platforms/youtube.png'),
+            ),
+            new Option(
+                label: 'Option 2',
+                value: '2',
+                properties: new OptionProperty(image: 'https://cutcode.dev/images/platforms/youtube.png'),
+            ),
+        ])
+    )
 ```
 
 ![belongs to image](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_image.png#light)
