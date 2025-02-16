@@ -4,7 +4,6 @@
 - [Создание](#make)
 - [Значения вкл/выкл](#on-off)
 - [Редактирование в режиме preview](#preview-edit)
-- [Реактивность](#reactive)
 
 ---
 
@@ -60,8 +59,3 @@ Checkbox::make('Publish', 'is_publish')
 ## Редактирование в режиме preview
 
 Данному полю доступно [редактирование в режиме preview](/docs/{{version}}/fields/basic-methods#preview-edit).
-
-<a name="reactive"></a>
-## Реактивность
-
-Данному полю доступна [реактивность](/docs/{{version}}/fields/basic-methods#reactive).
