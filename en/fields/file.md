@@ -114,9 +114,9 @@ File::make('File')
     ->multiple()
 ```
 
-> [!WARNING]
-> The field in the database must be of type _text_ or _json_.
-> You also need to add type casting for the Eloquent model - *json*, or *array*, or *collection*.
+> [!NOTE]
+> In the database, the field must be of type "text" or "json".
+> It is also necessary to specify **cast** — "array", "json" or "collection".
 
 <a name="removable"></a>
 ## File Removal
