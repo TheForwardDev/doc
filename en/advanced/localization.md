@@ -45,6 +45,13 @@ tab: app/Providers/MoonShineServiceProvider.php
 ```php
 $config->locales(['en', 'ru']);
 ```
+It is also possible to specify a key-value:
+```php
+$config->locales([
+    'en' => 'English',
+    'ru' => 'Russian',
+]);
+```
 ~~~
 
 > [!WARNING]
