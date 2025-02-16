@@ -24,7 +24,7 @@ In most cases, it is used with arrays of objects via `TableBuilder`, but it also
 
 > [!NOTE]
 > In the database, the field must be of type "text" or "json".
-> It is also necessary to specify **Eloquent Cast** — "array", "json" or "collection".
+> It is also necessary to specify **cast** — "array", "json" or "collection".
 
 <a name="fields"></a>
 ## Field Set

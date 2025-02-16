@@ -24,7 +24,7 @@
 
 > [!NOTE]
 > В базе данных поле должно быть типа "text" или "json".
-> Также необходимо указать **Eloquent Cast** — "array", "json" или "collection".
+> Также необходимо указать **cast** — "array", "json" или "collection".
 
 <a name="fields"></a>
 ## Набор полей

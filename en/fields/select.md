@@ -205,7 +205,7 @@ Select::make('Country', 'country_id')
 
 > [!NOTE]
 > In the database, the field must be of type "text" or "json".
-> It is also necessary to specify **Eloquent Cast** — "array", "json" or "collection".
+> It is also necessary to specify **cast** — "array", "json" or "collection".
 
 ![select multiple](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_multiple.png#light)
 ![select multiple](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_multiple_dark.png#dark)
