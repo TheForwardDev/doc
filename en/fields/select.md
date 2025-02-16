@@ -97,9 +97,7 @@ Select::make('Select')
 As with all fields, if you need to store NULL, you need to add the `nullable()` method.
 
 ```php
-nullable(
-    Closure|bool|null $condition = null
-)
+nullable(Closure|bool|null $condition = null)
 ```
 
 ~~~tabs
