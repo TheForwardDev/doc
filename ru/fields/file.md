@@ -114,9 +114,9 @@ File::make('File')
     ->multiple()
 ```
 
-> [!WARNING]
-> Поле в базе данных должно быть типа _text_ или _json_.
-> Также необходимо добавить приведение типа для Eloquent-модели - *json*, или *array*, или *collection*.
+> [!NOTE]
+> В базе данных поле должно быть типа "text" или "json".
+> Также необходимо указать **Eloquent Cast** — "array", "json" или "collection".
 
 <a name="removable"></a>
 ## Удаление файлов
