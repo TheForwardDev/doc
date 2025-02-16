@@ -54,7 +54,7 @@ tab: Blade
 
 <a name="default"></a>
 ### Default value
-You can use the `default()` method if you need to specify a default value for the field.
+If you need to specify a default value, you can use the `default()` method.
 
 ```php
 default(mixed $default)
@@ -184,9 +184,7 @@ Select::make('City')
 To enable multiple values selection, use the `multiple()` method.
 
 ```php
-multiple(
-    Closure|bool|null $condition = null
-)
+multiple(Closure|bool|null $condition = null)
 ```
 
 ```php
@@ -412,7 +410,7 @@ updateOnPreview(
 ```php
 use MoonShine\UI\Fields\Select;
 
-Select::make(Country)
+Select::make('Country')
     ->updateOnPreview()
 ```
 

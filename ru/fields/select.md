@@ -54,7 +54,7 @@ tab: Blade
 
 <a name="default"></a>
 ### Значение по умолчанию
-Можно воспользоваться методом `default()`, если необходимо указать для поля значение по умолчанию.
+Если необходимо указать значение по умолчанию, вы можете воспользоваться методом `default()`.
 
 ```php
 default(mixed $default)
@@ -184,9 +184,7 @@ Select::make('City')
 Для выбора нескольких значений используйте метод `multiple()`.
 
 ```php
-multiple(
-    Closure|bool|null $condition = null
-)
+multiple(Closure|bool|null $condition = null)
 ```
 
 ```php
@@ -412,7 +410,7 @@ updateOnPreview(
 ```php
 use MoonShine\UI\Fields\Select;
 
-Select::make(Country)
+Select::make('Country')
     ->updateOnPreview()
 ```
 
