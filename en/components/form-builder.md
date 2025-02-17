@@ -44,8 +44,6 @@ make(
 - `fields` - fields and components,
 - `values` - field values.
 
-Example usage:
-
 ~~~tabs
 tab: Class
 ```php
@@ -141,7 +139,8 @@ FormBuilder::make('/crud/update')
 <a name="casting"></a>
 ### Type Cast
 
-The method `cast()` is used to cast form values to a specific type. Since fields work with primitive types by default:
+The method `cast()` is used to cast form values to a specific type.
+Since fields work with primitive types by default.
 
 ```php
 cast(DataCasterContract $cast)
@@ -351,7 +350,7 @@ public function updateSomething(MoonShineRequest $request): void
 ### Reactivity
 
 By default, fields inside the form are reactive, but if the form is outside the resource, then reactivity will not be available, as the form does not know where to send requests.
-In the case of using the form outside of resources, you can specify the reactive URL yourself:
+In the case of using the form outside of resources, you can specify the reactive URL yourself.
 
 ```php
 FormBuilder::make()
@@ -444,7 +443,8 @@ FormBuilder::make('/crud/update')
 <a name="multiple-forms"></a>
 ### Multiple Forms Simultaneously
 
-If you have multiple forms on one page and they are not in `async` mode, you also need to specify a name for the `errorBag` in `FormRequest` or in `Controller`.
+If you have multiple forms on one page and they are not in "async" mode, you also need to specify a name for the `errorBag` in `FormRequest` or in `Controller`.
+The name of `errorBag` must match the name of the corresponding form.
 
 [Learn more about errorBag naming](https://laravel.com/docs/validation#named-error-bags).
 
@@ -462,21 +462,21 @@ class FormOneFormRequest extends FormRequest
 {
     protected $errorBag = 'formOne';
 
-    // ..
+    // ...
 }
 
 class FormTwoFormRequest extends FormRequest
 {
     protected $errorBag = 'formTwo';
 
-    // ..
+    // ...
 }
 
 class FormThreeFormRequest extends FormRequest
 {
     protected $errorBag = 'formThree';
 
-    // ..
+    // ...
 }
 ```
 
@@ -494,13 +494,13 @@ apply(
     bool $throw = false,
 )
 ```
-- `$apply` - callback function;
-- `$default` - apply for the default field;
-- `$before` - callback function before applying;
-- `$after` - callback function after applying;
+- `$apply` - callback function,
+- `$default` - apply for the default field,
+- `$before` - callback function before applying,
+- `$after` - callback function after applying,
 - `$throw` - throw exceptions.
 
-#### Examples
+### Examples
 
 You need to save data from all fields of the `FormBuilder` in the controller:
 
@@ -556,7 +556,7 @@ dispatchEvent(array|string $events)
 FormBuilder::make()
     ->dispatchEvent(
         AlpineJs::event(JsEvent::OFF_CANVAS_TOGGLED, 'default')
-    ),
+    )
 ```
 
 By default, when calling an event with a request, all form data will be sent.
