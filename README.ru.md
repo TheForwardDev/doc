@@ -142,6 +142,16 @@ MenuItem::make('Settings', new SettingResource(), 'heroicons.outline.adjustments
 MenuItem::make('Settings', SettingResource::class, 'adjustments-vertical') // [tl! ++]
 ```
 
+Указать название файла или класса, к которому относится код, можно через параметр `filename`.
+
+&#96;&#96;&#96;php filename:config/moonshine.php \
+'dir' => 'app/MoonShine', \
+'namespace' => 'App\MoonShine', \
+&#96;&#96;&#96;
+
+> [!WARNING]
+> Использование пробелов в названиях недопустимо.
+
 <a name="list"></a>
 ## Списки
 

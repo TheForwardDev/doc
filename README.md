@@ -142,6 +142,16 @@ MenuItem::make('Settings', new SettingResource(), 'heroicons.outline.adjustments
 MenuItem::make('Settings', SettingResource::class, 'adjustments-vertical') // [tl! ++]
 ```
 
+You can specify the name of the file or class to which the code belongs using the `filename` parameter.
+
+&#96;&#96;&#96;php filename:config/moonshine.php \
+'dir' => 'app/MoonShine', \
+'namespace' => 'App\MoonShine', \
+&#96;&#96;&#96;
+
+> [!WARNING]
+> Spaces in names are not allowed.
+
 <a name="list"></a>
 ## Lists
 
