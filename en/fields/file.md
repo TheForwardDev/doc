@@ -10,6 +10,7 @@
 - [Original File Name](#filename)
 - [Custom File Name](#customname)
 - [Element Names](#name)
+- [Sorting with dragging](#reorderable)
 - [Element Attributes](#item-attributes)
 - [Helper Methods](#helper-methods)
 
@@ -246,6 +247,17 @@ File::make('File', 'file')
     ->names(fn(string $filename, int $index = 0) => 'File ' . $index + 1)
 ```
 
+<a name="reorderable"></a>
+## Sorting with dragging
+
+You can specify a *URL* that will process the positions and save the new ones.
+
+```php
+File::make('Files')
+    ->reorderable(fn(File $ctx) => "/reorder/" . $ctx->getData()->getKey())
+    ->multiple(),
+```
+
 <a name="item-attributes"></a>
 ## Element Attributes
 
@@ -262,6 +274,14 @@ File::make('File', 'file')
     ->itemAttributes(fn(string $filename, int $index = 0) => [
         'style' => 'width: 250px; height: 250px;'
     ])
+```
+
+### Dropzone attributes
+
+```php
+File::make('Files')
+    ->dropzoneAttributes(fn(File $ctx) => ['class' => 'custom-class'])
+    ->multiple(),
 ```
 
 <a name="helper-methods"></a>

@@ -26,7 +26,7 @@ use MoonShine\Support\Enums\Color;
 MoonShineNotification::send(
     message: 'Notification text',
     // Optional button
-    button: new NotificationButton('Click me', 'https://moonshine.cutcode.dev'),
+    button: new NotificationButton('Click me', 'https://moonshine.cutcode.dev', attributes: ['target' => '_blank']),
     // Optional administrator IDs (default for all)
     ids: [1,2,3],
     // Optional icon color
