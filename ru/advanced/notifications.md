@@ -30,7 +30,9 @@ MoonShineNotification::send(
     // Необязательные ID администраторов (по умолчанию для всех)
     ids: [1,2,3],
     // Необязательный цвет иконки
-    color: Color::green
+    color: Color::GREEN,
+    // Необязательная иконка
+    icon: 'information-circle'
 );
 ```
 
