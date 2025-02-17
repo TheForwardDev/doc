@@ -54,6 +54,7 @@ tab: Blade
 
 <a name="default"></a>
 ### Значение по умолчанию
+
 Если необходимо указать значение по умолчанию, вы можете воспользоваться методом `default()`.
 
 ```php
@@ -66,7 +67,7 @@ use MoonShine\UI\Fields\Select;
 Select::make('Country', 'country_id')
     ->options([
         'value 1' => 'Option Label 1',
-        'value 2' => 'Option Label 2'
+        'value 2' => 'Option Label 2',
     ])
     ->default('value 2')
 ```
@@ -94,6 +95,7 @@ Select::make('Select')
 
 <a name="nullable"></a>
 ### Nullable
+
 Как и у всех полей, если необходимо сохранять NULL, то нужно добавить метод `nullable()`.
 
 ```php
@@ -125,6 +127,7 @@ tab: Blade
 
 <a name="placeholder"></a>
 ### Placeholder
+
 Метод `placeholder()` позволяет задать у поля атрибут *placeholder*.
 
 ```php
@@ -141,8 +144,11 @@ Select::make('Country', 'country')
 
 <a name="groups"></a>
 ## Группы
+
 Можно объединять значения в группы.
 
+~~~tabs
+tab: array
 ```php
 use MoonShine\UI\Fields\Select;
 
@@ -158,8 +164,10 @@ Select::make('City', 'city_id')
         ]
     ])
 ```
-
+tab: OptionGroup
 ```php
+use MoonShine\UI\Fields\Select;
+
 Select::make('City')
     ->options(
         new Options([
@@ -174,6 +182,7 @@ Select::make('City')
         ])
     )
 ```
+~~~
 
 ![select group](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_group.png#light)
 ![select group](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_group_dark.png#dark)
@@ -208,6 +217,7 @@ Select::make('Country', 'country_id')
 
 <a name="search"></a>
 ## Поиск
+
 Если необходимо добавить поиск среди значений, то нужно добавить метод `searchable()`.
 
 ~~~tabs
@@ -325,7 +335,9 @@ Select::make('Country', 'country_id')
     ->async('/search')
 ```
 tab: Blade
+```blade
 <x-moonshine::form.select asyncRoute='/search' />
+```
 ~~~
 
 Если необходимо сразу же после отображения страницы отправить запрос на значения, тогда необходимо добавить метод `asyncOnInit(whenOpen: false)`.
@@ -416,6 +428,7 @@ Select::make('Country')
 
 <a name="with-image"></a>
 ## Значения с изображением
+
 Метод `optionProperties()` позволяет добавить изображение к значению.
 
 ```php
@@ -462,6 +475,7 @@ Select::make('Select')
 
 <a name="options"></a>
 ## Опции
+
 Все опции *Сhoices.js* доступны для изменения через *data attributes*.
 
 ```php
