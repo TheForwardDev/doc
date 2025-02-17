@@ -144,10 +144,9 @@ MenuItem::make('Settings', SettingResource::class, 'adjustments-vertical') // [t
 
 Указать название файла или класса, к которому относится код, можно через параметр `filename`.
 
-&#96;&#96;&#96;php filename:config/moonshine.php \
-'dir' => 'app/MoonShine', \
-'namespace' => 'App\MoonShine', \
-&#96;&#96;&#96;
+```
+```php filename:config/moonshine.php
+```
 
 > [!WARNING]
 > Использование пробелов в названиях недопустимо.
