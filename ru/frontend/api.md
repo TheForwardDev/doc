@@ -9,14 +9,15 @@
 <a name="basics"></a>
 ## Основы
 
-**MoonShine** дает возможность переключения административной панели в режим `API`, для этого достаточно в заголовок запроса добавить `Accept: application/json`, после чего `CRUD` операции будут возвращать `json` ответы.
+**MoonShine** дает возможность переключения административной панели в режим `API`.
+Для этого достаточно в заголовок запроса добавить `Accept: application/json`, после чего `CRUD` операции будут возвращать `json` ответы.
 Также мы поставляем инструменты, дающие возможность переключения аутентификации на `JWT` токены, а также генерацию `OpenApi` спецификации и документацию на основе ресурсов.
 
 > [!NOTE]
-> При полноценном использовании **MoonShine** в режиме API не забудьте отключить сессионные middleware в конфигурации MoonShine
+> При полноценном использовании **MoonShine** в режиме API не забудьте отключить сессионные middleware в конфигурации **MoonShine**.
 
 > [!TIP]
-> Обратите также внимание на раздел [SDUI](/docs/{{version}}/frontend/sdui)
+> Обратите также внимание на раздел [SDUI](/docs/{{version}}/frontend/sdui).
 
 <a name="jwt"></a>
 ## JWT
@@ -53,13 +54,11 @@ return [
     'middleware' => [
         AuthenticateApi::class
     ],
-    // ...
     'auth' => [
         // ...
         'pipelines' => [
             JWTAuthPipe::class
         ],
-        // ...
     ]
     // ...
 ];
@@ -69,13 +68,14 @@ tab: MoonShineServiceProvider
 use MoonShine\JWT\JWTAuthPipe;
 use MoonShine\JWT\Http\Middleware\AuthenticateApi;
 
-$config->authPipelines([
-    JWTAuthPipe::class
-])->middlewares([])->authMiddleware(AuthenticateApi::class);
+$config
+    ->authPipelines([JWTAuthPipe::class])
+    ->middlewares([])
+    ->authMiddleware(AuthenticateApi::class);
 ```
 ~~~
 
-Всё готово! При успешной аутентификации вы получите токен, который в последующем можно использовать в заголовке `Authorization: Bearer <token>`
+Всё готово! При успешной аутентификации вы получите токен, который в последующем можно использовать в заголовке `Authorization: Bearer <token>`.
 
 <a name="oag"></a>
 ## OpenApi генератор
@@ -95,8 +95,6 @@ php artisan vendor:publish --provider="MoonShine\OAG\Providers\OAGServiceProvide
 Конфигурация уже настроена, в особых случаях вы можете переопределить определенные настройки:
 
 ```php
-<?php
-
 return [
     'title' => 'Docs', // Заголовок документации
     'path' => realpath(
@@ -115,10 +113,7 @@ php artisan oag:generate
 
 Файлы спецификации по умолчанию располагаются в директории `resources`:
 
-- `resources/oag.yaml`
-- `resources/oag.json`
+- `resources/oag.yaml`,
+- `resources/oag.json`.
 
-Документация доступна по адресу:
-
-- `/docs`
-
+Документация доступна по адресу `/docs`.
