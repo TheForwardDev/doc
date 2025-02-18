@@ -251,6 +251,12 @@ protected function getTopBarComponent(): Topbar
 protected function getFooterComponent(): Footer
 ```
 
+#### Переопределить компонент Profile
+
+```php
+protected function getProfileComponent(bool $sidebar = false): Profile
+```
+
 #### Путь до логотипа
 
 ```php

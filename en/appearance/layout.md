@@ -251,6 +251,12 @@ protected function getTopBarComponent(): Topbar
 protected function getFooterComponent(): Footer
 ```
 
+#### Override the Profile component
+
+```php
+protected function getProfileComponent(bool $sidebar = false): Profile
+```
+
 #### Path to the logo
 
 ```php
