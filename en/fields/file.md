@@ -22,7 +22,7 @@
 Contains all [Basic methods](/docs/{{version}}/fields/basic-methods).
 
 > [!TIP]
-> Before using, ensure that a symbolic link is set up for the **storage** directory.
+> Before using, ensure that a symbolic link is set up for the **storage** directory. \
 > `php artisan storage:link`
 
 The `File` field is used for file uploads and includes all basic methods.
