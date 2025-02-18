@@ -12,25 +12,33 @@ make(iterable $components = [])
 
 - `$components` - массив компонентов.
 
-~~~tabs
-tab: Class
 ```php
-use MoonShine\UI\Components\Layout\Menu;
 use MoonShine\UI\Components\Layout\MobileBar;
 
 MobileBar::make([
-    Menu::make(),
+    Div::make([
+        Div::make([
+            $this->getLogoComponent(),
+        ])->class('menu-heading-logo'),
+
+        Div::make([
+            ThemeSwitcher::make(),
+
+            Div::make([
+                Burger::make(),
+            ])->class('menu-heading-burger'),
+        ])->class('menu-heading-actions'),
+    ])->class('menu-heading'),
+
+    Div::make([
+        Menu::make(),
+        When::make(
+            fn (): bool => $this->isAuthEnabled(),
+            static fn (): array => [Profile::make(withBorder: true)],
+        ),
+    ])->customAttributes([
+        'class' => 'menu',
+        ':class' => "asideMenuOpen && '_is-opened'",
+    ]),
 ])
 ```
-tab: Blade
-```blade
-<x-moonshine::layout.mobile-bar>
-    <x-moonshine::layout.menu
-        :elements="[
-            ['label' => 'Dashboard', 'url' => '/'],
-            ['label' => 'Section', 'url' => '/section'],
-        ]"
-    />
-</x-moonshine::layput.mobile-bar>
-```
-~~~
