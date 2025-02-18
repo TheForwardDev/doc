@@ -136,7 +136,7 @@ If you need to specify what changes in the code, then you can use a special desi
 MenuItem::make('Settings', new SettingResource(), 'heroicons.outline.adjustments-vertical') // [tl! remove]
 MenuItem::make('Settings', SettingResource::class, 'adjustments-vertical') // [tl! add]
 ```
-или
+or
 ```php
 MenuItem::make('Settings', new SettingResource(), 'heroicons.outline.adjustments-vertical') // [tl! --]
 MenuItem::make('Settings', SettingResource::class, 'adjustments-vertical') // [tl! ++]
