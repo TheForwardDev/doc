@@ -486,7 +486,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
 ```php
 HasMany::make('Comments', resource: CommentResource::class)
     ->creatable()
-    ->nowOn(page: $resource->getFormPage(), reseource: $resource, params: ['resourceItem' => $item->getKey()])
+    ->nowOn(page: $resource->getFormPage(), resource: $resource, params: ['resourceItem' => $item->getKey()])
     ->fillCast($item, new ModelCaster(Article::class)),
 ```
 
