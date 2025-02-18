@@ -14,53 +14,54 @@
 
 Содержит все [Базовые методы](/docs/{{version}}/fields/basic-methods).
 
-Поле `RelationRepeater` предназначено для работы с отношениями `HasMany` и `HasOne`. Оно позволяет создавать, редактировать и удалять связанные записи прямо из формы основной модели.
+Поле `RelationRepeater` предназначено для работы с отношениями `HasMany` и `HasOne`.
+Оно позволяет создавать, редактировать и удалять связанные записи прямо из формы основной модели.
 
 > [!NOTE]
 > Поле автоматически синхронизирует связанные записи при сохранении основной модели.
 
-Для работы с полем необходимо указать:
-- Label поля
-- Имя отношения
-- Ресурс для связанной модели
+```php
+make(
+    string|Closure $label,
+    ?string $relationName = null,
+    string|Closure|null $formatted = null,
+    ModelResource|string|null $resource = null,
+)
+```
+
+- `$label` - заголовок поля,
+- `$relationName` - имя отношения,
+- `$formatted` - замыкание для форматирования значения поля в режиме "preview",
+- `$resource` - ресурс связанной модели.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 
-// ...
-
-protected function formFields(): iterable
-{
-    return [
-        RelationRepeater::make('Характеристики', 'characteristics', resource: CharacteristicResource::class)
-    ];
-}
+RelationRepeater::make(
+    'Characteristics',
+    'characteristics',
+    resource: CharacteristicResource::class
+)
 ```
 
 <a name="fields"></a>
 ## Набор полей
 
-По умолчанию поле использует все поля формы из указанного ресурса. Однако вы можете переопределить набор полей с помощью метода `fields()`:
+По умолчанию поле использует все поля формы из указанного ресурса.
+Однако вы можете переопределить набор полей с помощью метода `fields()`.
 
 ```php
 use MoonShine\UI\Fields\Text;
 use MoonShine\UI\Fields\Switcher;
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 
-// ...
-
-protected function formFields(): iterable
-{
-    return [
-        RelationRepeater::make('Характеристики', 'characteristics')
-            ->fields([
-                ID::make(),
-                Text::make('Название', 'name'),
-                Text::make('Значение', 'value'),
-                Switcher::make('Активно', 'is_active')
-            ])
-    ];
-}
+RelationRepeater::make('Characteristics', 'characteristics')
+    ->fields([
+        ID::make(),
+        Text::make('Name', 'name'),
+        Text::make('Value', 'value'),
+        Switcher::make('Active', 'is_active'),
+    ])
 ```
 
 > [!WARNING]
@@ -69,16 +70,14 @@ protected function formFields(): iterable
 <a name="vertical"></a>
 ## Вертикальный режим
 
-Метод `vertical()` изменяет отображение таблицы из горизонтального режима на вертикальный:
+Метод `vertical()` изменяет отображение таблицы из горизонтального режима на вертикальный.
 
 ```php
 vertical(Closure|bool|null $condition = null)
 ```
 
-Пример:
-
 ```php
-RelationRepeater::make('Характеристики', 'characteristics')
+RelationRepeater::make('Characteristics', 'characteristics')
     ->vertical()
 ```
 
@@ -95,11 +94,11 @@ creatable(
 )
 ```
 
-- `$condition` - условие, при котором метод должен быть применён
-- `$limit` - ограничение на количество возможных элементов
-- `$button` - возможность заменить кнопку добавления на свою
+- `$condition` - условие, при котором метод должен быть применён,
+- `$limit` - ограничение на количество возможных элементов,
+- `$button` - возможность заменить кнопку добавления на свою.
 
-Для возможности удаления элементов используется метод `removable()`:
+Для возможности удаления элементов используется метод `removable()`.
 
 ```php
 removable(
@@ -108,10 +107,8 @@ removable(
 )
 ```
 
-Пример:
-
 ```php
-RelationRepeater::make('Характеристики', 'characteristics')
+RelationRepeater::make('Characteristics', 'characteristics')
     ->creatable(limit: 5)
     ->removable()
 ```
@@ -119,12 +116,12 @@ RelationRepeater::make('Характеристики', 'characteristics')
 <a name="buttons"></a>
 ## Кнопки
 
-Метод `buttons()` позволяет переопределить кнопки, используемые в поле:
+Метод `buttons()` позволяет переопределить кнопки, используемые в поле.
 
 ```php
 use MoonShine\UI\Components\ActionButton;
 
-RelationRepeater::make('Характеристики', 'characteristics')
+RelationRepeater::make('Characteristics', 'characteristics')
     ->buttons([
         ActionButton::make('', '#')
             ->icon('trash')
@@ -139,12 +136,12 @@ RelationRepeater::make('Характеристики', 'characteristics')
 
 ### Модификатор таблицы
 
-Метод `modifyTable()` позволяет модифицировать таблицу (`TableBuilder`):
+Метод `modifyTable()` позволяет модифицировать таблицу (`TableBuilder`).
 
 ```php
 use MoonShine\UI\Components\Table\TableBuilder;
 
-RelationRepeater::make('Характеристики', 'characteristics')
+RelationRepeater::make('Characteristics', 'characteristics')
     ->modifyTable(
         fn(TableBuilder $table, bool $preview) => $table
             ->customAttributes([
@@ -155,12 +152,12 @@ RelationRepeater::make('Характеристики', 'characteristics')
 
 ### Модификатор кнопки удаления
 
-Метод `modifyRemoveButton()` позволяет изменить кнопку удаления:
+Метод `modifyRemoveButton()` позволяет изменить кнопку удаления.
 
 ```php
 use MoonShine\UI\Components\ActionButton;
 
-RelationRepeater::make('Характеристики', 'characteristics')
+RelationRepeater::make('Characteristics', 'characteristics')
     ->modifyRemoveButton(
         fn(ActionButton $button) => $button
             ->customAttributes([
