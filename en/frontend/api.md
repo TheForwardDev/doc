@@ -9,7 +9,8 @@
 <a name="basics"></a>
 ## Basics
 
-**MoonShine** allows you to switch the admin panel to `API` mode; to do this, simply add `Accept: application/json` to the request header, after which `CRUD` operations will return `json` responses.
+**MoonShine** allows you to switch the admin panel to `API` mode.
+To do this, simply add `Accept: application/json` to the request header, after which `CRUD` operations will return `json` responses.
 We also provide tools that allow you to switch authentication to `JWT` tokens, as well as generate `OpenApi` specifications and documentation based on resources.
 
 > [!NOTE]
@@ -53,13 +54,11 @@ return [
     'middleware' => [
         AuthenticateApi::class
     ],
-    // ...
     'auth' => [
         // ...
         'pipelines' => [
             JWTAuthPipe::class
         ],
-        // ...
     ]
     // ...
 ];
@@ -69,9 +68,10 @@ tab: MoonShineServiceProvider
 use MoonShine\JWT\JWTAuthPipe;
 use MoonShine\JWT\Http\Middleware\AuthenticateApi;
 
-$config->authPipelines([
-    JWTAuthPipe::class
-])->middlewares([])->authMiddleware(AuthenticateApi::class);
+$config
+    ->authPipelines([JWTAuthPipe::class])
+    ->middlewares([])
+    ->authMiddleware(AuthenticateApi::class);
 ```
 ~~~
 
@@ -95,8 +95,6 @@ php artisan vendor:publish --provider="MoonShine\OAG\Providers\OAGServiceProvide
 The configuration is already set up; in special cases, you can override specific settings:
 
 ```php
-<?php
-
 return [
     'title' => 'Docs', // Documentation title
     'path' => realpath(
@@ -115,9 +113,7 @@ php artisan oag:generate
 
 The specification files are by default located in the `resources` directory:
 
-- `resources/oag.yaml`
-- `resources/oag.json`
+- `resources/oag.yaml`,
+- `resources/oag.json`.
 
-Documentation is available at the address:
-
-- `/docs`
+Documentation is available at the address `/docs`.
