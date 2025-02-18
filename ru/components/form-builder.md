@@ -44,8 +44,6 @@ make(
 - `fields` - поля и компоненты,
 - `values` - значения полей.
 
-Пример использования:
-
 ~~~tabs
 tab: Class
 ```php
@@ -141,7 +139,8 @@ FormBuilder::make('/crud/update')
 <a name="casting"></a>
 ### Приведение типов
 
-Метод `cast()` для приведения значений формы к определенному типу. Поскольку по умолчанию поля работают с примитивными типами:
+Метод `cast()` для приведения значений формы к определенному типу.
+Поскольку по умолчанию поля работают с примитивными типами.
 
 ```php
 cast(DataCasterContract $cast)
@@ -351,7 +350,7 @@ public function updateSomething(MoonShineRequest $request): void
 ### Реактивность
 
 По умолчанию полям внутри формы доступна реактивность, но если форма находится вне ресурса, тогда реактивность будет недоступна, так как форма не знает куда отправлять запросы.
-В случае использования формы вне ресурсов вы можете указать реактивный URL самостоятельно:
+В случае использования формы вне ресурсов вы можете указать реактивный URL самостоятельно.
 
 ```php
 FormBuilder::make()
@@ -444,7 +443,8 @@ FormBuilder::make('/crud/update')
 <a name="multiple-forms"></a>
 ### Несколько форм одновременно
 
-Если у вас есть несколько форм на одной странице и они не в режиме `async`, то вам также необходимо указать наименование для `errorBag` в `FormRequest` или в `Controller`.
+Если у вас есть несколько форм на одной странице и они не в режиме "async", то вам также необходимо указать наименование для `errorBag` в `FormRequest` или в `Controller`.
+Наименование `errorBag` должно совпадать с наименованием соответствующей формы.
 
 [Подробнее о наименовании errorBag](https://laravel.com/docs/validation#named-error-bags).
 
@@ -462,21 +462,21 @@ class FormOneFormRequest extends FormRequest
 {
     protected $errorBag = 'formOne';
 
-    // ..
+    // ...
 }
 
 class FormTwoFormRequest extends FormRequest
 {
     protected $errorBag = 'formTwo';
 
-    // ..
+    // ...
 }
 
 class FormThreeFormRequest extends FormRequest
 {
     protected $errorBag = 'formThree';
 
-    // ..
+    // ...
 }
 ```
 
@@ -494,13 +494,13 @@ apply(
     bool $throw = false,
 )
 ```
-- `$apply` - функция обратного вызова;
-- `$default` - применение для поля по умолчанию;
-- `$before` - функция обратного вызова перед применением;
-- `$after` - функция обратного вызова после применения;
+- `$apply` - функция обратного вызова,
+- `$default` - применение для поля по умолчанию,
+- `$before` - функция обратного вызова перед применением,
+- `$after` - функция обратного вызова после применения,
 - `$throw` - выбрасывать исключения.
 
-#### Примеры
+### Примеры
 
 Необходимо сохранить данные всех полей `FormBuilder` в контроллере:
 
@@ -556,7 +556,7 @@ dispatchEvent(array|string $events)
 FormBuilder::make()
     ->dispatchEvent(
         AlpineJs::event(JsEvent::OFF_CANVAS_TOGGLED, 'default')
-    ),
+    )
 ```
 
 По умолчанию при вызове события с запросом будут отправлены все данные формы.
