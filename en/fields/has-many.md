@@ -486,7 +486,7 @@ However, you can also use it on other pages by specifying its location with the 
 ```php
 HasMany::make('Comments', resource: CommentResource::class)
     ->creatable()
-    ->nowOn(page: $resource->getFormPage(), reseource: $resource, params: ['resourceItem' => $item->getKey()])
+    ->nowOn(page: $resource->getFormPage(), resource: $resource, params: ['resourceItem' => $item->getKey()])
     ->fillCast($item, new ModelCaster(Article::class)),
 ```
 
