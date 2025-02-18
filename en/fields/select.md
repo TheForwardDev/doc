@@ -54,6 +54,7 @@ tab: Blade
 
 <a name="default"></a>
 ### Default value
+
 If you need to specify a default value, you can use the `default()` method.
 
 ```php
@@ -66,7 +67,7 @@ use MoonShine\UI\Fields\Select;
 Select::make('Country', 'country_id')
     ->options([
         'value 1' => 'Option Label 1',
-        'value 2' => 'Option Label 2'
+        'value 2' => 'Option Label 2',
     ])
     ->default('value 2')
 ```
@@ -94,6 +95,7 @@ Select::make('Select')
 
 <a name="nullable"></a>
 ### Nullable
+
 As with all fields, if you need to store NULL, you need to add the `nullable()` method.
 
 ```php
@@ -125,6 +127,7 @@ tab: Blade
 
 <a name="placeholder"></a>
 ### Placeholder
+
 The `placeholder()` method allows you to set the *placeholder* attribute for the field.
 
 ```php
@@ -141,8 +144,11 @@ Select::make('Country', 'country')
 
 <a name="groups"></a>
 ## Groups
+
 You can group values together.
 
+~~~tabs
+tab: array
 ```php
 use MoonShine\UI\Fields\Select;
 
@@ -158,8 +164,10 @@ Select::make('City', 'city_id')
         ]
     ])
 ```
-
+tab: OptionGroup
 ```php
+use MoonShine\UI\Fields\Select;
+
 Select::make('City')
     ->options(
         new Options([
@@ -174,6 +182,7 @@ Select::make('City')
         ])
     )
 ```
+~~~
 
 ![select group](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_group.png#light)
 ![select group](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/select_group_dark.png#dark)
@@ -208,6 +217,7 @@ Select::make('Country', 'country_id')
 
 <a name="search"></a>
 ## Search
+
 If you need to add search functionality among values, then you need to add the `searchable()` method.
 
 ~~~tabs
@@ -325,7 +335,9 @@ Select::make('Country', 'country_id')
     ->async('/search')
 ```
 tab: Blade
+```blade
 <x-moonshine::form.select asyncRoute='/search' />
+```
 ~~~
 
 If you need to send the request for values immediately after the page is displayed, then you need to add the `asyncOnInit(whenOpen: false)` method.
@@ -416,6 +428,7 @@ Select::make('Country')
 
 <a name="with-image"></a>
 ## Values with images
+
 The `optionProperties()` method allows you to add an image to the value.
 
 ```php
@@ -462,6 +475,7 @@ Select::make('Select')
 
 <a name="options"></a>
 ## Options
+
 All *Choices.js* options are available for modification through *data attributes*.
 
 ```php
