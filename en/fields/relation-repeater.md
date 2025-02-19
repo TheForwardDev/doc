@@ -35,12 +35,14 @@ make(
 - `$resource` - resource of the related model.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 
 RelationRepeater::make(
-    'Characteristics',
-    'characteristics',
-    resource: CharacteristicResource::class
+    'Comments',
+    'comments',
+    resource: CommentResource::class
 )
 ```
 
@@ -51,16 +53,17 @@ By default, the field uses all form fields from the specified resource.
 However, you can override the field set using the `fields()` method.
 
 ```php
-use MoonShine\UI\Fields\Text;
-use MoonShine\UI\Fields\Switcher;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Text;
 
 RelationRepeater::make('Characteristics', 'characteristics')
     ->fields([
         ID::make(),
         Text::make('Name', 'name'),
         Text::make('Value', 'value'),
-        Switcher::make('Active', 'is_active'),
     ])
 ```
 
@@ -77,14 +80,15 @@ vertical(Closure|bool|null $condition = null)
 ```
 
 ```php
-RelationRepeater::make('Characteristics', 'characteristics')
+RelationRepeater::make('Comments', 'comments')
     ->vertical()
 ```
 
 <a name="creatable-removable"></a>
 ## Add/Delete
 
-By default, the field allows adding new items. This behavior can be changed using the `creatable()` method:
+By default, the field allows adding new items.
+This behavior can be changed using the `creatable()` method.
 
 ```php
 creatable(
@@ -108,7 +112,7 @@ removable(
 ```
 
 ```php
-RelationRepeater::make('Characteristics', 'characteristics')
+RelationRepeater::make('Comments', 'comments')
     ->creatable(limit: 5)
     ->removable()
 ```
@@ -119,9 +123,12 @@ RelationRepeater::make('Characteristics', 'characteristics')
 The `buttons()` method allows overriding the buttons used in the field.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 use MoonShine\UI\Components\ActionButton;
 
-RelationRepeater::make('Characteristics', 'characteristics')
+RelationRepeater::make('Comments', 'comments')
     ->buttons([
         ActionButton::make('', '#')
             ->icon('trash')
@@ -139,9 +146,12 @@ RelationRepeater::make('Characteristics', 'characteristics')
 The `modifyTable()` method allows modifying the table (`TableBuilder`).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 use MoonShine\UI\Components\Table\TableBuilder;
 
-RelationRepeater::make('Characteristics', 'characteristics')
+RelationRepeater::make('Comments', 'comments')
     ->modifyTable(
         fn(TableBuilder $table, bool $preview) => $table
             ->customAttributes([
@@ -155,9 +165,12 @@ RelationRepeater::make('Characteristics', 'characteristics')
 The `modifyRemoveButton()` method allows changing the remove button.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 use MoonShine\UI\Components\ActionButton;
 
-RelationRepeater::make('Characteristics', 'characteristics')
+RelationRepeater::make('Comments', 'comments')
     ->modifyRemoveButton(
         fn(ActionButton $button) => $button
             ->customAttributes([

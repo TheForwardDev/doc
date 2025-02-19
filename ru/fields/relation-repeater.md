@@ -35,12 +35,14 @@ make(
 - `$resource` - ресурс связанной модели.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 
 RelationRepeater::make(
-    'Characteristics',
-    'characteristics',
-    resource: CharacteristicResource::class
+    'Comments',
+    'comments',
+    resource: CommentResource::class
 )
 ```
 
@@ -51,16 +53,17 @@ RelationRepeater::make(
 Однако вы можете переопределить набор полей с помощью метода `fields()`.
 
 ```php
-use MoonShine\UI\Fields\Text;
-use MoonShine\UI\Fields\Switcher;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Text;
 
 RelationRepeater::make('Characteristics', 'characteristics')
     ->fields([
         ID::make(),
         Text::make('Name', 'name'),
         Text::make('Value', 'value'),
-        Switcher::make('Active', 'is_active'),
     ])
 ```
 
@@ -77,14 +80,15 @@ vertical(Closure|bool|null $condition = null)
 ```
 
 ```php
-RelationRepeater::make('Characteristics', 'characteristics')
+RelationRepeater::make('Comments', 'comments')
     ->vertical()
 ```
 
 <a name="creatable-removable"></a>
 ## Добавление/Удаление
 
-По умолчанию поле позволяет добавлять новые элементы. Это поведение можно изменить с помощью метода `creatable()`:
+По умолчанию поле позволяет добавлять новые элементы.
+Это поведение можно изменить с помощью метода `creatable()`.
 
 ```php
 creatable(
@@ -108,7 +112,7 @@ removable(
 ```
 
 ```php
-RelationRepeater::make('Characteristics', 'characteristics')
+RelationRepeater::make('Comments', 'comments')
     ->creatable(limit: 5)
     ->removable()
 ```
@@ -119,9 +123,12 @@ RelationRepeater::make('Characteristics', 'characteristics')
 Метод `buttons()` позволяет переопределить кнопки, используемые в поле.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 use MoonShine\UI\Components\ActionButton;
 
-RelationRepeater::make('Characteristics', 'characteristics')
+RelationRepeater::make('Comments', 'comments')
     ->buttons([
         ActionButton::make('', '#')
             ->icon('trash')
@@ -139,9 +146,12 @@ RelationRepeater::make('Characteristics', 'characteristics')
 Метод `modifyTable()` позволяет модифицировать таблицу (`TableBuilder`).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 use MoonShine\UI\Components\Table\TableBuilder;
 
-RelationRepeater::make('Characteristics', 'characteristics')
+RelationRepeater::make('Comments', 'comments')
     ->modifyTable(
         fn(TableBuilder $table, bool $preview) => $table
             ->customAttributes([
@@ -155,9 +165,12 @@ RelationRepeater::make('Characteristics', 'characteristics')
 Метод `modifyRemoveButton()` позволяет изменить кнопку удаления.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Laravel\Fields\Relationships\RelationRepeater;
 use MoonShine\UI\Components\ActionButton;
 
-RelationRepeater::make('Characteristics', 'characteristics')
+RelationRepeater::make('Comments', 'comments')
     ->modifyRemoveButton(
         fn(ActionButton $button) => $button
             ->customAttributes([
