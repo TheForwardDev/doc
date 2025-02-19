@@ -115,9 +115,7 @@ File::make('File')
     ->multiple()
 ```
 
-> [!NOTE]
-> In the database, the field must be of type "text" or "json".
-> It is also necessary to specify **cast** — "array", "json" or "collection".
+@include('_includes/note-about-multiple-cast')
 
 <a name="removable"></a>
 ## File Removal
