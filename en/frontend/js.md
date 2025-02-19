@@ -178,7 +178,6 @@ A directive for conveniently declaring an event in HTML.
 <div x-data="myComponent">
     // @table-updated-index.window="asyncRequest"
     @defineEvent('table-updated', 'index', 'asyncRequest')
-    >
 </div>
 ```
 
@@ -206,7 +205,6 @@ With a condition of whether it will be added or not.
 <div x-data="myComponent">
     // @table-updated-index.window="asyncRequest"
     @defineEventWhen(true, 'table-updated', 'index', 'asyncRequest')
-    >
 </div>
 ```
 

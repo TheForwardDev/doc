@@ -178,7 +178,6 @@ Blade директивы используются для быстрого объ
 <div x-data="myComponent">
     // @table-updated-index.window="asyncRequest"
     @defineEvent('table-updated', 'index', 'asyncRequest')
-    >
 </div>
 ```
 
@@ -206,7 +205,6 @@ Blade директивы используются для быстрого объ
 <div x-data="myComponent">
     // @table-updated-index.window="asyncRequest"
     @defineEventWhen(true, 'table-updated', 'index', 'asyncRequest')
-    >
 </div>
 ```
 
