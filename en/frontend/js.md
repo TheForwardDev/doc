@@ -137,9 +137,11 @@ events(array $events)
 - `$events` - an array of events to be triggered.
 
 ```php
-use MoonShine\Support\Enums\JsEvent;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\Laravel\Http\Responses\MoonShineJsonResponse;
 use MoonShine\Support\AlpineJs;
+use MoonShine\Support\Enums\JsEvent;
 
 // ...
 
@@ -172,7 +174,7 @@ A directive for conveniently declaring an event in HTML.
 - `$call` - the callback function,
 - `$params` - event parameters.
 
-```html
+```blade
 <div x-data="myComponent">
     // @table-updated-index.window="asyncRequest"
     @defineEvent('table-updated', 'index', 'asyncRequest')
@@ -200,7 +202,7 @@ With a condition of whether it will be added or not.
 - `$call` - the callback function,
 - `$params` - event parameters.
 
-```html
+```blade
 <div x-data="myComponent">
     // @table-updated-index.window="asyncRequest"
     @defineEventWhen(true, 'table-updated', 'index', 'asyncRequest')
@@ -209,7 +211,7 @@ With a condition of whether it will be added or not.
 ```
 
 <a name="helper"></a>
-### Helper class *AlpineJs* for event formation.
+### Helper class AlpineJs for event formation.
 
 #### AlpineJs::event()
 

@@ -137,9 +137,11 @@ events(array $events)
 - `$events` - массив событий, которые нужно вызвать.
 
 ```php
-use MoonShine\Support\Enums\JsEvent;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\Laravel\Http\Responses\MoonShineJsonResponse;
 use MoonShine\Support\AlpineJs;
+use MoonShine\Support\Enums\JsEvent;
 
 // ...
 
@@ -172,7 +174,7 @@ Blade директивы используются для быстрого объ
 - `$call` - функция обратного вызова,
 - `$params` - параметры события.
 
-```html
+```blade
 <div x-data="myComponent">
     // @table-updated-index.window="asyncRequest"
     @defineEvent('table-updated', 'index', 'asyncRequest')
@@ -182,7 +184,7 @@ Blade директивы используются для быстрого объ
 
 #### @defineEventWhen
 
-С условием, будет ли добавлено или нет
+С условием, будет ли добавлено или нет.
 
 ```php
 @defineEventWhen(
@@ -200,7 +202,7 @@ Blade директивы используются для быстрого объ
 - `$call` - функция обратного вызова,
 - `$params` - параметры события.
 
-```html
+```blade
 <div x-data="myComponent">
     // @table-updated-index.window="asyncRequest"
     @defineEventWhen(true, 'table-updated', 'index', 'asyncRequest')
@@ -209,7 +211,7 @@ Blade директивы используются для быстрого объ
 ```
 
 <a name="helper"></a>
-### Вспомогательный класс *AlpineJs* для формирования событий.
+### Вспомогательный класс AlpineJs для формирования событий.
 
 #### AlpineJs::event()
 
@@ -405,7 +407,7 @@ ActionButton::make()
 ```
 
 > [!NOTE]
-> Если вы указали `responseHandler`, то поведение обратки ответа принимает ваша функция и `afterResponse` вызван не будет
+> Если вы указали `responseHandler`, то поведение обратки ответа принимает ваша функция и `afterResponse` вызван не будет.
 
 При клике на кнопку будет отправлен запрос в метод `myMethod` и в случае успеха будет вызвана функция `myAfterResponse`.
 
