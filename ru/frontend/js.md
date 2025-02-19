@@ -175,9 +175,10 @@ Blade директивы используются для быстрого объ
 - `$params` - параметры события.
 
 ```blade
-<div x-data="myComponent">
-    // @table-updated-index.window="asyncRequest"
+<div x-data="myComponent"
+    {{-- @table-updated-index.window="asyncRequest" --}}
     @defineEvent('table-updated', 'index', 'asyncRequest')
+>
 </div>
 ```
 
@@ -202,9 +203,10 @@ Blade директивы используются для быстрого объ
 - `$params` - параметры события.
 
 ```blade
-<div x-data="myComponent">
-    // @table-updated-index.window="asyncRequest"
+<div x-data="myComponent"
+    {{-- @table-updated-index.window="asyncRequest" --}}
     @defineEventWhen(true, 'table-updated', 'index', 'asyncRequest')
+>
 </div>
 ```
 
