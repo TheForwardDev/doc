@@ -10,6 +10,7 @@
 - [Modal window](#without-modals)
 - [Modification](#modify)
 - [Adding ActionButtons](#add-action-buttons)
+- [Display](#view)
 - [Advanced usage](#advanced)
 
 ---
@@ -438,6 +439,71 @@ use MoonShine\Laravel\Fields\Relationships\HasMany;
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyBuilder(fn(Relation $query, HasMany $ctx) => $query)
 ```
+
+<a name="view"></a>
+## Display
+
+### Display inside Tabs
+
+By default, relationship fields in MoonShine are displayed at the bottom, separately from the form, and follow one after another. To change the display of the field and add it to Tabs, you can use the `tabMode()` method.
+
+```php
+tabMode(Closure|bool|null $condition = null): static
+```
+
+In the following example, a [Tabs](/docs/{{version}}/components/tabs) component with two tabs, Comments and Covers, will be created.
+
+```php
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
+HasMany::make('Comments', 'comments', resource: CommentResource::class)
+    ->tabMode(),
+HasMany::make('Covers', 'covers', resource: CoverResource::class)
+    ->tabMode()
+```
+
+> [!NOTE]
+> tabMode will not work when using the `disableOutside()` method
+
+### Display inside a modal window
+
+To display a HasMany field in a modal window that is triggered by a button, you can use the `modalMode()` method.
+
+```php
+public function modalMode(
+    Closure|bool|null $condition = null,
+    ?Closure $modifyModalModeButton = null,
+    ?Closure $modifyModalModeModal = null
+): static
+```
+
+In this example, instead of a table, there will now be an [ActionButton](/docs/{{version}}/components/action-button.md) that triggers a [Modal](/docs/{{version}}/components/modal.md).
+
+```php
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
+HasMany::make('Comments', 'comments', resource: CommentResource::class)
+    ->modalMode(),
+```
+
+To modify the ActionButton and Modal, you can use the method parameters $modifyModalModeButton and $modifyModalModeModal, into which you can pass a closure.
+
+```php
+use MoonShine\Laravel\Fields\Relationships\HasMany;
+
+HasMany::make('Comments', 'comments', resource: CommentResource::class)
+    ->modalMode(
+        modifyModalModeButton: function (ActionButtonContract $button, HasMany $ctx) {
+            $button->warning();
+            return $button;
+        },
+        modifyModalModeModal: function (Modal $modal, ActionButtonContract $ctx) {
+            $modal->autoClose(false);
+            return $modal;
+        }
+    )
+```
+
 
 <a name="add-action-buttons"></a>
 ## Adding ActionButtons
