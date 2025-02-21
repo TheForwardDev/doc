@@ -188,10 +188,10 @@ HasOne::make('Comment', resource: CommentResource::class)
 
 ### Display within Tabs
 
-By default, relationship fields in MoonShine are displayed at the bottom, separately from the form, and follow one after another. To change the display of the field and add it to Tabs, you can use the `tabMode()` method.
+By default, relationship fields in **MoonShine** are displayed at the bottom, separately from the form, and follow one after another. To change the display of the field and add it to `Tabs`, you can use the `tabMode()` method.
 
 ```php
-tabMode(Closure|bool|null $condition = null): static
+tabMode(Closure|bool|null $condition = null)
 ```
 
 In the following example, a [Tabs](/docs/{{version}}/components/tabs) component with two tabs, Comment and Cover, will be created.
@@ -215,12 +215,12 @@ To display a HasOne field in a modal window that is called by a button, you can 
 ```php
 public function modalMode(
     Closure|bool|null $condition = null,
-    ?Closure $modifyModalModeButton = null,
-    ?Closure $modifyModalModeModal = null
-): static
+    ?Closure $modifyButton = null,
+    ?Closure $modifyModal = null
+)
 ```
 
-In this example, instead of a form, there will now be an [ActionButton](/docs/{{version}}/components/action-button.md) that calls a [Modal](/docs/{{version}}/components/modal.md).
+In this example, instead of a form, there will now be an [ActionButton](/docs/{{version}}/components/action-button) that calls a [Modal](/docs/{{version}}/components/modal).
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\HasOne;
@@ -229,18 +229,18 @@ HasOne::make('Comment', 'comment', resource: CommentResource::class)
     ->modalMode(),
 ```
 
-To modify the ActionButton and Modal, you can use the method parameters $modifyModalModeButton and $modifyModalModeModal, into which you can pass a closure.
+To modify the ActionButton and Modal, you can use the method parameters $modifyButton and $modifyModal, into which you can pass a closure.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\HasOne;
 
 HasOne::make('Comment', 'comment', resource: CommentResource::class)
     ->modalMode(
-        modifyModalModeButton: function (ActionButtonContract $button, HasOne $ctx) {
+        modifyButton: function (ActionButtonContract $button, HasOne $ctx) {
             $button->warning();
             return $button;
         },
-        modifyModalModeModal: function (Modal $modal, ActionButtonContract $ctx) {
+        modifyModal: function (Modal $modal, ActionButtonContract $ctx) {
             $modal->autoClose(false);
             return $modal;
         }
