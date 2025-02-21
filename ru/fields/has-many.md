@@ -12,6 +12,7 @@
 - [Добавление ActionButtons](#add-action-buttons)
 - [Отображение](#view)
 - [Продвинутое использование](#advanced)
+
 ---
 
 <a name="basics"></a>
