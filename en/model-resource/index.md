@@ -147,6 +147,41 @@ class MoonShineServiceProvider extends ServiceProvider
 }
 ```
 
+As of version 3.7, autoloading of pages and resources is also available in **MoonShine**.
+It is disabled by default and to activate it you need to call the `autoload` method in `MoonShineServiceProvider` instead of specifying links to pages and resources:
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
+namespace App\Providers;
+
+use App\MoonShine\Resources\ArticleResource;
+
+use Illuminate\Support\ServiceProvider;
+use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
+use MoonShine\Laravel\DependencyInjection\ConfiguratorContract; // [tl! collapse:end]
+
+class MoonShineServiceProvider extends ServiceProvider
+{
+    public function boot(
+        CoreContract $core,
+        ConfiguratorContract $config,
+    ): void
+    {
+        $core
+            ->autoload()
+        ;
+    }
+}
+```
+
+When deploying a project to production in Laravel 11 [it is recommended](https://laravel.com/docs/11.x/packages#optimize-commands) to call the `php artisan optimize` console command.
+In addition to its basic functions, it will also perform **MoonShine** resource caching.
+
+When using Laravel 10, you must manually call the `php artisan moonshine:optimize` console command to optimize the admin panel initialization process.
+
+You can clear the panel cache either with the `php artisan optimize:clear` command in Laravel 11 or by directly calling the `php artisan moonshine:optimize-clear` console command.
+
 <a name="adding-to-the-menu"></a>
 ## Adding to the Menu
 
