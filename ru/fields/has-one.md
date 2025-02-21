@@ -4,7 +4,7 @@
 - [Поля](#fields)
 - [ID родителя](#parent-id)
 - [Модификация](#modify)
-
+- [Отображение](#view)
 ---
 
 <a name="basics"></a>
@@ -180,4 +180,79 @@ use MoonShine\Laravel\Fields\Relationships\HasOne;
 
 HasOne::make('Comment', resource: CommentResource::class)
     ->redirectAfter(fn(int $parentId) => route('home'))
+```
+
+<a name="view"></a>
+## Отображение
+
+### Отображение внутри Tabs
+
+Поля отношений в MoonShine по умолчанию отображаются внизу, отдельно от формы, и следуют друг за другом. Чтобы изменить отображение поля и добавить его в Tabs, можно использовать метод `tabMode()`.
+
+```php
+tabMode(Closure|bool|null $condition = null): static
+```
+
+В следующем примере будет создан компонент [Tabs](/docs/{{version}}/components/tabs) с двумя вкладками Comment и Cover.
+
+```php
+use MoonShine\Laravel\Fields\Relationships\HasOne;
+
+HasOne::make('Comment', 'comment', resource: CommentResource::class)
+    ->tabMode(),
+HasOne::make('Cover', 'cover', resource: CoverResource::class)
+    ->tabMode()
+```
+
+> [!NOTE]
+> tabMode не будет работать при использовании метода `disableOutside()`
+
+### Отображение внутри модального окна
+
+Для того чтобы HasOne поле было отображено в модальном окне, которое вызывается по кнопке, можно использовать режим `modalMode()`
+
+```php
+public function modalMode(
+    Closure|bool|null $condition = null,
+    ?Closure $modifyModalModeButton = null,
+    ?Closure $modifyModalModeModal = null
+): static
+```
+
+В данном примере вместо формы теперь будет [ActionButton](/docs/{{version}}/components/action-button.md), который вызывает [Modal](/docs/{{version}}/components/modal.md).
+
+```php
+use MoonShine\Laravel\Fields\Relationships\HasOne;
+
+HasOne::make('Comment', 'comment', resource: CommentResource::class)
+    ->modalMode(),
+```
+
+Чтобы модифицировать ActionButton и Modal, можно воспользоваться параметрами метода $modifyModalModeButton и $modifyModalModeModal, в которые можно передать замыкание.
+
+```php
+use MoonShine\Laravel\Fields\Relationships\HasOne;
+
+HasOne::make('Comment', 'comment', resource: CommentResource::class)
+    ->modalMode(
+        modifyModalModeButton: function (ActionButtonContract $button, HasOne $ctx) {
+            $button->warning();
+            return $button;
+        },
+        modifyModalModeModal: function (Modal $modal, ActionButtonContract $ctx) {
+            $modal->autoClose(false);
+            return $modal;
+        }
+    )
+```
+
+### Отображение в основной форме ресурса
+
+Для HasOne доступен метод `disableOutside()`, который позволят отобразить его внутри формы на том месте, где задано данное поле. `disableOutside` для HasOne работает только в режиме `modalMode`.
+
+```php
+use MoonShine\Laravel\Fields\Relationships\HasOne;
+
+HasOne::make('Comment', 'comment', resource: CommentResource::class)
+    ->disableOutside(),
 ```
