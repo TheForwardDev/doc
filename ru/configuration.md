@@ -57,6 +57,7 @@ return [
     'use_migrations' => true,
     'use_notifications' => true,
     'use_database_notifications' => true,
+    'use_profile' => true,
     'middleware' => [
         // ...
     ],
@@ -84,8 +85,6 @@ return [
 
 > [!NOTE]
 > `use_migrations`, `use_notifications`, `use_database_notifications` должны присутствовать всегда либо в `moonshine.php`, либо в `MoonShineServiceProvider`.
-
-> [!NOTE]
 > Все остальные параметры, не указанные в файле, будут использовать значения по умолчанию.
 
 <a name="service-provider"></a>
@@ -676,6 +675,7 @@ class MoonShineServiceProvider extends ServiceProvider
             ->useMigrations()
             ->useNotifications()
             ->useDatabaseNotifications()
+            ->useProfile()
             ->cacheDriver('redis')
             ->authorizationRules(
                 function(ResourceContract $ctx, mixed $user, Ability $ability, mixed $data): bool {
