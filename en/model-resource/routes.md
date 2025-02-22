@@ -67,7 +67,7 @@ toPage(
     array $params = [],
     bool $redirect = false,
     ?string $fragment = null
-): RedirectResponse|string
+)
 ```
 
 - `$page` - page or class-string of the page (optional),
