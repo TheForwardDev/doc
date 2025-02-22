@@ -2,6 +2,7 @@
 
 - [Основы](#basics)
 - [Атрибуты](#attributes)
+- [Тёмная тема](#darkmode)
 
 ---
 
@@ -56,4 +57,25 @@ tab: Blade
 logoAttributes(array $attributes)
 
 logoSmallAttributes(array $attributes)
+```
+
+<a name="darkmode"></a>
+## Тёмная тема
+
+You can specify icons for the dark theme separately.
+To do this, use the `darkMode()` method.
+
+```php
+darkMode(string $logo, ?string $small = null)
+```
+
+```php
+protected function getLogoComponent(): Logo
+{
+    return parent::getLogoComponent()
+        ->darkMode(
+            asset('logo-dark.svg'),
+            asset('logo-dark-small.svg'),
+        );
+}
 ```
