@@ -9,6 +9,7 @@
 - [Edit button](#change-edit-button)
 - [Modal window](#without-modals)
 - [Modification](#modify)
+- [Actions](#actions)
 - [Adding ActionButtons](#add-action-buttons)
 - [Advanced usage](#advanced)
 
@@ -437,6 +438,30 @@ use MoonShine\Laravel\Fields\Relationships\HasMany;
 
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyBuilder(fn(Relation $query, HasMany $ctx) => $query)
+```
+
+<a name="actions"></a>
+## Actions
+
+It is possible to quickly turn enable/disable certain actions within the scope of `HasMany`.
+
+The `activeActions()` method explicitly sets the list of available actions.
+
+```php
+HasMany::make('Comments')
+    ->activeActions(
+        Action::VIEW,
+        Action::UPDATE,
+    )
+```
+
+The `withoutActions()` method allows you to exclude individual actions.
+
+```php
+HasMany::make('Comments')
+    ->withoutActions(
+        Action::VIEW
+    )
 ```
 
 <a name="add-action-buttons"></a>
