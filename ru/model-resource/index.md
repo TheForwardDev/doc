@@ -147,8 +147,8 @@ class MoonShineServiceProvider extends ServiceProvider
 }
 ```
 
-Начиная с версии 3.7 в **MoonShine** также доступна автозагрузка страниц и ресурсов.
-Она выключена по-умолчанию и для активации нужно вызвать метод `autoload` в `MoonShineServiceProvider` вместо указания ссылок на страницы и ресурсы:
+В **MoonShine** также доступна автозагрузка страниц и ресурсов.
+Она выключена по-умолчанию и для активации нужно вызвать метод `autoload()` в `MoonShineServiceProvider` вместо указания ссылок на страницы и ресурсы.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -168,9 +168,7 @@ class MoonShineServiceProvider extends ServiceProvider
         ConfiguratorContract $config,
     ): void
     {
-        $core
-            ->autoload()
-        ;
+        $core->autoload();
     }
 }
 ```

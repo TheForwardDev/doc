@@ -147,8 +147,8 @@ class MoonShineServiceProvider extends ServiceProvider
 }
 ```
 
-As of version 3.7, autoloading of pages and resources is also available in **MoonShine**.
-It is disabled by default and to activate it you need to call the `autoload` method in `MoonShineServiceProvider` instead of specifying links to pages and resources:
+Autoloading of pages and resources is also available in **MoonShine**.
+It is disabled by default and to activate it you need to call the `autoload()` method in `MoonShineServiceProvider` instead of specifying links to pages and resources.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -168,9 +168,7 @@ class MoonShineServiceProvider extends ServiceProvider
         ConfiguratorContract $config,
     ): void
     {
-        $core
-            ->autoload()
-        ;
+        $core->autoload();
     }
 }
 ```
