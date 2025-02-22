@@ -9,7 +9,7 @@
 - [Кнопка редактирования](#change-edit-button)
 - [Модальное окно](#without-modals)
 - [Модификация](#modify)
-- [Actions](#actions)
+- [Активные действия](#active-actions)
 - [Добавление ActionButtons](#add-action-buttons)
 - [Продвинутое использование](#advanced)
 
@@ -440,8 +440,8 @@ HasMany::make('Comments', resource: CommentResource::class)
     ->modifyBuilder(fn(Relation $query, HasMany $ctx) => $query)
 ```
 
-<a name="actions"></a>
-## Actions
+<a name="active-actions"></a>
+## Активные действия
 
 Есть возможность быстро включать/выключать определенные действия в рамках `HasMany`.
 

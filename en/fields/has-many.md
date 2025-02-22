@@ -9,7 +9,7 @@
 - [Edit button](#change-edit-button)
 - [Modal window](#without-modals)
 - [Modification](#modify)
-- [Actions](#actions)
+- [Active Actions](#active-actions)
 - [Adding ActionButtons](#add-action-buttons)
 - [Advanced usage](#advanced)
 
@@ -440,8 +440,8 @@ HasMany::make('Comments', resource: CommentResource::class)
     ->modifyBuilder(fn(Relation $query, HasMany $ctx) => $query)
 ```
 
-<a name="actions"></a>
-## Actions
+<a name="active-actions"></a>
+## Active Actions
 
 It is possible to quickly turn enable/disable certain actions within the scope of `HasMany`.
 
