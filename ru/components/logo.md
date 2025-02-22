@@ -62,7 +62,7 @@ logoSmallAttributes(array $attributes)
 <a name="darkmode"></a>
 ## Тёмная тема
 
-You can specify icons for the dark theme separately.
+You can specify logos for the dark theme separately.
 To do this, use the `darkMode()` method.
 
 ```php
