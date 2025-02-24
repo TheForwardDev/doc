@@ -486,7 +486,7 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
     ->modalMode(),
 ```
 
-To modify the ActionButton and Modal, you can use the method parameters $modifyButton and $modifyModal, into which you can pass a closure.
+To modify the `ActionButton` and `Modal`, you can use the method parameters `$modifyButton` and `$modifyModal`, into which you can pass a closure.
 
 ```php
 use MoonShine\Laravel\Fields\Relationships\HasMany;
