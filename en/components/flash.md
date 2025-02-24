@@ -41,7 +41,7 @@ Add the "toast" array to the session with the following values:
 
 ```php
 session()->flash('toast', [
-    'type' => FlashType::INFO,
+    'type' => FlashType::INFO->value,
     'message' => 'Info',
 ]);
 ```
