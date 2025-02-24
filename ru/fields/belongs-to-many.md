@@ -8,6 +8,7 @@
 - [Опции](#options)
 - [Placeholder](#placeholder)
 - [Дерево](#tree)
+- [Горизонтальный режим](#horizontal)
 - [Предпросмотр](#preview)
 - [Только ссылка](#only-link)
 - [Запрос для значений](#values-query)
@@ -272,6 +273,32 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 
 ![belongs_to_many_tree](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_tree.png#light)
 ![belongs_to_many_tree_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_tree_dark.png#dark)
+
+<a name="horizontal"></a>
+## Горизонтальный режим
+
+Метод `horizontalMode()` позволяет отображать значения в виде горизонтального списка.
+
+```php
+horizontalMode(Closure|bool|null $condition = null, string $minColWidth = '200px', string $maxColWidth = '1fr')
+```
+
+- `$condition` - (опционально) условие для отображения поля в горизонтальном режиме,
+- `$minColWidth` - (опционально) минимальная ширина колонки,
+- `$maxColWidth` - (опционально) максимальная ширина колонки.
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use App\MoonShine\Resources\CategoryResource;
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+
+BelongsToMany::make('Categories', resource: CategoryResource::class)
+    ->horizontalMode(true, minColWidth: '100px', maxColWidth: '33%')
+```
+
+![belongs_to_many_horizontal](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_horizontal.png#light)
+![belongs_to_many_horizontal_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many_horizontal_dark.png#dark)
 
 <a name="preview"></a>
 ## Предпросмотр
