@@ -60,6 +60,9 @@ class PostResource extends ModelResource
 }
 ```
 
+> [!NOTE]
+> Если вам необходимо полностью переопределить `Builder` для получения записи, то вы можете переопределить метод ресурса `findItem()`.
+
 <a name="eager-load"></a>
 ## Eager load
 
@@ -77,9 +80,6 @@ class PostResource extends ModelResource
     // ...
 }
 ```
-
-> [!NOTE]
-> Если вам необходимо полностью переопределить `Builder`, то вы можете переопределить метод ресурса `findItem()`.
 
 <a name="search"></a>
 ## Поиск
