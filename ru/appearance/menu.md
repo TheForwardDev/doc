@@ -665,6 +665,12 @@ final class MoonShineLayout extends AppLayout
 Чтобы активировать альтернативный вариант создания меню, замените массив в методе `menu()` на вызов метода `autoloadMenu()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Layouts;
+
+use MoonShine\Laravel\Layouts\AppLayout;
+
 final class MoonShineLayout extends AppLayout
 {
     // ...
@@ -679,6 +685,10 @@ final class MoonShineLayout extends AppLayout
 Если вам нужно пропустить страницу или ресурс в меню, используйте атрибут `SkipMenu`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\SkipMenu;
+
 #[SkipMenu]
 class ProfilePage extends Page {}
 ```
@@ -688,13 +698,22 @@ class ProfilePage extends Page {}
 В атрибуте так же можно указать иконку и флаг `translatable`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\Group;
+
 #[Group('moonshine::ui.profile', 'users', translatable: true)]
 class ProfilePage extends Page {}
 ```
 
 Если вам нужно отобразить элемент меню по условию, используйте атрибут `CanSee`.
+Добавьте метод в ресурсе или странице, который будет отвечать за условие отображения.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\CanSee;
+
 #[CanSee(method: 'someMethod')]
 class ArticleResource extends ModelResource
 {
@@ -708,6 +727,10 @@ class ArticleResource extends ModelResource
 Если вам нужно задать порядок элементов меню, используйте атрибут `Order`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\Order;
+
 #[Order(1)]
 class ArticleResource extends ModelResource {}
 ```

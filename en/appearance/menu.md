@@ -665,6 +665,12 @@ final class MoonShineLayout extends AppLayout
 To activate an alternative menu creation option, replace the array in the `menu()` method by calling `autoloadMenu()` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Layouts;
+
+use MoonShine\Laravel\Layouts\AppLayout;
+
 final class MoonShineLayout extends AppLayout
 {
     // ...
@@ -679,6 +685,10 @@ final class MoonShineLayout extends AppLayout
 If you need to skip a page or resource in the menu, use `SkipMenu` attribute.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\SkipMenu;
+
 #[SkipMenu]
 class ProfilePage extends Page {}
 ```
@@ -688,13 +698,22 @@ The items will be grouped by name.
 You can also specify the icon and the `translatable` flag in the attribute.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\Group;
+
 #[Group('moonshine::ui.profile', 'users', translatable: true)]
 class ProfilePage extends Page {}
 ```
 
 If you need to display a menu item by condition, use `CanSee` attribute.
+Add a method in the resource or page that will be responsible for the display condition.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\CanSee;
+
 #[CanSee(method: 'someMethod')]
 class ArticleResource extends ModelResource
 {
@@ -708,6 +727,10 @@ class ArticleResource extends ModelResource
 If you need to set the order of the menu items, use `Order` attribute.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\Order;
+
 #[Order(1)]
 class ArticleResource extends ModelResource {}
 ```
