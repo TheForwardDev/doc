@@ -13,6 +13,7 @@
 - [Атрибуты](#attributes)
 - [Изменение кнопки](#change-button)
 - [Изменение шаблона](#custom-view)
+- [Автозагрузка меню](#menu-autoload)
 
 ---
 
@@ -28,6 +29,9 @@
 который уже содержит метод `menu()`.
 
 В дальнейшем, если вам потребуется, вы сможете создавать другие *Layout* для определенных страниц.
+
+> [!NOTE]
+> Попробуйте так же [альтернативный способ](#menu-autoload) генерации меню с помощью **автозагрузки**.
 
 <a name="items"></a>
 ## Элементы
@@ -653,4 +657,57 @@ final class MoonShineLayout extends AppLayout
         ];
     }
 }
+```
+
+<a name="menu-autoload"></a>
+## Автозагрузка меню
+
+Чтобы активировать альтернативный вариант создания меню, замените массив в методе `menu()` на вызов метода `autoloadMenu()`.
+
+```php
+final class MoonShineLayout extends AppLayout
+{
+    // ...
+
+    protected function menu(): array
+    {
+        return $this->autoloadMenu();
+    }
+}
+```
+
+Если вам нужно пропустить страницу или ресурс в меню, используйте атрибут `SkipMenu`.
+
+```php
+#[SkipMenu]
+class ProfilePage extends Page {}
+```
+
+Если вам нужно объединить страницы или ресурсы в группы, используйте атрибут `Group`.
+Элементы будут сгруппированы по названию.
+В атрибуте так же можно указать иконку и флаг `translatable`.
+
+```php
+#[Group('moonshine::ui.profile', 'users', translatable: true)]
+class ProfilePage extends Page {}
+```
+
+Если вам нужно отобразить элемент меню по условию, используйте атрибут `CanSee`.
+
+```php
+#[CanSee(method: 'someMethod')]
+class ArticleResource extends ModelResource
+{
+    public function someMethod(): bool
+    {
+        return false;
+    }
+}
+```
+
+Если вам нужно задать порядок элементов меню, используйте атрибут `Order`.
+
+```php
+#[Order(1)]
+class ArticleResource extends ModelResource {}
 ```
