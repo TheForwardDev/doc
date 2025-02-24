@@ -280,7 +280,11 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 The `horizontalMode()` method allows you to display values as a horizontal list.
 
 ```php
-horizontalMode(Closure|bool|null $condition = null, string $minColWidth = '200px', string $maxColWidth = '1fr')
+horizontalMode(
+    Closure|bool|null $condition = null,
+    string $minColWidth = '200px',
+    string $maxColWidth = '1fr'
+)
 ```
 
 - `$condition` - (optional) condition for setting the field to horizontal mode,

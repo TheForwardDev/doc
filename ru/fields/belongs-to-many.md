@@ -280,7 +280,11 @@ BelongsToMany::make('Categories', resource: CategoryResource::class)
 Метод `horizontalMode()` позволяет отображать значения в виде горизонтального списка.
 
 ```php
-horizontalMode(Closure|bool|null $condition = null, string $minColWidth = '200px', string $maxColWidth = '1fr')
+horizontalMode(
+    Closure|bool|null $condition = null,
+    string $minColWidth = '200px',
+    string $maxColWidth = '1fr'
+)
 ```
 
 - `$condition` - (опционально) условие для отображения поля в горизонтальном режиме,
