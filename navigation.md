@@ -173,3 +173,4 @@
     - [Fields group](/docs/{{version}}/recipes/fields-group)
     - [Multiple selectors/fragments](/docs/{{version}}/recipes/multiple-fragments-selectors)
     - [Change config](/docs/{{version}}/recipes/change-config)
+    - [Paginator](/docs/{{version}}/recipes/table-paginator)
