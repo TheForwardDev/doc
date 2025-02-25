@@ -9,8 +9,9 @@
 - [Edit button](#change-edit-button)
 - [Modal window](#without-modals)
 - [Modification](#modify)
-- [Adding ActionButtons](#add-action-buttons)
 - [Display](#view)
+- [Active Actions](#active-actions)
+- [Adding ActionButtons](#add-action-buttons)
 - [Advanced usage](#advanced)
 
 ---
@@ -504,6 +505,29 @@ HasMany::make('Comments', 'comments', resource: CommentResource::class)
     )
 ```
 
+<a name="active-actions"></a>
+## Active Actions
+
+It is possible to quickly turn enable/disable certain actions within the scope of `HasMany`.
+
+The `activeActions()` method explicitly sets the list of available actions.
+
+```php
+HasMany::make('Comments')
+    ->activeActions(
+        Action::VIEW,
+        Action::UPDATE,
+    )
+```
+
+The `withoutActions()` method allows you to exclude individual actions.
+
+```php
+HasMany::make('Comments')
+    ->withoutActions(
+        Action::VIEW
+    )
+```
 
 <a name="add-action-buttons"></a>
 ## Adding ActionButtons

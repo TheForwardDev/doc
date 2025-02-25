@@ -2,6 +2,7 @@
 
 - [Basics](#basics)
 - [Attributes](#attributes)
+- [DarkMode](#darkmode)
 
 ---
 
@@ -56,4 +57,25 @@ To add attributes to the `img` tag of the logo, there are two methods for the tw
 logoAttributes(array $attributes)
 
 logoSmallAttributes(array $attributes)
+```
+
+<a name="darkmode"></a>
+## DarkMode
+
+You can specify logos for the dark theme separately.
+To do this, use the `darkMode()` method.
+
+```php
+darkMode(string $logo, ?string $small = null)
+```
+
+```php
+protected function getLogoComponent(): Logo
+{
+    return parent::getLogoComponent()
+        ->darkMode(
+            asset('logo-dark.svg'),
+            asset('logo-dark-small.svg'),
+        );
+}
 ```

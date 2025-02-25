@@ -265,7 +265,10 @@ class PostResource extends ModelResource
 Если необходимо исключить поля из выбора, то воспользуйтесь методом `columnSelection()`.
 
 ```php
-public function columnSelection(bool $active = true, bool $hideOnInit = false)
+columnSelection(
+    bool $active = true,
+    bool $hideOnInit = false
+)
 ```
 
 ```php

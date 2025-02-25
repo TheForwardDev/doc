@@ -13,6 +13,7 @@
 - [Attributes](#attributes)
 - [Change button](#change-button)
 - [Custom view](#custom-view)
+- [Menu autoload](#menu-autoload)
 
 ---
 
@@ -28,6 +29,9 @@ During the installation of the admin panel, depending on the configurations you 
 which already contains the `menu()` method.
 
 In the future, if necessary, you can create other *Layouts* for specific pages.
+
+> [!NOTE]
+> Also try an [alternative way](#menu-autoload) to generate the menu using **autoupload**.
 
 <a name="items"></a>
 ## Items
@@ -653,4 +657,80 @@ final class MoonShineLayout extends AppLayout
         ];
     }
 }
+```
+
+<a name="menu-autoload"></a>
+## Menu autoload
+
+To activate an alternative menu creation option, replace the array in the `menu()` method by calling `autoloadMenu()` method.
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
+namespace App\MoonShine\Layouts;
+
+use MoonShine\Laravel\Layouts\AppLayout;
+
+final class MoonShineLayout extends AppLayout
+{
+    // ...
+
+    protected function menu(): array
+    {
+        return $this->autoloadMenu();
+    }
+}
+```
+
+If you need to skip a page or resource in the menu, use `SkipMenu` attribute.
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\SkipMenu;
+
+#[SkipMenu]
+class ProfilePage extends Page {}
+```
+
+If you need to wrap pages or resources into groups, use the `Group` attribute.
+The items will be grouped by name.
+You can also specify the icon and the `translatable` flag in the attribute.
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\Group;
+
+#[Group('moonshine::ui.profile', 'users', translatable: true)]
+class ProfilePage extends Page {}
+```
+
+If you need to display a menu item by condition, use `CanSee` attribute.
+Add a method in the resource or page that will be responsible for the display condition.
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\CanSee;
+
+#[CanSee(method: 'someMethod')]
+class ArticleResource extends ModelResource
+{
+    public function someMethod(): bool
+    {
+        return false;
+    }
+}
+```
+
+If you need to set the order of the menu items, use `Order` attribute.
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\MenuManager\Attributes\Order;
+
+#[Order(1)]
+class ArticleResource extends ModelResource {}
 ```

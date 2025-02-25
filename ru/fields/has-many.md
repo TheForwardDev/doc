@@ -9,6 +9,7 @@
 - [Кнопка редактирования](#change-edit-button)
 - [Модальное окно](#without-modals)
 - [Модификация](#modify)
+- [Активные действия](#active-actions)
 - [Добавление ActionButtons](#add-action-buttons)
 - [Отображение](#view)
 - [Продвинутое использование](#advanced)
@@ -438,6 +439,30 @@ use MoonShine\Laravel\Fields\Relationships\HasMany;
 
 HasMany::make('Comments', resource: CommentResource::class)
     ->modifyBuilder(fn(Relation $query, HasMany $ctx) => $query)
+```
+
+<a name="active-actions"></a>
+## Активные действия
+
+Есть возможность быстро включать/выключать определенные действия в рамках `HasMany`.
+
+Метод `activeActions()` явно задаёт список доступных действий.
+
+```php
+HasMany::make('Comments')
+    ->activeActions(
+        Action::VIEW,
+        Action::UPDATE,
+    )
+```
+
+Метод `withoutActions()` позволяет исключить отдельные действия.
+
+```php
+HasMany::make('Comments')
+    ->withoutActions(
+        Action::VIEW
+    )
 ```
 
 <a name="add-action-buttons"></a>

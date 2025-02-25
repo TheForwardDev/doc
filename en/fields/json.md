@@ -22,9 +22,7 @@ Contains all [Basic methods](/docs/{{version}}/fields/basic-methods).
 The `Json` field is designed for convenient work with the json data type.
 In most cases, it is used with arrays of objects via `TableBuilder`, but it also supports a mode for working with a single object.
 
-> [!NOTE]
-> In the database, the field must be of type "text" or "json".
-> It is also necessary to specify **cast** — "array", "json" or "collection".
+@include('_includes/note-about-multiple-cast')
 
 <a name="fields"></a>
 ## Field Set

@@ -60,8 +60,11 @@ class PostResource extends ModelResource
 }
 ```
 
+> [!NOTE]
+> If you need to completely override the `Builder` for retrieving a record, you can override the resource method `findItem()`.
+
 <a name="eager-load"></a>
-## Eager load
+## Eager Load
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -77,9 +80,6 @@ class PostResource extends ModelResource
     // ...
 }
 ```
-
-> [!NOTE]
-> If you need to completely override the `Builder`, you can override the resource method `findItem()`.
 
 <a name="search"></a>
 ## Search

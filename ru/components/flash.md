@@ -41,7 +41,7 @@ Flash::make()
 
 ```php
 session()->flash('toast', [
-    'type' => FlashType::INFO,
+    'type' => FlashType::INFO->value,
     'message' => 'Info',
 ]);
 ```
