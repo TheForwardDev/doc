@@ -195,25 +195,8 @@ class Article extends Model implements HasGlobalSearch
 4. Replace the `Search` component in `Layout`.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"}
-// [tl! collapse:4]
-use MoonShine\Laravel\Components\Layout\Locales;
-use MoonShine\Laravel\Components\Layout\Notifications;
-use MoonShine\UI\Components\Breadcrumbs;
-use MoonShine\UI\Components\Layout\Header;
-
-protected function getHeaderComponent(): Header
+protected function getSearchComponent(): ComponentContract
 {
-    return Header::make([
-        Breadcrumbs::make(
-            $this->getPage()->getBreadcrumbs()
-        )->prepend($this->getHomeUrl(), icon: 'home'),
-        MoonShine\Scout\Components\Search::make(),
-        When::make(
-            fn (): bool => $this->isUseNotifications(),
-            static fn (): array => [Notifications::make()]
-        ),
-        Locales::make(),
-    ]);
+    return MoonShine\Scout\Components\Search::make();
 }
 ```
