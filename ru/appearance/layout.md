@@ -257,6 +257,18 @@ protected function getFooterComponent(): Footer
 protected function getProfileComponent(bool $sidebar = false): Profile
 ```
 
+#### Переопределить содержимое компонента Content
+
+```php
+protected function getContentComponents(): array
+```
+
+```php
+Content::make(
+    $this->getContentComponents()
+)
+```
+
 #### Путь до логотипа
 
 ```php
@@ -596,7 +608,7 @@ final class MyLayout extends AppLayout
 
                     <x-moonshine::layout.content>
                         <article class="article">
-                            Ваш контент
+                            Your content
                         </article>
                     </x-moonshine::layout.content>
                 </x-moonshine::layout.div>

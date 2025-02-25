@@ -257,6 +257,18 @@ protected function getFooterComponent(): Footer
 protected function getProfileComponent(bool $sidebar = false): Profile
 ```
 
+#### Override the сontent of the Content component
+
+```php
+protected function getContentComponents(): array
+```
+
+```php
+Content::make(
+    $this->getContentComponents()
+)
+```
+
 #### Path to the logo
 
 ```php
