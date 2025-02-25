@@ -147,6 +147,39 @@ class MoonShineServiceProvider extends ServiceProvider
 }
 ```
 
+В **MoonShine** также доступна автозагрузка страниц и ресурсов.
+Она выключена по-умолчанию и для активации нужно вызвать метод `autoload()` в `MoonShineServiceProvider` вместо указания ссылок на страницы и ресурсы.
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
+namespace App\Providers;
+
+use App\MoonShine\Resources\ArticleResource;
+
+use Illuminate\Support\ServiceProvider;
+use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
+use MoonShine\Laravel\DependencyInjection\ConfiguratorContract; // [tl! collapse:end]
+
+class MoonShineServiceProvider extends ServiceProvider
+{
+    public function boot(
+        CoreContract $core,
+        ConfiguratorContract $config,
+    ): void
+    {
+        $core->autoload();
+    }
+}
+```
+
+При деплое проекта на продакшен в Laravel 11 [рекомендуется](https://laravel.com/docs/11.x/packages#optimize-commands) вызывать консольную команду `php artisan optimize`.
+Помимо её основных функций, она также выполнит кэширование ресурсов **MoonShine**.
+
+При использовании Laravel 10 необходимо вручную вызывать консольную команду `php artisan moonshine:optimize` для оптимизации процесса инициализации админ панели.
+
+Очистить кэш панели можно как командой `php artisan optimize:clear` в Laravel 11, так и прямым вызовом консольной команды `php artisan moonshine:optimize-clear`.
+
 <a name="adding-to-the-menu"></a>
 ## Добавление в меню
 
