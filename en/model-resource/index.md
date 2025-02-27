@@ -180,6 +180,9 @@ When using Laravel 10, you must manually call the `php artisan moonshine:optimiz
 
 You can clear the panel cache either with the `php artisan optimize:clear` command in Laravel 11 or by directly calling the `php artisan moonshine:optimize-clear` console command.
 
+> [!WARNING]
+> If the application does not see them after creating the classes, update the composer cache with the `composer dump-autoload` command.
+
 <a name="adding-to-the-menu"></a>
 ## Adding to the Menu
 

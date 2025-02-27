@@ -180,6 +180,9 @@ class MoonShineServiceProvider extends ServiceProvider
 
 Очистить кэш панели можно как командой `php artisan optimize:clear` в Laravel 11, так и прямым вызовом консольной команды `php artisan moonshine:optimize-clear`.
 
+> [!WARNING]
+> Если после создания классов приложение их не видит - обновите кэш композера командой `composer dump-autoload`.
+
 <a name="adding-to-the-menu"></a>
 ## Добавление в меню
 
