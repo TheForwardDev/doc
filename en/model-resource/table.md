@@ -489,10 +489,26 @@ class PostResource extends ModelResource
             Text::make('Title'),
             Switcher::make('Active')
                 ->updateOnPreview(
-                    events: [AlpineJs::event(JsEvent::TABLE_ROW_UPDATED, 'index-table-{row-id}')]
+                    events: [AlpineJs::event(JsEvent::TABLE_ROW_UPDATED, $this->getListComponentNameWithRow())]
                 )
         ];
     }
+}
+```
+
+Also, an example of a response with an event.
+
+```php
+public function softDelete(MoonShineRequest $request): MoonShineJsonResponse
+{
+    $item = $request->getResource()->getItem();
+    $item->delete();
+
+    return MoonShineJsonResponse::make()
+        ->events([
+            AlpineJs::event(JsEvent::TABLE_ROW_UPDATED, $this->getListComponentNameWithRow($item->getKey()))
+        ])
+        ->toast('Success');
 }
 ```
 
